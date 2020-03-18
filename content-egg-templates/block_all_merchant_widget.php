@@ -98,15 +98,17 @@ $all_items = TemplateHelper::sortAllByPrice($data);
                                                                               
                 </div>
             <?php endforeach; ?> 
-        </div>     
-        <div class="additional_line_merchant flowhidden">
-            <?php if ($countitems > 7):?>
-            <span class="expand_all_offers"><?php esc_html_e('Show all', 'rehub-theme');?> <span class="expandme">+</span></span>
-            <?php endif;?>
-            <?php if ($unique_id && $module_id && !empty($syncitem)) {
-                include(rh_locate_template( 'inc/parts/pricehistorypopup.php' ) );
-            } ?>    
-        </div>         
+        </div>
+        <?php if ($countitems > 7 || !empty($syncitem)):?>     
+            <div class="additional_line_merchant flowhidden">
+                <?php if ($countitems > 7):?>
+                <span class="expand_all_offers"><?php esc_html_e('Show all', 'rehub-theme');?> <span class="expandme">+</span></span>
+                <?php endif;?>
+                <?php if ($unique_id && $module_id && !empty($syncitem)) {
+                    include(rh_locate_template( 'inc/parts/pricehistorypopup.php' ) );
+                } ?>    
+            </div> 
+        <?php endif;?>        
     </div>
     <div class="clearfix"></div>
     <?php $product_update = TemplateHelper::getLastUpdateFormattedAmazon($data);?>

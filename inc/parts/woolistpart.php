@@ -55,15 +55,16 @@ else {
     $deal_type_string = esc_html__('Deal', 'rehub-theme');
 }
 ?>
-<?php $syncitem = '';?>
+<?php $syncitem = $ceofferurl = ''; $countoffers = 0;?>
 <?php if (defined('\ContentEgg\PLUGIN_PATH')):?>
     <?php $itemsync = \ContentEgg\application\WooIntegrator::getSyncItem($post->ID);?>
     <?php if(!empty($itemsync)):?>
         <?php                            
             $syncitem = $itemsync;                            
         ?>
+        <?php $countoffers = rh_ce_found_total_offers($post->ID);?>
     <?php endif;?>
-<?php endif;?> 
+<?php endif;?>
 <div class="woocommerce type-product rh_offer_list rh_actions_padd <?php echo ''.$reveal_enabled.$coupon_style.$deal_type; ?>">    
     <?php do_action('woocommerce_before_shop_loop_item');?>
     <div class="button_action">
@@ -72,6 +73,11 @@ else {
             <?php $wishlistremoved = esc_html__('Removed from wishlist', 'rehub-theme');?>
             <?php echo RH_get_wishlist($post->ID, '', $wishlistadded, $wishlistremoved);?>  
         </div>
+        <?php if(rehub_option('woo_quick_view')):?>
+            <div class="floatleft">
+                <?php echo RH_get_quick_view($post->ID, 'icon', 'pl10 pr10'); ?>
+            </div>
+        <?php endif;?>
         <?php if(rehub_option('compare_page') || rehub_option('compare_multicats_textarea')) :?>
             <span class="compare_for_grid floatleft">            
                 <?php 
@@ -145,12 +151,21 @@ else {
         </div>                  
         <div class="rh_gr_btn_block">
             <div class="mobile_block_btnclock mb10">
-                <?php if(!empty($syncitem)):?>
+                <?php if($countoffers > 1):?>
                     <a href="<?php echo get_post_permalink($post->ID);?>" data-product_id="<?php echo esc_attr( $product->get_id() );?>" data-product_sku="<?php echo esc_attr( $product->get_sku() );?>" class="re_track_btn woo_loop_btn btn_offer_block product_type_cegg">
                         <?php if(rehub_option('rehub_btn_text_aff_links') !='') :?>
                             <?php echo rehub_option('rehub_btn_text_aff_links') ; ?>
                         <?php else :?>
                             <?php esc_html_e('Choose offer', 'rehub-theme') ?>
+                        <?php endif ;?>
+                    </a>
+                <?php elseif($countoffers == 1 && !empty($itemsync['url'])):?>
+                    <?php $ceofferurl = apply_filters('rh_post_offer_url_filter', $itemsync['url']);?>
+                    <a href="<?php echo esc_url($ceofferurl);?>" data-product_id="<?php echo esc_attr( $product->get_id() );?>" data-product_sku="<?php echo esc_attr( $product->get_sku() );?>" class="re_track_btn woo_loop_btn btn_offer_block product_type_external" target="_blank" rel="nofollow sponsored">
+                        <?php if(rehub_option('rehub_btn_text') !='') :?>
+                            <?php echo rehub_option('rehub_btn_text') ; ?>
+                        <?php else :?>
+                            <?php esc_html_e('Buy Now', 'rehub-theme') ?>
                         <?php endif ;?>
                     </a>
                 <?php elseif ( $product->add_to_cart_url() !='') : ?>

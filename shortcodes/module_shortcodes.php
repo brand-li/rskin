@@ -897,47 +897,48 @@ class WPSM_Woohelper{
 }
 
 function rehub_custom_taxonomy_dropdown( $taxdrop, $limit = '40', $class, $taxdroplabel = '', $containerid ='', $taxdropids = '' ) {
-	$args = array(
-		'taxonomy'=> $taxdrop,
-		'number' => $limit,
-		'hide_empty' => true,
-		'parent'        => 0,
-	);
-	if($taxdropids){
-		$taxdropids = array_map( 'trim', explode(",", $taxdropids ));
-		$args['include'] = $taxdropids;
-		$args['parent'] = '';
-		$args['orderby'] = 'include';
-	}
-	$terms = get_terms($args );
-	$class = ( $class ) ? $class : 're_tax_dropdown';
-	$output = '';
-	if ( $terms && !is_wp_error($terms) ) {
-		$output .= '<ul class="'.$class.'">';
-		if (empty($taxdroplabel)){$taxdroplabel = esc_html__('Choose category', 'rehub-theme');}
-		$output .= '<li class="label"><span class="rh_tax_placeholder">'.$taxdroplabel.'</span><span class="rh_choosed_tax"></span></li>';
-		foreach ( $terms as $term ) {
-			$term_link = get_term_link( $term );
-		   	if ( is_wp_error( $term_link ) ) {
-		        continue;
-		    }	
-		    if(!empty($containerid)){
-		    	$sort_array=array();
-		    	$sort_array['filtertype'] = 'tax';
-		    	$sort_array['filtertaxkey'] = $taxdrop;
-		    	$sort_array['filtertaxtermslug'] = $term->slug;
-		    	$json_filteritem = json_encode($sort_array);
-		    	$output .='<li class="rh_drop_item"><span data-sorttype=\''.$json_filteritem.'\' class="re_filtersort_btn" data-containerid="'.$containerid.'">';
-		    		$output .= $term->name;
-		    	$output .= '</span></li>';
-		    }	
-		    else{
-				$output .= '<li class="rh_drop_item"><span><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></span></li>';		    	
-		    }			
-		}
-		$output .= '</ul>';
-	}
-	return $output;
+    $args = array(
+        'taxonomy'=> $taxdrop,
+        'number' => $limit,
+        'hide_empty' => true,
+        'parent'        => 0,
+    );
+    if($taxdropids){
+        $taxdropids = array_map( 'trim', explode(",", $taxdropids ));
+        $args['include'] = $taxdropids;
+        $args['parent'] = '';
+        $args['orderby'] = 'include';
+    }
+    $terms = get_terms($args );
+    $class = ( $class ) ? $class : 're_tax_dropdown';
+    $output = '';
+    if ( $terms && !is_wp_error($terms) ) {
+        $output .= '<ul class="'.$class.'">';
+        if (empty($taxdroplabel)){$taxdroplabel = esc_html__('Choose category', 'rehub-theme');}
+        $output .= '<li class="label"><span class="rh_tax_placeholder">'.$taxdroplabel.'</span><span class="rh_choosed_tax"></span></li>';
+        $output .= '<li class="rh_drop_item"><span data-sorttype="" class="re_filtersort_btn" data-containerid="'.$containerid.'">'.esc_html__('All categories', 'rehub-theme').'</span></li>';
+        foreach ( $terms as $term ) {
+            $term_link = get_term_link( $term );
+            if ( is_wp_error( $term_link ) ) {
+                continue;
+            }    
+            if(!empty($containerid)){
+                $sort_array=array();
+                $sort_array['filtertype'] = 'tax';
+                $sort_array['filtertaxkey'] = $taxdrop;
+                $sort_array['filtertaxtermslug'] = $term->slug;
+                $json_filteritem = json_encode($sort_array);
+                $output .='<li class="rh_drop_item"><span data-sorttype=\''.$json_filteritem.'\' class="re_filtersort_btn" data-containerid="'.$containerid.'">';
+                    $output .= $term->name;
+                $output .= '</span></li>';
+            }    
+            else{
+                $output .= '<li class="rh_drop_item"><span><a href="' . esc_url( $term_link ) . '">' . $term->name . '</a></span></li>';                
+            }            
+        }
+        $output .= '</ul>';
+    }
+    return $output;
 }
 
 //////////////////////////////////////////////////////////////////

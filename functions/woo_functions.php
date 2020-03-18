@@ -1986,4 +1986,95 @@ function rehub_save_post_product( $post_id ){
 }
 
 
+if (!function_exists('RH_get_quick_view')){
+	function RH_get_quick_view( $product_id, $type='icon', $class=''){
+		if( rehub_option('woo_quick_view') == '')
+			return '';
+		if($type=='icon'){
+			return '<div class="quick_view_wrap '.esc_attr($class).'"><span class="flowhidden cell_quick_view"><span class="cursorpointer quick_view_button" data-product_id="'.$product_id.'"><i class="fal fa-search-plus"></i></span></div>';
+		}
+		return '';
+	}
+}
+
+//////////////////////////////////////////////////////////////////
+//Quick View
+//////////////////////////////////////////////////////////////////
+if(rehub_option('woo_quick_view')){
+if( !function_exists('ajax_action_product_quick_view') ) {
+	function ajax_action_product_quick_view() {
+
+		$nonce = sanitize_text_field($_GET['nonce']);
+		
+ 		if ( ! wp_verify_nonce( $nonce, 'ajaxed-nonce' ) )
+			wp_die ( 'Nope!' ); 
+		
+		$product_id = intval($_GET['product_id']);
+		wp( 'p=' . $product_id . '&post_type=product' );
+
+ 		ob_start();
+		while ( have_posts() ) : the_post();
+			do_action( 'rehub_woo_quick_view', $product_id );
+			include(rh_locate_template('inc/product_layout/popup_no_sidebar.php'));
+		endwhile;
+		echo ''. ob_get_clean();
+		exit;
+	}
+}
+add_action( 'wp_ajax_product_quick_view', 'ajax_action_product_quick_view' );
+add_action( 'wp_ajax_nopriv_product_quick_view', 'ajax_action_product_quick_view' );
+
+
+if( !function_exists('rehub_woo_quick_view_action') ){
+	function rehub_woo_quick_view_action($product_id){
+		$product = wc_get_product( $product_id );
+		$has_coupon = get_post_meta($product_id, 'rehub_woo_coupon_code', true);
+		$rtl = is_rtl() ? 'true' : 'false';
+		?>
+		<script type="text/javascript">
+			var wc_single_product_params = {"flexslider":{"rtl":<?php echo ''.$rtl; ?>,"animation":"slide","smoothHeight":true,"directionNav":false,"controlNav":"thumbnails","slideshow":false,"animationSpeed":500,"animationLoop":false,"allowOneSlide":false},"flexslider_enabled":"1"};
+			jQuery.getScript("<?php echo get_template_directory_uri() . '/js/jquery.flexslider-min.js' ?>");
+			jQuery.getScript("<?php echo plugins_url( 'assets/js/frontend/single-product.min.js', WC_PLUGIN_FILE ); ?>");
+		</script>
+		<?php if( $product->get_type() == 'variable' ): ?>
+		<script type="text/javascript">
+			var wc_add_to_cart_variation_params = {"wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
+			jQuery.getScript("<?php echo includes_url('js/wp-util.min.js'); ?>");
+			jQuery.getScript("<?php echo plugins_url( 'assets/js/frontend/add-to-cart-variation.min.js', WC_PLUGIN_FILE ); ?>");
+		</script>
+		<script type="text/template" id="tmpl-variation-template">
+			<div class="woocommerce-variation-description">{{{ data.variation.variation_description }}}</div>
+			<div class="woocommerce-variation-price">{{{ data.variation.price_html }}}</div>
+			<div class="woocommerce-variation-availability">{{{ data.variation.availability_html }}}</div>
+		</script>
+		<?php endif; ?>
+		<?php if($has_coupon): ?>
+		<script type="text/javascript">
+			jQuery(window).ready(function($) {
+			   'use strict';
+				/* Coupons script & copy function */
+			   $.getScript("<?php echo get_template_directory_uri() . '/js/clipboard.min.js' ?>", function(){
+				   if($('.rehub_offer_coupon:not(.expired_coupon)').length > 0){
+					  var client = new Clipboard( '.rehub_offer_coupon:not(.expired_coupon)' );
+					  var OfferCoupon = $('.rehub_offer_coupon:not(.expired_coupon)');
+					  client.on( 'success', function(e) {
+						 OfferCoupon.find('i').replaceWith( '<i class="far fa-check-square"></i>' );
+						 OfferCoupon.find('i').fadeOut( 2500, function() {
+							OfferCoupon.find('i').replaceWith( '<i class="fal fa-cut fa-rotate-180"></i>' ).fadeIn('slow');
+						 });
+					  });
+					  client.on( 'error', function(e) {
+						 console.log(e);       
+					  });      
+				   }
+			   });
+			});  
+		</script>
+		<?php endif; ?>
+		<?php
+	}
+}
+add_action('rehub_woo_quick_view', 'rehub_woo_quick_view_action');
+}
+
 ?>

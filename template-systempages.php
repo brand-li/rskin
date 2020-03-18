@@ -11,13 +11,17 @@
 <meta name="viewport" content="width=device-width" />
 <?php wp_head(); ?>
 <?php $addstyles = '.system_wrap_type .main-side.full_width{padding: 30px 35px 20px 35px; background: #fff; border-radius: 20px}
-.rh-container{max-width:900px}
 input[type="text"], textarea, input[type="tel"], input[type="password"], input[type="email"], input[type="url"], input[type="number"]{box-shadow: inset 0 1px 3px #ddd;font-size: 18px;padding: 12px;line-height: 22px;}';
 if (rehub_option('rehub_header_color_background') !=''){
     $addstyles .= 'body{background: none '.rehub_option("rehub_header_color_background").' !important}';
 }
 else{
     $addstyles .= 'body{background: none white !important}.system_wrap_type .main-side.full_width{box-shadow: 0 0 50px #e3e3e3;}';
+}
+if(class_exists('Woocommerce') && is_checkout()){
+    $addstyles .= '.rh-container{max-width:1100px}';
+}else{
+    $addstyles .= '.rh-container{max-width:900px}';
 }
 $addstyles .= '@media (max-width: 500px){
     .post{margin: 0}

@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '9.9.3');
+	define('RH_MAIN_THEME_VERSION', '9.9.4');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
@@ -16,6 +16,7 @@ $rehub_options = [
 	'tf_purchase_code' => 'nulled-by-babiato',
 	'tf_support_date'  => '01.01.2030',
 ];
+update_option( 'Rehub_Key', $rehub_options );
 if(!is_admin()) add_action('init', 'rehub_framework_register_scripts');
 if( !function_exists('rehub_framework_register_scripts') ) {
 function rehub_framework_register_scripts() {
@@ -46,7 +47,7 @@ function rehub_framework_register_scripts() {
 	wp_register_script('rhhoverintent', get_template_directory_uri() . '/js/hoverintent.js', array('jquery'), '1.9', true);
 	wp_register_script('rhniceselect', get_template_directory_uri() . '/js/niceselect.js', array('jquery'), '1.0', true);
 	wp_register_script('rhcountdown', get_template_directory_uri() . '/js/countdown.js', array('jquery'), '1.0', true);
-	wp_register_script('rehub', get_template_directory_uri() . '/js/custom.js', array('jquery'), RH_MAIN_THEME_VERSION, true);
+	wp_register_script('rehub', get_template_directory_uri() . '/js/custom.js', array('jquery', 'rhinview', 'rhunveil', 'rhhoverintent', 'rhcountdown'), RH_MAIN_THEME_VERSION, true);
 	wp_register_script('flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'), '2.2.2', true);
 	wp_register_script('totemticker', get_template_directory_uri() . '/js/jquery.totemticker.js', array('jquery'), '', true);
 	wp_register_script('carouFredSel', get_template_directory_uri() . '/js/jquery.carouFredSel-6.2.1-packed.js', array('jquery'), '6.2.1', true);
@@ -82,6 +83,12 @@ function rehub_framework_register_scripts() {
 	wp_register_script( 'gsapsvgdraw', get_template_directory_uri() . '/js/DrawSVGPlugin.min.js', array('jquery','gsap'), '3.0.5', true );	
 	wp_register_script( 'gsapsvgpath', get_template_directory_uri() . '/js/MotionPathPlugin.min.js', array('jquery','gsap'), '3.0.5', true );
 	wp_register_script( 'rh_elcanvas', get_template_directory_uri() . '/js/elcanvas.js', array('jquery'), '1.0.0', true );
+	
+	wp_register_script( 'threejs', get_template_directory_uri() . '/js/three.min.js', array('jquery'), '0.112', true );
+	wp_register_script( 'orbitcontrol', get_template_directory_uri() . '/js/OrbitControls.js', array('jquery', 'threejs'), '1.0', true );
+	wp_register_script( 'gltfloader', get_template_directory_uri() . '/js/GLTFLoader.js', array('jquery', 'threejs'), '1.0', true );
+	wp_register_script( 'shaderfrog', get_template_directory_uri() . '/js/shaderfrog.js', array('jquery', 'threejs'), '1.0', true );
+	wp_register_script( 'gltfinit', get_template_directory_uri() . '/js/gltfinit.js', array('jquery', 'threejs'), '1.0', true );
 
 	wp_register_script( 'rhreadingprogress', get_template_directory_uri() . '/js/readingprogress.js', array('jquery', 'rehub'), '1.0.0', true );
 }
@@ -788,6 +795,7 @@ class WPSM_image_resizer{
 if( !function_exists('wpsm_thumb') ) {
 function wpsm_thumb( $size = 'small', $lazy = true ){
 	if( $size == 'medium_news' ){$width = 444; $height = 250; $nothumb = get_template_directory_uri() . '/images/default/noimage_432_250.png' ;}
+	elseif( $size == 'medium_news_s' ){$width = 350; $height = 200; $nothumb = get_template_directory_uri() . '/images/default/noimage_432_250.png' ;}
 	elseif( $size == 'med_thumbs' ){$width = 123; $height = 90; $nothumb = get_template_directory_uri() . '/images/default/noimage_123_90.png' ;}	
 	elseif( $size == 'news_big' ){$width = 378; $height = 310; $nothumb = get_template_directory_uri() . '/images/default/noimage_378_310.png' ;}
 	elseif( $size == 'grid_thumb' ){$width = 250; $height = 180; $nothumb = get_template_directory_uri() . '/images/default/noimage_250_180.png' ;}
@@ -1003,7 +1011,7 @@ if( !function_exists('rh_post_header_meta_big') ) { //post meta_big
 function rh_post_header_meta_big (){
 	global $post;
 	?>
-		<div class="floatleft mr15">
+		<div class="floatleft mr15 rtlml15">
 			<?php if(rehub_option('exclude_author_meta') != 1):?>
 				<?php $author_id=$post->post_author; ?>
 				<a href="<?php echo get_author_posts_url( $author_id ) ?>" class="floatleft mr10">
@@ -1414,7 +1422,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '3.8',
+			'version' 				=> '3.9',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',
@@ -1595,7 +1603,7 @@ function re_add_openschema() {
 	}
 
 	$using_jetpack_publicize = ( class_exists( 'Jetpack' ) && in_array( 'publicize', Jetpack::get_active_modules()) ) ? true : false;
-	if ( !defined('WPSEO_VERSION') && !class_exists('NY_OG_Admin') && $using_jetpack_publicize == false) {
+	if ( !defined('WPSEO_VERSION') && !class_exists('NY_OG_Admin') && $using_jetpack_publicize == false && !defined('SEOPRESS_VERSION')) {
 		echo '<meta property="og:site_name" content="'. get_bloginfo('name') .'"/>'; // Sets the site name to the one in your WordPress settings
 		echo '<meta property="og:url" content="' . get_permalink() . '"/>'; // Gets the permalink to the post/page
 

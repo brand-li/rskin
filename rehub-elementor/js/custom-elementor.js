@@ -613,6 +613,7 @@ var rhscroller = new ScrollMagic.Controller();
                 tl.play();
             }, { offset: 'bottom-in-view' });          
         }
+        
     }
 
     var RehubElCanvas = function($scope, $) {
@@ -825,11 +826,274 @@ var rhscroller = new ScrollMagic.Controller();
                 return min + (max - min) * Math.random();
             }
         }
+
+    }
+
+    var RehubThreeCanvas = function($scope, $){
+        //three js
+        if($scope.find('.rh-gltf-canvas').length > 0){
+            var current3d = $scope.find('.rh-gltf-canvas');
+            var scene, camera, pointLight, model, envMap, dirLight, shadermaterial, containerwidth, containerheight;
+            var renderer, mixer, controls;
+            var hasanimation = false;
+
+            var mouseX = 0;
+            var mouseY = 0;
+
+            var windowHalfX = window.innerWidth / 2;
+            var windowHalfY = window.innerHeight / 2;
+
+            var clock = new THREE.Clock();
+
+            renderer = new THREE.WebGLRenderer( { antialias: true, alpha: true } );
+            renderer.setPixelRatio( window.devicePixelRatio );
+            renderer.outputEncoding = THREE.sRGBEncoding;
+            //renderer.physicallyCorrectLights = true;
+
+            setContainerSize(); //update renderer with container width and height
+
+            current3d.append( renderer.domElement );
+
+            scene = new THREE.Scene();
+            //scene.background = new THREE.Color( 0xbfe3dd );
+
+            camera = new THREE.PerspectiveCamera( 40, containerwidth / containerheight, 1, 100 );
+            //camera.position.set( 5, 2, 8 );
+
+            // rotation types
+            var gltf_rotation = current3d.data("rotationtype");
+            var gltf_rx = current3d.data("rx");
+            var gltf_ry = current3d.data("ry");
+            var gltf_rz = current3d.data("rz");
+            var gltf_mousemove = current3d.data("mousemove");
+
+            //Orbit controller
+            controls = new THREE.OrbitControls( camera, renderer.domElement );
+            controls.target.set( 0, 0.5, 0 );
+            controls.enablePan = false;
+            var disablezoom = current3d.data("zoom");
+            if(disablezoom) controls.enableZoom = false;
+
+            // envmap
+
+            var env = current3d.data("env");
+            var envpx = current3d.data("envpx");
+            var envpy = current3d.data("envpy");
+            var envpz = current3d.data("envpz");
+            var envnx = current3d.data("envnx");
+            var envny = current3d.data("envny");
+            var envnz = current3d.data("envnz");
+
+            if(env && envpx && envpy && envpz && envnx && envny && envnz){
+                var envMap = new THREE.CubeTextureLoader().load( [envpx, envnx, envpy, envny, envpz, envnz] );               
+            }
+
+            //Here we check if we set shaderfrog json
+
+            var shaderurl = current3d.data("shaderurl");
+            if(shaderurl){
+                shaderurl = decodeURIComponent(shaderurl);
+                var runtime = new ShaderRuntime();
+                runtime.load(shaderurl, function( shaderData ) {
+                    shadermaterial = runtime.get( shaderData.name );
+                });
+                runtime.registerCamera( camera );
+            } 
+
+            var loader = new THREE.GLTFLoader();
+
+            var urlgltf = decodeURIComponent(current3d.data("url"));
+            loader.load( urlgltf, function ( gltf ) {
+
+                model = gltf.scene;
+                //model.position.set( 1, 1, 0 );
+
+                //center object in scene
+                var box = new THREE.Box3().setFromObject( model );
+                var center = box.getCenter( new THREE.Vector3() );
+                var size = box.getSize(new THREE.Vector3()).length();
+                model.position.x += ( model.position.x - center.x );
+                model.position.y += ( model.position.y - center.y );
+                model.position.z += ( model.position.z - center.z );
+
+                controls.maxDistance = size * 10;
+                camera.near = size / 100;
+                camera.far = size * 100;
+                camera.updateProjectionMatrix();
+
+                camera.position.copy(center);
+                camera.position.x += size / 2.0;
+                camera.position.y += size / 5.0;
+                camera.position.z += size / 2.0;
+                camera.lookAt(center);
+
+                var camerax = current3d.data("camerax");
+                var cameray = current3d.data("cameray");
+                var cameraz = current3d.data("cameraz");
+
+                if(camerax) camera.position.x += camerax;
+                if(cameray) camera.position.y += cameray;
+                if(cameraz) camera.position.z += cameraz;
+
+                var modelx = current3d.data("modelx");
+                var modely = current3d.data("modely");
+                var modelz = current3d.data("modelz");
+
+                if(modelx) model.position.x += modelx;
+                if(modely) model.position.y += modely;
+                if(modelz) model.position.z += modelz;
+
+                //Rescale
+                var rescale = current3d.data("scale");
+                if(rescale){
+                    model.scale.set( rescale, rescale, rescale );
+                }
+
+                // Lights
+                var lights = current3d.data("lights");
+                if(lights){
+                    var color = current3d.data("lightcolor");
+                    var intensity = parseFloat(current3d.data("lightstrength")); 
+                    var diffuse = 100 - parseFloat(current3d.data("lightdiffuse"));
+
+                    pointLight = new THREE.PointLight( color, intensity, diffuse);
+                    pointLight.position.copy( camera.position );
+                    //pointLight.target.position.set(center);
+                    scene.add( pointLight); 
+
+                    var lightx = parseFloat(current3d.data("lightx"));
+                    var lighty = parseFloat(current3d.data("lighty"));
+                    var lightz = parseFloat(current3d.data("lightz"));
+
+                    if(lightx) pointLight.position.x += lightx;
+                    if(lighty) pointLight.position.y += lighty;
+                    if(lightz) pointLight.position.z += lightz; 
+                    const lhelper = new THREE.PointLightHelper(pointLight);
+                    scene.add(lhelper);
+                }
+                var lightds = current3d.data("lightds");
+
+                if(lightds){
+                    var colord = current3d.data("lightdcolor");
+                    var intensityd = parseFloat(current3d.data("lightdstrength")); 
+
+                    dirLight = new THREE.DirectionalLight( colord, intensityd);
+                    dirLight.position.copy( camera.position );
+                    dirLight.target.position.set(center);
+                    scene.add( dirLight); 
+
+                    var lightdx = parseFloat(current3d.data("lightdx"));
+                    var lightdy = parseFloat(current3d.data("lightdy"));
+                    var lightdz = parseFloat(current3d.data("lightdz"));
+
+                    if(lightdx) dirLight.position.x += lightdx;
+                    if(lightdy) dirLight.position.y += lightdy;
+                    if(lightdz) dirLight.position.z += lightdz;
+                    const ldhelper = new THREE.DirectionalLightHelper(dirLight);
+                    scene.add(ldhelper);
+
+                }
+                var alights = current3d.data("alights");
+                if(alights){
+                    var acolor = current3d.data("alightcolor");
+                    var aintensity = parseFloat(current3d.data("alightstrength")); 
+                    scene.add( new THREE.AmbientLight(acolor,aintensity) );                  
+                }
+
+                model.traverse( function ( child ) {
+
+                    if ( child.isMesh ) {
+                        if(shaderurl){
+                            child.material = shadermaterial;
+                        }
+                        if(envMap){
+                            child.material.envMap = envMap;
+                            var envintensity = current3d.data("envstrength");
+                            if(envintensity) child.material.envMapIntensity = envintensity;
+                        }
+                        
+                    }
+
+                } );
+
+                scene.add( model );
+                //here we animate
+                if(gltf.animations.length > 0){
+                    mixer = new THREE.AnimationMixer( model );
+                    gltf.animations.forEach((clip) => {
+                        mixer.clipAction(clip).reset().play();
+                    });
+                    hasanimation = true;                   
+                }
+
+                animate();
+
+            }, undefined, function ( e ) {
+
+                console.error( e );
+
+            } );
+
+
+            window.onresize = function () {
+
+                setContainerSize();
+                camera.aspect = containerwidth / containerheight;
+                camera.updateProjectionMatrix();
+
+            };
+
+            document.addEventListener('mousemove', function(event){
+
+                mouseX = ( event.clientX - windowHalfX );
+                mouseY = ( event.clientY - windowHalfY );
+
+                //$('#content').width()/2
+            });
+
+            function setContainerSize(){
+
+                containerheight = current3d.outerHeight();
+                if(containerheight < 100) containerheight = 100;
+                containerwidth = current3d.outerWidth();
+
+                renderer.setSize( containerwidth, containerheight );
+            }
+
+
+            function animate() {
+
+                requestAnimationFrame( animate );
+
+                var delta = clock.getDelta();
+                if(hasanimation){
+                    mixer.update( delta );
+                }
+                controls.update( delta );
+                if(shaderurl){
+                    runtime.updateShaders( clock.getElapsedTime() ); //update shaderfrog
+                }
+                
+                if ( model && gltf_rotation == 'mouse' ) {
+                    model.rotation.y += 0.05 * ( mouseX * gltf_mousemove/1000 - model.rotation.y );
+                    model.rotation.x += 0.05 * ( mouseY * gltf_mousemove/1000 - model.rotation.x );
+                    //0.05 is speed, 001 is strength of rotation
+                }else if(scene && gltf_rotation == 'inf'){
+                    if(gltf_rx) scene.rotation.x += gltf_rx/1000;
+                    if(gltf_ry) scene.rotation.y += gltf_ry/1000;
+                    if (gltf_rz) scene.rotation.z += gltf_rz/1000;
+                }
+                renderer.render( scene, camera );
+
+            }
+
+        }
     }
 
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/widget', RehubWidgetsScripts);
         elementorFrontend.hooks.addAction('frontend/element_ready/rh_a_canvas.default', RehubElCanvas);
+        elementorFrontend.hooks.addAction('frontend/element_ready/rh_t_canvas.default', RehubThreeCanvas);
         if ( typeof elementor != "undefined" && typeof elementor.settings.page != "undefined") {
             elementor.settings.page.addChangeCallback( 'content_type', function( newValue ) {
                 elementor.saver.update( {

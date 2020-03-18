@@ -1010,7 +1010,7 @@ add_action( 'pre_get_posts', 'rehub_change_post_query' ); //Here we change and e
 if (!function_exists('rehub_change_post_query')){
 	function rehub_change_post_query($q){
 		if (rehub_option('rehub_post_exclude_expired') == '1') {
-		    if (!is_admin() && (is_post_type_archive('post') || is_category() || is_search() || is_home() || is_feed())) {
+		    if (!is_admin() && (is_post_type_archive('post') || is_category() || is_home() || is_feed())) {
 			    $q->set( 'tax_query', array(
 			    	'relation' => 'AND',
 	                array(

@@ -80,6 +80,7 @@ add_action( 'init', function () {
     require_once (rh_locate_template('rehub-elementor/wpsm-reviewbox.php')); 
     require_once (rh_locate_template('rehub-elementor/wpsm-tabevery.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-canvas.php'));  
+    require_once (rh_locate_template('rehub-elementor/wpsm-3dcanvas.php'));
 
     //require_once (rh_locate_template('rehub-elementor/wpsm-twocolnews.php'));
     //require_once (rh_locate_template('rehub-elementor/wpsm-numhead.php')); 
@@ -1260,7 +1261,7 @@ function RH_el_custom_widget_render( $content, $widget ) {
     if ( 'html' === $widget->get_name() ) {  
         if ( ! empty( $settings['rh_js'] ) ) {
             $customjs = $settings['rh_js'];
-            wp_add_inline_script('rehub', $customjs);
+            wp_add_inline_script('elementor-frontend', $customjs);
         }
         if ( ! empty( $settings['rh_css'] ) ) {
             $customcss = $settings['rh_css'];

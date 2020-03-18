@@ -52,11 +52,16 @@
 <?php $classes[] = $coupon_style;?>
 <div class="<?php echo implode(' ', $classes); ?>">
     <div class="button_action rh-shadow-sceu pt5 pb5">
-        <div class="">
+        <div>
             <?php $wishlistadded = esc_html__('Added to wishlist', 'rehub-theme');?>
             <?php $wishlistremoved = esc_html__('Removed from wishlist', 'rehub-theme');?>
             <?php echo RH_get_wishlist($post->ID, '', $wishlistadded, $wishlistremoved);?>  
         </div>
+        <?php if(rehub_option('woo_quick_view')):?>
+            <div>
+                <?php echo RH_get_quick_view($post->ID, 'icon', 'pt10 pl5 pr5 pb10'); ?>
+            </div>
+        <?php endif;?>
         <?php if(rehub_option('compare_page') || rehub_option('compare_multicats_textarea')) :?>
             <span class="compare_for_grid">            
                 <?php 
@@ -132,13 +137,14 @@
         </div>
     <?php endif; ?>     
     <?php wc_get_template( 'loop/rating.php' );?> 
-    <?php $syncitem = '';?>
+    <?php $syncitem = $ceofferurl = ''; $countoffers = 0;?>
     <?php if (defined('\ContentEgg\PLUGIN_PATH')):?>
         <?php $itemsync = \ContentEgg\application\WooIntegrator::getSyncItem($post->ID);?>
         <?php if(!empty($itemsync)):?>
             <?php                            
                 $syncitem = $itemsync;                            
             ?>
+            <?php $countoffers = rh_ce_found_total_offers($post->ID);?>
         <?php endif;?>
     <?php endif;?>
     <?php if(!empty($syncitem)):?>
@@ -156,13 +162,18 @@
         </div>
         <div class="rh-flex-right-align btn_for_grid floatright">
             <?php if (rehub_option('woo_btn_disable') != '1'):?> 
-                <?php if(!empty($syncitem)):?>
-
-                    <?php $countoffers = rh_ce_found_total_offers($post->ID);?>
-                    <?php if ($countoffers > 1) :?>
-                        <a class="font90 greencolor" href="<?php the_permalink();?>">+ <?php echo (int)$countoffers - 1; ?> <?php esc_html_e('more', 'rehub-theme');?></a>
-                    <?php endif;?>
-
+                <?php if($countoffers > 1):?>
+                    <a class="font90 greencolor" href="<?php the_permalink();?>">+ <?php echo (int)$countoffers - 1; ?> <?php esc_html_e('more', 'rehub-theme');?></a>
+                <?php elseif($countoffers == 1 && !empty($itemsync['url'])):?>
+                    <?php $ceofferurl = apply_filters('rh_post_offer_url_filter', $itemsync['url']);?>
+                    <a href="<?php echo esc_url($ceofferurl);?>" data-product_id="<?php echo esc_attr( $product->get_id() );?>" data-product_sku="<?php echo esc_attr( $product->get_sku() );?>" class="re_track_btn woo_loop_btn rh-flex-center-align rh-flex-justify-center rh-shadow-sceu product_type_external" target="_blank" rel="nofollow sponsored">
+                        <svg height="24px" version="1.1" viewBox="0 0 64 64" width="24px" xmlns="http://www.w3.org/2000/svg"><g><path d="M56.262,17.837H26.748c-0.961,0-1.508,0.743-1.223,1.661l4.669,13.677c0.23,0.738,1.044,1.336,1.817,1.336h19.35   c0.773,0,1.586-0.598,1.815-1.336l4.069-14C57.476,18.437,57.036,17.837,56.262,17.837z"/><circle cx="29.417" cy="50.267" r="4.415"/><circle cx="48.099" cy="50.323" r="4.415"/><path d="M53.4,39.004H27.579L17.242,9.261H9.193c-1.381,0-2.5,1.119-2.5,2.5s1.119,2.5,2.5,2.5h4.493l10.337,29.743H53.4   c1.381,0,2.5-1.119,2.5-2.5S54.781,39.004,53.4,39.004z"/></g></svg>
+                        <?php if(rehub_option('rehub_btn_text') !='') :?>
+                            <?php echo rehub_option('rehub_btn_text') ; ?>
+                        <?php else :?>
+                            <?php esc_html_e('Buy Now', 'rehub-theme') ?>
+                        <?php endif ;?>
+                    </a>
                 <?php elseif ( $product->add_to_cart_url() !='') : ?>
                     <?php  echo apply_filters( 'woocommerce_loop_add_to_cart_link',
                         sprintf( '<a href="%s" data-product_id="%s" data-product_sku="%s" class="re_track_btn woo_loop_btn rh-flex-center-align rh-flex-justify-center rh-shadow-sceu %s %s product_type_%s"%s %s><svg height="24px" version="1.1" viewBox="0 0 64 64" width="24px" xmlns="http://www.w3.org/2000/svg"><g><path d="M56.262,17.837H26.748c-0.961,0-1.508,0.743-1.223,1.661l4.669,13.677c0.23,0.738,1.044,1.336,1.817,1.336h19.35   c0.773,0,1.586-0.598,1.815-1.336l4.069-14C57.476,18.437,57.036,17.837,56.262,17.837z"/><circle cx="29.417" cy="50.267" r="4.415"/><circle cx="48.099" cy="50.323" r="4.415"/><path d="M53.4,39.004H27.579L17.242,9.261H9.193c-1.381,0-2.5,1.119-2.5,2.5s1.119,2.5,2.5,2.5h4.493l10.337,29.743H53.4   c1.381,0,2.5-1.119,2.5-2.5S54.781,39.004,53.4,39.004z"/></g></svg> %s</a>',

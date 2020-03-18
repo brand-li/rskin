@@ -4,7 +4,7 @@
 	Description: A Hybrid magazine/shop/review/news Theme
 	Author: Brandli
 	Author URI: https://github.com/brand-li/
-	Version: 9.9.3
+	Version: 9.9.4
 	Tags: two-columns, fluid-layout, custom-background, threaded-comments, translation-ready, custom-menu
 	License: 
 	License URI:
@@ -10750,7 +10750,7 @@ body .rh-shadow-sceu {
     position: relative;
     text-transform: uppercase;
     display: inline-block;
-    z-index: 999
+    z-index: 9
 }
 
 .re-line-badge span:before {
@@ -11081,7 +11081,8 @@ body .rh-shadow-sceu {
 }
 
 .button_action .wpsm-button.wpsm-button-new-compare,
-.button_action .heart_thumb_wrap .heartplus {
+.button_action .heart_thumb_wrap .heartplus,
+.button_action .quick_view_wrap .quick_view_button {
     color: #aaa
 }
 
@@ -12294,6 +12295,7 @@ span.stars-rate.blue-star span:before {
 .inline_compact_btnblock.priced_block .rh_button_wrapper {
     display: inline-block;
     margin-left: 15px;
+    vertical-align: top;
 }
 
 .inline_compact_btnblock.priced_block .price_count {

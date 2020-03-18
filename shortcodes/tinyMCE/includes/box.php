@@ -83,7 +83,7 @@ jQuery(document).ready(function() {
 	</p>
 	<p>
 		<label>Text-align</label>
-		<select name="box-text_align" id="box-text_align" size="1">
+		<select name="box-textalign" id="box-textalign" size="1">
             <option value="left" selected="selected"><?php esc_html_e('Left', 'rehub-theme') ;?></option>			
             <option value="right"><?php esc_html_e('Right', 'rehub-theme') ;?></option>
             <option value="center"><?php esc_html_e('Center', 'rehub-theme') ;?></option>   

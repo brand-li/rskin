@@ -415,7 +415,6 @@ function rehub_register_member_popup_function(){
 			$redirect = apply_filters('rh_custom_redirect_for_reg', $redirect_to, $userid );
 			echo json_encode(array('error' => $errorshow, 'message' => $message, 'redirecturl' => $redirect));			
 		}else{
-			update_user_meta($userid, '_um_cool_but_hard_to_guess_plain_pw', $user_signonpassword);
 			do_action('rh_before_user_signon', $userid );
 			$redirect = apply_filters('rh_custom_redirect_for_reg', $redirect_to, $userid );
 			if($bp_logic_popup == 'bp' && class_exists( 'BuddyPress' )){

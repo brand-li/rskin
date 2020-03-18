@@ -258,6 +258,9 @@ class WPSM_Canvas_A_Widget extends Widget_Base {
                         'max' => 2000,
                     ],
                 ],
+                'condition' => [
+                    'rh_canvas_type' => 'masksvg',
+                ],
                 'selectors' => [
                     '{{WRAPPER}} .rh-svg-blob' => 'width: {{SIZE}}{{UNIT}};',
                 ],
@@ -507,7 +510,58 @@ class WPSM_Canvas_A_Widget extends Widget_Base {
                     'svgfilltype' => 'gradient'
                 ],
             ]
-        ); 
+        );
+
+        $this->add_responsive_control(
+            'rhandwidth', [
+                'label' => __('Area width', 'rehub-theme'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => '100',
+                    'unit' => '%',
+                ],
+                'size_units' => [ '%', 'px'],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 200,
+                    ],
+                    'px' => [
+                        'min' => 100,
+                        'max' => 2500,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .rh_and_canvas' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+                
+            ]
+        );
+        $this->add_responsive_control(
+            'rhandheight', [
+                'label' => __('Area height', 'rehub-theme'),
+                'type' => Controls_Manager::SLIDER,
+                'default' => [
+                    'size' => '100',
+                    'unit' => '%',
+                ],
+                'size_units' => [ '%', 'px'],
+                'range' => [
+                    '%' => [
+                        'min' => 1,
+                        'max' => 200,
+                    ],
+                    'px' => [
+                        'min' => 100,
+                        'max' => 2500,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .rh_and_canvas' => 'height: {{SIZE}}{{UNIT}};',
+                ],
+                
+            ]
+        );
 
         $this->end_controls_section();
     }
@@ -522,7 +576,7 @@ class WPSM_Canvas_A_Widget extends Widget_Base {
             $particlecode = 'particlesJS("'.$uniqueid.'", '.$particlejson.', function() {console.log("callback - particles.js config loaded");});';
             wp_add_inline_script('rh_elparticle', $particlecode);
             if ( Plugin::$instance->editor->is_edit_mode() ) {
-                echo '<div id="'.$uniqueid.'" class="rh-particle-canvas-true" data-particlejson=\''.$particlejson.'\'></div>';
+                echo '<div class="rh_and_canvas"><div id="'.$uniqueid.'" class="rh-particle-canvas-true" data-particlejson=\''.$particlejson.'\'></div></div>';
             } else{
                 echo '<div id="'.$uniqueid.'" class="rh-particle-canvas-true"></div>';
             } 
@@ -551,7 +605,7 @@ class WPSM_Canvas_A_Widget extends Widget_Base {
             if ( ! empty( $settings['rh_vid_fallback_mobile'] )) {
                 $this->add_render_attribute( 'rh_vid_data', 'data-fallback-mobile', $settings['rh_vid_fallback_mobile']['url'] );
             }
-            echo '<video autoplay loop muted class="rh-video-canvas" '.$this->get_render_attribute_string( 'rh_vid_data' ).'></video>';
+            echo '<video autoplay loop muted class="rh-video-canvas rh_and_canvas" '.$this->get_render_attribute_string( 'rh_vid_data' ).'></video>';
         }else if(!empty($settings['rh_canvas_type']) && $settings['rh_canvas_type'] == 'masksvg') {
             $widgetId = $this->get_id();
             $image_url = Group_Control_Image_Size::get_attachment_image_src($settings['svg_image']['id'], 'image', $settings);
@@ -581,7 +635,7 @@ class WPSM_Canvas_A_Widget extends Widget_Base {
                 $posY = $settings['svgimage_y']['size'];
             }
             ?>
-            <div data-id="<?php echo esc_attr($widgetId); ?>" class="rh-svgblob-wrapper" <?php echo ''.$this->get_render_attribute_string( '_svgrapper' )?>>
+            <div data-id="<?php echo esc_attr($widgetId); ?>" class="rh-svgblob-wrapper rh_and_canvas" <?php echo ''.$this->get_render_attribute_string( '_svgrapper' )?>>
                 <svg class="rh-svg-blob" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" xml:space="preserve">
                       
                     <?php  if($settings['svg_image']['id'] != '' && $settings['svgfilltype'] == 'image'){ ?>

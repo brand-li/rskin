@@ -37,7 +37,7 @@ if(rehub_option('enable_brand_taxonomy') == 1){
         </div>                                                           
     </div>     
     <figure class="mb20 position-relative text-center<?php echo esc_attr($image_padding);?>"><?php echo re_badge_create('tablelabel'); ?>             
-        <a href="<?php echo ''.$link;?>"<?php echo ''.$target;?>><?php wpsm_thumb ('medium_news') ?></a>
+        <a href="<?php echo ''.$link;?>"<?php echo ''.$target;?>><?php wpsm_thumb ('medium_news_s') ?></a>
     </figure>
     <?php do_action( 'rehub_after_grid_column_figure' ); ?>
     <div class="content_constructor<?php echo ''.$paddclass;?>">

@@ -1452,11 +1452,13 @@ function rh_sanitize_multi_arrays($data = array()) {
   }
   foreach ($data as $k => $v) {
     if (!is_array($v) && !is_object($v)) {
-      if($k == 'contshortcode'){
-        $data[sanitize_key($k)] = wp_kses_post($v);
-      }else{
-        $data[sanitize_key($k)] = sanitize_text_field($v);
-      }
+        if($k == 'contshortcode'){
+            $data[sanitize_key($k)] = wp_kses_post($v);
+        }elseif($k=='attrelpanel'){
+            $data[sanitize_key($k)] = filter_var( $v, FILTER_SANITIZE_SPECIAL_CHARS );
+        }else{
+            $data[sanitize_key($k)] = sanitize_text_field($v);
+        }
     }
     if (is_array($v)) {
       $data[$k] = rh_sanitize_multi_arrays($v);

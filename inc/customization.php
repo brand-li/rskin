@@ -128,7 +128,8 @@
 	.wp-block-button .wp-block-button__link,
 	.comment-respond h3, 
 	.related_articles .related_title,
-	.re_title_inmodal{
+	.re_title_inmodal,
+	.widget_merchant_list .buttons_col a{
 		font-family:"<?php echo rehub_option('rehub_headings_font'); ?>", trebuchet ms;
 		font-style:<?php echo rehub_option('rehub_headings_font_style'); ?>;			
 	}

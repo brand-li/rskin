@@ -75,6 +75,14 @@ $cat_filter_panel = rehub_option('category_filter_panel');
                             'filterorderby' => 'price',                     
                         );                        
                     } 
+                    elseif($values[1]=='random'){
+                        $prepare_filter[] = array (
+                            'filtertitle' => trim($values[0]),
+                            'filtertype' => 'all',
+                            'filterorderby' => 'rand',
+                            'filterorder'=> 'DESC',                       
+                        ); 
+                    } 
                     else{
                         $prepare_filter[] = array (
                             'filtertitle' => trim($values[0]),

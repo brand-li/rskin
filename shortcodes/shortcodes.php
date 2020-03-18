@@ -2538,19 +2538,29 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
                                                 <span class="price-woo-compare-chart rehub-main-font rehub-main-color mb15 fontbold"><?php echo ''.$product->get_price_html(); ?></span>
                                                 <div class="mb10"></div>
                                             <?php endif;?>
-										    <?php $syncitem = '';?>
+										    <?php $syncitem = $ceofferurl = ''; $countoffers = 0;?>
 										    <?php if (defined('\ContentEgg\PLUGIN_PATH')):?>
 										        <?php $itemsync = \ContentEgg\application\WooIntegrator::getSyncItem($post->ID);?>
 										        <?php if(!empty($itemsync)):?>
 										            <?php                            
 										                $syncitem = $itemsync;                            
 										            ?>
+										            <?php $countoffers = rh_ce_found_total_offers($post->ID);?>
+										            <?php if($countoffers == 1 && !empty($itemsync['url'])) $ceofferurl = apply_filters('rh_post_offer_url_filter', esc_url( $itemsync['url'] ));?>
 										        <?php endif;?>
-										    <?php endif;?>                                            
-							                <?php if ( $product->add_to_cart_url() !='' && $syncitem=='') : ?>
+										    <?php endif;?>   
+								            <?php if($countoffers > 1):?>
+								                <a href="<?php echo get_post_permalink($post->ID);?>" data-product_id="<?php echo esc_attr( $product->get_id() );?>" data-product_sku="<?php echo esc_attr( $product->get_sku() );?>" class="re_track_btn btn_offer_block btn-woo-compare-chart woo_loop_btn">
+								                    <?php if(rehub_option('rehub_btn_text_aff_links') !='') :?>
+								                        <?php echo rehub_option('rehub_btn_text_aff_links') ; ?>
+								                    <?php else :?>
+								                        <?php esc_html_e('Choose offer', 'rehub-theme') ?>
+								                    <?php endif ;?>
+								                </a>                                         
+							                <?php elseif ( $product->add_to_cart_url() !='') : ?>
 							                    <?php  echo apply_filters( 'woocommerce_loop_add_to_cart_link',
 							                        sprintf( '<a href="%s" data-product_id="%s" data-product_sku="%s" class="re_track_btn btn_offer_block btn-woo-compare-chart woo_loop_btn %s %s product_type_%s"%s%s>%s</a>',
-							                        esc_url( $product->add_to_cart_url() ),
+							                        $ceofferurl ? $ceofferurl : esc_url( $product->add_to_cart_url() ),
 							                        esc_attr( $product->get_id() ),
 							                        esc_attr( $product->get_sku() ),
 							                        $product->is_purchasable() && $product->is_in_stock() ? 'add_to_cart_button' : '',
@@ -3594,6 +3604,7 @@ function wpsm_get_custom_value($atts){
 			if(!$product) return;
 		}else{
 			global $product;
+			if ( ! is_object( $product)) $product = wc_get_product( get_the_ID() );
 			if(!$product) return;
 		}
         if($attrfield) $field = $attrfield;
@@ -4669,7 +4680,12 @@ if( !function_exists('wpsm_get_add_deal_popup') ){
 		extract(shortcode_atts(array(
 	        'postid' => NULL,
 	        'role' => 'contributor',
+	        'membertype' => '',
 			'currency' => '',
+			'nothumb' => '',
+			'rolename' => '',
+			'label' => esc_html__('Add your deal', 'rehub-theme'),
+			'editlabel' => esc_html__('Edit your deal', 'rehub-theme'),
 	    ), $atts));
 
 		if(!defined('\ContentEgg\PLUGIN_PATH')){
@@ -4690,18 +4706,35 @@ if( !function_exists('wpsm_get_add_deal_popup') ){
 				$cur_offers = get_post_meta( $post_id, '_cegg_data_Offer', true );
 				$offer_key = 'OfferID_'. $current_user->ID;
 				?>
-				<?php if ( isset( $cur_offers[$offer_key] ) ): ?>
+				<?php if ( !empty($cur_offers[$offer_key]) ): ?>
 					<?php $user_offer = $cur_offers[$offer_key]; ?>
-					<a class="btn_offer_block csspopuptrigger rh-deal-compact-btn act-rehub-addoffer-popup act-rehub-login-popup" data-popup="addfrontdeal_<?php echo ''.$rand;?>"><?php esc_html_e('Edit your deal', 'rehub-theme') ?></a>
+					<a class="btn_offer_block csspopuptrigger rh-deal-compact-btn act-rehub-addoffer-popup act-rehub-login-popup" data-popup="addfrontdeal_<?php echo ''.$rand;?>"><?php echo esc_attr($editlabel) ?></a>
 				<?php else: ?>
 					<?php $user_offer = array(); ?>
-					<a class="btn_offer_block csspopuptrigger rh-deal-compact-btn act-rehub-addoffer-popup act-rehub-login-popup" data-popup="addfrontdeal_<?php echo ''.$rand;?>"><?php esc_html_e('Add your deal', 'rehub-theme') ?></a>
+					<a class="btn_offer_block csspopuptrigger rh-deal-compact-btn act-rehub-addoffer-popup act-rehub-login-popup" data-popup="addfrontdeal_<?php echo ''.$rand;?>"><?php echo esc_attr($label) ?></a>
 				<?php endif; ?>
 			
 				<div class="csspopup" id="addfrontdeal_<?php echo ''.$rand;?>">
 					<div class="csspopupinner addfrontdeal-popup">
 						<span class="cpopupclose">×</span> 
-						<?php if ( in_array( $role, (array) $current_user->roles ) || !$role):?>
+						<?php 
+							$show = false;
+							if($membertype && $role){
+								if(function_exists('wcfm_get_membership')){
+									$checkrole = wcfm_get_membership();
+									if($checkrole == $role){
+										$show = true;
+									}
+								}
+							}elseif($role){
+								if(in_array( $role, (array) $current_user->roles )){
+									$show = true;
+								}
+							}else{
+								$show = true;
+							}
+						?>
+						<?php if ( $show):?>
 							<div class="rehub-offer-popup">
 								<div class="re_title_inmodal"><?php if( empty( $user_offer ) ): esc_html_e('Add an Offer', 'rehub-theme'); else: esc_html_e('Edit the Offer', 'rehub-theme'); endif; ?></div>
 								<form id="rehub_add_offer_form_modal" action="<?php echo home_url( '/' ); ?>" method="post">
@@ -4714,10 +4747,12 @@ if( !function_exists('wpsm_get_add_deal_popup') ){
 										<label for="ce_orig_url"><?php esc_html_e('Offer url', 'rehub-theme') ?><span>*</span></label>
 										<input class="re-form-input required" name="ce_orig_url" id="ce_orig_url" type="url" value="<?php echo isset( $user_offer['orig_url'] ) ? $user_offer['orig_url'] : ''; ?>" required />
 									</div>
+									<?php if(!$nothumb):?>
 									<div class="re-form-group mb20">
 										<label for="ce_img"><?php esc_html_e('Thumbnail url', 'rehub-theme') ?><span>*</span></label>
 										<input class="re-form-input required" name="ce_img" id="ce_img" type="url" value="<?php echo isset( $user_offer['img'] ) ? $user_offer['img'] : ''; ?>" />
 									</div>
+									<?php endif;?>
 									<div class="re-form-group mb20">
 										<label for="ce_price"><?php esc_html_e('Offer sale price (example, 9999.99)', 'rehub-theme') ?><span>*</span></label>
 										<input class="re-form-input required" name="ce_price" id="ce_price" type="number" step="0.01" value="<?php echo isset( $user_offer['price'] ) ? $user_offer['price'] : ''; ?>" />
@@ -4760,7 +4795,8 @@ if( !function_exists('wpsm_get_add_deal_popup') ){
 							<?php if($content):?>
 								<?php echo ''.$content;?>
 							<?php else:?>
-								<?php echo sprintf( esc_html__( 'Only users with role %s%s%s are allowed to post deals', 'rehub-theme' ), '<span class="greencolor">', $role, '</span>');?>
+								<?php if(!$rolename) $rolename = $role;?>
+								<?php echo sprintf( esc_html__( 'Only users with role %s%s%s are allowed to post deals', 'rehub-theme' ), '<span class="greencolor">', esc_attr($rolename), '</span>');?>
 							<?php endif;?>
 						<?php endif;?>
 					</div>				

@@ -650,7 +650,7 @@ abstract class WPSM_Content_Widget_Base extends Widget_Base {
             'label' => esc_html__( 'Panel background', 'rehub-theme' ),
             'type' => \Elementor\Controls_Manager::COLOR,
             'selectors' => [
-                 '{{WRAPPER}} .re_filter_panel' => 'background-color: {{VALUE}}',
+                 '{{WRAPPER}} .re_filter_panel' => 'background-color: {{VALUE}}; box-shadow:none',
             ],
             'condition'=> [ 'filterpanelenable' => 'yes' ],
         ]);         

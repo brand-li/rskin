@@ -206,6 +206,7 @@ function ajax_action_re_filterpost() {
     $offset = (!empty($_POST['offset'])) ? intval( $_POST['offset'] ) : 0;
     $template = (!empty($_POST['template'])) ? sanitize_text_field( $_POST['template'] ) : '';
     $sorttype = (!empty($_POST['sorttype'])) ? rh_sanitize_multi_arrays( $_POST['sorttype'] ) : '';
+    $tax = (!empty($_POST['tax'])) ? rh_sanitize_multi_arrays( $_POST['tax'] ) : '';
     $containerid = (!empty($_POST['containerid'])) ? sanitize_text_field( $_POST['containerid'] ) : '';
     if ($template == '') return;
     $response = $page_sorting = '';
@@ -384,6 +385,15 @@ function ajax_action_re_filterpost() {
                 );
             }    
         }
+        if($tax && $filtertype != 'tax'){
+            $args['tax_query'] = array (
+                array(
+                    'taxonomy' => $tax['filtertaxkey'],
+                    'field'    => 'slug',
+                    'terms'    => $tax['filtertaxtermslug'],
+                )
+            );
+        }
         if($filtertype =='hot') { //if meta key sorting
             $rehub_max_temp = (rehub_option('hot_max')) ? rehub_option('hot_max') : 50;
             $args['meta_query'] = array (
@@ -507,19 +517,20 @@ if(!function_exists('rehub_ce_user_offer')){
         $post_id = intval($_POST['post_id']);
         $user_id = intval($_POST['from_user']);
         $cur_offers = get_post_meta( $post_id, '_cegg_data_Offer', true );
+        $cur_offers = !empty($cur_offers) ? $cur_offers : array();
 
         // compose an Offer
         $new_offer = array();
         $new_offer['title'] = trim(sanitize_text_field($_POST['ce_title']));
-        $new_offer['orig_url'] = $_POST['ce_orig_url'];
-        $new_offer['img'] = filter_var($_POST['ce_img'], FILTER_VALIDATE_URL) ? $_POST['ce_img'] : '';
+        $new_offer['orig_url'] = !empty($_POST['ce_orig_url']) ? filter_var($_POST['ce_orig_url'], FILTER_VALIDATE_URL) : '';
+        $new_offer['img'] = !empty($_POST['ce_img']) ? filter_var($_POST['ce_img'], FILTER_VALIDATE_URL) : '';
         $new_offer['price'] = !empty($_POST['ce_price']) ? sanitize_text_field($_POST['ce_price']) : '';
         $new_offer['currencyCode'] = !empty($_POST['ce_currency']) ? sanitize_text_field($_POST['ce_currency']) : '';
         if(empty($new_offer['currencyCode'])){
             $new_offer['currencyCode'] = rehub_option('ce_custom_currency');
         }
         $new_offer['description'] = !empty($_POST['ce_description']) ? trim(wp_kses_post($_POST['ce_description'])) : '';
-        $new_offer['priceXpath'] = $new_offer['domain'] = $new_offer['rating'] = '';
+        $new_offer['priceXpath'] = $new_offer['domain'] = $new_offer['rating'] = $new_offer['merchant'] = '';
         $new_offer['extra'] = array('date' => time(), 'author' => $user_id, 'source' => 'frontend_shortcode');
 
         // set UID for the offer 

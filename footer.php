@@ -52,7 +52,7 @@
 	<!-- FOOTER -->
 </div><!-- Outer End -->
 <span class="rehub_scroll" id="topcontrol" data-scrollto="#top_ankor"><i class="far fa-chevron-up"></i></span>
-<?php if(rehub_option('rehub_disable_social_footer') !='1' && is_singular('post') && function_exists('rehub_social_share'))  : ?>
+<?php if(rehub_option('rehub_disable_social_footer') !='1' && is_singular(array('post', 'blog')) && function_exists('rehub_social_share'))  : ?>
 	<div id="rh_social_panel_footer">
 		<?php echo rehub_social_share('flat'); ?>
 	</div>

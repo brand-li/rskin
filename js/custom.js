@@ -805,7 +805,37 @@ jQuery(document).ready(function($) {
             $expand.addClass('expandme');
             $(this).find('.expandme').html('+');
         }
-    });    
+    }); 
+
+    //Quick view
+   $(document).on('click', '.quick_view_button', function(e){
+      e.preventDefault();
+      var productID = $(this).data('product_id');
+      var quickViewProduct = $(this).closest('quick_view_wrap').find('.quick_view_product');
+      var data = {
+         'action': 'product_quick_view',
+         'product_id': productID,
+         'nonce' : translation.nonce,
+      };
+
+       $.pgwModal({
+         url: translation.ajax_url,
+         titleBar: false,
+         maxWidth: 800,
+         loadingContent : '<img src="'+translation.templateurl+'/images/loaded.gif">',
+         mainClassName : 'pgwModal quick_view_product',
+         ajaxOptions : {
+            data : data,
+            success : function(response) {
+               if (response) {
+                   $.pgwModal({ pushContent: response });
+               } else {
+                  $.pgwModal({ pushContent: 'An error has occured' });
+               }
+            }
+         }
+      });
+   });   
 
     /* Category search */
     if(jQuery("#rh-category-search").length>0){
@@ -1199,7 +1229,6 @@ jQuery(document).ready(function($) {
                 }                                   
             }
         });     
-
     });
 
     // Send form data
@@ -1506,6 +1535,12 @@ jQuery(document).ready(function($) {
         var containerid = $this.data('containerid');
         var activecontainer = $('#'+containerid);       
         var sorttype = $this.data('sorttype');
+        var filterPanel = activecontainer.siblings('.re_filter_panel');
+        var choosenTax = filterPanel.find('.re_tax_dropdown .rh_choosed_tax');
+        var tax;
+        if(choosenTax.length > 0 && choosenTax.html() != ''){
+            tax = choosenTax.data('taxdata');
+        }
         var offset = $this.data('offset');  
         var filterargs = activecontainer.data('filterargs');
         var innerargs = activecontainer.data('innerargs');
@@ -1514,6 +1549,7 @@ jQuery(document).ready(function($) {
             'action': 're_filterpost',          
             'sorttype': sorttype,
             'filterargs' : filterargs,
+            'tax': tax,
             'template' : template, 
             'containerid' : containerid,
             'offset' : offset, 
@@ -1607,6 +1643,12 @@ jQuery(document).ready(function($) {
         var activecontainer = $('#'+containerid);       
         var sorttype = $this.data('sorttype');
         var offset = $this.data('offset');  
+        var filterPanel = activecontainer.siblings('.re_filter_panel');
+        var choosenTax = filterPanel.find('.re_tax_dropdown .rh_choosed_tax');
+        var tax;
+        if(choosenTax.length > 0 && choosenTax.html() != ''){
+            tax = choosenTax.data('taxdata');
+        }
         var filterargs = activecontainer.data('filterargs');
         var innerargs = activecontainer.data('innerargs');          
         var template = activecontainer.data('template');           
@@ -1615,6 +1657,7 @@ jQuery(document).ready(function($) {
             'sorttype': sorttype,
             'filterargs' : filterargs,
             'template' : template, 
+            'tax': tax,
             'containerid' : containerid,
             'offset' : offset,   
             'innerargs' : innerargs,
@@ -1706,7 +1749,13 @@ jQuery(document).ready(function($) {
         var $this = $(this);        
         var containerid = $this.data('containerid');
         var activecontainer = $('#'+containerid);       
-        var sorttype = $this.data('sorttype');  
+        var sorttype = $this.data('sorttype'); 
+        var filterPanel = activecontainer.siblings('.re_filter_panel');
+        var choosenTax = filterPanel.find('.re_tax_dropdown .rh_choosed_tax');
+        var tax;
+        if(choosenTax.length > 0 && choosenTax.html() != ''){
+            tax = choosenTax.data('taxdata');
+        } 
         var filterargs = activecontainer.data('filterargs');
         var innerargs = activecontainer.data('innerargs');
         var template = activecontainer.data('template');           
@@ -1714,6 +1763,7 @@ jQuery(document).ready(function($) {
             'action': 're_filterpost',          
             'sorttype': sorttype,
             'filterargs' : filterargs,
+            'tax': tax,
             'template' : template, 
             'containerid' : containerid, 
             'innerargs' : innerargs,
@@ -1797,14 +1847,16 @@ jQuery(document).ready(function($) {
                 activecontainer.removeClass('sortingloading'); 
                 $this.closest('ul').removeClass('activeul'); 
                 if($this.closest('ul').hasClass('re_tax_dropdown')){
-                    $this.closest('.re_tax_dropdown').find('.rh_choosed_tax').html($this.html()).show();
-                    $this.closest('.re_tax_dropdown').find('.rh_tax_placeholder').hide();
-                    $this.closest('.re_filter_panel').find('.re_filter_ul li:first-child span').addClass('active');
+                    var taxDropdown = $this.closest('.re_tax_dropdown');
+                    taxDropdown.find('.rh_choosed_tax').html($this.html()).show().attr('data-taxdata', $this.attr('data-sorttype'));
+                    
+                    taxDropdown.find('.rh_tax_placeholder').hide();
+                    filterPanel.find('.re_filter_ul li:first-child span').addClass('active');
                 } 
-                if($this.closest('ul').hasClass('re_filter_ul')){
+                /*if($this.closest('ul').hasClass('re_filter_ul')){
                     $this.closest('.re_filter_panel').find('.rh_tax_placeholder').show();
                     $this.closest('.re_filter_panel').find('.rh_choosed_tax').hide();
-                }                 
+                }*/                 
             }
         });         
     });  
@@ -1975,8 +2027,6 @@ jQuery(document).ready(function($) {
                 $('#rh-share-sticky').toggleClass('floating', direction=='down');
             }, offset: 1
         }); 
-        
-
     }
 
     if($('#content-sticky-panel a').length > 0){

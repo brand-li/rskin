@@ -739,6 +739,10 @@ p.auction-condition span{color: #2e932e}
 .rh-var-label.label-non-selectable{cursor: none; pointer-events: none;}
 .rh-var-label.label-non-selectable:not(.text-label-rh), .rh-var-label.label-non-selectable:not(.text-label-rh):hover{cursor: default;} .rh_swatch_getter.rh-var-label.image-label-rh{width: 35px; height: 35px}
 
+@media (min-width: 992px){
+	.quick_view_product .pm-body {max-width: 970px;}
+}
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
  .woocommerce a.button.loading:before, .woocommerce-page a.button.loading:before, .woocommerce button.button.loading:before, .woocommerce-page button.button.loading:before, .woocommerce input.button.loading:before, .woocommerce-page input.button.loading:before, .woocommerce #respond input#submit.loading:before, .woocommerce-page #respond input#submit.loading:before {
 background-image: url(../images/woo/ajax-loader@2x.gif);
