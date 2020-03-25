@@ -253,9 +253,24 @@
                                          * @hooked WC_Structured_Data::generate_product_data() - 60
                                          */
                                         do_action( 'woocommerce_single_product_summary' );
-                                    ?>                                                                            
+                                    ?>                                                                           
                                 </div>                                                                                                
                             </div>
+                        </div> 
+
+                        <div class="other-woo-area clearfix">
+                            <div class="rh-container">
+                                <?php
+                                    /**
+                                     * woocommerce_after_single_product_summary hook.
+                                     *
+                                     * @hooked woocommerce_output_product_data_tabs - 10
+                                     * @hooked woocommerce_upsell_display - 15
+                                     * @hooked woocommerce_output_related_products - 20
+                                     */
+                                    do_action( 'woocommerce_after_single_product_summary' );
+                                ?>
+                            </div>  
                         </div> 
                         
                         <div id="contents-section-woo-area" class="rh-stickysidebar-wrapper">                      
@@ -350,22 +365,7 @@
                                 <!-- /Related --> 
                                 <!-- Upsell -->
                                 <?php include(rh_locate_template( 'woocommerce/single-product/upsell-compact.php' ) ); ?>
-                                <!-- /Upsell -->
-
-                                <div class="other-woo-area">
-                                    <div class="rh-container mt30">
-                                        <?php
-                                            /**
-                                             * woocommerce_after_single_product_summary hook.
-                                             *
-                                             * @hooked woocommerce_output_product_data_tabs - 10
-                                             * @hooked woocommerce_upsell_display - 15
-                                             * @hooked woocommerce_output_related_products - 20
-                                             */
-                                            do_action( 'woocommerce_after_single_product_summary' );
-                                        ?>
-                                    </div>  
-                                </div>                                                                  
+                                <!-- /Upsell -->                                                                 
 
                             </div>
                             <?php if ( is_active_sidebar( 'sidebarwooinner' ) ) : ?>

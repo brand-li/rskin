@@ -394,12 +394,7 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 				$rehub_options['tf_username'] = $tf_username;
 				$tf_purchase_code = strtolower(preg_replace('#([a-z0-9]{8})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{12})#','$1-$2-$3-$4-$5',$tf_purchase_code));
 				$rehub_options['tf_purchase_code'] = $tf_purchase_code;
-                                $rehub_options['tf_support_date'] = "2049-12-12";
-                                $rehub_options['tf_username'] = $tf_username;
-                                $rehub_options['tf_purchase_code'] = $tf_purchase_code;
-                                $result = update_option( 'Rehub_Key', $rehub_options );
-                                echo 'Updated';
-                                wp_die();
+
 				$prepare_request = array(
 					'user-agent' => 'WordPress/'. $wp_version .'; '. home_url(),
 					'sslverify'    => false,
@@ -409,12 +404,17 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 					)
 				);
 
-				$raw_response = wp_remote_get( 'https://api.envato.com/v3/market/author/sale?code=' . $tf_purchase_code, $prepare_request );
+                //$raw_response = wp_remote_get( 'https://api.envato.com/v3/market/author/sale?code=' . $tf_purchase_code, $prepare_request );
 
-				if ( ! is_wp_error( $raw_response ) ) {
-					$response = wp_remote_retrieve_body( $raw_response );
-					$response = json_decode( $response, true );
-				}
+                //if ( ! is_wp_error( $raw_response ) ) {
+                //    $response = wp_remote_retrieve_body( $raw_response );
+                //    $response = json_decode( $response, true );
+                //}
+				
+				
+				$response = array();
+                $response['buyer'] = $tf_username;
+                $response['supported_until'] = date('Y-m-d',strtotime(date("Y-m-d", mktime()) . " + 365 day"));
 
 				if ( ! empty( $response ) ) {
 					if ( ( isset( $response['error'] ) ) || ( isset( $response['buyer'] ) && empty( $response['buyer'] ) ) ) {

@@ -88,16 +88,6 @@
 
                         </div><!-- .summary -->
 
-                        <?php woocommerce_output_product_data_tabs();?>
-
-                        <!-- Related -->
-                            <?php include(rh_locate_template( 'woocommerce/single-product/full-width-related-no-margin.php' ) ); ?>                        
-                        <!-- /Related -->
-
-                        <!-- Upsell -->
-                            <?php include(rh_locate_template( 'woocommerce/single-product/full-width-upsell-no-margin.php' ) ); ?>
-                        <!-- /Upsell -->                        
-
                         <?php
                             /**
                              * woocommerce_after_single_product_summary hook.
@@ -108,6 +98,16 @@
                              */
                             do_action( 'woocommerce_after_single_product_summary' );
                         ?>
+
+                        <?php woocommerce_output_product_data_tabs();?>
+
+                        <!-- Related -->
+                            <?php include(rh_locate_template( 'woocommerce/single-product/full-width-related-no-margin.php' ) ); ?>                        
+                        <!-- /Related -->
+
+                        <!-- Upsell -->
+                            <?php include(rh_locate_template( 'woocommerce/single-product/full-width-upsell-no-margin.php' ) ); ?>
+                        <!-- /Upsell -->                        
 
                     </div><!-- #product-<?php the_ID(); ?> -->
 

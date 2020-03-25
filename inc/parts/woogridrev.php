@@ -93,13 +93,7 @@ global $post; global $product;
         <?php } ?>            
         <?php do_action( 'rehub_vendor_show_action' ); ?> 
         <?php if($soldout):?>
-            <div class="soldoutbar mb10">
-            <?php $randomp = rand(10,100);?>
-            <div class="wpsm-bar minibar wpsm-clearfix mb5" data-percent="<?php echo (float)$randomp;?>%">
-                <div class="wpsm-bar-bar" style="background: #FF9800"></div>
-            </div>
-            <div class="soldoutpercent greycolor font70 lineheight15"><?php esc_html_e( 'Already Sold:', 'rehub-theme' );?> <?php echo (float)$randomp;?>%</div>
-            </div>
+            <?php rh_soldout_bar($post->ID);?>
         <?php endif; ?>         
         <?php rh_wooattr_code_loop($attrelpanel);?>
         <?php if (rehub_option('woo_compact_loop_btn')):?>

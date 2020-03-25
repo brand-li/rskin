@@ -56,7 +56,7 @@
 	        }             
 	    ?>    
         <?php wp_nav_menu( array( 'container_class' => 'top_menu', 'container' => 'nav', 'theme_location' => 'primary-menu', 'fallback_cb' => 'add_menu_for_blank', 'walker' => new Rehub_Walker ) ); ?>
-        <div class="responsive_nav_wrap">
+        <div class="responsive_nav_wrap rh_mobile_menu">
             <div id="dl-menu" class="dl-menuwrapper rh-flex-center-align">
                 <button id="dl-trigger" class="dl-trigger" aria-label="Menu">
                     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">

@@ -129,7 +129,7 @@ function rehub_login_register_modal() {
 							<?php if(class_exists('Woocommerce')) :?>
 								<a href="<?php echo wc_lostpassword_url(); ?>" class="alignright"><?php esc_html_e('Lost Password?', 'rehub-theme'); ?></a>
 							<?php else: ?>
-								<span class="act-rehub-login-popup color_link alignright" data-type="resetpass"><?php esc_html_e('Lost Password?', 'rehub-theme');  ?></span>
+								<span class="act-rehub-login-popup color_link text-right-align" data-type="resetpass"><?php esc_html_e('Lost Password?', 'rehub-theme');  ?></span>
 							<?php endif;?>							
 						</div>
 						<div class="re-form-group mb20">
@@ -176,7 +176,7 @@ function rehub_login_register_modal() {
 			<?php
 
 		}else{
-			echo '<div id="rehub-restrict-login-popup"><div class="rehub-restrict-login-popup">'.__('Login/Register access is temporary disabled', 'rehub-theme').'</div></div>';
+			echo '<div id="rehub-restrict-login-popup"><div class="rehub-restrict-login-popup">'.__('Enable registration in settings - general', 'rehub-theme').'</div></div>';
 		} ?>
 
 		<?php

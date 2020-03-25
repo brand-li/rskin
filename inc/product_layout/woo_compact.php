@@ -107,6 +107,21 @@
                             </div>
                         </div>
 
+                        <div class="other-woo-area clearfix">
+                            <div class="rh-container">
+                                <?php
+                                    /**
+                                     * woocommerce_after_single_product_summary hook.
+                                     *
+                                     * @hooked woocommerce_output_product_data_tabs - 10
+                                     * @hooked woocommerce_upsell_display - 15
+                                     * @hooked woocommerce_output_related_products - 20
+                                     */
+                                    do_action( 'woocommerce_after_single_product_summary' );
+                                ?>
+                            </div>  
+                        </div> 
+
                         <?php $tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
                         $attachment_ids = $product->get_gallery_image_ids();
@@ -150,20 +165,6 @@
                                 <?php call_user_func( $tab['callback'], $key, $tab ); ?>
                             </div>
                         <?php endforeach; ?> 
-                        <div class="other-woo-area">
-                            <div class="mb20">
-                            <?php
-                                /**
-                                 * woocommerce_after_single_product_summary hook.
-                                 *
-                                 * @hooked woocommerce_output_product_data_tabs - 10
-                                 * @hooked woocommerce_upsell_display - 15
-                                 * @hooked woocommerce_output_related_products - 20
-                                 */
-                                do_action( 'woocommerce_after_single_product_summary' );
-                            ?> 
-                            </div>
-                        </div>
                         <?php do_action( 'woocommerce_after_main_content' ); ?>             
                     </div>  
                     <div class="rh-300-sidebar mt20 floatright rh-sticky-container tabletblockdisplay">

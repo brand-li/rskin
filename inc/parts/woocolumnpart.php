@@ -148,13 +148,7 @@
             <a href="<?php echo esc_url($woolink);?>"<?php echo ''.$wootarget;?>><?php the_title();?></a>
         </h3> 
         <?php if($soldout):?>
-            <div class="soldoutbar mb10">
-            <?php $randomp = rand(10,100);?>
-            <div class="wpsm-bar minibar wpsm-clearfix mb5" data-percent="<?php echo (float)$randomp;?>%">
-                <div class="wpsm-bar-bar" style="background: #e33333"></div>
-            </div>
-            <div class="soldoutpercent greycolor font70 lineheight15"><?php esc_html_e( 'Already Sold:', 'rehub-theme' );?> <?php echo (float)$randomp;?>%</div>
-            </div>
+            <?php rh_soldout_bar($post->ID);?>
         <?php endif; ?>        
         <?php $syncitem = $ceofferurl = ''; $countoffers = 0;?>
         <?php if (defined('\ContentEgg\PLUGIN_PATH')):?>

@@ -5,7 +5,7 @@
 	Description: A Hybrid magazine/shop/review/news Wordpress Theme
 	Author: Sizam
 	Author URI: https://wpsoul.com/
-	Version: 9.9.4	
+	Version: 9.9.5	
 	Tags: two-columns, fluid-layout, custom-background, threaded-comments, translation-ready, custom-menu
 	License: 
 	License URI:
@@ -98,12 +98,16 @@ ul.list-unstyled.list-line-style li{margin: 0 0 5px 10px;}
 .rtl #section-additional_information .rh-woo-section-title h2:before{margin-left: 15px; margin-right: 0}
 .rtl .woocommerce form .form-row label.inline {float: left;}.rtl.woocommerce div.product .summary .price ins{float: right; margin-left: 6px}
 .user-profile-div .profile-stats, .profile-socbutton, .user-profile-div .profile-description, .rtltext-right-align{text-align: right;}
-.rtl #main_header .rh_woocartmenu_cell .widget_shopping_cart{right: auto;left: 12px; text-align: right;}
+.rtl .rh_woocartmenu_cell .widget_shopping_cart{right: auto;left: 12px; text-align: right;}
 .rtl .widget_shopping_cart .remove{float: left;}
 .re_filter_panel .re_tax_dropdown{left: 0; right: auto;}
 .rtl .widget_layered_nav ul li a:before, .rtl .widget_layered_nav_filters ul li a:before{margin-right: 0; margin-left: .618em}
 .rtl .woocommerce p.stars span{float: right;}
 .post-meta-big span.postview_meta{float: right;}
+.thumbscount{direction:ltr}
+#toplistmenu > ul li:before{float: right;}
+.re-user-popup-wrap .wpsm-button.loading:after{left: auto; right: 100%; margin-right:20px;}
+nav.top_menu > ul > li.floatright{margin-right: auto; margin-left: 0}
 @media (max-width: 1023px){#rh-bp-profile-stats {text-align: right;}}
 @media (min-width: 1024px){.rtl #wcvendor_search_shops{float: left;}.rtl .wcvendor_profile_menu_items{float: right; margin-left: 0; margin-right: 170px}}
 

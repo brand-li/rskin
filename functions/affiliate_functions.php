@@ -314,11 +314,11 @@ function rehub_generate_offerbtn($args) {
 		 		$offer_price_old = get_post_meta( $post->ID, 'rehub_offer_product_price_old', true );
 		 		$offer_price_old = apply_filters('rehub_create_btn_price_old', $offer_price_old);	
 			?>
-		<?php endif;?>				
+		<?php endif;?>
 
 		<?php $coupon_mask_enabled = (!empty($offer_coupon) && ($offer_coupon_mask =='1' || $offer_coupon_mask =='on') && $expired!='1') ? '1' : ''; ?> 
 		<?php $reveal_enabled = ($coupon_mask_enabled =='1') ? ' reveal_enabled' : '';?>
-		<?php if ($offer_price || $offer_url) :?>
+		<?php if ($offer_price || ($offer_url && $showme !='price')) :?>
 	        <div class="priced_block clearfix <?php echo ''.$reveal_enabled; echo ''.$coupon_style; ?> <?php echo esc_html($wrapperclass);?>">
 	            <?php if($timer && !empty($offer_coupon_date) && $expired !=1) {
 	                echo '<div class="gridcountdown mb10 mt0 mr0 ml0">';

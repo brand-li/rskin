@@ -285,8 +285,8 @@ form.cart div.quantity .screen-reader-text{display: none;}
 .woocommerce #reviews #comments .commentlist > li:before { content: ""; }
 .woocommerce #reviews #comments .comment_container{border: 1px solid #f0eef0;padding: 15px;overflow: hidden;}
 .woocommerce .rh_woo_star{ color: #e0dadf;margin-bottom: 5px; white-space: nowrap;}
-.woocommerce .rh_woo_star span{line-height: 21px; font-size: 21px;display: inline-block; }
-.woocommerce .rh_woo_star_big span{line-height: 30px; font-size: 30px; }
+.woocommerce .rh_woo_star span{line-height: 19px; font-size: 19px;display: inline-block; }
+.woocommerce .rh_woo_star_big span{line-height: 24px; font-size: 24px; }
 .woocommerce .col_item .rh_woo_star span{font-size: 18px;}
 .woocommerce .rh_woo_star .active, .woocommerce .wc-layered-nav-rating .star-rating .rhwoostar.active{color:#ff8a00}
 .woocommerce .floatright > .rh_woo_star{float: right;}

@@ -766,6 +766,31 @@ function rh_convert_cyr_symbols($str=''){
     return $str;
 }
 
+/* Convert characters to unicode values */
+function rh_convert_to_unicode($str=''){
+    if (!$str) return;
+
+    if(version_compare(PHP_VERSION, '7.2.0', '>=')):
+        return mb_ord($str, 'utf8');
+    else:
+        if (ord($str{0}) >=0 && ord($str{0}) <= 127)
+            return ord($str{0});
+        if (ord($str{0}) >= 192 && ord($str{0}) <= 223)
+            return (ord($str{0})-192)*64 + (ord($str{1})-128);
+        if (ord($str{0}) >= 224 && ord($str{0}) <= 239)
+            return (ord($str{0})-224)*4096 + (ord($str{1})-128)*64 + (ord($str{2})-128);
+        if (ord($str{0}) >= 240 && ord($str{0}) <= 247)
+            return (ord($str{0})-240)*262144 + (ord($str{1})-128)*4096 + (ord($str{2})-128)*64 + (ord($str{3})-128);
+        if (ord($str{0}) >= 248 && ord($str{0}) <= 251)
+            return (ord($str{0})-248)*16777216 + (ord($str{1})-128)*262144 + (ord($str{2})-128)*4096 + (ord($str{3})-128)*64 + (ord($str{4})-128);
+        if (ord($str{0}) >= 252 && ord($str{0}) <= 253)
+            return (ord($str{0})-252)*1073741824 + (ord($str{1})-128)*16777216 + (ord($str{2})-128)*262144 + (ord($str{3})-128)*4096 + (ord($str{4})-128)*64 + (ord($str{5})-128);
+        if (ord($str{0}) >= 254 && ord($str{0}) <= 255) // error
+            return FALSE;
+        return 0;
+    endif;
+}
+
 
 
 ## Proccesing contents shortcode

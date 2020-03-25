@@ -2663,6 +2663,7 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
 
 		<?php   
 	else:
+		echo '<div class="mb30 clearfix"></div>';
 		echo esc_html__('No products for comparison', 'rehub-theme');
 		echo '<div class="mb30 clearfix"></div>';
 	endif;
@@ -3277,6 +3278,9 @@ extract(shortcode_atts(array(
 ), $atts));
 $as_button = (!empty($as_btn)) ? ' wpsm-button white medium ' : '';
 $icon_class = (!empty($icon)) ? $icon : 'far fa-sign-in';
+if($icon_class == 'far fa-sign-in' && is_rtl()){
+	$icon_class = 'far fa-sign-in fa-rotate-180';
+}
 $class_show = (!empty($class)) ? ' '.$class.'' : '';
 $output='';
 if (is_user_logged_in()) {
@@ -3840,9 +3844,9 @@ function wpsm_tax_archive_shortcode( $atts, $content = null ) {
 			
 			foreach( $letter_keyed_terms as $letter => $terms ) {
 
-				$term_letter_links .= '<li><a href="#'.rh_convert_cyr_symbols($letter).'" class="font120 blackcolor rehub_scroll">'.$letter.'</a></li>';
+				$term_letter_links .= '<li><a href="#'.rh_convert_to_unicode($letter).'" class="font120 blackcolor rehub_scroll">'.$letter.'</a></li>';
 
-				$term_titles .= '<div class="single-letter mt20 mb20 pb10 border-grey-bottom"><a href="#" name="'.rh_convert_cyr_symbols($letter).'"></a><div class="letter_tag fontbold font120 lineheight20">'.$letter.'<div class="return_to_letters cursorpointer floatright font80"><span class="rehub_scroll rehub-main-color-bg" data-scrollto="#top_ankor"><i class="far fa-angle-up"></i></span></div></div></div>';
+				$term_titles .= '<div class="single-letter mt20 mb20 pb10 border-grey-bottom"><a href="#" name="'.rh_convert_to_unicode($letter).'"></a><div class="letter_tag fontbold font120 lineheight20">'.$letter.'<div class="return_to_letters cursorpointer floatright font80"><span class="rehub_scroll rehub-main-color-bg" data-scrollto="#top_ankor"><i class="far fa-angle-up"></i></span></div></div></div>';
 				$term_titles .= '<div class="tax-wrap flowhidden rh-flex-eq-height">';
 										
 				foreach( $terms as $term ) {
@@ -5735,6 +5739,8 @@ if( !function_exists('rh_latest_comments') ) {
 				$_product = wc_get_product( $comment_post_ID );
 				$product_price = $_product->get_price_html();
 				$userAverage = get_comment_meta( $comment_ID, 'rating', true );
+				$pros_review = get_comment_meta( $comment->comment_ID, 'pos_comment', true );
+				$cons_review = get_comment_meta( $comment->comment_ID, 'neg_comment', true );
 			}
 			$text = $textsec = '';
 		?>

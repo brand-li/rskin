@@ -2077,4 +2077,36 @@ if( !function_exists('rehub_woo_quick_view_action') ){
 add_action('rehub_woo_quick_view', 'rehub_woo_quick_view_action');
 }
 
+
+//////////////////////////////////////////////////////////////////
+//Fake Sold Counter
+//////////////////////////////////////////////////////////////////
+if(!function_exists('rh_soldout_bar')){
+	function rh_soldout_bar( $post_id, $color = '#e33333' ){
+		if(!$post_id){
+			$post_id = get_the_ID();
+		}
+	    $manage_stock = get_post_meta( $post_id, '_manage_stock', true );
+	    if($manage_stock == 'yes'):
+	        $stock_available = ( $stock = get_post_meta( $post_id, '_stock', true ) ) ? round( $stock ) : 0;
+	        $stock_sold = ( $total_sales = get_post_meta( $post_id, 'total_sales', true ) ) ? round( $total_sales ) : 0;
+	        $soldout = $stock_sold / $stock_available *100;
+	    else:
+	        $soldout = get_transient('rh-soldout-'. $post_id);
+	        if(!$soldout):
+	            $soldout = rand(10,100);
+	            set_transient( 'rh-soldout-'. $post_id, $soldout, DAY_IN_SECONDS );
+	        endif;
+	    endif;
+	    ?>
+	    <div class="soldoutbar mb10">
+	        <div class="wpsm-bar minibar wpsm-clearfix mb5" data-percent="<?php echo (float)$soldout;?>%">
+	            <div class="wpsm-bar-bar" style="background: <?php echo $color; ?>"></div>
+	        </div>
+	        <div class="soldoutpercent greycolor font70 lineheight15"><?php esc_html_e( 'Already Sold:', 'rehub-theme' );?> <?php echo (float)$soldout;?>%</div>
+	    </div>
+	    <?php
+	}
+}
+
 ?>

@@ -57,6 +57,9 @@ if (rehub_option('woo_design') == 'list'){
 elseif (rehub_option('woo_design') == 'grid'){
     include(rh_locate_template('inc/parts/woogridpart.php'));
 }
+elseif (rehub_option('woo_design') == 'deallist'){
+    include(rh_locate_template('inc/parts/woolistpart.php'));
+}
 elseif (rehub_option('woo_design') == 'gridtwo'){
     include(rh_locate_template('inc/parts/woogridcompact.php'));
 }

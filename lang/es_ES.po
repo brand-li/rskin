@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rehub_translation\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-16 01:22+0200\n"
-"PO-Revision-Date: 2020-03-16 01:22+0200\n"
+"POT-Creation-Date: 2020-03-24 18:25+0200\n"
+"PO-Revision-Date: 2020-03-24 18:27+0200\n"
 "Last-Translator: belu.shop <info@belu.shop>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -30,11 +30,11 @@ msgstr "La página que está buscando no ha sido encontrada."
 #: admin/screens/democlones.php:105 admin/screens/democlones.php:112
 #: admin/screens/plugins.php:46
 msgid "Demo Import"
-msgstr "importación de demostración"
+msgstr "Importación de demostración"
 
 #: admin/demo/import-demo.php:23
 msgid "Import Demo"
-msgstr "importación de demostración"
+msgstr "Importación de demostración"
 
 #: admin/demo/import-demo.php:46
 msgid "How to use DEMO import and possible issues. Read before import"
@@ -207,8 +207,8 @@ msgstr "Versión"
 
 #: admin/screens/democlones.php:102 admin/screens/plugins.php:43
 #: admin/screens/support.php:41 admin/screens/welcome.php:53 author.php:66
-#: dc-product-vendor/wcm-store.php:287 dokan/store.php:193
-#: inc/wcvendor/storepage.php:318
+#: dc-product-vendor/wcm-store.php:290 dokan/store.php:196
+#: inc/wcvendor/storepage.php:321
 msgid "Registration"
 msgstr "Registro"
 
@@ -530,7 +530,7 @@ msgstr "Publicar"
 #: inc/parts/affeggbutton.php:74 inc/parts/offerbigpart.php:104
 #: inc/parts/singleofferpart.php:57 inc/post_layout/single-big-offer.php:162
 #: inc/post_layout/single-big-offer.php:211
-#: rehub-elementor/wpsm-offerbox.php:146 shortcodes/module_shortcodes.php:3408
+#: rehub-elementor/wpsm-offerbox.php:146 shortcodes/module_shortcodes.php:3409
 #: shortcodes/shortcodes.php:1432
 msgid "Buy this item"
 msgstr "Comprar este artículo"
@@ -600,7 +600,7 @@ msgstr "En stock"
 #: inc/post_layout/single-ce-compare-full.php:147
 #: inc/post_layout/single-meta-compact-dir.php:69
 #: inc/post_layout/single-meta-compact.php:62
-#: shortcodes/module_shortcodes.php:3420
+#: shortcodes/module_shortcodes.php:3421
 #: woocommerce/single-product/add-to-cart/external.php:27
 msgid "days left"
 msgstr "días restantes"
@@ -631,7 +631,7 @@ msgstr "días restantes"
 #: inc/post_layout/single-ce-compare-full.php:152
 #: inc/post_layout/single-meta-compact-dir.php:72
 #: inc/post_layout/single-meta-compact.php:65
-#: shortcodes/module_shortcodes.php:3424
+#: shortcodes/module_shortcodes.php:3425
 #: woocommerce/single-product/add-to-cart/external.php:32
 msgid "Last day"
 msgstr "Último día"
@@ -671,7 +671,7 @@ msgstr "El cupón está caducado"
 #: content-egg-templates/Amazon/data_compact_extra.php:118
 #: functions/affiliate_functions.php:153 functions/affiliate_functions.php:372
 #: functions/sidebar_functions.php:457 inc/parts/affeggbutton.php:62
-#: inc/parts/singleofferpart.php:69 inc/parts/woocolumnpart.php:226
+#: inc/parts/singleofferpart.php:69 inc/parts/woocolumnpart.php:220
 #: inc/parts/woocompactcarousel.php:87 inc/parts/woolistmain.php:169
 #: inc/parts/woolistpart.php:189 inc/post_layout/single-big-offer.php:145
 #: inc/post_layout/single-big-offer.php:201
@@ -730,8 +730,8 @@ msgstr "Especificaciones"
 #: content-egg-templates/Amazon/data_compact_extra.php:27
 #: functions/affiliate_functions.php:69 functions/woo_functions.php:269
 #: inc/product_layout/full_photo_booking.php:153
-#: inc/product_layout/woo_compact.php:115
-#: inc/product_layout/woo_directory.php:110
+#: inc/product_layout/woo_compact.php:130
+#: inc/product_layout/woo_directory.php:124
 msgid "Photos"
 msgstr "Fotos"
 
@@ -783,14 +783,14 @@ msgstr "Miniaturas"
 
 #: amp/before-content.php:44 functions/affiliate_functions.php:70
 #: functions/woo_functions.php:275 functions/woo_functions.php:285
-#: functions/woo_functions.php:307 inc/product_layout/ce_woo_blocks.php:373
-#: inc/product_layout/ce_woo_list.php:293
-#: inc/product_layout/ce_woo_sections.php:273
-#: inc/product_layout/compare_woo_list.php:243
+#: functions/woo_functions.php:307 inc/product_layout/ce_woo_blocks.php:388
+#: inc/product_layout/ce_woo_list.php:308
+#: inc/product_layout/ce_woo_sections.php:288
+#: inc/product_layout/compare_woo_list.php:258
 #: inc/product_layout/full_photo_booking.php:163
-#: inc/product_layout/full_width_advanced.php:201
-#: inc/product_layout/woo_compact.php:125
-#: inc/product_layout/woo_directory.php:120
+#: inc/product_layout/full_width_advanced.php:211
+#: inc/product_layout/woo_compact.php:140
+#: inc/product_layout/woo_directory.php:134
 msgid "Videos"
 msgstr "Videos"
 
@@ -806,13 +806,13 @@ msgstr "Videos"
 #: inc/post_layout/single-ce-compare-full.php:157
 #: inc/post_layout/single-meta-compact-dir.php:76
 #: inc/post_layout/single-meta-compact.php:69
-#: shortcodes/module_shortcodes.php:3428 taxonomy-dealstore.php:111
+#: shortcodes/module_shortcodes.php:3429 taxonomy-dealstore.php:111
 #: woocommerce/brandarchive.php:111
 #: woocommerce/single-product/add-to-cart/external.php:37
 msgid "Expired"
 msgstr "Caducado"
 
-#: amp/before-content.php:102 functions/helper_functions.php:955
+#: amp/before-content.php:102 functions/helper_functions.php:980
 msgid "Best deal at: "
 msgstr "Mejor oferta en: "
 
@@ -829,7 +829,7 @@ msgstr "En general:"
 #: functions/user_review_functions.php:380
 #: functions/user_review_functions.php:439 functions/woo_functions.php:651
 #: functions/woo_functions.php:677 functions/woo_functions.php:729
-#: shortcodes/shortcodes.php:5795
+#: shortcodes/shortcodes.php:5802
 msgid "+ PROS:"
 msgstr "+ PROS:"
 
@@ -837,7 +837,7 @@ msgstr "+ PROS:"
 #: functions/user_review_functions.php:383
 #: functions/user_review_functions.php:443 functions/woo_functions.php:659
 #: functions/woo_functions.php:681 functions/woo_functions.php:732
-#: shortcodes/shortcodes.php:5804
+#: shortcodes/shortcodes.php:5811
 msgid "- CONS:"
 msgstr "- CONS:"
 
@@ -905,12 +905,12 @@ msgstr "Comentarios"
 msgid "Votes"
 msgstr "Votos"
 
-#: author.php:69 dc-product-vendor/wcm-store.php:289 dokan/store.php:195
-#: inc/wcvendor/storepage.php:320
+#: author.php:69 dc-product-vendor/wcm-store.php:292 dokan/store.php:198
+#: inc/wcvendor/storepage.php:323
 msgid "Total submitted"
 msgstr "Total añadidos"
 
-#: author.php:87 dokan/store.php:235 inc/wcvendor/storepage.php:376
+#: author.php:87 dokan/store.php:238 inc/wcvendor/storepage.php:379
 msgid "About author"
 msgstr "Acerca del autor"
 
@@ -928,8 +928,8 @@ msgstr "Artículos relacionados"
 msgid "User Deals"
 msgstr "Ofertas del usuario"
 
-#: author.php:127 dc-product-vendor/wcm-store.php:368 dokan/store.php:278
-#: functions/member_helper_functions.php:59 inc/wcvendor/storepage.php:413
+#: author.php:127 dc-product-vendor/wcm-store.php:371 dokan/store.php:281
+#: functions/member_helper_functions.php:59 inc/wcvendor/storepage.php:416
 msgid "Show full profile"
 msgstr "Ver perfil completo"
 
@@ -1000,13 +1000,13 @@ msgstr "Editar"
 
 #: buddypress/bp_custom.php:240 buddypress/bp_custom.php:323
 #: buddypress/groups/single/offers.php:36 category.php:243
-#: shortcodes/module_shortcodes.php:1283 shortcodes/module_shortcodes.php:1400
-#: shortcodes/module_shortcodes.php:1492 shortcodes/module_shortcodes.php:1599
-#: shortcodes/module_shortcodes.php:1715 shortcodes/module_shortcodes.php:1833
-#: shortcodes/module_shortcodes.php:1936 shortcodes/module_shortcodes.php:2028
-#: shortcodes/module_shortcodes.php:2120 shortcodes/module_shortcodes.php:2212
-#: shortcodes/module_shortcodes.php:2294 shortcodes/module_shortcodes.php:2399
-#: shortcodes/module_shortcodes.php:3277
+#: shortcodes/module_shortcodes.php:1284 shortcodes/module_shortcodes.php:1401
+#: shortcodes/module_shortcodes.php:1493 shortcodes/module_shortcodes.php:1600
+#: shortcodes/module_shortcodes.php:1716 shortcodes/module_shortcodes.php:1834
+#: shortcodes/module_shortcodes.php:1937 shortcodes/module_shortcodes.php:2029
+#: shortcodes/module_shortcodes.php:2121 shortcodes/module_shortcodes.php:2213
+#: shortcodes/module_shortcodes.php:2295 shortcodes/module_shortcodes.php:2400
+#: shortcodes/module_shortcodes.php:3278
 msgid "Show next"
 msgstr "Mostrar siguiente"
 
@@ -1150,7 +1150,7 @@ msgid "Newly Created"
 msgstr "Creado recientemente"
 
 #: buddypress/groups/groups.php:45 buddypress/members/members.php:46
-#: shortcodes/shortcodes.php:4482
+#: shortcodes/shortcodes.php:4486
 msgid "Alphabetical"
 msgstr "Alfabéticamente"
 
@@ -1305,8 +1305,8 @@ msgstr "Ofertas del usuario"
 msgid "Owner of shop"
 msgstr "Propietario de la tienda"
 
-#: buddypress/members/single/index.php:104 dc-product-vendor/wcm-store.php:288
-#: dokan/store.php:194 inc/wcvendor/storepage.php:319
+#: buddypress/members/single/index.php:104 dc-product-vendor/wcm-store.php:291
+#: dokan/store.php:197 inc/wcvendor/storepage.php:322
 msgid "Product Votes"
 msgstr "Me gusta"
 
@@ -1340,7 +1340,7 @@ msgstr ""
 msgid "Random"
 msgstr "aleatorio"
 
-#: ce-product-search.php:15 shortcodes/shortcodes.php:5139
+#: ce-product-search.php:15 shortcodes/shortcodes.php:5144
 msgid "Search Products..."
 msgstr "Buscar productos..."
 
@@ -1677,7 +1677,7 @@ msgstr ""
 msgid "Install"
 msgstr "Instalar"
 
-#: class-tgm-plugin-activation.php:2815 shortcodes/shortcodes.php:4177
+#: class-tgm-plugin-activation.php:2815 shortcodes/shortcodes.php:4181
 msgid "Update"
 msgstr "Actualizar"
 
@@ -2023,10 +2023,10 @@ msgstr "nuevo"
 
 #: content-egg-templates/block_all_offers_logo.php:45
 #: content-egg-templates/block_all_simple_list.php:56
-#: inc/parts/woocolumnpart.php:207 inc/parts/woogridcompact.php:171
-#: inc/parts/woogridpart.php:174 inc/parts/woogridrev.php:121
+#: inc/parts/woocolumnpart.php:201 inc/parts/woogridcompact.php:165
+#: inc/parts/woogridpart.php:168 inc/parts/woogridrev.php:115
 #: inc/parts/woolistmain.php:149 inc/parts/woolistpart.php:168
-#: shortcodes/shortcodes.php:3215
+#: shortcodes/shortcodes.php:3216
 msgid "Buy Now"
 msgstr "Compra ahora"
 
@@ -2042,7 +2042,7 @@ msgstr ""
 
 #: content-egg-templates/wdgt_price_movers_grid.php:93
 #: inc/parts/compact_grid.php:197 inc/parts/postlistpart.php:113
-#: inc/parts/woolistpart.php:125 shortcodes/module_shortcodes.php:1120
+#: inc/parts/woolistpart.php:125 shortcodes/module_shortcodes.php:1121
 #, php-format
 msgid "%s ago"
 msgstr "hace %s"
@@ -2126,13 +2126,13 @@ msgstr "Artículos"
 msgid "About"
 msgstr "Nosotros"
 
-#: dc-product-vendor/wcm-store.php:264 dokan/store.php:169
-#: inc/wcvendor/storepage.php:294
+#: dc-product-vendor/wcm-store.php:267 dokan/store.php:172
+#: inc/wcvendor/storepage.php:297
 msgid "Shop owner:"
 msgstr "Propietario de la tienda:"
 
-#: dc-product-vendor/wcm-store.php:314 inc/wcvendor/storepage.php:326
-#: inc/wcvendor/storepage.php:361
+#: dc-product-vendor/wcm-store.php:317 inc/wcvendor/storepage.php:329
+#: inc/wcvendor/storepage.php:364
 #, fuzzy
 #| msgid "Contacts"
 msgid "Contact"
@@ -2152,43 +2152,43 @@ msgstr "Vendedor destacado"
 msgid "(Show on map)"
 msgstr "(Mostrar en el mapa)"
 
-#: dokan/store-reviews.php:75 dokan/store.php:148 dokan/vendor-biography.php:67
+#: dokan/store-reviews.php:75 dokan/store.php:151 dokan/vendor-biography.php:67
 #: functions/woo_functions.php:1682
 msgid "Terms and Conditions"
 msgstr "Términos y Condiciones"
 
-#: dokan/store-reviews.php:83 dokan/store-reviews.php:103 dokan/store.php:156
-#: dokan/store.php:295 dokan/vendor-biography.php:75
+#: dokan/store-reviews.php:83 dokan/store-reviews.php:103 dokan/store.php:159
+#: dokan/store.php:298 dokan/vendor-biography.php:75
 #: dokan/vendor-biography.php:95 wcfm/store/wcfmmp-view-store-sidebar.php:38
 msgid "Store Location"
 msgstr "Ubicación de la tienda"
 
-#: dokan/store-reviews.php:100 dokan/store.php:292
+#: dokan/store-reviews.php:100 dokan/store.php:295
 #: dokan/vendor-biography.php:92
 #, fuzzy
 #| msgid "Set Product name"
 msgid "Store Product Category"
 msgstr "Establecer nombre de producto"
 
-#: dokan/store-reviews.php:107 dokan/store.php:299
+#: dokan/store-reviews.php:107 dokan/store.php:302
 #: dokan/vendor-biography.php:99
 #, fuzzy
 #| msgid "Store Banner"
 msgid "Store Time"
 msgstr "Banner de tienda"
 
-#: dokan/store-reviews.php:111 dokan/store.php:303
+#: dokan/store-reviews.php:111 dokan/store.php:306
 #: dokan/vendor-biography.php:103
 msgid "Contact Vendor"
 msgstr "Contactar al vendedor"
 
-#: dokan/store.php:171
+#: dokan/store.php:174
 #, fuzzy
 #| msgid "More detail..."
 msgid "Store details"
 msgstr "Más detalles..."
 
-#: dokan/store.php:200
+#: dokan/store.php:203
 msgid "Contacts"
 msgstr "Contactos"
 
@@ -2269,17 +2269,17 @@ msgstr "12"
 msgid "%"
 msgstr ""
 
-#: functions.php:971 functions.php:1104 shortcodes/module_shortcodes.php:1121
+#: functions.php:971 functions.php:1104 shortcodes/module_shortcodes.php:1122
 msgid "no comments"
 msgstr "sin comentarios"
 
 #: functions.php:971 functions.php:1034 functions.php:1104
-#: shortcodes/module_shortcodes.php:1121
+#: shortcodes/module_shortcodes.php:1122
 msgid "1 comment"
 msgstr "1 comentario"
 
 #: functions.php:971 functions.php:1034 functions.php:1104
-#: shortcodes/module_shortcodes.php:1121
+#: shortcodes/module_shortcodes.php:1122
 #, php-format
 msgid "% comments"
 msgstr "% comentarios"
@@ -2374,8 +2374,8 @@ msgstr "Todos los plugins instalados y activados con éxito. %s"
 #: functions/affiliate_functions.php:111 geo-my-wp/woogridpart.php:40
 #: inc/parts/column_grid.php:34 inc/parts/listbuilder.php:32
 #: inc/parts/listbuilder.php:97 inc/parts/woocolumnpart.php:87
-#: inc/parts/woogridcompact.php:195 inc/parts/woogridpart.php:56
-#: inc/parts/woogridrev.php:146 inc/parts/woolistmain.php:55
+#: inc/parts/woogridcompact.php:189 inc/parts/woogridpart.php:56
+#: inc/parts/woogridrev.php:140 inc/parts/woolistmain.php:55
 #: inc/parts/woolistpart.php:72 inc/product_layout/ce_woo_blocks.php:63
 #: inc/product_layout/ce_woo_list.php:65
 #: inc/product_layout/ce_woo_sections.php:220
@@ -2387,7 +2387,7 @@ msgstr "Todos los plugins instalados y activados con éxito. %s"
 #: inc/product_layout/full_width_extended.php:42
 #: inc/product_layout/popup_no_sidebar.php:49
 #: inc/product_layout/sections_w_sidebar.php:47
-#: inc/product_layout/sections_w_sidebar.php:192
+#: inc/product_layout/sections_w_sidebar.php:191
 #: inc/product_layout/vendor_woo_list.php:61
 #: inc/product_layout/woo_compact.php:80
 #: inc/product_layout/woo_directory.php:85 inc/top/woobtn.php:43
@@ -2398,8 +2398,8 @@ msgstr "Añadido a tus favoritos"
 #: functions/affiliate_functions.php:112 geo-my-wp/woogridpart.php:41
 #: inc/parts/column_grid.php:35 inc/parts/listbuilder.php:33
 #: inc/parts/listbuilder.php:98 inc/parts/woocolumnpart.php:88
-#: inc/parts/woogridcompact.php:196 inc/parts/woogridpart.php:57
-#: inc/parts/woogridrev.php:147 inc/parts/woolistmain.php:56
+#: inc/parts/woogridcompact.php:190 inc/parts/woogridpart.php:57
+#: inc/parts/woogridrev.php:141 inc/parts/woolistmain.php:56
 #: inc/parts/woolistpart.php:73 inc/product_layout/ce_woo_blocks.php:64
 #: inc/product_layout/ce_woo_list.php:66
 #: inc/product_layout/ce_woo_sections.php:221
@@ -2411,7 +2411,7 @@ msgstr "Añadido a tus favoritos"
 #: inc/product_layout/full_width_extended.php:43
 #: inc/product_layout/popup_no_sidebar.php:50
 #: inc/product_layout/sections_w_sidebar.php:48
-#: inc/product_layout/sections_w_sidebar.php:193
+#: inc/product_layout/sections_w_sidebar.php:192
 #: inc/product_layout/vendor_woo_list.php:62
 #: inc/product_layout/woo_compact.php:81
 #: inc/product_layout/woo_directory.php:86 inc/top/woobtn.php:44
@@ -2460,7 +2460,7 @@ msgstr "Fecha de expiración"
 msgid "Use before:"
 msgstr "Usar antes:"
 
-#: functions/affiliate_functions.php:1210 functions/helper_functions.php:995
+#: functions/affiliate_functions.php:1210 functions/helper_functions.php:1020
 #: inc/post_layout/single-big-offer.php:233
 #: inc/post_layout/single-ce-compare-autocontent.php:170
 #: inc/post_layout/single-meta-compact.php:88
@@ -2508,11 +2508,11 @@ msgstr "Sin resultados"
 msgid "View all results"
 msgstr "Ver todos los resultados"
 
-#: functions/ajax_helper_functions.php:455 inc/parts/prevnext.php:33
+#: functions/ajax_helper_functions.php:465 inc/parts/prevnext.php:33
 msgid "Next"
 msgstr "Siguiente"
 
-#: functions/ajax_helper_functions.php:459
+#: functions/ajax_helper_functions.php:469
 msgid "No more!"
 msgstr "¡Nada más!"
 
@@ -2523,10 +2523,10 @@ msgstr "¡Nada más!"
 msgid "Select"
 msgstr "Seleccionar Menú:"
 
-#: functions/class_wc_attribute_swatches.php:59 functions/el_functions.php:1078
+#: functions/class_wc_attribute_swatches.php:59 functions/el_functions.php:1079
 #: functions/vc_functions.php:2727 functions/vc_functions.php:3432
-#: rehub-elementor/wpsm-3dcanvas.php:320 rehub-elementor/wpsm-3dcanvas.php:425
-#: rehub-elementor/wpsm-3dcanvas.php:529 rehub-elementor/wpsm-box.php:81
+#: rehub-elementor/wpsm-3dcanvas.php:183 rehub-elementor/wpsm-3dcanvas.php:288
+#: rehub-elementor/wpsm-3dcanvas.php:392 rehub-elementor/wpsm-box.php:81
 #: rehub-elementor/wpsm-canvas.php:303 rehub-elementor/wpsm-numhead.php:74
 #: rehub-elementor/wpsm-woocomparebars.php:70
 #: shortcodes/tinyMCE/includes/compare-bars.php:48
@@ -2644,59 +2644,59 @@ msgstr "Cupones"
 msgid "Rehub Helper Modules"
 msgstr "Modulos de ayuda"
 
-#: functions/el_functions.php:94
+#: functions/el_functions.php:95
 msgid "Type of content area"
 msgstr "Tipo de area de contenido"
 
-#: functions/el_functions.php:97
+#: functions/el_functions.php:98
 #, fuzzy
 #| msgid "Container with sidebar?"
 msgid "Content with sidebar"
 msgstr "¿Contenedor con barra lateral?"
 
-#: functions/el_functions.php:98
+#: functions/el_functions.php:99
 #, fuzzy
 #| msgid "Full Width Post"
 msgid "Full Width Content Box"
 msgstr "Post de ancho completo"
 
-#: functions/el_functions.php:99
+#: functions/el_functions.php:100
 msgid "Full width of browser window"
 msgstr "Ancho completo de la ventana del navegador"
 
-#: functions/el_functions.php:106
+#: functions/el_functions.php:107
 msgid "How to show header?"
 msgstr "¿Cómo mostrar el encabezado?"
 
-#: functions/el_functions.php:109 functions/vc_functions.php:3012
+#: functions/el_functions.php:110 functions/vc_functions.php:3012
 msgid "Default"
 msgstr "Por defecto"
 
-#: functions/el_functions.php:110
+#: functions/el_functions.php:111
 msgid "Disable header"
 msgstr "Desactivar encabezado"
 
-#: functions/el_functions.php:111
+#: functions/el_functions.php:112
 msgid "Transparent"
 msgstr "Transparente"
 
-#: functions/el_functions.php:118
+#: functions/el_functions.php:119
 #, fuzzy
 #| msgid "Enable panel?"
 msgid "Enable page preloader"
 msgstr "¿Habilitar panel?"
 
-#: functions/el_functions.php:119 functions/el_functions.php:127
-#: functions/el_functions.php:137 functions/el_functions.php:286
-#: functions/el_functions.php:327 functions/el_functions.php:367
-#: functions/el_functions.php:378 functions/el_functions.php:389
-#: functions/el_functions.php:400 functions/el_functions.php:427
-#: functions/el_functions.php:440 functions/el_functions.php:490
-#: functions/el_functions.php:734 functions/el_functions.php:884
-#: functions/el_functions.php:897 functions/el_functions.php:910
-#: functions/el_functions.php:982 functions/el_functions.php:1028
-#: functions/el_functions.php:1102 functions/el_functions.php:1127
-#: functions/el_functions.php:1148 functions/vc_functions.php:91
+#: functions/el_functions.php:120 functions/el_functions.php:128
+#: functions/el_functions.php:138 functions/el_functions.php:287
+#: functions/el_functions.php:328 functions/el_functions.php:368
+#: functions/el_functions.php:379 functions/el_functions.php:390
+#: functions/el_functions.php:401 functions/el_functions.php:428
+#: functions/el_functions.php:441 functions/el_functions.php:491
+#: functions/el_functions.php:735 functions/el_functions.php:885
+#: functions/el_functions.php:898 functions/el_functions.php:911
+#: functions/el_functions.php:983 functions/el_functions.php:1029
+#: functions/el_functions.php:1103 functions/el_functions.php:1128
+#: functions/el_functions.php:1149 functions/vc_functions.php:91
 #: functions/vc_functions.php:100 functions/vc_functions.php:109
 #: functions/vc_functions.php:121 functions/vc_functions.php:1062
 #: functions/vc_functions.php:1166 functions/vc_functions.php:1264
@@ -2738,11 +2738,11 @@ msgstr "¿Habilitar panel?"
 #: rehub-elementor/abstracts/woo-base-widget.php:572
 #: rehub-elementor/abstracts/woo-base-widget.php:581
 #: rehub-elementor/abstracts/woo-base-widget.php:680
-#: rehub-elementor/wpsm-3col-grid.php:54 rehub-elementor/wpsm-3dcanvas.php:204
-#: rehub-elementor/wpsm-3dcanvas.php:273 rehub-elementor/wpsm-3dcanvas.php:396
-#: rehub-elementor/wpsm-3dcanvas.php:501 rehub-elementor/wpsm-3dcanvas.php:541
-#: rehub-elementor/wpsm-3dcanvas.php:836 rehub-elementor/wpsm-3dcanvas.php:846
-#: rehub-elementor/wpsm-3dcanvas.php:857
+#: rehub-elementor/wpsm-3col-grid.php:54 rehub-elementor/wpsm-3dcanvas.php:136
+#: rehub-elementor/wpsm-3dcanvas.php:259 rehub-elementor/wpsm-3dcanvas.php:364
+#: rehub-elementor/wpsm-3dcanvas.php:404 rehub-elementor/wpsm-3dcanvas.php:527
+#: rehub-elementor/wpsm-3dcanvas.php:707 rehub-elementor/wpsm-3dcanvas.php:717
+#: rehub-elementor/wpsm-3dcanvas.php:727 rehub-elementor/wpsm-3dcanvas.php:935
 #: rehub-elementor/wpsm-buttonpopup.php:88 rehub-elementor/wpsm-cardbox.php:102
 #: rehub-elementor/wpsm-cardbox.php:110 rehub-elementor/wpsm-cardbox.php:118
 #: rehub-elementor/wpsm-catbox.php:104 rehub-elementor/wpsm-catbox.php:111
@@ -2783,7 +2783,7 @@ msgstr "¿Habilitar panel?"
 #: rehub-elementor/wpsm-taxarchive.php:147
 #: rehub-elementor/wpsm-taxarchive.php:218
 #: rehub-elementor/wpsm-taxarchive.php:224
-#: rehub-elementor/wpsm-taxarchive.php:232
+#: rehub-elementor/wpsm-taxarchive.php:232 rehub-elementor/wpsm-theme.php:148
 #: rehub-elementor/wpsm-twocolnews.php:90
 #: rehub-elementor/wpsm-twocolnews.php:97
 #: rehub-elementor/wpsm-versustable.php:113
@@ -2804,17 +2804,17 @@ msgstr "¿Habilitar panel?"
 msgid "Yes"
 msgstr "Sí"
 
-#: functions/el_functions.php:120 functions/el_functions.php:128
-#: functions/el_functions.php:138 functions/el_functions.php:287
-#: functions/el_functions.php:328 functions/el_functions.php:368
-#: functions/el_functions.php:379 functions/el_functions.php:390
-#: functions/el_functions.php:401 functions/el_functions.php:428
-#: functions/el_functions.php:441 functions/el_functions.php:491
-#: functions/el_functions.php:735 functions/el_functions.php:757
-#: functions/el_functions.php:885 functions/el_functions.php:898
-#: functions/el_functions.php:911 functions/el_functions.php:983
-#: functions/el_functions.php:1029 functions/el_functions.php:1103
-#: functions/el_functions.php:1128 functions/el_functions.php:1149
+#: functions/el_functions.php:121 functions/el_functions.php:129
+#: functions/el_functions.php:139 functions/el_functions.php:288
+#: functions/el_functions.php:329 functions/el_functions.php:369
+#: functions/el_functions.php:380 functions/el_functions.php:391
+#: functions/el_functions.php:402 functions/el_functions.php:429
+#: functions/el_functions.php:442 functions/el_functions.php:492
+#: functions/el_functions.php:736 functions/el_functions.php:758
+#: functions/el_functions.php:886 functions/el_functions.php:899
+#: functions/el_functions.php:912 functions/el_functions.php:984
+#: functions/el_functions.php:1030 functions/el_functions.php:1104
+#: functions/el_functions.php:1129 functions/el_functions.php:1150
 #: functions/vc_functions.php:3403
 #: rehub-elementor/abstracts/content-base-widget.php:359
 #: rehub-elementor/abstracts/content-base-widget.php:367
@@ -2829,11 +2829,11 @@ msgstr "Sí"
 #: rehub-elementor/abstracts/woo-base-widget.php:573
 #: rehub-elementor/abstracts/woo-base-widget.php:582
 #: rehub-elementor/abstracts/woo-base-widget.php:681
-#: rehub-elementor/wpsm-3col-grid.php:55 rehub-elementor/wpsm-3dcanvas.php:205
-#: rehub-elementor/wpsm-3dcanvas.php:274 rehub-elementor/wpsm-3dcanvas.php:397
-#: rehub-elementor/wpsm-3dcanvas.php:502 rehub-elementor/wpsm-3dcanvas.php:542
-#: rehub-elementor/wpsm-3dcanvas.php:837 rehub-elementor/wpsm-3dcanvas.php:847
-#: rehub-elementor/wpsm-3dcanvas.php:858
+#: rehub-elementor/wpsm-3col-grid.php:55 rehub-elementor/wpsm-3dcanvas.php:137
+#: rehub-elementor/wpsm-3dcanvas.php:260 rehub-elementor/wpsm-3dcanvas.php:365
+#: rehub-elementor/wpsm-3dcanvas.php:405 rehub-elementor/wpsm-3dcanvas.php:528
+#: rehub-elementor/wpsm-3dcanvas.php:708 rehub-elementor/wpsm-3dcanvas.php:718
+#: rehub-elementor/wpsm-3dcanvas.php:728 rehub-elementor/wpsm-3dcanvas.php:936
 #: rehub-elementor/wpsm-buttonpopup.php:89 rehub-elementor/wpsm-cardbox.php:103
 #: rehub-elementor/wpsm-cardbox.php:111 rehub-elementor/wpsm-cardbox.php:119
 #: rehub-elementor/wpsm-catbox.php:105 rehub-elementor/wpsm-catbox.php:112
@@ -2877,7 +2877,7 @@ msgstr "Sí"
 #: rehub-elementor/wpsm-taxarchive.php:148
 #: rehub-elementor/wpsm-taxarchive.php:219
 #: rehub-elementor/wpsm-taxarchive.php:225
-#: rehub-elementor/wpsm-taxarchive.php:233
+#: rehub-elementor/wpsm-taxarchive.php:233 rehub-elementor/wpsm-theme.php:149
 #: rehub-elementor/wpsm-twocolnews.php:91
 #: rehub-elementor/wpsm-twocolnews.php:98
 #: rehub-elementor/wpsm-versustable.php:114
@@ -2898,624 +2898,624 @@ msgstr "Sí"
 msgid "No"
 msgstr "No"
 
-#: functions/el_functions.php:126
+#: functions/el_functions.php:127
 msgid "Disable menu"
 msgstr "Desactivar menú"
 
-#: functions/el_functions.php:136
+#: functions/el_functions.php:137
 msgid "Disable footer"
 msgstr "Desactivar pie de página"
 
-#: functions/el_functions.php:152
+#: functions/el_functions.php:153
 #, fuzzy
 #| msgid "Will be rendered near button"
 msgid "Woo Code area near Button"
 msgstr "Se renderizará cerca del botón"
 
-#: functions/el_functions.php:160
+#: functions/el_functions.php:161
 #, fuzzy
 #| msgid "Short description"
 msgid "Woo Code area near Short Description"
 msgstr "Descripción corta"
 
-#: functions/el_functions.php:168
+#: functions/el_functions.php:169
 #, fuzzy
 #| msgid "No generated content"
 msgid "Woo Code area after content"
 msgstr "Contenido no generado"
 
-#: functions/el_functions.php:209
+#: functions/el_functions.php:210
 msgid "Font Awesome - Regular"
 msgstr ""
 
-#: functions/el_functions.php:221
+#: functions/el_functions.php:222
 msgid "Font Awesome - Solid"
 msgstr ""
 
-#: functions/el_functions.php:233
+#: functions/el_functions.php:234
 #, fuzzy
 #| msgid "Font Weight"
 msgid "Font Awesome - Light"
 msgstr "Espesor de la fuente"
 
-#: functions/el_functions.php:245
+#: functions/el_functions.php:246
 msgid "Font Awesome - Brands"
 msgstr ""
 
-#: functions/el_functions.php:275
+#: functions/el_functions.php:276
 msgid "RH Smart Sticky Scroll and Parallax"
 msgstr ""
 
-#: functions/el_functions.php:283
+#: functions/el_functions.php:284
 #, fuzzy
 #| msgid "Enable Cart Icon"
 msgid "Enable smart scroll"
 msgstr "Activar icono de carro"
 
-#: functions/el_functions.php:284
+#: functions/el_functions.php:285
 msgid ""
 "You must have minimum two columns. Smart scroll is visible only on frontend "
 "site and not visible in Editor mode of Elementor"
 msgstr ""
 
-#: functions/el_functions.php:296
+#: functions/el_functions.php:297
 msgid "Top Spacing"
 msgstr ""
 
-#: functions/el_functions.php:310
+#: functions/el_functions.php:311
 #, fuzzy
 #| msgid "Bottom"
 msgid "Bottom Spacing"
 msgstr "Abajo"
 
-#: functions/el_functions.php:324
+#: functions/el_functions.php:325
 #, fuzzy
 #| msgid "Disable default background image"
 msgid "Enable parallax for background image"
 msgstr "Desactivar la imagen predeterminada de fondo"
 
-#: functions/el_functions.php:325
+#: functions/el_functions.php:326
 #, fuzzy
 #| msgid "Make background image contain?"
 msgid "Add background in Style section"
 msgstr "Make background image contain?"
 
-#: functions/el_functions.php:337
+#: functions/el_functions.php:338
 msgid "Parallax speed"
 msgstr ""
 
-#: functions/el_functions.php:357
+#: functions/el_functions.php:358
 msgid "Re:Hub Quick Effects"
 msgstr ""
 
-#: functions/el_functions.php:365
+#: functions/el_functions.php:366
 #, fuzzy
 #| msgid "Enable pagination?"
 msgid "Enable Infinite rotating"
 msgstr "¿Habilitar paginacion?"
 
-#: functions/el_functions.php:376
+#: functions/el_functions.php:377
 #, fuzzy
 #| msgid "Enable Light font weight?"
 msgid "Enable Infinite Left to right"
 msgstr "¿Habilitar peso ligero de fuente?"
 
-#: functions/el_functions.php:387
+#: functions/el_functions.php:388
 msgid "Enable Infinite Up and Down"
 msgstr ""
 
-#: functions/el_functions.php:398
+#: functions/el_functions.php:399
 msgid "Enable Infinite Shake"
 msgstr ""
 
-#: functions/el_functions.php:409
+#: functions/el_functions.php:410
 #, fuzzy
 #| msgid "Activation Key:"
 msgid "Animation Speed"
 msgstr "Clave de activación:"
 
-#: functions/el_functions.php:425
+#: functions/el_functions.php:426
 msgid "Enable Perspective Box shadow"
 msgstr ""
 
-#: functions/el_functions.php:438
+#: functions/el_functions.php:439
 msgid "Enable Perspective Text shadow"
 msgstr ""
 
-#: functions/el_functions.php:451
+#: functions/el_functions.php:452
 #, fuzzy
 #| msgid "Make opened?"
 msgid "Make shape"
 msgstr "¿Marcar abierto?"
 
-#: functions/el_functions.php:464
+#: functions/el_functions.php:465
 msgid "Rotation (deg)"
 msgstr ""
 
-#: functions/el_functions.php:480
+#: functions/el_functions.php:481
 msgid "Re:Hub WOW Animations"
 msgstr ""
 
-#: functions/el_functions.php:488
+#: functions/el_functions.php:489
 #, fuzzy
 #| msgid "Enable BP and email activation"
 msgid "Enable Advanced animations"
 msgstr "Habilitar correo electrónico y activación de BP"
 
-#: functions/el_functions.php:498
+#: functions/el_functions.php:499
 #, fuzzy
 #| msgid "Theme Options"
 msgid "Transform Options"
 msgstr "Opciones del Tema"
 
-#: functions/el_functions.php:509 rehub-elementor/wpsm-canvas.php:346
+#: functions/el_functions.php:510 rehub-elementor/wpsm-canvas.php:346
 #, fuzzy
 #| msgid "Transparent"
 msgid "Translate X"
 msgstr "Transparente"
 
-#: functions/el_functions.php:524 rehub-elementor/wpsm-canvas.php:374
+#: functions/el_functions.php:525 rehub-elementor/wpsm-canvas.php:374
 #, fuzzy
 #| msgid "Transparent"
 msgid "Translate Y"
 msgstr "Transparente"
 
-#: functions/el_functions.php:538
+#: functions/el_functions.php:539
 msgid "Translate X (%)"
 msgstr ""
 
-#: functions/el_functions.php:552
+#: functions/el_functions.php:553
 msgid "Translate Y (%)"
 msgstr ""
 
-#: functions/el_functions.php:566
+#: functions/el_functions.php:567
 #, fuzzy
 #| msgid "Location"
 msgid "Rotation"
 msgstr "Ubicación"
 
-#: functions/el_functions.php:580 rehub-elementor/wpsm-3dcanvas.php:657
+#: functions/el_functions.php:581 rehub-elementor/wpsm-3dcanvas.php:535
 #, fuzzy
 #| msgid "Location"
 msgid "Rotation X"
 msgstr "Ubicación"
 
-#: functions/el_functions.php:594 rehub-elementor/wpsm-3dcanvas.php:673
+#: functions/el_functions.php:595 rehub-elementor/wpsm-3dcanvas.php:550
 #, fuzzy
 #| msgid "Location"
 msgid "Rotation Y"
 msgstr "Ubicación"
 
-#: functions/el_functions.php:609 rehub-elementor/wpsm-3dcanvas.php:751
+#: functions/el_functions.php:610 rehub-elementor/wpsm-3dcanvas.php:625
 msgid "Scale"
 msgstr ""
 
-#: functions/el_functions.php:623
+#: functions/el_functions.php:624
 msgid "Scale X"
 msgstr ""
 
-#: functions/el_functions.php:637
+#: functions/el_functions.php:638
 msgid "Width"
 msgstr ""
 
-#: functions/el_functions.php:649
+#: functions/el_functions.php:650
 #, fuzzy
 #| msgid "Height, px"
 msgid "Height"
 msgstr "Altura(px)"
 
-#: functions/el_functions.php:661
+#: functions/el_functions.php:662
 msgid "Scale Y"
 msgstr ""
 
-#: functions/el_functions.php:675 rehub-elementor/wpsm-3dcanvas.php:766
+#: functions/el_functions.php:676 rehub-elementor/wpsm-3dcanvas.php:640
 msgid "Opacity"
 msgstr ""
 
-#: functions/el_functions.php:687
+#: functions/el_functions.php:688
 #, fuzzy
 #| msgid "Background Color"
 msgid "Background Color"
 msgstr "Color del fondo"
 
-#: functions/el_functions.php:695
+#: functions/el_functions.php:696
 msgid "Transform Origin"
 msgstr ""
 
-#: functions/el_functions.php:707
+#: functions/el_functions.php:708
 #, fuzzy
 #| msgid "Activation Key:"
 msgid "Animation SVG Path"
 msgstr "Clave de activación:"
 
-#: functions/el_functions.php:716
+#: functions/el_functions.php:717
 #, fuzzy
 #| msgid "Set type"
 msgid "Set path"
 msgstr "Establecer tipo"
 
-#: functions/el_functions.php:717
+#: functions/el_functions.php:718
 msgid "can be ID (place with #), svg path coordinates"
 msgstr ""
 
-#: functions/el_functions.php:723
+#: functions/el_functions.php:724
 msgid "Align ID"
 msgstr ""
 
-#: functions/el_functions.php:724
+#: functions/el_functions.php:725
 msgid ""
 "By default, element is alighned by itself, but you can set id of path or "
 "another element"
 msgstr ""
 
-#: functions/el_functions.php:732
+#: functions/el_functions.php:733
 msgid "Orient along path"
 msgstr ""
 
-#: functions/el_functions.php:744
+#: functions/el_functions.php:745
 msgid "Text, SVG, Multi Animations"
 msgstr ""
 
-#: functions/el_functions.php:755
+#: functions/el_functions.php:756
 #, fuzzy
 #| msgid "Enable pagination?"
 msgid "Enable Advanced Animation"
 msgstr "¿Habilitar paginacion?"
 
-#: functions/el_functions.php:758
+#: functions/el_functions.php:759
 #, fuzzy
 #| msgid "Text"
 msgid "On Text"
 msgstr "Texto"
 
-#: functions/el_functions.php:759
+#: functions/el_functions.php:760
 msgid "On Multiple objects"
 msgstr ""
 
-#: functions/el_functions.php:760
+#: functions/el_functions.php:761
 #, fuzzy
 #| msgid "No line"
 msgid "SVG lines"
 msgstr "Sin línea"
 
-#: functions/el_functions.php:769
+#: functions/el_functions.php:770
 #, fuzzy
 #| msgid "Color for label"
 msgid "Break type for text"
 msgstr "Color de la etiqueta"
 
-#: functions/el_functions.php:771
+#: functions/el_functions.php:772
 msgid "Lines"
 msgstr ""
 
-#: functions/el_functions.php:772
+#: functions/el_functions.php:773
 msgid "Chars"
 msgstr ""
 
-#: functions/el_functions.php:773
+#: functions/el_functions.php:774
 msgid "Words"
 msgstr ""
 
-#: functions/el_functions.php:779
+#: functions/el_functions.php:780
 msgid "Set stagger class"
 msgstr ""
 
-#: functions/el_functions.php:780
+#: functions/el_functions.php:781
 msgid ""
 "this will trigger animation on all elements with this class with some delay "
 "between each item"
 msgstr ""
 
-#: functions/el_functions.php:789
+#: functions/el_functions.php:790
 msgid "Stagger delay"
 msgstr ""
 
-#: functions/el_functions.php:803
+#: functions/el_functions.php:804
 #, fuzzy
 #| msgid "Activation Key:"
 msgid "Animation Options"
 msgstr "Clave de activación:"
 
-#: functions/el_functions.php:815 rehub-elementor/wpsm-3dcanvas.php:776
+#: functions/el_functions.php:816 rehub-elementor/wpsm-3dcanvas.php:650
 msgid "Duration (s)"
 msgstr ""
 
-#: functions/el_functions.php:830 rehub-elementor/wpsm-3dcanvas.php:788
+#: functions/el_functions.php:831 rehub-elementor/wpsm-3dcanvas.php:661
 msgid "Delay (s)"
 msgstr ""
 
-#: functions/el_functions.php:843 rehub-elementor/wpsm-3dcanvas.php:798
+#: functions/el_functions.php:844 rehub-elementor/wpsm-3dcanvas.php:670
 #, fuzzy
 #| msgid "Set type"
 msgid "Ease type"
 msgstr "Establecer tipo"
 
-#: functions/el_functions.php:845 rehub-elementor/wpsm-3dcanvas.php:800
+#: functions/el_functions.php:846 rehub-elementor/wpsm-3dcanvas.php:672
 msgid "Linear"
 msgstr ""
 
-#: functions/el_functions.php:846 rehub-elementor/wpsm-3dcanvas.php:801
+#: functions/el_functions.php:847 rehub-elementor/wpsm-3dcanvas.php:673
 msgid "Power 1 in"
 msgstr ""
 
-#: functions/el_functions.php:847 rehub-elementor/wpsm-3dcanvas.php:802
+#: functions/el_functions.php:848 rehub-elementor/wpsm-3dcanvas.php:674
 msgid "Power 1 out"
 msgstr ""
 
-#: functions/el_functions.php:848 rehub-elementor/wpsm-3dcanvas.php:803
+#: functions/el_functions.php:849 rehub-elementor/wpsm-3dcanvas.php:675
 msgid "Power 1 inOut"
 msgstr ""
 
-#: functions/el_functions.php:849 rehub-elementor/wpsm-3dcanvas.php:804
+#: functions/el_functions.php:850 rehub-elementor/wpsm-3dcanvas.php:676
 msgid "Power 2 in"
 msgstr ""
 
-#: functions/el_functions.php:850 rehub-elementor/wpsm-3dcanvas.php:805
+#: functions/el_functions.php:851 rehub-elementor/wpsm-3dcanvas.php:677
 msgid "Power 2 out"
 msgstr ""
 
-#: functions/el_functions.php:851 rehub-elementor/wpsm-3dcanvas.php:806
+#: functions/el_functions.php:852 rehub-elementor/wpsm-3dcanvas.php:678
 msgid "Power 2 inOut"
 msgstr ""
 
-#: functions/el_functions.php:852 rehub-elementor/wpsm-3dcanvas.php:807
+#: functions/el_functions.php:853 rehub-elementor/wpsm-3dcanvas.php:679
 msgid "Power 3 in"
 msgstr ""
 
-#: functions/el_functions.php:853 rehub-elementor/wpsm-3dcanvas.php:808
+#: functions/el_functions.php:854 rehub-elementor/wpsm-3dcanvas.php:680
 msgid "Power 3 out"
 msgstr ""
 
-#: functions/el_functions.php:854 rehub-elementor/wpsm-3dcanvas.php:809
+#: functions/el_functions.php:855 rehub-elementor/wpsm-3dcanvas.php:681
 msgid "Power 3 inOut"
 msgstr ""
 
-#: functions/el_functions.php:855 rehub-elementor/wpsm-3dcanvas.php:810
+#: functions/el_functions.php:856 rehub-elementor/wpsm-3dcanvas.php:682
 msgid "Power 4 in"
 msgstr ""
 
-#: functions/el_functions.php:856 rehub-elementor/wpsm-3dcanvas.php:811
+#: functions/el_functions.php:857 rehub-elementor/wpsm-3dcanvas.php:683
 msgid "Power 4 out"
 msgstr ""
 
-#: functions/el_functions.php:857 rehub-elementor/wpsm-3dcanvas.php:812
+#: functions/el_functions.php:858 rehub-elementor/wpsm-3dcanvas.php:684
 msgid "Power 4 inOut"
 msgstr ""
 
-#: functions/el_functions.php:858 rehub-elementor/wpsm-3dcanvas.php:813
+#: functions/el_functions.php:859 rehub-elementor/wpsm-3dcanvas.php:685
 #, fuzzy
 #| msgid "Ads Options"
 msgid "Back in"
 msgstr "Opciones de Anuncios"
 
-#: functions/el_functions.php:859 rehub-elementor/wpsm-3dcanvas.php:814
+#: functions/el_functions.php:860 rehub-elementor/wpsm-3dcanvas.php:686
 #, fuzzy
 #| msgid "Black no border"
 msgid "Back out"
 msgstr "Negro sin borde"
 
-#: functions/el_functions.php:860 rehub-elementor/wpsm-3dcanvas.php:815
+#: functions/el_functions.php:861 rehub-elementor/wpsm-3dcanvas.php:687
 msgid "Back inOut"
 msgstr ""
 
-#: functions/el_functions.php:861 rehub-elementor/wpsm-3dcanvas.php:816
+#: functions/el_functions.php:862 rehub-elementor/wpsm-3dcanvas.php:688
 msgid "elastic in"
 msgstr ""
 
-#: functions/el_functions.php:862 rehub-elementor/wpsm-3dcanvas.php:817
+#: functions/el_functions.php:863 rehub-elementor/wpsm-3dcanvas.php:689
 #, fuzzy
 #| msgid "last 3 month"
 msgid "elastic out"
 msgstr "últimos 3 meses"
 
-#: functions/el_functions.php:863 rehub-elementor/wpsm-3dcanvas.php:818
+#: functions/el_functions.php:864 rehub-elementor/wpsm-3dcanvas.php:690
 msgid "elastic inOut"
 msgstr ""
 
-#: functions/el_functions.php:864 rehub-elementor/wpsm-3dcanvas.php:819
+#: functions/el_functions.php:865 rehub-elementor/wpsm-3dcanvas.php:691
 msgid "circ in"
 msgstr ""
 
-#: functions/el_functions.php:865 rehub-elementor/wpsm-3dcanvas.php:820
+#: functions/el_functions.php:866 rehub-elementor/wpsm-3dcanvas.php:692
 msgid "circ out"
 msgstr ""
 
-#: functions/el_functions.php:866 rehub-elementor/wpsm-3dcanvas.php:821
+#: functions/el_functions.php:867 rehub-elementor/wpsm-3dcanvas.php:693
 msgid "circ inOut"
 msgstr ""
 
-#: functions/el_functions.php:867 rehub-elementor/wpsm-3dcanvas.php:822
+#: functions/el_functions.php:868 rehub-elementor/wpsm-3dcanvas.php:694
 msgid "expo in"
 msgstr ""
 
-#: functions/el_functions.php:868 rehub-elementor/wpsm-3dcanvas.php:823
+#: functions/el_functions.php:869 rehub-elementor/wpsm-3dcanvas.php:695
 #, fuzzy
 #| msgid "Log out"
 msgid "expo out"
 msgstr "Salir"
 
-#: functions/el_functions.php:869 rehub-elementor/wpsm-3dcanvas.php:824
+#: functions/el_functions.php:870 rehub-elementor/wpsm-3dcanvas.php:696
 msgid "expo inOut"
 msgstr ""
 
-#: functions/el_functions.php:870 rehub-elementor/wpsm-3dcanvas.php:825
+#: functions/el_functions.php:871 rehub-elementor/wpsm-3dcanvas.php:697
 #, fuzzy
 #| msgid "Linkedin link"
 msgid "cine in"
 msgstr "Enlace de LinkedIn"
 
-#: functions/el_functions.php:871 rehub-elementor/wpsm-3dcanvas.php:826
+#: functions/el_functions.php:872 rehub-elementor/wpsm-3dcanvas.php:698
 msgid "cine out"
 msgstr ""
 
-#: functions/el_functions.php:872 rehub-elementor/wpsm-3dcanvas.php:827
+#: functions/el_functions.php:873 rehub-elementor/wpsm-3dcanvas.php:699
 msgid "cine inOut"
 msgstr ""
 
-#: functions/el_functions.php:882 rehub-elementor/wpsm-3dcanvas.php:834
+#: functions/el_functions.php:883 rehub-elementor/wpsm-3dcanvas.php:705
 #, fuzzy
 #| msgid "Enable pagination?"
 msgid "Enable infinite"
 msgstr "¿Habilitar paginacion?"
 
-#: functions/el_functions.php:895 rehub-elementor/wpsm-3dcanvas.php:844
+#: functions/el_functions.php:896 rehub-elementor/wpsm-3dcanvas.php:715
 #, fuzzy
 #| msgid "Disable top line"
 msgid "Enable Yoyo style"
 msgstr "Desactivar línea superior"
 
-#: functions/el_functions.php:908 rehub-elementor/wpsm-3dcanvas.php:855
+#: functions/el_functions.php:909 rehub-elementor/wpsm-3dcanvas.php:725
 msgid "Set direction as FROM"
 msgstr ""
 
-#: functions/el_functions.php:923
+#: functions/el_functions.php:924
 #, fuzzy
 #| msgid "Theme Options"
 msgid "Trigger Options"
 msgstr "Opciones del Tema"
 
-#: functions/el_functions.php:933
+#: functions/el_functions.php:934
 msgid "Css ID of custom trigger."
 msgstr ""
 
-#: functions/el_functions.php:934
+#: functions/el_functions.php:935
 msgid ""
 "By default, animation will start when you scroll to element. You can place "
 "here custom ID for trigger"
 msgstr ""
 
-#: functions/el_functions.php:945
+#: functions/el_functions.php:946
 msgid "Interpolate animation by Scroll"
 msgstr ""
 
-#: functions/el_functions.php:946
+#: functions/el_functions.php:947
 msgid ""
 "By default, scroll will trigger full animation. If you want to play "
 "animation by scrolling, place here number of pixels which will be "
 "interpolated with animation. Or place 100% to set object height."
 msgstr ""
 
-#: functions/el_functions.php:957
+#: functions/el_functions.php:958
 msgid "Trigger Hook Height"
 msgstr ""
 
-#: functions/el_functions.php:958
+#: functions/el_functions.php:959
 msgid ""
 "By default, trigger is set to top point of element, but you can change this"
 msgstr ""
 
-#: functions/el_functions.php:970
+#: functions/el_functions.php:971
 #, fuzzy
 #| msgid "Infinite scroll"
 msgid "Css ID of pin item while scroll"
 msgstr "Scroll infinito"
 
-#: functions/el_functions.php:971
+#: functions/el_functions.php:972
 #, php-format
 msgid ""
 "We recommend to add also 100% of duration and custom trigger Id to make this "
 "working"
 msgstr ""
 
-#: functions/el_functions.php:979
+#: functions/el_functions.php:980
 #, fuzzy
 #| msgid "Disable second column?"
 msgid "Disable reverse on scroll"
 msgstr "¿Deshabilitar la segunda columna?"
 
-#: functions/el_functions.php:992
+#: functions/el_functions.php:993
 #, fuzzy
 #| msgid "Video Post"
 msgid "Video Object"
 msgstr "Post de video"
 
-#: functions/el_functions.php:1004
+#: functions/el_functions.php:1005
 #, fuzzy
 #| msgid "Title of video :"
 msgid "Time for video(s)"
 msgstr "Título del video:"
 
-#: functions/el_functions.php:1025
+#: functions/el_functions.php:1026
 #, fuzzy
 #| msgid "Enable Overlay?"
 msgid "Enabled Reveal"
 msgstr "¿Habilitar superposición?"
 
-#: functions/el_functions.php:1037
+#: functions/el_functions.php:1038
 #, fuzzy
 #| msgid "Store Banner"
 msgid "Direction"
 msgstr "Banner de tienda"
 
-#: functions/el_functions.php:1041
+#: functions/el_functions.php:1042
 msgid "Left to Right"
 msgstr ""
 
-#: functions/el_functions.php:1042
+#: functions/el_functions.php:1043
 msgid "Right to Left"
 msgstr ""
 
-#: functions/el_functions.php:1043
+#: functions/el_functions.php:1044
 #, fuzzy
 #| msgid "Top and bottom"
 msgid "Top to Bottom"
 msgstr "Arriba y abajo"
 
-#: functions/el_functions.php:1044
+#: functions/el_functions.php:1045
 #, fuzzy
 #| msgid "Black no border"
 msgid "Bottom to top"
 msgstr "Negro sin borde"
 
-#: functions/el_functions.php:1053 functions/el_functions.php:1111
+#: functions/el_functions.php:1054 functions/el_functions.php:1112
 msgid "Speed"
 msgstr ""
 
-#: functions/el_functions.php:1066
+#: functions/el_functions.php:1067
 msgid "Delay"
 msgstr ""
 
-#: functions/el_functions.php:1100
+#: functions/el_functions.php:1101
 #, fuzzy
 #| msgid "Enable ajax search?"
 msgid "Enable scroll parallax effect"
 msgstr "¿Habilitar búsqueda Ajax?"
 
-#: functions/el_functions.php:1125
+#: functions/el_functions.php:1126
 #, fuzzy
 #| msgid "Enable login/register section"
 msgid "Enable reverse direction"
 msgstr "Habilitar sección de iniciar sesión/registro"
 
-#: functions/el_functions.php:1146
+#: functions/el_functions.php:1147
 #, fuzzy
 #| msgid "Enable ajax search?"
 msgid "Enable mouse move effect"
 msgstr "¿Habilitar búsqueda Ajax?"
 
-#: functions/el_functions.php:1157
+#: functions/el_functions.php:1158
 msgid "Strength for x and y"
 msgstr ""
 
-#: functions/el_functions.php:1171
+#: functions/el_functions.php:1172
 #, fuzzy
 #| msgid "Set text for button"
 msgid "Strength for tilt"
 msgstr "Establecer texto para el botón"
 
-#: functions/el_functions.php:1224
+#: functions/el_functions.php:1225
 #, fuzzy
 #| msgid "Custom CSS"
 msgid "Custom JS, CSS"
 msgstr "CSS personalizado"
 
-#: functions/el_functions.php:1231
+#: functions/el_functions.php:1232
 #, fuzzy
 #| msgid "Enter shortcode"
 msgid "Enter your JS code"
 msgstr "Ingrese shortcode"
 
-#: functions/el_functions.php:1240
+#: functions/el_functions.php:1241
 #, fuzzy
 #| msgid "Enter shortcode"
 msgid "Enter your CSS code"
@@ -3549,11 +3549,11 @@ msgstr "Archivo del autor \"%s\""
 msgid "Error 404"
 msgstr "Error 404"
 
-#: functions/helper_functions.php:775 functions/helper_functions.php:794
+#: functions/helper_functions.php:800 functions/helper_functions.php:819
 msgid "back to menu"
 msgstr "regresar al menú"
 
-#: functions/helper_functions.php:996 inc/post_layout/single-big-offer.php:234
+#: functions/helper_functions.php:1021 inc/post_layout/single-big-offer.php:234
 #: inc/post_layout/single-ce-compare-autocontent.php:171
 #: inc/post_layout/single-meta-compact.php:89
 #: inc/post_layout/single-offer-reviewscore.php:127
@@ -3562,7 +3562,7 @@ msgstr "regresar al menú"
 msgid "Saved"
 msgstr "Guardar"
 
-#: functions/helper_functions.php:997 inc/post_layout/single-big-offer.php:235
+#: functions/helper_functions.php:1022 inc/post_layout/single-big-offer.php:235
 #: inc/post_layout/single-ce-compare-autocontent.php:172
 #: inc/post_layout/single-meta-compact.php:90
 #: inc/post_layout/single-offer-reviewscore.php:128
@@ -3571,7 +3571,7 @@ msgstr "Guardar"
 msgid "Removed"
 msgstr "Eliminar"
 
-#: functions/helper_functions.php:1022
+#: functions/helper_functions.php:1047
 #, fuzzy
 #| msgid "Check Icon"
 msgid "Check out:"
@@ -3662,10 +3662,10 @@ msgstr "Calificación del usuario"
 msgid "reviews"
 msgstr "reseñas"
 
-#: functions/review_functions.php:538 inc/product_layout/woo_compact.php:174
-#: shortcodes/shortcodes.php:5335 shortcodes/shortcodes.php:5342
-#: shortcodes/shortcodes.php:5364 shortcodes/shortcodes.php:5369
-#: shortcodes/shortcodes.php:5506 shortcodes/shortcodes.php:5583
+#: functions/review_functions.php:538 inc/product_layout/woo_compact.php:175
+#: shortcodes/shortcodes.php:5340 shortcodes/shortcodes.php:5347
+#: shortcodes/shortcodes.php:5369 shortcodes/shortcodes.php:5374
+#: shortcodes/shortcodes.php:5511 shortcodes/shortcodes.php:5588
 msgid "Expert Score"
 msgstr "Puntaje de experto"
 
@@ -3674,12 +3674,12 @@ msgid "User's score"
 msgstr "Puntuacion del usuario"
 
 #: functions/review_functions.php:595 functions/user_review_functions.php:33
-#: functions/user_review_no_editor.php:32 shortcodes/shortcodes.php:5293
+#: functions/user_review_no_editor.php:32 shortcodes/shortcodes.php:5298
 msgid "PROS"
 msgstr "PROS"
 
 #: functions/review_functions.php:609 functions/user_review_functions.php:33
-#: functions/user_review_no_editor.php:32 shortcodes/shortcodes.php:5295
+#: functions/user_review_no_editor.php:32 shortcodes/shortcodes.php:5300
 msgid "CONS"
 msgstr "CONS"
 
@@ -3799,11 +3799,11 @@ msgstr ""
 msgid "You don't have any favorite store."
 msgstr ""
 
-#: functions/user_review_functions.php:327 shortcodes/shortcodes.php:5770
+#: functions/user_review_functions.php:327 shortcodes/shortcodes.php:5777
 msgid "Rated"
 msgstr "Clasificado"
 
-#: functions/user_review_functions.php:327 shortcodes/shortcodes.php:5770
+#: functions/user_review_functions.php:327 shortcodes/shortcodes.php:5777
 #: woocommerce/single-product-reviews.php:46
 msgid "out of"
 msgstr "fuera de"
@@ -4927,6 +4927,7 @@ msgstr "Tipo de área"
 #: functions/vc_functions.php:2685 functions/vc_functions.php:2696
 #: functions/vc_functions.php:2703 functions/vc_functions.php:2711
 #: rehub-elementor/wpsm-box.php:46 rehub-elementor/wpsm-numhead.php:46
+#: rehub-elementor/wpsm-theme.php:46
 msgid "Control"
 msgstr "Control"
 
@@ -5530,7 +5531,7 @@ msgid "Offer old price"
 msgstr "Precio antiguo de la oferta"
 
 #: functions/vc_functions.php:2343 rehub-elementor/wpsm-offerbox.php:53
-#: shortcodes/shortcodes.php:4746
+#: shortcodes/shortcodes.php:4751
 msgid "Offer url"
 msgstr "Url de la oferta"
 
@@ -5540,7 +5541,7 @@ msgstr "Url de la oferta"
 msgid "Button text"
 msgstr "Texto del botón"
 
-#: functions/vc_functions.php:2353 shortcodes/shortcodes.php:4742
+#: functions/vc_functions.php:2353 shortcodes/shortcodes.php:4747
 msgid "Name of product"
 msgstr "Nombre del producto"
 
@@ -5761,8 +5762,8 @@ msgstr "Título de pros"
 
 #: functions/vc_functions.php:2784 functions/woo_functions.php:611
 #: inc/parts/listbuilder.php:290 inc/parts/woolistmain.php:211
-#: inc/product_layout/woo_compact.php:204
-#: inc/product_layout/woo_directory.php:186
+#: inc/product_layout/woo_compact.php:205
+#: inc/product_layout/woo_directory.php:200
 #: shortcodes/tinyMCE/includes/proscons.php:59
 msgid "PROS:"
 msgstr "PROS:"
@@ -5775,6 +5776,7 @@ msgstr "PROS:"
 #: rehub-elementor/wpsm-buttonpopup.php:113
 #: rehub-elementor/wpsm-itinerary.php:78 rehub-elementor/wpsm-numhead.php:91
 #: rehub-elementor/wpsm-proscons.php:72 rehub-elementor/wpsm-proscons.php:86
+#: rehub-elementor/wpsm-theme.php:111
 #: shortcodes/tinyMCE/includes/accordion.php:44
 #: shortcodes/tinyMCE/includes/itinerary.php:18
 #: shortcodes/tinyMCE/includes/itinerary.php:26
@@ -5797,8 +5799,8 @@ msgstr "Título de contras"
 
 #: functions/vc_functions.php:2808 functions/woo_functions.php:611
 #: inc/parts/listbuilder.php:296 inc/parts/woolistmain.php:223
-#: inc/product_layout/woo_compact.php:216
-#: inc/product_layout/woo_directory.php:198
+#: inc/product_layout/woo_compact.php:217
+#: inc/product_layout/woo_directory.php:212
 #: shortcodes/tinyMCE/includes/proscons.php:60
 msgid "CONS:"
 msgstr "CONS:"
@@ -7038,6 +7040,10 @@ msgstr "Vendido por"
 msgid "Add Product"
 msgstr "Añadir producto"
 
+#: functions/woo_functions.php:2106 rehub-elementor/wpsm-wooday.php:224
+msgid "Already Sold:"
+msgstr "Vendido:"
+
 #: geo-my-wp/members-locator/search-forms/horizontal-bigfields/content.php:41
 #: geo-my-wp/members-locator/search-forms/horizontal/content.php:41
 #, fuzzy
@@ -7064,7 +7070,7 @@ msgid "Sale!"
 msgstr "Venta!"
 
 #: geo-my-wp/woogridpart.php:159 inc/parts/woogridcompact.php:105
-#: inc/parts/woogridpart.php:166
+#: inc/parts/woogridpart.php:160
 msgid "more"
 msgstr "más"
 
@@ -7163,8 +7169,8 @@ msgstr "Más detalles..."
 msgid "Read full review"
 msgstr "Leer reseña completa"
 
-#: inc/parts/offerbigpart.php:42 shortcodes/module_shortcodes.php:3399
-#: shortcodes/shortcodes.php:3258
+#: inc/parts/offerbigpart.php:42 shortcodes/module_shortcodes.php:3400
+#: shortcodes/shortcodes.php:3259
 msgid "Reveal"
 msgstr "Revelar"
 
@@ -7204,20 +7210,14 @@ msgstr ""
 msgid "Related Articles"
 msgstr "Artículos relacionados"
 
-#: inc/parts/woocolumnpart.php:156 inc/parts/woogridcompact.php:135
-#: inc/parts/woogridpart.php:136 inc/parts/woogridrev.php:101
-#: rehub-elementor/wpsm-wooday.php:224
-msgid "Already Sold:"
-msgstr "Vendido:"
-
-#: inc/parts/woocolumnpart.php:197 inc/parts/woogridcompact.php:162
-#: inc/parts/woogridrev.php:112 inc/parts/woolistmain.php:140
-#: inc/parts/woolistpart.php:159 inc/product_layout/ce_woo_blocks.php:421
-#: inc/product_layout/ce_woo_list.php:340
-#: inc/product_layout/ce_woo_sections.php:322
-#: inc/product_layout/compare_woo_list.php:290
-#: inc/product_layout/full_width_advanced.php:279
-#: inc/product_layout/woo_compact.php:291
+#: inc/parts/woocolumnpart.php:191 inc/parts/woogridcompact.php:156
+#: inc/parts/woogridrev.php:106 inc/parts/woolistmain.php:140
+#: inc/parts/woolistpart.php:159 inc/product_layout/ce_woo_blocks.php:436
+#: inc/product_layout/ce_woo_list.php:355
+#: inc/product_layout/ce_woo_sections.php:337
+#: inc/product_layout/compare_woo_list.php:305
+#: inc/product_layout/full_width_advanced.php:274
+#: inc/product_layout/woo_compact.php:292
 #: inc/product_layout/woo_directory.php:274 inc/top/woobtn.php:22
 #: shortcodes/shortcodes.php:2557
 msgid "Choose offer"
@@ -7251,10 +7251,10 @@ msgid "Manuals"
 msgstr "Manuales"
 
 #: inc/post_layout/single-ce-compare-autocontent.php:252
-#: inc/product_layout/ce_woo_blocks.php:381
-#: inc/product_layout/ce_woo_list.php:301
-#: inc/product_layout/ce_woo_sections.php:280
-#: inc/product_layout/compare_woo_list.php:251
+#: inc/product_layout/ce_woo_blocks.php:396
+#: inc/product_layout/ce_woo_list.php:316
+#: inc/product_layout/ce_woo_sections.php:295
+#: inc/product_layout/compare_woo_list.php:266
 msgid "World News"
 msgstr "Noticias del mundo"
 
@@ -7313,7 +7313,7 @@ msgstr ""
 #: inc/product_layout/full_width_extended.php:41
 #: inc/product_layout/popup_no_sidebar.php:48
 #: inc/product_layout/sections_w_sidebar.php:46
-#: inc/product_layout/sections_w_sidebar.php:191
+#: inc/product_layout/sections_w_sidebar.php:190
 #: inc/product_layout/vendor_woo_list.php:60
 #: inc/product_layout/woo_compact.php:79
 #: inc/product_layout/woo_directory.php:84 inc/top/woobtn.php:42
@@ -7323,7 +7323,7 @@ msgstr "Añadir a Mis Favoritos"
 
 #: inc/product_layout/ce_woo_blocks.php:210
 #: inc/product_layout/full_width_advanced.php:82
-#: inc/product_layout/woo_directory.php:161
+#: inc/product_layout/woo_directory.php:175
 #, fuzzy
 #| msgid "Product Votes"
 msgid "Product is rated as"
@@ -7331,20 +7331,20 @@ msgstr "Me gusta"
 
 #: inc/product_layout/ce_woo_blocks.php:210
 #: inc/product_layout/full_width_advanced.php:82
-#: inc/product_layout/woo_directory.php:161
+#: inc/product_layout/woo_directory.php:175
 #, fuzzy
 #| msgid "Edit category"
 msgid "in category"
 msgstr "Editar categoría"
 
-#: inc/product_layout/ce_woo_blocks.php:361
-#: inc/product_layout/ce_woo_list.php:282
+#: inc/product_layout/ce_woo_blocks.php:376
+#: inc/product_layout/ce_woo_list.php:297
 msgid "Prices"
 msgstr "Precios"
 
-#: inc/product_layout/ce_woo_blocks.php:366
-#: inc/product_layout/ce_woo_list.php:287
-#: inc/product_layout/ce_woo_sections.php:286
+#: inc/product_layout/ce_woo_blocks.php:381
+#: inc/product_layout/ce_woo_list.php:302
+#: inc/product_layout/ce_woo_sections.php:301
 msgid "Price History"
 msgstr "Historial de precios"
 
@@ -7375,8 +7375,8 @@ msgid "Prices start from:"
 msgstr "Los precios comienzan desde:"
 
 #: inc/top/reviewcolumn.php:41 inc/top/reviewlinkrow.php:4
-#: inc/top/reviewrow.php:40 shortcodes/shortcodes.php:4650
-#: shortcodes/shortcodes.php:5370
+#: inc/top/reviewrow.php:40 shortcodes/shortcodes.php:4654
+#: shortcodes/shortcodes.php:5375
 msgid "Read review"
 msgstr "Leer reseña"
 
@@ -7430,8 +7430,12 @@ msgid "without cashback"
 msgstr ""
 
 #: inc/user-login.php:179
-msgid "Login/Register access is temporary disabled"
-msgstr "El inicio de sesión/registro está temporalmente inhabilitado"
+#, fuzzy
+#| msgid "When enabled, save permalinks in Settings - Permalinks"
+msgid "Enable registration in settings - general"
+msgstr ""
+"Cuando está habilitado, guarde los enlaces permanentes en Ajustes - Enlaces "
+"permanentes"
 
 #: inc/user-login.php:217 inc/user-login.php:262 inc/user-login.php:444
 msgid "Session has expired, please reload the page and try again"
@@ -8444,24 +8448,14 @@ msgstr "Deshabilitar meta"
 msgid "3d canvas"
 msgstr "Hover banner animado"
 
-#: rehub-elementor/wpsm-3dcanvas.php:55 rehub-elementor/wpsm-canvas.php:55
-#: rehub-elementor/wpsm-catbox.php:56 rehub-elementor/wpsm-countdown.php:53
-#: rehub-elementor/wpsm-hover-banner.php:54
-#: rehub-elementor/wpsm-itinerary.php:53
-#: rehub-elementor/wpsm-news-ticker.php:51 rehub-elementor/wpsm-newslist.php:41
-#: rehub-elementor/wpsm-regularblog.php:40
-#: rehub-elementor/wpsm-reviewbox.php:46 rehub-elementor/wpsm-tabevery.php:57
-#: rehub-elementor/wpsm-taxarchive.php:49
-#: rehub-elementor/wpsm-twocolnews.php:74 rehub-elementor/wpsm-videolist.php:55
-#: rehub-elementor/wpsm-woocomparebars.php:29
-#: rehub-elementor/wpsm-wooday.php:31
-msgid "General"
-msgstr "General"
+#: rehub-elementor/wpsm-3dcanvas.php:55
+msgid "GLTF Model loader"
+msgstr ""
 
 #: rehub-elementor/wpsm-3dcanvas.php:60
 #, fuzzy
 #| msgid "Url of feed"
-msgid "Url on gltf scene"
+msgid "Url on gltf, glb model"
 msgstr "URL de la realimentación (feed)"
 
 #: rehub-elementor/wpsm-3dcanvas.php:68
@@ -8473,225 +8467,267 @@ msgstr "Tamaño del borde:"
 #: rehub-elementor/wpsm-3dcanvas.php:79
 #, fuzzy
 #| msgid "Set offset"
-msgid "Camera X offset"
+msgid "Model X offset"
 msgstr "Establecer offset"
 
 #: rehub-elementor/wpsm-3dcanvas.php:97
 #, fuzzy
 #| msgid "Set offset"
-msgid "Camera Y offset"
+msgid "Model Y offset"
 msgstr "Establecer offset"
 
 #: rehub-elementor/wpsm-3dcanvas.php:115
 #, fuzzy
 #| msgid "Set offset"
-msgid "Camera z offset"
-msgstr "Establecer offset"
-
-#: rehub-elementor/wpsm-3dcanvas.php:133
-#, fuzzy
-#| msgid "Set offset"
-msgid "Model X offset"
-msgstr "Establecer offset"
-
-#: rehub-elementor/wpsm-3dcanvas.php:151
-#, fuzzy
-#| msgid "Set offset"
-msgid "Model Y offset"
-msgstr "Establecer offset"
-
-#: rehub-elementor/wpsm-3dcanvas.php:169
-#, fuzzy
-#| msgid "Set offset"
 msgid "Model z offset"
 msgstr "Establecer offset"
 
-#: rehub-elementor/wpsm-3dcanvas.php:189
-#, fuzzy
-#| msgid "Location"
-msgid "Rotation type"
-msgstr "Ubicación"
-
-#: rehub-elementor/wpsm-3dcanvas.php:194
-#, fuzzy
-#| msgid "Infinite scroll"
-msgid "Infinite"
-msgstr "Scroll infinito"
-
-#: rehub-elementor/wpsm-3dcanvas.php:195
-#, fuzzy
-#| msgid "Remove"
-msgid "Mouse move"
-msgstr "Eliminar"
-
-#: rehub-elementor/wpsm-3dcanvas.php:202
-#, fuzzy
-#| msgid "Disable bold?"
-msgid "Disable zoom?"
-msgstr "¿Desactivar la negrita?"
-
-#: rehub-elementor/wpsm-3dcanvas.php:214
-#, fuzzy
-#| msgid "Location"
-msgid "Rotation X strength"
-msgstr "Ubicación"
-
-#: rehub-elementor/wpsm-3dcanvas.php:228
-#, fuzzy
-#| msgid "Location"
-msgid "Rotation Y strength"
-msgstr "Ubicación"
-
-#: rehub-elementor/wpsm-3dcanvas.php:242
-#, fuzzy
-#| msgid "Location"
-msgid "Rotation Z strength"
-msgstr "Ubicación"
-
-#: rehub-elementor/wpsm-3dcanvas.php:256
-#, fuzzy
-#| msgid "Remove Store Icon"
-msgid "Move Strength"
-msgstr "Eliminar icono de tienda"
-
-#: rehub-elementor/wpsm-3dcanvas.php:271
+#: rehub-elementor/wpsm-3dcanvas.php:134
 #, fuzzy
 #| msgid "Enable panel?"
 msgid "Enable point light?"
 msgstr "¿Habilitar panel?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:283 rehub-elementor/wpsm-3dcanvas.php:405
-#: rehub-elementor/wpsm-3dcanvas.php:510 rehub-elementor/wpsm-3dcanvas.php:550
+#: rehub-elementor/wpsm-3dcanvas.php:146 rehub-elementor/wpsm-3dcanvas.php:268
+#: rehub-elementor/wpsm-3dcanvas.php:373 rehub-elementor/wpsm-3dcanvas.php:413
 #, fuzzy
 #| msgid "Street"
 msgid "Strength"
 msgstr "Dirección"
 
-#: rehub-elementor/wpsm-3dcanvas.php:304
+#: rehub-elementor/wpsm-3dcanvas.php:167
 msgid "Diffuse"
 msgstr ""
 
-#: rehub-elementor/wpsm-3dcanvas.php:330 rehub-elementor/wpsm-3dcanvas.php:435
+#: rehub-elementor/wpsm-3dcanvas.php:193 rehub-elementor/wpsm-3dcanvas.php:298
 #, fuzzy
 #| msgid "Set offset"
 msgid "Light X offset"
 msgstr "Establecer offset"
 
-#: rehub-elementor/wpsm-3dcanvas.php:351 rehub-elementor/wpsm-3dcanvas.php:456
+#: rehub-elementor/wpsm-3dcanvas.php:214 rehub-elementor/wpsm-3dcanvas.php:319
 #, fuzzy
 #| msgid "Set offset"
 msgid "Light Y offset"
 msgstr "Establecer offset"
 
-#: rehub-elementor/wpsm-3dcanvas.php:372 rehub-elementor/wpsm-3dcanvas.php:477
+#: rehub-elementor/wpsm-3dcanvas.php:235 rehub-elementor/wpsm-3dcanvas.php:340
 #, fuzzy
 #| msgid "Set offset"
 msgid "Light z offset"
 msgstr "Establecer offset"
 
-#: rehub-elementor/wpsm-3dcanvas.php:394
+#: rehub-elementor/wpsm-3dcanvas.php:257
 #, fuzzy
 #| msgid "Enable login/register section"
 msgid "Enable directional light?"
 msgstr "Habilitar sección de iniciar sesión/registro"
 
-#: rehub-elementor/wpsm-3dcanvas.php:499
+#: rehub-elementor/wpsm-3dcanvas.php:362
 #, fuzzy
 #| msgid "Enable pagination?"
 msgid "Enable Ambient light?"
 msgstr "¿Habilitar paginacion?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:539
+#: rehub-elementor/wpsm-3dcanvas.php:402
 #, fuzzy
 #| msgid "Enable timer?"
 msgid "Enable environment image?"
 msgstr "¿Habilitar temporizador?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:569
+#: rehub-elementor/wpsm-3dcanvas.php:432
 #, fuzzy
 #| msgid "Custom image size?"
 msgid "Custom right image (px)"
 msgstr "¿Tamaño de imagen personalizado?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:580
+#: rehub-elementor/wpsm-3dcanvas.php:443
 #, fuzzy
 #| msgid "Custom image size?"
 msgid "Custom left image (nx)"
 msgstr "¿Tamaño de imagen personalizado?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:591
+#: rehub-elementor/wpsm-3dcanvas.php:454
 #, fuzzy
 #| msgid "Custom image size?"
 msgid "Custom top image (py)"
 msgstr "¿Tamaño de imagen personalizado?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:602
+#: rehub-elementor/wpsm-3dcanvas.php:465
 #, fuzzy
 #| msgid "Custom image size?"
 msgid "Custom bottom image (ny)"
 msgstr "¿Tamaño de imagen personalizado?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:613
+#: rehub-elementor/wpsm-3dcanvas.php:476
 #, fuzzy
 #| msgid "Custom image size?"
 msgid "Custom front image (pz)"
 msgstr "¿Tamaño de imagen personalizado?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:624
+#: rehub-elementor/wpsm-3dcanvas.php:487
 #, fuzzy
 #| msgid "Custom image size?"
 msgid "Custom back image (nz)"
 msgstr "¿Tamaño de imagen personalizado?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:636
+#: rehub-elementor/wpsm-3dcanvas.php:499
 msgid "Url on shaderfrog json"
 msgstr ""
 
-#: rehub-elementor/wpsm-3dcanvas.php:647
+#: rehub-elementor/wpsm-3dcanvas.php:505
+msgid "Mesh name to apply shader"
+msgstr ""
+
+#: rehub-elementor/wpsm-3dcanvas.php:515
 msgid "Get by mesh name"
 msgstr ""
 
-#: rehub-elementor/wpsm-3dcanvas.php:689
+#: rehub-elementor/wpsm-3dcanvas.php:525
+msgid "Center pivot and geo"
+msgstr ""
+
+#: rehub-elementor/wpsm-3dcanvas.php:565
 #, fuzzy
 #| msgid "Location"
 msgid "Rotation Z"
 msgstr "Ubicación"
 
-#: rehub-elementor/wpsm-3dcanvas.php:705
+#: rehub-elementor/wpsm-3dcanvas.php:580
 #, fuzzy
 #| msgid "Location"
 msgid "Position X"
 msgstr "Ubicación"
 
-#: rehub-elementor/wpsm-3dcanvas.php:720
+#: rehub-elementor/wpsm-3dcanvas.php:595
 #, fuzzy
 #| msgid "Location"
 msgid "Position Y"
 msgstr "Ubicación"
 
-#: rehub-elementor/wpsm-3dcanvas.php:735
+#: rehub-elementor/wpsm-3dcanvas.php:610
 #, fuzzy
 #| msgid "Text Position"
 msgid "Position Z"
 msgstr "Posición del texto"
 
-#: rehub-elementor/wpsm-3dcanvas.php:865
+#: rehub-elementor/wpsm-3dcanvas.php:734
 #, fuzzy
 #| msgid "Activation Key:"
 msgid "Mesh Animations"
 msgstr "Clave de activación:"
 
-#: rehub-elementor/wpsm-3dcanvas.php:874 rehub-elementor/wpsm-canvas.php:517
+#: rehub-elementor/wpsm-3dcanvas.php:745
+#, fuzzy
+#| msgid "Size"
+msgid "Canvas Size"
+msgstr "Tamaño"
+
+#: rehub-elementor/wpsm-3dcanvas.php:751 rehub-elementor/wpsm-canvas.php:517
 #, fuzzy
 #| msgid "Full width?"
 msgid "Area width"
 msgstr "¿Ancho completo?"
 
-#: rehub-elementor/wpsm-3dcanvas.php:900 rehub-elementor/wpsm-canvas.php:542
+#: rehub-elementor/wpsm-3dcanvas.php:777 rehub-elementor/wpsm-canvas.php:542
 #, fuzzy
 #| msgid "Image size"
 msgid "Area height"
 msgstr "Tamaño de imagen"
+
+#: rehub-elementor/wpsm-3dcanvas.php:804
+msgid "Camera and Orbit Controller"
+msgstr ""
+
+#: rehub-elementor/wpsm-3dcanvas.php:810
+#, fuzzy
+#| msgid "Set offset"
+msgid "Camera X offset"
+msgstr "Establecer offset"
+
+#: rehub-elementor/wpsm-3dcanvas.php:828
+#, fuzzy
+#| msgid "Set offset"
+msgid "Camera Y offset"
+msgstr "Establecer offset"
+
+#: rehub-elementor/wpsm-3dcanvas.php:846
+#, fuzzy
+#| msgid "Set offset"
+msgid "Camera z offset"
+msgstr "Establecer offset"
+
+#: rehub-elementor/wpsm-3dcanvas.php:864
+#, fuzzy
+#| msgid "Location"
+msgid "Rotation type"
+msgstr "Ubicación"
+
+#: rehub-elementor/wpsm-3dcanvas.php:870
+#, fuzzy
+#| msgid "Enable pagination?"
+msgid "Model Infinite rotation"
+msgstr "¿Habilitar paginacion?"
+
+#: rehub-elementor/wpsm-3dcanvas.php:871
+#, fuzzy
+#| msgid "Enable pagination?"
+msgid "Full Scene Infinite rotation"
+msgstr "¿Habilitar paginacion?"
+
+#: rehub-elementor/wpsm-3dcanvas.php:872
+msgid "Model rotation On Mouse move"
+msgstr ""
+
+#: rehub-elementor/wpsm-3dcanvas.php:873
+msgid "Full scene rotation On Mouse move"
+msgstr ""
+
+#: rehub-elementor/wpsm-3dcanvas.php:880
+#, fuzzy
+#| msgid "Location"
+msgid "Rotation X strength"
+msgstr "Ubicación"
+
+#: rehub-elementor/wpsm-3dcanvas.php:893
+#, fuzzy
+#| msgid "Location"
+msgid "Rotation Y strength"
+msgstr "Ubicación"
+
+#: rehub-elementor/wpsm-3dcanvas.php:906
+#, fuzzy
+#| msgid "Location"
+msgid "Rotation Z strength"
+msgstr "Ubicación"
+
+#: rehub-elementor/wpsm-3dcanvas.php:919
+#, fuzzy
+#| msgid "Remove Store Icon"
+msgid "Move Strength"
+msgstr "Eliminar icono de tienda"
+
+#: rehub-elementor/wpsm-3dcanvas.php:933
+#, fuzzy
+#| msgid "Disable bold?"
+msgid "Disable zooming?"
+msgstr "¿Desactivar la negrita?"
+
+#: rehub-elementor/wpsm-3dcanvas.php:945
+msgid "Three js scripts"
+msgstr ""
+
+#: rehub-elementor/wpsm-3dcanvas.php:952
+msgid "Three JS Scene script"
+msgstr ""
+
+#: rehub-elementor/wpsm-3dcanvas.php:960
+msgid "Three JS gltf model script"
+msgstr ""
+
+#: rehub-elementor/wpsm-3dcanvas.php:968
+msgid "Three JS animation script"
+msgstr ""
 
 #: rehub-elementor/wpsm-CEbox.php:24
 #, fuzzy
@@ -8874,6 +8910,20 @@ msgstr "Establecer texto para el botón"
 #| msgid "Animated Hover banner"
 msgid "Animated canvas"
 msgstr "Hover banner animado"
+
+#: rehub-elementor/wpsm-canvas.php:55 rehub-elementor/wpsm-catbox.php:56
+#: rehub-elementor/wpsm-countdown.php:53
+#: rehub-elementor/wpsm-hover-banner.php:54
+#: rehub-elementor/wpsm-itinerary.php:53
+#: rehub-elementor/wpsm-news-ticker.php:51 rehub-elementor/wpsm-newslist.php:41
+#: rehub-elementor/wpsm-regularblog.php:40
+#: rehub-elementor/wpsm-reviewbox.php:46 rehub-elementor/wpsm-tabevery.php:57
+#: rehub-elementor/wpsm-taxarchive.php:49
+#: rehub-elementor/wpsm-twocolnews.php:74 rehub-elementor/wpsm-videolist.php:55
+#: rehub-elementor/wpsm-woocomparebars.php:29
+#: rehub-elementor/wpsm-wooday.php:31
+msgid "General"
+msgstr "General"
 
 #: rehub-elementor/wpsm-canvas.php:60
 #, fuzzy
@@ -9091,7 +9141,7 @@ msgstr "Color del fondo"
 #: rehub-elementor/wpsm-cardbox.php:156
 #: rehub-elementor/wpsm-hover-banner.php:167
 #: rehub-elementor/wpsm-tabevery.php:103
-#: rehub-elementor/wpsm-taxarchive.php:121
+#: rehub-elementor/wpsm-taxarchive.php:121 rehub-elementor/wpsm-theme.php:92
 #, fuzzy
 #| msgid "Elements and typography"
 msgid "Title Typography"
@@ -9758,7 +9808,7 @@ msgstr ""
 msgid "Tab title"
 msgstr "Título"
 
-#: rehub-elementor/wpsm-tabevery.php:85
+#: rehub-elementor/wpsm-tabevery.php:85 rehub-elementor/wpsm-theme.php:100
 #, fuzzy
 #| msgid "Set text for button"
 msgid "Set text color"
@@ -9949,6 +9999,142 @@ msgstr "¿Mostrar imagen primero?"
 #| msgid "Hide empty categories"
 msgid "Hide Empty categories?"
 msgstr "Ocultar categorías vacías"
+
+#: rehub-elementor/wpsm-theme.php:22 rehub-elementor/wpsm-theme.php:52
+msgid "Theme Elements"
+msgstr ""
+
+#: rehub-elementor/wpsm-theme.php:56
+#, fuzzy
+#| msgid "Website"
+msgid "Website logo"
+msgstr "Sitio web"
+
+#: rehub-elementor/wpsm-theme.php:57
+#, fuzzy
+#| msgid "Text on button"
+msgid "Cart button"
+msgstr "Texto en el botón"
+
+#: rehub-elementor/wpsm-theme.php:58
+#, fuzzy
+#| msgid "No icon"
+msgid "Login icon"
+msgstr "Sin icono"
+
+#: rehub-elementor/wpsm-theme.php:59
+#, fuzzy
+#| msgid "Text on button"
+msgid "Login button"
+msgstr "Texto en el botón"
+
+#: rehub-elementor/wpsm-theme.php:60
+#, fuzzy
+#| msgid "Add to wishlist"
+msgid "Wishlist icon"
+msgstr "Añadir a Mis Favoritos"
+
+#: rehub-elementor/wpsm-theme.php:61
+#, fuzzy
+#| msgid "Comparison"
+msgid "Comparision icon"
+msgstr "Comparación"
+
+#: rehub-elementor/wpsm-theme.php:62
+#, fuzzy
+#| msgid "Search store"
+msgid "Search form"
+msgstr "Buscar tienda"
+
+#: rehub-elementor/wpsm-theme.php:63
+#, fuzzy
+#| msgid "Top Menu"
+msgid "Desktop Menu"
+msgstr "Menú superior"
+
+#: rehub-elementor/wpsm-theme.php:64
+#, fuzzy
+#| msgid "Mobile & AMP"
+msgid "Mobile Menu"
+msgstr "Móvil & AMP"
+
+#: rehub-elementor/wpsm-theme.php:69
+#, fuzzy
+#| msgid "Url of Twitter page"
+msgid "Url on wishlist page"
+msgstr "Link de Twitter"
+
+#: rehub-elementor/wpsm-theme.php:70
+msgid "Set url on your page where you have [rh_get_user_favorites] shortcode"
+msgstr ""
+
+#: rehub-elementor/wpsm-theme.php:78 rehub-elementor/wpsm-theme.php:116
+#, fuzzy
+#| msgid "Or set background color"
+msgid "Set icon color"
+msgstr "O establece el color de fondo"
+
+#: rehub-elementor/wpsm-theme.php:126
+#, fuzzy
+#| msgid "Custom links"
+msgid "Custom login url"
+msgstr "Enlaces personalizado"
+
+#: rehub-elementor/wpsm-theme.php:127
+msgid ""
+"Set custom url where you have registration form or leave blank to trigger "
+"login popup on click"
+msgstr ""
+
+#: rehub-elementor/wpsm-theme.php:135 rehub-elementor/wpsm-theme.php:157
+#, fuzzy
+#| msgid "Type url for login button"
+msgid "Label under icon"
+msgstr "Escriba url para el botón de inicio de sesión"
+
+#: rehub-elementor/wpsm-theme.php:145
+#, fuzzy
+#| msgid "Show button?"
+msgid "Show as button?"
+msgstr "¿Mostrar botón?"
+
+#: rehub-elementor/wpsm-theme.php:146
+msgid "Colors can be set in Theme option - Appearance"
+msgstr ""
+
+#: rehub-elementor/wpsm-theme.php:177
+#, fuzzy
+#| msgid "Upload logo"
+msgid "Upload Logo"
+msgstr "Subir logo"
+
+#: rehub-elementor/wpsm-theme.php:177
+#, fuzzy
+#| msgid "Logo & favicon"
+msgid "Theme Options - Logo & favicon"
+msgstr "Logo y Favicon"
+
+#: rehub-elementor/wpsm-theme.php:192
+#, fuzzy
+#| msgid "Category name"
+msgid "WooCommerce plugin is not active"
+msgstr "Nombre de categoría"
+
+#: rehub-elementor/wpsm-theme.php:232
+#, fuzzy
+#| msgid "Select page for Wishlist"
+msgid "Select page for wishlist"
+msgstr "Seleccione la página para Lista de deseos"
+
+#: rehub-elementor/wpsm-theme.php:242
+msgid "Select page for comparison"
+msgstr "Seleccionar página para comparar"
+
+#: rehub-elementor/wpsm-theme.php:242
+#, fuzzy
+#| msgid "Options for multigroup dynamic comparison"
+msgid "Theme Options - Dynamic comparison"
+msgstr "Opciones para la comparación dinámica multigrupo"
 
 #: rehub-elementor/wpsm-twocolnews.php:37
 msgid "Column news block"
@@ -10249,8 +10435,8 @@ msgstr "Color de línea"
 msgid "Search results for:"
 msgstr "Resultados de búsqueda para \"%s\""
 
-#: searchform.php:2 shortcodes/shortcodes.php:4477
-#: shortcodes/shortcodes.php:5140 wcfm/store/wcfmmp-view-store-sidebar.php:34
+#: searchform.php:2 shortcodes/shortcodes.php:4481
+#: shortcodes/shortcodes.php:5145 wcfm/store/wcfmmp-view-store-sidebar.php:34
 #: woocommerce/product-searchform.php:23
 msgid "Search"
 msgstr "Búsqueda"
@@ -10258,6 +10444,11 @@ msgstr "Búsqueda"
 #: shortcodes/module_shortcodes.php:917
 msgid "Choose category"
 msgstr "Elegir la categoría"
+
+#: shortcodes/module_shortcodes.php:919 taxonomy-dealstore.php:71
+#: woocommerce/brandarchive.php:67 woocommerce/product-searchform.php:28
+msgid "All categories"
+msgstr "Todas las categorías"
 
 #: shortcodes/shortcodes.php:861 shortcodes/shortcodes.php:865
 msgid "Members only"
@@ -10306,214 +10497,214 @@ msgstr "Atributos"
 msgid "Out of stock"
 msgstr "Agotado"
 
-#: shortcodes/shortcodes.php:2666
+#: shortcodes/shortcodes.php:2667
 #, fuzzy
 #| msgid "Enter post ids for comparison"
 msgid "No products for comparison"
 msgstr "Ingrese Ids de post para comparar"
 
-#: shortcodes/shortcodes.php:2969
+#: shortcodes/shortcodes.php:2970
 msgid "Average Score"
 msgstr "Puntaje promedio"
 
-#: shortcodes/shortcodes.php:3333
+#: shortcodes/shortcodes.php:3337
 #, fuzzy
 #| msgid "Write message"
 msgid "unread messages"
 msgstr "Escribir mensaje"
 
-#: shortcodes/shortcodes.php:3336
+#: shortcodes/shortcodes.php:3340
 msgid "unread inquiries"
 msgstr ""
 
-#: shortcodes/shortcodes.php:3339
+#: shortcodes/shortcodes.php:3343
 msgid "unread notices"
 msgstr ""
 
-#: shortcodes/shortcodes.php:3374
+#: shortcodes/shortcodes.php:3378
 msgid "Edit Profile"
 msgstr "Editar perfil"
 
-#: shortcodes/shortcodes.php:3381
+#: shortcodes/shortcodes.php:3385
 msgid "Submit a Post"
 msgstr "Añadir publicación"
 
-#: shortcodes/shortcodes.php:3390
+#: shortcodes/shortcodes.php:3394
 msgid "Edit My Posts"
 msgstr "Editar mis posts"
 
-#: shortcodes/shortcodes.php:3407 shortcodes/shortcodes.php:3412
-#: shortcodes/shortcodes.php:3418 shortcodes/shortcodes.php:3428
+#: shortcodes/shortcodes.php:3411 shortcodes/shortcodes.php:3416
+#: shortcodes/shortcodes.php:3422 shortcodes/shortcodes.php:3432
 msgid "Manage Your Shop"
 msgstr "Administrar tienda"
 
-#: shortcodes/shortcodes.php:3436
+#: shortcodes/shortcodes.php:3440
 #, fuzzy
 #| msgid "Manage Your Shop"
 msgid "Manage Your Orders"
 msgstr "Administrar tienda"
 
-#: shortcodes/shortcodes.php:3443
+#: shortcodes/shortcodes.php:3447
 msgid "Log out"
 msgstr "Salir"
 
-#: shortcodes/shortcodes.php:3449 shortcodes/shortcodes.php:3451
-#: shortcodes/shortcodes.php:3455 shortcodes/shortcodes.php:3457
+#: shortcodes/shortcodes.php:3453 shortcodes/shortcodes.php:3455
+#: shortcodes/shortcodes.php:3459 shortcodes/shortcodes.php:3461
 msgid "Login / Register"
 msgstr "Acceder"
 
-#: shortcodes/shortcodes.php:3461
+#: shortcodes/shortcodes.php:3465
 msgid "Login / Register is disabled"
 msgstr "Iniciar sesión / Registro están deshabilitados"
 
-#: shortcodes/shortcodes.php:3516
+#: shortcodes/shortcodes.php:3520
 msgid "Add to compare"
 msgstr "Añadir para comparar"
 
-#: shortcodes/shortcodes.php:3906 shortcodes/shortcodes.php:3927
-#: shortcodes/shortcodes.php:3935 shortcodes/shortcodes.php:3944
-#: shortcodes/shortcodes.php:4006 shortcodes/shortcodes.php:4059
-#: shortcodes/shortcodes.php:4061 shortcodes/shortcodes.php:4067
-#: shortcodes/shortcodes.php:4074 shortcodes/shortcodes.php:4136
+#: shortcodes/shortcodes.php:3910 shortcodes/shortcodes.php:3931
+#: shortcodes/shortcodes.php:3939 shortcodes/shortcodes.php:3948
+#: shortcodes/shortcodes.php:4010 shortcodes/shortcodes.php:4063
+#: shortcodes/shortcodes.php:4065 shortcodes/shortcodes.php:4071
+#: shortcodes/shortcodes.php:4078 shortcodes/shortcodes.php:4140
 #, php-format
 msgid "View all post filed under %s"
 msgstr "Ver todos los posts archivados en %s"
 
-#: shortcodes/shortcodes.php:3935
+#: shortcodes/shortcodes.php:3939
 msgid " Products"
-msgstr "Productos"
+msgstr " Productos"
 
-#: shortcodes/shortcodes.php:4069
+#: shortcodes/shortcodes.php:4073
 #, fuzzy
 #| msgid "Items"
 msgid "items"
 msgstr "Artículos"
 
-#: shortcodes/shortcodes.php:4136
+#: shortcodes/shortcodes.php:4140
 #, fuzzy, php-format
 #| msgid "Send Offer"
 msgid "%d Offers"
 msgstr "Enviar oferta"
 
-#: shortcodes/shortcodes.php:4342
+#: shortcodes/shortcodes.php:4346
 msgid "See all"
 msgstr "Ver todo"
 
-#: shortcodes/shortcodes.php:4476
+#: shortcodes/shortcodes.php:4480
 msgid "Search sellers"
 msgstr "Buscar vendedores"
 
-#: shortcodes/shortcodes.php:4480
+#: shortcodes/shortcodes.php:4484
 msgid "Sort by:"
 msgstr "Ordenar por:"
 
-#: shortcodes/shortcodes.php:4483
+#: shortcodes/shortcodes.php:4487
 msgid "Most popular"
 msgstr "Más populares"
 
-#: shortcodes/shortcodes.php:4484
+#: shortcodes/shortcodes.php:4488
 msgid "Most recent"
 msgstr "Más recientes"
 
-#: shortcodes/shortcodes.php:4505
+#: shortcodes/shortcodes.php:4509
 msgid "Noname Shop"
 msgstr "Tienda sin nombre"
 
-#: shortcodes/shortcodes.php:4571
+#: shortcodes/shortcodes.php:4575
 msgid "Please, login to set location"
 msgstr "Inicie sesión para establecer la ubicación"
 
-#: shortcodes/shortcodes.php:4687
+#: shortcodes/shortcodes.php:4691
 msgid "Add your deal"
 msgstr "Añadir tu oferta"
 
-#: shortcodes/shortcodes.php:4710
+#: shortcodes/shortcodes.php:4692
 #, fuzzy
 #| msgid "Add your deal"
 msgid "Edit your deal"
 msgstr "Añadir tu oferta"
 
-#: shortcodes/shortcodes.php:4738
+#: shortcodes/shortcodes.php:4743
 msgid "Add an Offer"
 msgstr "Añadir una oferta"
 
-#: shortcodes/shortcodes.php:4738
+#: shortcodes/shortcodes.php:4743
 #, fuzzy
 #| msgid "Add an Offer"
 msgid "Edit the Offer"
 msgstr "Añadir una oferta"
 
-#: shortcodes/shortcodes.php:4751
+#: shortcodes/shortcodes.php:4756
 #, fuzzy
 #| msgid "Thumbnails"
 msgid "Thumbnail url"
 msgstr "Miniaturas"
 
-#: shortcodes/shortcodes.php:4756
+#: shortcodes/shortcodes.php:4761
 #, fuzzy
 #| msgid "Offer sale price (example, $55)"
 msgid "Offer sale price (example, 9999.99)"
 msgstr "Precio de la oferta (ejemplo, $55.00)"
 
-#: shortcodes/shortcodes.php:4762
+#: shortcodes/shortcodes.php:4767
 #, fuzzy
 #| msgid "Custom code"
 msgid "Currency..."
 msgstr "Código personalizado"
 
-#: shortcodes/shortcodes.php:4773
+#: shortcodes/shortcodes.php:4778
 msgid "Short description"
 msgstr "Descripción corta"
 
-#: shortcodes/shortcodes.php:4782
+#: shortcodes/shortcodes.php:4787
 msgid "Send"
 msgstr "Enviar"
 
-#: shortcodes/shortcodes.php:4788
+#: shortcodes/shortcodes.php:4793
 msgid "Send Offer"
 msgstr "Enviar oferta"
 
-#: shortcodes/shortcodes.php:4788
+#: shortcodes/shortcodes.php:4793
 #, fuzzy, php-format
 #| msgid "<strong>Thank you, %s!</strong> Your offer has been sent"
 msgid "Thank you, %s! Your offer has been sent"
 msgstr "<Strong> ¡Gracias, %s! </Strong> Su oferta ha sido enviada"
 
-#: shortcodes/shortcodes.php:4790
+#: shortcodes/shortcodes.php:4795
 #, fuzzy
 #| msgid "Featured Offer"
 msgid "Updated Offer"
 msgstr "Oferta destacada"
 
-#: shortcodes/shortcodes.php:4790
+#: shortcodes/shortcodes.php:4795
 #, fuzzy, php-format
 #| msgid "<strong>Thank you, %s!</strong> Your offer has been sent"
 msgid "Thank you, %s! Your offer has been updated"
 msgstr "<Strong> ¡Gracias, %s! </Strong> Su oferta ha sido enviada"
 
-#: shortcodes/shortcodes.php:4798
+#: shortcodes/shortcodes.php:4803
 #, php-format
 msgid "Only users with role %s%s%s are allowed to post deals"
 msgstr ""
 
-#: shortcodes/shortcodes.php:5106
+#: shortcodes/shortcodes.php:5111
 msgid "Write message"
 msgstr "Escribir mensaje"
 
-#: shortcodes/shortcodes.php:5111
+#: shortcodes/shortcodes.php:5116
 #, php-format
 msgid "Profile picture of %s"
 msgstr "Perfil de imagen de %s"
 
-#: shortcodes/shortcodes.php:5448
+#: shortcodes/shortcodes.php:5453
 msgid "+ Positives:"
 msgstr "+ Positivas:"
 
-#: shortcodes/shortcodes.php:5458 shortcodes/shortcodes.php:5472
+#: shortcodes/shortcodes.php:5463 shortcodes/shortcodes.php:5477
 msgid "- Negatives:"
 msgstr "- Negativas:"
 
-#: shortcodes/shortcodes.php:5772
+#: shortcodes/shortcodes.php:5779
 #, fuzzy, php-format
 #| msgid "%s review for %s%s%s"
 #| msgid_plural "%s reviews for %s%s%s"
@@ -11564,11 +11755,6 @@ msgstr "Ir a "
 msgid "Categories"
 msgstr "Lista de categorías"
 
-#: taxonomy-dealstore.php:71 woocommerce/brandarchive.php:67
-#: woocommerce/product-searchform.php:28
-msgid "All categories"
-msgstr "Todas las categorías"
-
 #: taxonomy-dealstore.php:97
 msgid "Coupons"
 msgstr "Cupones"
@@ -11828,6 +12014,19 @@ msgstr "Esperando imagen del producto"
 #~ "vafpress.com\">Vafpress</a>"
 #~ msgstr " "
 
+#~ msgid "Login/Register access is temporary disabled"
+#~ msgstr "El inicio de sesión/registro está temporalmente inhabilitado"
+
+#, fuzzy
+#~| msgid "Infinite scroll"
+#~ msgid "Infinite"
+#~ msgstr "Scroll infinito"
+
+#, fuzzy
+#~| msgid "Remove"
+#~ msgid "Mouse move"
+#~ msgstr "Eliminar"
+
 #~ msgid "News in columns"
 #~ msgstr "Noticias en columnas"
 
@@ -11856,9 +12055,6 @@ msgstr "Esperando imagen del producto"
 
 #~ msgid "at checkout."
 #~ msgstr "al momento de pagar."
-
-#~ msgid "Url of Twitter page"
-#~ msgstr "Link de Twitter"
 
 #~ msgid "Url of Facebook page"
 #~ msgstr "Link de Facebook"
@@ -13298,9 +13494,6 @@ msgstr "Esperando imagen del producto"
 #~ msgid "Insert url that will be display on background"
 #~ msgstr "Insertar URL que se mostrará en el fondo"
 
-#~ msgid "Logo & favicon"
-#~ msgstr "Logo y Favicon"
-
 #~ msgid "Logo settings"
 #~ msgstr "Ajustes del logo"
 
@@ -13421,11 +13614,6 @@ msgstr "Esperando imagen del producto"
 
 #~ msgid "Enable Login Icon"
 #~ msgstr "Activar Icono de inicio"
-
-#, fuzzy
-#~| msgid "Type url for login button"
-#~ msgid "Label for login icon"
-#~ msgstr "Escriba url para el botón de inicio de sesión"
 
 #, fuzzy
 #~| msgid "Label before news ticker"
@@ -13621,9 +13809,6 @@ msgstr "Esperando imagen del producto"
 #~| msgid "Footer section"
 #~ msgid "Footer Center Align"
 #~ msgstr "Sección de pie de página"
-
-#~ msgid "Mobile & AMP"
-#~ msgstr "Móvil & AMP"
 
 #~ msgid "Enable compact logo of header on mobiles"
 #~ msgstr "Habilitar el logo compacto de cabecera en los móviles"
@@ -14044,11 +14229,6 @@ msgstr "Esperando imagen del producto"
 #~ msgid "Enable Affiliate Store taxonomy for posts"
 #~ msgstr "Habilitar taxonomía de marca (tienda afiliada) para publicaciones"
 
-#~ msgid "When enabled, save permalinks in Settings - Permalinks"
-#~ msgstr ""
-#~ "Cuando está habilitado, guarde los enlaces permanentes en Ajustes - "
-#~ "Enlaces permanentes"
-
 #, fuzzy
 #~| msgid "Select Category Layout"
 #~ msgid "Select Affiliate Store Layout"
@@ -14218,9 +14398,6 @@ msgstr "Esperando imagen del producto"
 #~| msgid "Disable date"
 #~ msgid "Disable wishlist"
 #~ msgstr "Deshabilitar fecha"
-
-#~ msgid "Select page for Wishlist"
-#~ msgstr "Seleccione la página para Lista de deseos"
 
 #~ msgid ""
 #~ "By default, second click on heart icon will remove item from wishlist. If "
@@ -14950,18 +15127,12 @@ msgstr "Esperando imagen del producto"
 #~ msgid "Options for single group dynamic comparison"
 #~ msgstr "Opciones para la comparación dinámica de un solo grupo"
 
-#~ msgid "Select page for comparison"
-#~ msgstr "Seleccionar página para comparar"
-
 #, fuzzy
 #~| msgid "Page must have top chart constructor template"
 #~ msgid ""
 #~ "Page must have top chart constructor page template or shortcode "
 #~ "[wpsm_woocharts] if you use woocommerce"
 #~ msgstr "La página debe tener una plantilla top chart constructor"
-
-#~ msgid "Options for multigroup dynamic comparison"
-#~ msgstr "Opciones para la comparación dinámica multigrupo"
 
 #~ msgid "Enable Multicategory compare"
 #~ msgstr "Habilitar comparación Multicategoría"
@@ -15623,9 +15794,6 @@ msgstr "Esperando imagen del producto"
 #~ msgid "Will be in bottom of page"
 #~ msgstr "Estará en la parte inferior de la página"
 
-#~ msgid "Upload logo"
-#~ msgstr "Subir logo"
-
 #, fuzzy
 #~| msgid "Upload or choose image here for retailer logo"
 #~ msgid ""
@@ -15634,9 +15802,6 @@ msgstr "Esperando imagen del producto"
 
 #~ msgid "Affiliate Store"
 #~ msgstr "Tiendas de afiliados"
-
-#~ msgid "Search store"
-#~ msgstr "Buscar tienda"
 
 #~ msgid "All stores"
 #~ msgstr "Todas las tiendas"
@@ -15889,9 +16054,6 @@ msgstr "Esperando imagen del producto"
 
 #~ msgid "Icon before title:"
 #~ msgstr "Icono antes del título:"
-
-#~ msgid "No icon"
-#~ msgstr "Sin icono"
 
 #~ msgid "Life Ring"
 #~ msgstr "Anillo de la vida"

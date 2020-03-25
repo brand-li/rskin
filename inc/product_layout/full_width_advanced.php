@@ -181,6 +181,16 @@
 
                 <div class="woo-content-area-full">
                     <?php rh_woo_code_zone('bottom');?>
+                    <?php
+                        /**
+                         * woocommerce_after_single_product_summary hook.
+                         *
+                         * @hooked woocommerce_output_product_data_tabs - 10
+                         * @hooked woocommerce_upsell_display - 15
+                         * @hooked woocommerce_output_related_products - 20
+                         */
+                        do_action( 'woocommerce_after_single_product_summary' );
+                    ?>
                 </div>               
 
                 <!-- Related -->
@@ -226,22 +236,7 @@
                             <div class="content-woo-section pt30 pb20 content-woo-section--<?php echo esc_attr( $key ); ?>" id="section-<?php echo esc_attr( $key ); ?>"><div class="rh-container rh-shadow3">
                                 <?php call_user_func( $tab['callback'], $key, $tab ); ?>
                             </div></div>
-                        <?php endforeach; ?>                        
-
-                        <div class="other-woo-area">
-                            <div class="rh-container">
-                                <?php
-                                    /**
-                                     * woocommerce_after_single_product_summary hook.
-                                     *
-                                     * @hooked woocommerce_output_product_data_tabs - 10
-                                     * @hooked woocommerce_upsell_display - 15
-                                     * @hooked woocommerce_output_related_products - 20
-                                     */
-                                    do_action( 'woocommerce_after_single_product_summary' );
-                                ?>
-                            </div>  
-                        </div>                            
+                        <?php endforeach; ?>                                                  
 
                     </div>
                 </div>                     

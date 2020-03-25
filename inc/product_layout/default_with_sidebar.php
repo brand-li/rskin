@@ -98,16 +98,6 @@
 
                         </div><!-- .summary -->
 
-                        <?php woocommerce_output_product_data_tabs();?>
-
-                        <!-- Related -->
-                            <?php include(rh_locate_template( 'woocommerce/single-product/related-with-sidebar.php' ) ); ?>                         
-                        <!-- /Related --> 
-
-                        <!-- Upsell -->
-                            <?php include(rh_locate_template( 'woocommerce/single-product/upsell-with-sidebar.php' ) ); ?>
-                        <!-- /Upsell -->                                               
-
                         <?php
                             /**
                              * woocommerce_after_single_product_summary hook.
@@ -118,6 +108,16 @@
                              */
                             do_action( 'woocommerce_after_single_product_summary' );
                         ?>
+
+                        <?php woocommerce_output_product_data_tabs();?>
+
+                        <!-- Related -->
+                            <?php include(rh_locate_template( 'woocommerce/single-product/related-with-sidebar.php' ) ); ?>                         
+                        <!-- /Related --> 
+
+                        <!-- Upsell -->
+                            <?php include(rh_locate_template( 'woocommerce/single-product/upsell-with-sidebar.php' ) ); ?>
+                        <!-- /Upsell -->                                               
 
                     </div><!-- #product-<?php echo (int)$post->ID; ?> -->
 

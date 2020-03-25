@@ -127,13 +127,7 @@
             <h3 class="<?php if(rehub_option('wishlist_disable') !='1') :?><?php echo getHotIconclass($post->ID, true); ?><?php endif ;?>"><?php echo rh_expired_or_not($post->ID, 'span');?><a href="<?php echo esc_url($woolink) ;?>"<?php echo ''.$wootarget ;?>><?php the_title();?></a></h3> 
             <?php do_action('rehub_vendor_show_action');?>
         <?php if($soldout):?>
-            <div class="soldoutbar mb10">
-            <?php $randomp = rand(10,100);?>
-            <div class="wpsm-bar minibar wpsm-clearfix mb5" data-percent="<?php echo (float)$randomp;?>%">
-                <div class="wpsm-bar-bar" style="background: #e33333"></div>
-            </div>
-            <div class="soldoutpercent greycolor font70 lineheight15"><?php esc_html_e( 'Already Sold:', 'rehub-theme' );?> <?php echo (float)$randomp;?>%</div>
-            </div>
+            <?php rh_soldout_bar($post->ID);?>
         <?php endif; ?>             
             <?php wc_get_template( 'loop/rating.php' );?>              
             

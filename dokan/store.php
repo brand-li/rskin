@@ -88,7 +88,7 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 						if (rehub_option('woo_design') == 'grid') {
 							$classes[] = 'rh-flex-eq-height grid_woo';
 						}
-						elseif (rehub_option('woo_design') == 'list') {
+						elseif (rehub_option('woo_design') == 'list' || rehub_option('woo_design') == 'deallist') {
 							$classes[] = 'list_woo';
 						}
 						elseif (rehub_option('woo_design') == 'gridrev') {
@@ -116,6 +116,9 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 								}
 								elseif (rehub_option('woo_design') == 'grid'){
 								    include(rh_locate_template('inc/parts/woogridpart.php'));
+								}
+								elseif (rehub_option('woo_design') == 'deallist'){
+								    include(rh_locate_template('inc/parts/woolistpart.php'));
 								}
 								elseif (rehub_option('woo_design') == 'gridrev'){
     								include(rh_locate_template('inc/parts/woogridrev.php'));

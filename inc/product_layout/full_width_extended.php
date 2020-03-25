@@ -86,6 +86,21 @@
                     </div>                     
                 </div>
 
+                <div class="other-woo-area clearfix">
+                    <div class="rh-container">
+                        <?php
+                            /**
+                             * woocommerce_after_single_product_summary hook.
+                             *
+                             * @hooked woocommerce_output_product_data_tabs - 10
+                             * @hooked woocommerce_upsell_display - 15
+                             * @hooked woocommerce_output_related_products - 20
+                             */
+                            do_action( 'woocommerce_after_single_product_summary' );
+                        ?>
+                    </div>  
+                </div>                 
+
                 <?php $tabs = apply_filters( 'woocommerce_product_tabs', array() );
 
                 if ( ! empty( $tabs ) ) : ?>
@@ -108,22 +123,7 @@
                                 <div class="content-woo-section pt30 pb20 content-woo-section--<?php echo esc_attr( $key ); ?>" id="section-<?php echo esc_attr( $key ); ?>"><div class="rh-container">
                                     <?php call_user_func( $tab['callback'], $key, $tab ); ?>
                                 </div></div>
-                            <?php endforeach; ?>
-
-                            <div class="other-woo-area">
-                                <div class="rh-container mt20">
-                                    <?php
-                                        /**
-                                         * woocommerce_after_single_product_summary hook.
-                                         *
-                                         * @hooked woocommerce_output_product_data_tabs - 10
-                                         * @hooked woocommerce_upsell_display - 15
-                                         * @hooked woocommerce_output_related_products - 20
-                                         */
-                                        do_action( 'woocommerce_after_single_product_summary' );
-                                    ?>
-                                </div>  
-                            </div>                            
+                            <?php endforeach; ?>                           
 
                             <div class="flowhidden rh-float-panel" id="float-panel-woo-area">
                                 <div class="rh-container rh-flex-center-align pt10 pb10">

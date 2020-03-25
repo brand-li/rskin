@@ -65,7 +65,7 @@ add_action( 'init', function () {
     require_once (rh_locate_template('rehub-elementor/wpsm-CEbox.php'));
 
     require_once (rh_locate_template('rehub-elementor/wpsm-hover-banner.php'));
-    require_once (rh_locate_template('rehub-elementor/wpsm-box.php'));
+    require_once (rh_locate_template('rehub-elementor/wpsm-theme.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-taxarchive.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-videolist.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-catbox.php'));
@@ -84,6 +84,7 @@ add_action( 'init', function () {
 
     //require_once (rh_locate_template('rehub-elementor/wpsm-twocolnews.php'));
     //require_once (rh_locate_template('rehub-elementor/wpsm-numhead.php')); 
+    //require_once (rh_locate_template('rehub-elementor/wpsm-box.php'));
 });
 
 if(!function_exists('rh_add_el_page_settings_controls')){

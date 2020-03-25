@@ -55,7 +55,7 @@ elseif (rehub_option('woo_design') == 'gridtwo') {
 elseif (rehub_option('woo_design') == 'gridrev') {
 	$classes[] = 'rh-flex-eq-height woogridrev';
 }
-elseif (rehub_option('woo_design') == 'list') {
+elseif (rehub_option('woo_design') == 'list' || rehub_option('woo_design') == 'deallist') {
 	$classes[] = 'list_woo';
 }
 else {

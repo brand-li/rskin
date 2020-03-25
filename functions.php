@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '9.9.4');
+	define('RH_MAIN_THEME_VERSION', '9.9.5');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
@@ -84,11 +84,11 @@ function rehub_framework_register_scripts() {
 	wp_register_script( 'gsapsvgpath', get_template_directory_uri() . '/js/MotionPathPlugin.min.js', array('jquery','gsap'), '3.0.5', true );
 	wp_register_script( 'rh_elcanvas', get_template_directory_uri() . '/js/elcanvas.js', array('jquery'), '1.0.0', true );
 	
-	wp_register_script( 'threejs', get_template_directory_uri() . '/js/three.min.js', array('jquery'), '0.112', true );
-	wp_register_script( 'orbitcontrol', get_template_directory_uri() . '/js/OrbitControls.js', array('jquery', 'threejs'), '1.0', true );
-	wp_register_script( 'gltfloader', get_template_directory_uri() . '/js/GLTFLoader.js', array('jquery', 'threejs'), '1.0', true );
-	wp_register_script( 'shaderfrog', get_template_directory_uri() . '/js/shaderfrog.js', array('jquery', 'threejs'), '1.0', true );
-	wp_register_script( 'gltfinit', get_template_directory_uri() . '/js/gltfinit.js', array('jquery', 'threejs'), '1.0', true );
+	wp_register_script( 'threejs', get_template_directory_uri() . '/js/three.min.js', array(), '0.112', true );
+	wp_register_script( 'orbitcontrol', get_template_directory_uri() . '/js/OrbitControls.js', array('threejs'), '1.0', true );
+	wp_register_script( 'gltfloader', get_template_directory_uri() . '/js/GLTFLoader.js', array('threejs'), '1.0', true );
+	wp_register_script( 'shaderfrog', get_template_directory_uri() . '/js/shaderfrog.js', array('threejs'), '1.0', true );
+	wp_register_script( 'gsapthree', get_template_directory_uri() . '/js/gsapthree.js', array('threejs'), '1.0', true );
 
 	wp_register_script( 'rhreadingprogress', get_template_directory_uri() . '/js/readingprogress.js', array('jquery', 'rehub'), '1.0.0', true );
 }
@@ -1422,7 +1422,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '3.9',
+			'version' 				=> '4.0',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',

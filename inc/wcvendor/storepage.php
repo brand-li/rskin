@@ -223,7 +223,7 @@ $active_short_description = is_active_widget( '', '', 'wcv_store_short_descripti
 					<?php if (rehub_option('woo_design') == 'grid') {
 						$classes[] = 'rh-flex-eq-height grid_woo';
 					}
-					elseif (rehub_option('woo_design') == 'list') {
+					elseif (rehub_option('woo_design') == 'list' || rehub_option('woo_design') == 'deallist') {
 						$classes[] = 'list_woo';
 					}
 					elseif (rehub_option('woo_design') == 'gridtwo'){
@@ -251,6 +251,9 @@ $active_short_description = is_active_widget( '', '', 'wcv_store_short_descripti
 							}
 							elseif (rehub_option('woo_design') == 'grid'){
 							    include(rh_locate_template('inc/parts/woogridpart.php'));
+							}
+							elseif (rehub_option('woo_design') == 'deallist'){
+							    include(rh_locate_template('inc/parts/woolistpart.php'));
 							}
 							elseif (rehub_option('woo_design') == 'gridrev'){
 								include(rh_locate_template('inc/parts/woogridrev.php'));

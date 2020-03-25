@@ -110,7 +110,7 @@ else {
                     </h5>
                 </span>
             <?php else :?>             
-                <?php WPSM_image_resizer::show_static_resized_image(array('lazy'=> false, 'thumb'=> true, 'crop'=> false, 'height'=> 92, 'no_thumb_url' => rehub_woocommerce_placeholder_img_src('')));?>
+                <?php WPSM_image_resizer::show_static_resized_image(array('lazy'=> false, 'thumb'=> true, 'crop'=> false, 'height'=> 92, 'no_thumb_url' => get_template_directory_uri().'/images/default/noimage_123_90.png'));?>
             <?php endif;?>
             </a>
             <div class="<?php echo ''.$deal_type;?>_deal_string text-center deal_string"><?php echo ''.$deal_type_string;?></div>

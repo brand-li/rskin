@@ -336,12 +336,11 @@ var re_ajax_search = {
 //MOBILE MENU AND MEGAMENU
 var NavOverlayRemoved = true;
 var revMenuStyle = function() { 
-    var menu = jQuery('.responsive_nav_wrap'),
+    var menu = jQuery('.rh_mobile_menu'),
         openMenu = menu.find('#dl-trigger'),
         navMenu = menu.find('#slide-menu-mobile'),
         menuList = menu.find('#slide-menu-mobile > .menu'),
         subMenu = menu.find('.sub-menu'),
-        header = jQuery('#main_header'),
         mobilecustomheader = jQuery('#rhmobpnlcustom'),
         windowHeight = jQuery(window).height(),
         mobsidebar = jQuery('#rh_woo_mbl_sidebar'),
@@ -632,7 +631,7 @@ jQuery(document).ready(function($) {
         $( "#main_header .responsive_nav_wrap #mobile-menu-icons" ).prepend( $(".logo-section .mobileinmenu").clone()); 
     }        
     if ($('#logo_mobile_wrapper').length > 0) { 
-        $( "#dl-trigger" ).after($('#logo_mobile_wrapper').html() );
+        $( ".responsive_nav_wrap #dl-trigger" ).after($('#logo_mobile_wrapper').html() );
         $( ".logo_image_insticky, header .logo" ).addClass('hideontablet');
     }       
     if ($('.main-nav .logo-inmenu').length > 0) { 
