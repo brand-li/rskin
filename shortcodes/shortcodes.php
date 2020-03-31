@@ -3278,9 +3278,6 @@ extract(shortcode_atts(array(
 ), $atts));
 $as_button = (!empty($as_btn)) ? ' wpsm-button white medium ' : '';
 $icon_class = (!empty($icon)) ? $icon : 'far fa-sign-in';
-if($icon_class == 'far fa-sign-in' && is_rtl()){
-	$icon_class = 'far fa-sign-in fa-rotate-180';
-}
 $class_show = (!empty($class)) ? ' '.$class.'' : '';
 $output='';
 if (is_user_logged_in()) {

@@ -120,8 +120,10 @@ if (rehub_option('enable_user_sub_id')){
                 $showuser = 'author';
             }elseif(rehub_option('sub_id_show') == 'authorid'){
                 $showuser = 'authorid';
-            }else{
+            }elseif(rehub_option('sub_id_show') == 'name'){
                 $showuser = 'name';
+            }else{
+                return $offer_post_url;
             }
             if($showuser == 'name'){
                 $current_user = wp_get_current_user();
@@ -137,7 +139,7 @@ if (rehub_option('enable_user_sub_id')){
                 $author_id=$post->post_author;
                 $user_info = get_userdata($author_id); 
                 $userlogin = $user_info->user_login;            
-            }            
+            }           
 
             $subidpart = rehub_option('custom_sub_id') ? rehub_option('custom_sub_id') : 'subid=';
             $parsed_query = parse_url( $offer_post_url, PHP_URL_QUERY );
