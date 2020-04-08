@@ -130,22 +130,12 @@ function rehub_before_import_setup( $current_import ){
 			exit();	
 		}		
 	}
-	if( 'ReMarket' === $current_import['import_file_name'] || 'ReDokanNew' === $current_import['import_file_name']) {
+	if( 'ReMarket' === $current_import['import_file_name'] || 'ReDokanNew' === $current_import['import_file_name'] || 'ReDirect' === $current_import['import_file_name']) {
 		if ( ! did_action( 'elementor/loaded' ) ) {
 			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">Elementor</a> plugin to be installed and activated.';		
 			exit();	
 		}	
 	}		
-	if( 'ReDirect' === $current_import['import_file_name']) {
-		if(REHUB_NAME_ACTIVE_THEME != 'REDIRECT'){
-			echo 'This demo requires <a href="'.$childthemeurl.'" target="_blank">Redirect child theme</a> to be installed and activated.';		
-			exit();				
-		}
-		if (!class_exists('WPBakeryVisualComposerAbstract')){
-			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">WPBakery Visual Composer</a> plugin to be installed and activated.';		
-			exit();	
-		}		
-	}
 	if( 'ReThing' === $current_import['import_file_name']) {
 		if(REHUB_NAME_ACTIVE_THEME != 'RETHING'){
 			echo 'This demo requires <a href="'.$childthemeurl.'" target="_blank">Rething child theme</a> to be installed and activated.';		
@@ -190,7 +180,7 @@ function rehub_import_files() {
 	$childthemeurl = 'http://rehubdocs.wpsoul.com/docs/rehub-theme/child-themes/';
 	$themeoptions = admin_url( 'admin.php?page=vpt_option#_menu_aff' );
 	$requirednotice = esc_html__('Make sure that you have active next required plugins:', 'rehub-theme');
-	$optionalnotice = esc_html__('Next plugins are optional. To get full demo functions, make sure that you installed and activated them. However, they are not required for demo and theme, if you think that you will not need them, just ignore them:', 'rehub-theme');
+	$optionalnotice = esc_html__('Next plugins are optional. To get full demo functions, make sure that you installed and activated them. However, they are not required for demo and theme, if you think that you will not need them, just ignore them. If you have no optional plugins before import, you will have some warnings after demo import. Ignore them!', 'rehub-theme');
 	$themenotice = esc_html__('Make sure that you have active next Theme:', 'rehub-theme');
 	$themeoptionnotice = esc_html__('Make sure that you have active next Theme options:', 'rehub-theme');
 	$installpnotice = esc_html__('Install plugins', 'rehub-theme');
@@ -359,19 +349,14 @@ function rehub_import_files() {
 
 	$redirectnotice = $requirednotice.'<ol>';
 	$redirectnotice .= $rhfrontendnotice;
-	$redirectnotice .= $rhvcnotice;
+	$redirectnotice .= $rhelnotice;
 	$redirectnotice .= $rhwoonotice;		
 	$redirectnotice .='</ol>';
 	$redirectnotice .= $optionalnotice.' <a href="'.$wpplugins.'" target="_blank">'.$installpnotice.'</a><ol>';
-	$redirectnotice .= $rhgmwnotice;	
+	$redirectnotice .= $rhgmwpostnotice;	
+	$redirectnotice .= '<li>Contact form 7 (for contact forms)</li>';	
+	$redirectnotice .= '<li>WCFM, WCFM Frontend, WCFM Membership for vendor options</li>';	
 	$redirectnotice .='</ol>';
-	$redirectnotice .=$themenotice.'<ol>';
-	if (REHUB_NAME_ACTIVE_THEME != 'REDIRECT'){
-		$redirectnotice .= '<li><span style="color:red">Redirect - not active.</span> <a href="'.$childthemeurl.'" target="_blank">'.$installtnotice.'</a></li>';
-	}
-	else{
-		$redirectnotice .= '<li>Redirect - <span style="color:green">active</span></li>';
-	}
 	$redirectnotice .= $themeoptionnotice.'<ol>';
 	$redirectnotice .= $rhblognotice;
 	$redirectnotice .= $rhstorenotice;	
@@ -693,7 +678,7 @@ function rehub_after_import_setup( $current_import ) {
 			$themeoptionmenu = get_term_by('name', 'Menu for logo section', 'nav_menu');
 			break;			
 		case 'ReDirect':
-			$front_page = get_page_by_title( 'Home Redirect' );
+			$front_page = get_page_by_title( 'Homepage Redirect' );
 			$main_menu = get_term_by( 'slug', 'main-menu', 'nav_menu' );		
 			break;
 		case 'ReVendor':
@@ -1016,27 +1001,11 @@ function rehub_after_import_setup( $current_import ) {
 	}	
 
 	if ($import_file_name == 'ReDirect'){
-		$parent = get_page_by_title( 'Listing examples', OBJECT, 'nav_menu_item');
+		$parent = get_page_by_title( 'Page examples', OBJECT, 'nav_menu_item');
 		$menus = get_posts(array('meta_key'=>'_menu_item_menu_item_parent', 'meta_value'=>'257', 'post_type'=> 'nav_menu_item'));
 		if(!empty($menus) && !empty($parent)){
 			foreach ($menus as $menu) {
 				update_post_meta($menu->ID, '_menu_item_menu_item_parent', $parent->ID);
-			}
-			echo 'Menu hierarchy was fixed-------';
-		}
-		$parentsec = get_page_by_title( 'Home pages', OBJECT, 'nav_menu_item');
-		$menussec = get_posts(array('meta_key'=>'_menu_item_menu_item_parent', 'meta_value'=>'1307', 'post_type'=> 'nav_menu_item'));
-		if(!empty($menussec) && !empty($parentsec)){
-			foreach ($menussec as $menusec) {
-				update_post_meta($menusec->ID, '_menu_item_menu_item_parent', $parentsec->ID);
-			}
-			echo 'Menu hierarchy was fixed-------';
-		}
-		$parentthird = get_page_by_title( 'Listings', OBJECT, 'nav_menu_item');
-		$menusthird = get_posts(array('meta_key'=>'_menu_item_menu_item_parent', 'meta_value'=>'1308', 'post_type'=> 'nav_menu_item'));
-		if(!empty($menusthird) && !empty($parentthird)){
-			foreach ($menusthird as $menuthird) {
-				update_post_meta($menuthird->ID, '_menu_item_menu_item_parent', $parentthird->ID);
 			}
 			echo 'Menu hierarchy was fixed-------';
 		}

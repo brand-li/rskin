@@ -47,7 +47,8 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
             <article class="post" id="page-<?php the_ID(); ?>">
                 <div role="tabvendor" class="tab-pane active" id="vendor-reviews">
                     <?php
-                    $dokan_template_reviews = Dokan_Pro_Reviews::init();
+                    $store_user             = get_userdata( get_query_var( 'author' ) );
+                    $dokan_template_reviews = dokan_pro()->review;
                     $id                     = $store_user->ID;
                     $post_type              = 'product';
                     $limit                  = 20;
@@ -60,13 +61,13 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 
                           <?php do_action( 'dokan_review_tab_before_comments' ); ?>
 
-
-                            <ol class="commentlist">
-                                <?php echo ''.$dokan_template_reviews->render_store_tab_comment_list( $comments , $store_user->ID); ?>
-                            </ol>
+                        <ol class="commentlist">
+                            <?php echo $dokan_template_reviews->render_store_tab_comment_list( $comments , $store_user->ID); ?>
+                        </ol>
 
                         </div>
                     </div>
+                    <?php echo $dokan_template_reviews->review_pagination( $id, $post_type, $limit, $status ); ?>
                 </div>
                 <?php if( !empty( $store_description ) ) { ?>
                 <div role="tabvendor" class="tab-pane" id="vendor-about">
@@ -78,9 +79,9 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
                     </div>
                 </div>
                 <?php } ?>
-                <?php if( class_exists( 'Dokan_Store_Location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on' ) { ?>
+                <?php if ( dokan()->widgets->is_exists( 'store_location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && ! empty( $map_location ) ) { ?>
                 <div role="tabvendor" id="vendor-location">
-                    <?php the_widget( 'Dokan_Store_Location', array( 'title' => esc_html__( 'Store Location', 'rehub-theme' ) ), $widget_args ); ?>
+                    <?php the_widget( dokan()->widgets->store_location, array( 'title' => __( 'Store Location', 'rehub-theme' ) ), $widget_args ); ?>
                 </div>
                 <?php } ?>
                 
@@ -96,20 +97,20 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
             <?php do_action( 'dokan_sidebar_store_before', $store_user->data, $store_info ); ?>
             <?php
             if ( ! dynamic_sidebar( 'sidebar-store' ) ) {
-                if ( class_exists( 'Dokan_Store_Location' ) ) {
-                    the_widget( 'Dokan_Store_Category_Menu', array( 'title' => esc_html__( 'Store Product Category', 'rehub-theme' ) ), $widget_args );
+                if ( dokan()->widgets->is_exists( 'store_category_menu' ) ) {
+                    the_widget( dokan()->widgets->store_category_menu, array( 'title' => __( 'Store Product Category', 'rehub-theme' ) ), $widget_args );
+                }
 
-                    if ( dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && !empty( $map_location ) ) {
-                        the_widget( 'Dokan_Store_Location', array( 'title' => esc_html__( 'Store Location', 'rehub-theme' ) ), $widget_args );
-                    }
+                if ( dokan()->widgets->is_exists( 'store_location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && ! empty( $map_location ) ) {
+                    the_widget( dokan()->widgets->store_location, array( 'title' => __( 'Store Location', 'rehub-theme' ) ), $widget_args );
+                }
 
-                    if ( dokan_get_option( 'store_open_close', 'dokan_general', 'on' ) == 'on' ) {
-                        the_widget( 'Dokan_Store_Open_Close', array( 'title' => esc_html__( 'Store Time', 'rehub-theme' ) ), $widget_args );
-                    }
+                if ( dokan()->widgets->is_exists( 'store_open_close' ) && dokan_get_option( 'store_open_close', 'dokan_general', 'on' ) == 'on' ) {
+                    the_widget( dokan()->widgets->store_open_close, array( 'title' => __( 'Store Time', 'rehub-theme' ) ), $widget_args );
+                }
 
-                    if ( dokan_get_option( 'contact_seller', 'dokan_general', 'on' ) == 'on' ) {
-                        the_widget( 'Dokan_Store_Contact_Form', array( 'title' => esc_html__( 'Contact Vendor', 'rehub-theme' ) ), $widget_args );
-                    }
+                if ( dokan()->widgets->is_exists( 'store_contact_form' ) && dokan_get_option( 'contact_seller', 'dokan_general', 'on' ) == 'on' ) {
+                    the_widget( dokan()->widgets->store_contact_form, array( 'title' => __( 'Contact Vendor', 'rehub-theme' ) ), $widget_args );
                 }
             }
             ?>

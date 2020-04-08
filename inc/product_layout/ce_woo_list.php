@@ -17,7 +17,7 @@
             $unique_id = $itemsync['unique_id']; 
             $module_id = $itemsync['module_id'];
             $domain = $itemsync['domain']; 
-            $merchant = $itemsync['merchant'];                            
+            $merchant = (!empty($itemsync['merchant'])) ? $itemsync['merchant'] : '';                            
             $syncitem = $itemsync;                            
         ?>
     <?php endif;?>

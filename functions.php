@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '9.9.6');
+	define('RH_MAIN_THEME_VERSION', '9.9.8');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
@@ -42,12 +42,12 @@ function rehub_framework_register_scripts() {
 	//Scripts
 	wp_register_script('rhinview', get_template_directory_uri() . '/js/inview.js', array('jquery'), '1.0', true);
 	wp_register_script('rhpgwmodal', get_template_directory_uri() . '/js/pgwmodal.js', array('jquery'), '2.0', true);
-	wp_register_script('rhunveil', get_template_directory_uri() . '/js/unveil.js', array('jquery'), '1.0', true);
+	wp_register_script('rhunveil', get_template_directory_uri() . '/js/unveil.js', array('jquery'), '5.2.1', true);
 	wp_register_script('rhcuttab', get_template_directory_uri() . '/js/cuttabs.js', array('jquery'), '3.3.6', true);
 	wp_register_script('rhhoverintent', get_template_directory_uri() . '/js/hoverintent.js', array('jquery'), '1.9', true);
 	wp_register_script('rhniceselect', get_template_directory_uri() . '/js/niceselect.js', array('jquery'), '1.0', true);
 	wp_register_script('rhcountdown', get_template_directory_uri() . '/js/countdown.js', array('jquery'), '1.0', true);
-	wp_register_script('rehub', get_template_directory_uri() . '/js/custom.js', array('jquery', 'rhinview', 'rhunveil', 'rhhoverintent', 'rhcountdown'), RH_MAIN_THEME_VERSION, true);
+	wp_register_script('rehub', get_template_directory_uri() . '/js/custom.js', array('jquery', 'rhinview', 'rhunveil', 'rhhoverintent', 'rhcountdown', 'rhniceselect'), RH_MAIN_THEME_VERSION, true);
 	wp_register_script('flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'), '2.2.2', true);
 	wp_register_script('totemticker', get_template_directory_uri() . '/js/jquery.totemticker.js', array('jquery'), '', true);
 	wp_register_script('carouFredSel', get_template_directory_uri() . '/js/jquery.carouFredSel-6.2.1-packed.js', array('jquery'), '6.2.1', true);
@@ -76,12 +76,12 @@ function rehub_framework_register_scripts() {
 	wp_register_script( 'modulobox', get_template_directory_uri() . '/js/modulobox.min.js', array('jquery'), '1.0.5', true );	
 	wp_register_script( 'rh_elparticle', get_template_directory_uri() . '/js/particles.min.js', array('jquery'), '2.2', true );	
 
-	wp_register_script( 'gsap', get_template_directory_uri() . '/js/gsap.min.js', array('jquery'), '3.0.5', true );
+	wp_register_script( 'gsap', get_template_directory_uri() . '/js/gsap.min.js', array('jquery'), '3.2.6', true );
 	wp_register_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array('jquery'), '2.0.7', true );	
-	wp_register_script( 'gsapinit', get_template_directory_uri() . '/js/gsap-init.js', array('jquery','gsap'), '1.1', true );
-	wp_register_script( 'gsapsplittext', get_template_directory_uri() . '/js/SplitText.min.js', array('jquery','gsap'), '3.0.5', true );
-	wp_register_script( 'gsapsvgdraw', get_template_directory_uri() . '/js/DrawSVGPlugin.min.js', array('jquery','gsap'), '3.0.5', true );	
-	wp_register_script( 'gsapsvgpath', get_template_directory_uri() . '/js/MotionPathPlugin.min.js', array('jquery','gsap'), '3.0.5', true );
+	wp_register_script( 'gsapinit', get_template_directory_uri() . '/js/gsap-init.js', array('jquery','gsap'), '1.2', true );
+	wp_register_script( 'gsapsplittext', get_template_directory_uri() . '/js/SplitText.min.js', array('jquery','gsap'), '3.2.6', true );
+	wp_register_script( 'gsapsvgdraw', get_template_directory_uri() . '/js/DrawSVGPlugin.min.js', array('jquery','gsap'), '3.2.6', true );	
+	wp_register_script( 'gsapsvgpath', get_template_directory_uri() . '/js/MotionPathPlugin.min.js', array('jquery','gsap'), '3.2.6', true );
 	wp_register_script( 'rh_elcanvas', get_template_directory_uri() . '/js/elcanvas.js', array('jquery'), '1.0.0', true );
 	
 	wp_register_script( 'threejs', get_template_directory_uri() . '/js/three.min.js', array(), '0.112', true );
@@ -104,7 +104,6 @@ function rehub_enqueue_scripts() {
 	wp_enqueue_script('rhinview');
 	wp_enqueue_script('rhpgwmodal');
 	wp_enqueue_script('rhunveil');
-	wp_enqueue_script('rhcuttab');
 	wp_enqueue_script('rhhoverintent');
 	wp_enqueue_script('rhniceselect');
 	wp_enqueue_script('rhcountdown');
@@ -633,9 +632,9 @@ class WPSM_image_resizer{
 		$alt = (!empty($this->title)) ? $this->title : the_title_attribute (array('echo' => 0) );
 		if ($this->lazy == true){
 			if(function_exists('is_amp_endpoint') && is_amp_endpoint()){
-				echo '<img class="lazyimages" data-src="'.$this->get_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->get_resized_url().'" />';
+				echo '<img class="lazyload" data-src="'.$this->get_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->get_resized_url().'" />';
 			}else{			
-				echo '<img class="lazyimages" data-src="'.$this->get_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->no_thumb().'" />';
+				echo '<img class="lazyload" data-src="'.$this->get_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->no_thumb().'" />';
 			}
 		}
 		else {
@@ -649,9 +648,9 @@ class WPSM_image_resizer{
 		$alt = (!empty($this->title)) ? $this->title : the_title_attribute (array('echo' => 0) );		
 		if ($this->lazy == true){
 			if(function_exists('is_amp_endpoint') && is_amp_endpoint()){
-				echo '<img class="lazyimages" data-src="'.$this->get_not_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->get_not_resized_url().'" />';
+				echo '<img class="lazyload" data-src="'.$this->get_not_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->get_not_resized_url().'" />';
 			}else{
-				echo '<img class="lazyimages" data-src="'.$this->get_not_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->no_thumb().'" />';				
+				echo '<img class="lazyload" data-src="'.$this->get_not_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->no_thumb().'" />';				
 			}
 
 		}
@@ -695,9 +694,9 @@ class WPSM_image_resizer{
 		$height_param = (!empty($height)) ? ' height="'.$height.'"': '';
 		if ($lazy == true){
 			if(function_exists('is_amp_endpoint') && is_amp_endpoint()){
-				echo '<img class="lazyimages" data-src="'.$image_url.'"'.$width_param.$height_param.' alt="'.$title.'" src="'.$image_url.'" />';
+				echo '<img class="lazyload" data-src="'.$image_url.'"'.$width_param.$height_param.' alt="'.$title.'" src="'.$image_url.'" />';
 			}else{
-				echo '<img class="lazyimages" data-src="'.$image_url.'"'.$width_param.$height_param.' alt="'.$title.'" src="'.$no_thumb.'" />';
+				echo '<img class="lazyload" data-src="'.$image_url.'"'.$width_param.$height_param.' alt="'.$title.'" src="'.$no_thumb.'" />';
 			}
 		}
 		else {
@@ -737,7 +736,7 @@ class WPSM_image_resizer{
 				if ( $attributes ) {
 					$full_size_image = wp_get_attachment_image_src($image_id, 'full' );
 					$output = sprintf(
-						'<img src="%s" data-src="%s" alt="%s" class="lazyimages %s" data-large_image="%s" data-large_image_width="%s" data-large_image_height="%s">',
+						'<img src="%s" data-src="%s" alt="%s" class="lazyload %s" data-large_image="%s" data-large_image_width="%s" data-large_image_height="%s">',
 						esc_url( $transparent ),
 						esc_url( $image_url ),
 						esc_attr( $alt ),
@@ -748,7 +747,7 @@ class WPSM_image_resizer{
 					);
 				} else {
 					$output = sprintf(
-						'<img src="%s" data-src="%s" alt="%s" class="lazyimages %s" width="%s" height="%s">',
+						'<img src="%s" data-src="%s" alt="%s" class="lazyload %s" width="%s" height="%s">',
 						esc_url( $transparent ),
 						esc_url( $image[0] ),
 						esc_attr( $alt ),
@@ -769,7 +768,7 @@ class WPSM_image_resizer{
 				}
 				$nothumb_url = apply_filters('rh_no_thumb_url', $nothumb_url);				
 				$output = sprintf(
-					'<img src="%s" data-src="%s" alt="%s" class="lazyimages %s" width="%s" height="%s">',
+					'<img src="%s" data-src="%s" alt="%s" class="lazyload %s" width="%s" height="%s">',
 					esc_url( $transparent ),
 					esc_url( $nothumb_url),
 					esc_attr( $alt ),
@@ -1422,7 +1421,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '4.1',
+			'version' 				=> '4.2',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',

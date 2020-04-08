@@ -4052,7 +4052,7 @@ function wpsm_tax_archive_shortcode( $atts, $content = null ) {
 						$term_childes .= '<a href="'. esc_url(get_term_link($child_term, $taxonomy)) .'">'. esc_html($child_term->name) .'</a>'. $coma .'&nbsp';
 					}
 					if (rehub_option('enable_lazy_images') == '1'){
-						$imgcl = 'class="lazyimages" data-src="'.esc_url($thumbnail_url).'" src="'.get_template_directory_uri() . '/images/default/blank.gif"';
+						$imgcl = 'class="lazyload" data-src="'.esc_url($thumbnail_url).'" src="'.get_template_directory_uri() . '/images/default/blank.gif"';
 					}
 					else{
 						$imgcl = 'src="'. esc_url($thumbnail_url) .'"';
@@ -4115,7 +4115,7 @@ function wpsm_tax_archive_shortcode( $atts, $content = null ) {
 						  	}
 						}
 					if (rehub_option('enable_lazy_images') == '1'){
-						$imgcl = 'class="lazyimages" data-src="'.esc_url($thumbnail_url).'" src="'.get_template_directory_uri() . '/images/default/blank.gif"';
+						$imgcl = 'class="lazyload" data-src="'.esc_url($thumbnail_url).'" src="'.get_template_directory_uri() . '/images/default/blank.gif"';
 					}
 					else{
 						$imgcl = 'src="'. esc_url($thumbnail_url) .'"';
@@ -5080,6 +5080,29 @@ function rh_is_wcfm_role($atts, $content = NULL){
 }
 }
 
+//////////////////////////////////////////////////////////////////
+// RH WCFM ROLE
+//////////////////////////////////////////////////////////////////
+if( !function_exists('rh_is_wcfm_role') ) {
+function rh_is_not_wcfm_role($atts, $content = NULL){
+	extract(shortcode_atts(array(
+        'role' => '',       
+    ), $atts));	
+	if(!$role || !function_exists('wcfm_get_membership')) return false;
+	$checkrole = wcfm_get_membership();
+	if($checkrole != $role){
+		$content = do_shortcode($content);
+		$content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
+		$Old     = array( '<br />', '<br>' );
+		$New     = array( '','' );
+		$content = str_replace( $Old, $New, $content );
+		return $content;		
+	}else{
+		return false;
+	}
+}
+}
+
 if( !function_exists('rh_is_bpmember_profile') ) {
 function rh_is_bpmember_profile($atts, $content = NULL){	
 	if(!function_exists('bp_is_my_profile')) return;
@@ -5815,7 +5838,13 @@ if( !function_exists('rh_latest_comments') ) {
 						echo '<div class="user_reviews_view_proscons mt20">';
 							echo ''.$textsec;
 						echo '</div></div>';
-					} else {
+					}else if($post_type == 'product'){
+						echo '<div class="font90 user_reviews_view'. $color_type .'">';
+						comment_text($comment_ID);
+						echo rehub_wc_comment_neg_get($comment);
+						echo '</div>';
+					}
+					 else {
 						echo '<div class="font90 user_reviews_view'. $color_type .'">';
 						comment_text($comment_ID);
 						echo '</div>';

@@ -13,9 +13,14 @@
 
 <?php if(rehub_option('rehub_disable_tags') =='1' || vp_metabox('rehub_post_side.disable_parts') == '1')  : ?>
 <?php else :?>
-    <div class="tags mb25">
-        <p><?php the_tags('<span class="tags-title-post">'.__('Tags: ', 'rehub-theme').'</span>',""); ?></p>
-    </div>
+	<div class="tags mb25">
+		<?php global $post;?>
+		<?php if($post->post_type == 'blog'):?>
+			<p><?php echo get_the_term_list( $post->ID, 'blog_tag', '<span class="tags-title-post">'.__('Tags: ', 'rehub-theme').'</span>','','');?></p>
+		<?php else:?>
+	        <p><?php the_tags('<span class="tags-title-post">'.__('Tags: ', 'rehub-theme').'</span>',""); ?></p>
+	    <?php endif; ?>
+	</div>
 <?php endif; ?>
 
 <?php if(rehub_option('rehub_disable_author') =='1' || vp_metabox('rehub_post_side.disable_parts') == '1')  : ?>

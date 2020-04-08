@@ -281,7 +281,7 @@ form.cart div.quantity .screen-reader-text{display: none;}
 .woocommerce #reviews #comments ol.commentlist li .meta { color: #777; font-size: 0.75em; text-transform: uppercase; }
 .woocommerce #reviews #comments ol.commentlist li img.avatar{padding: 3px; width: 75px; height: auto; background: #f7f6f7; border: 1px solid #f0eef0; margin: 0; line-height: 1; border-radius: 100px }
 .woocommerce #reviews #comments ol.commentlist li .comment-text { margin: 0 0 0 95px; }
-.woocommerce #reviews #comments ol.commentlist li .comment-text p { margin: 0 0 10px;line-height: 22px; }
+.woocommerce #reviews #comments ol.commentlist li .comment-text p, .rh_reviewlist p { margin: 0 0 10px;line-height: 22px; }
 .woocommerce #reviews #comments .commentlist > li:before { content: ""; }
 .woocommerce #reviews #comments .comment_container{border: 1px solid #f0eef0;padding: 15px;overflow: hidden;}
 .woocommerce .rh_woo_star{ color: #e0dadf;margin-bottom: 5px; white-space: nowrap;}
@@ -640,6 +640,7 @@ mark.count{ background-color: transparent; opacity: 0.5; font-size: 90%}
 .woo_compact_layout .woo-button-actions-area .wpsm-button.rhwoosinglecompare:hover, .woo_compact_layout .woo-button-actions-area .heartplus:hover{background: #ff6c00}
 .woocommerce .woo_compact_layout .single_add_to_cart_button, .woocommerce .woo_compact_layout div.product form.cart .button{box-shadow: none !important;}
 .woo_directory_layout .woo-image-part{width: 180px}
+#rh_woo_layout_inimage .rh_woo_code_zone_content a {color: white;text-decoration: underline;}
 
 .woo_full_photo_booking .woo-price-area{margin: 0; padding: 20px; font-size: 22px; position: absolute; bottom: 0; left: 0;right: 0}
 .woo_full_photo_booking .woo-price-area .price{margin: 0}

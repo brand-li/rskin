@@ -637,10 +637,11 @@ function rh_add_neg_comment( $comment_id ){
 add_action( 'comment_post', 'rh_add_neg_comment' );
 
 // pros and cons in comment text
-function rehub_wc_comment_neg( $comment ) {
+function rehub_wc_comment_neg_get( $comment ) {
+	$out = '';
 	$pros_review = get_comment_meta( $comment->comment_ID, 'pos_comment', true );
 	$cons_review = get_comment_meta( $comment->comment_ID, 'neg_comment', true );
-	if($pros_review || $cons_review){echo '<div class="flowhidden">';}
+	if($pros_review || $cons_review){$out .='<div class="flowhidden">';}
 	$classcol = (!empty($cons_review) && !empty($pros_review)) ? 'wpsm-one-half ' : '';
 	if(isset($pros_review) && $pros_review != '') {
 		$pros_reviews = explode(PHP_EOL, $pros_review);
@@ -648,7 +649,7 @@ function rehub_wc_comment_neg( $comment ) {
 		foreach ($pros_reviews as $pros) {
 			$proscomment .='<span class="pros_comment_item blockstyle mb5">'.$pros.'</span>';
 		}
-		echo '<div class="'.$classcol.'lineheight20 padd20 lightgreenbg woo_comment_text_pros mt15 font90"><span class="mb10 blockstyle fontbold">'.__('+ PROS:', 'rehub-theme').' </span><span> '.$proscomment.'</span></div>';
+		$out .='<div class="'.$classcol.'lineheight20 padd20 lightgreenbg woo_comment_text_pros mt15 font90"><span class="mb10 blockstyle fontbold">'.__('+ PROS:', 'rehub-theme').' </span><span> '.$proscomment.'</span></div>';
 	};
 	if(!empty($cons_review)) {
 		$cons_reviews = explode(PHP_EOL, $cons_review);
@@ -656,9 +657,13 @@ function rehub_wc_comment_neg( $comment ) {
 		foreach ($cons_reviews as $cons) {
 			$conscomment .='<span class="cons_comment_item blockstyle mb5">'.$cons.'</span>';
 		}			
-		echo '<div class="'.$classcol.'lineheight20 lightredbg padd20 woo_comment_text_cons mt15 font90"><span class="mb10 blockstyle fontbold">'.__('- CONS:', 'rehub-theme').'</span><span> '.$conscomment.'</span></div>';
+		$out .= '<div class="'.$classcol.'lineheight20 lightredbg padd20 woo_comment_text_cons mt15 font90"><span class="mb10 blockstyle fontbold">'.__('- CONS:', 'rehub-theme').'</span><span> '.$conscomment.'</span></div>';
 	};	
-	if($pros_review || $cons_review){echo '</div>';}
+	if($pros_review || $cons_review){$out .= '</div>';}
+	return $out;
+}
+function rehub_wc_comment_neg( $comment ) {
+	echo rehub_wc_comment_neg_get($comment);
 }
 add_action( 'woocommerce_review_comment_text', 'rehub_wc_comment_neg', 12 );
 
@@ -1909,6 +1914,46 @@ if(defined( 'WCFMmp_TOKEN' )){
 	}
 	add_action( 'rehub_vendor_show_action', array('WCFMmp_Frontend', 'wcfmmp_sold_by_product'), 50);
 
+	function rh_wcfm_menus( $menus ) {
+		$custom_menus = array();
+		if(rehub_option('url_for_add_one') && rehub_option('label_for_add_one')){
+			$custom_menus['wcfm-link-one'] = array(
+				'label'  => rehub_option('label_for_add_one'),
+				'url' => esc_url(rehub_option('url_for_add_one')),
+				'icon' => 'cubes',
+				'priority'  => 5.1,
+			);
+		}
+		if(rehub_option('url_for_add_two') && rehub_option('label_for_add_two')){
+			$custom_menus['wcfm-link-two'] = array(
+				'label'  => rehub_option('label_for_add_two'),
+				'url' => esc_url(rehub_option('url_for_add_two')),
+				'icon' => 'cubes',
+				'priority'  => 5.2,
+			);
+		}
+		if(rehub_option('url_for_add_three') && rehub_option('label_for_add_three')){
+			$custom_menus['wcfm-link-three'] = array(
+				'label'  => rehub_option('label_for_add_three'),
+				'url' => esc_url(rehub_option('url_for_add_three')),
+				'icon' => 'cubes',
+				'priority'  => 5.3,
+			);
+		}
+		if(rehub_option('url_for_add_four') && rehub_option('label_for_add_four')){
+			$custom_menus['wcfm-link-four'] = array(
+				'label'  => rehub_option('label_for_add_four'),
+				'url' => esc_url(rehub_option('url_for_add_four')),
+				'icon' => 'cubes',
+				'priority'  => 5.4,
+			);
+		}
+		$menus = array_merge( $menus, $custom_menus );
+			
+		return $menus;
+	}
+	add_filter( 'wcfm_menus', 'rh_wcfm_menus', 20 );
+
 }
 
 //////////////////////////////////////////////////////////////////
@@ -2090,7 +2135,7 @@ if(!function_exists('rh_soldout_bar')){
 	    if($manage_stock == 'yes'):
 	        $stock_available = ( $stock = get_post_meta( $post_id, '_stock', true ) ) ? round( $stock ) : 0;
 	        $stock_sold = ( $total_sales = get_post_meta( $post_id, 'total_sales', true ) ) ? round( $total_sales ) : 0;
-	        $soldout = $stock_sold / $stock_available *100;
+	        $soldout = ( $stock_available > 0 ) ? round( $stock_sold / $stock_available * 100 ) : '';
 	    else:
 	        $soldout = get_transient('rh-soldout-'. $post_id);
 	        if(!$soldout):
@@ -2099,12 +2144,14 @@ if(!function_exists('rh_soldout_bar')){
 	        endif;
 	    endif;
 	    ?>
-	    <div class="soldoutbar mb10">
-	        <div class="wpsm-bar minibar wpsm-clearfix mb5" data-percent="<?php echo (float)$soldout;?>%">
-	            <div class="wpsm-bar-bar" style="background: <?php echo $color; ?>"></div>
-	        </div>
-	        <div class="soldoutpercent greycolor font70 lineheight15"><?php esc_html_e( 'Already Sold:', 'rehub-theme' );?> <?php echo (float)$soldout;?>%</div>
-	    </div>
+		    <?php if($soldout):?>
+			    <div class="soldoutbar mb10">
+			        <div class="wpsm-bar minibar wpsm-clearfix mb5" data-percent="<?php echo (float)$soldout;?>%">
+			            <div class="wpsm-bar-bar" style="background: <?php echo $color; ?>"></div>
+			        </div>
+			        <div class="soldoutpercent greycolor font70 lineheight15"><?php esc_html_e( 'Already Sold:', 'rehub-theme' );?> <?php echo (float)$soldout;?>%</div>
+			    </div>
+			<?php endif;?>
 	    <?php
 	}
 }

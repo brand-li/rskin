@@ -519,9 +519,9 @@ function rehub_lostPassword_retrieve( $user_data ) {
 	$message .= '<' . network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . ">\r\n\r\n";
 	
 	if ( is_multisite() ) {
-		$blogname = esc_html( get_site_option( 'site_name' ) );
+		$blogname = wp_specialchars_decode( get_option( 'site_name' ), ENT_QUOTES );
 	} else {
-		$blogname = esc_html( get_site_option( 'blogname' ) );
+		$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
 	}
 	$from_name = $blogname == '' ? 'WordPress' : $blogname;
 	$title   = sprintf( esc_html__( '[%s] Password Reset', 'rehub-theme' ), $from_name );

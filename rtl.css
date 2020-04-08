@@ -108,6 +108,7 @@ ul.list-unstyled.list-line-style li{margin: 0 0 5px 10px;}
 #toplistmenu > ul li:before{float: right;}
 .re-user-popup-wrap .wpsm-button.loading:after{left: auto; right: 100%; margin-right:20px;}
 nav.top_menu > ul > li.floatright{margin-right: auto; margin-left: 0}
+nav.top_menu ul.menu:not(.off-canvas) > li.menu-item-has-children > a:before, .header-top .top-nav > ul > li.menu-item-has-children > a:before {margin: 0 7px 0 0;float: left;}
 @media (max-width: 1023px){#rh-bp-profile-stats {text-align: right;}}
 @media (min-width: 1024px){.rtl #wcvendor_search_shops{float: left;}.rtl .wcvendor_profile_menu_items{float: right; margin-left: 0; margin-right: 170px}}
 

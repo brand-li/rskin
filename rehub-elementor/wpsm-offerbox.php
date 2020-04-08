@@ -199,7 +199,7 @@ class Widget_Offerbox extends WPSM_Content_Widget_Base {
         $settings = $this->get_settings_for_display();
         $id = $settings['id'];
         $btnwoo = '';
-        if($id){
+        if(!empty($id)){
             if('product' == get_post_type($id)){
 
                 $product = wc_get_product($id);

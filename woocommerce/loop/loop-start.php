@@ -61,6 +61,9 @@ elseif (rehub_option('woo_design') == 'list' || rehub_option('woo_design') == 'd
 else {
 	$classes[] = 'rh-flex-eq-height column_woo';
 }
+if (rehub_option('woo_design') == 'deallist') {
+	$classes[] = 'woo_offer_list';
+}
 ?>
 
 <div class="columns-<?php echo esc_attr( wc_get_loop_prop( 'columns' ) ); ?> products <?php echo implode(' ',$classes);?>">

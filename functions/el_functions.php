@@ -10,7 +10,7 @@ add_action( 'elementor/preview/enqueue_scripts', function () {
     wp_enqueue_script('scrollmagic');
     wp_enqueue_script('tipsy');
     wp_enqueue_script('zeroclipboard');
-    wp_enqueue_script('rehub-elementor', get_template_directory_uri() . '/rehub-elementor/js/custom-elementor.js', array('jquery'), false, true);
+    wp_enqueue_script('rehub-elementor', get_template_directory_uri() . '/rehub-elementor/js/custom-elementor.js', array('jquery'), '2.0', true);
 }); 
 add_action( 'elementor/preview/enqueue_styles', function() {
     wp_enqueue_style( 'video-pl' );
@@ -85,7 +85,7 @@ add_action( 'init', function () {
     //require_once (rh_locate_template('rehub-elementor/wpsm-twocolnews.php'));
     //require_once (rh_locate_template('rehub-elementor/wpsm-numhead.php')); 
     //require_once (rh_locate_template('rehub-elementor/wpsm-box.php'));
-});
+},11);
 
 if(!function_exists('rh_add_el_page_settings_controls')){
     function rh_add_el_page_settings_controls( $page ) {
@@ -633,6 +633,20 @@ function RH_parallax_el_elementor( $obj, $args ) {
     ); 
 
     $obj->add_control(
+        'rh_gsap_scale_y',
+        array(
+            'label'   => esc_html__( 'Scale Y', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => 0,
+            'max'     => 30,
+            'step'    => 0.1,
+            'condition' => array(
+                'rh_gsap' => 'true',
+            ),
+        )
+    );
+
+    $obj->add_control(
         'rh_gsap_width',
         array(
             'label'   => esc_html__( 'Width', 'rehub-theme' ),
@@ -650,20 +664,6 @@ function RH_parallax_el_elementor( $obj, $args ) {
             'label'   => esc_html__( 'Height', 'rehub-theme' ),
             'description' => 'set with px, %, em',
             'type'    => Elementor\Controls_Manager::TEXT,
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
-        )
-    );
-
-    $obj->add_control(
-        'rh_gsap_scale_y',
-        array(
-            'label'   => esc_html__( 'Scale Y', 'rehub-theme' ),
-            'type'    => Elementor\Controls_Manager::NUMBER,
-            'min'     => 0,
-            'max'     => 30,
-            'step'    => 0.1,
             'condition' => array(
                 'rh_gsap' => 'true',
             ),
@@ -702,10 +702,252 @@ function RH_parallax_el_elementor( $obj, $args ) {
         ],
     ]);
 
+    $gsaprepeater = new \Elementor\Repeater();
+    $gsaprepeater->add_control(
+        'multi_x',
+        array(
+            'label'   => esc_html__( 'Translate X', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => -5000,
+            'max'     => 5000,
+            'step'    => 1,
+            
+        )
+    ); 
+
+    $gsaprepeater->add_control(
+        'multi_y',
+        array(
+            'label'   => esc_html__( 'Translate Y', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => -5000,
+            'max'     => 5000,
+            'step'    => 1,
+        )
+    );  
+
+    $gsaprepeater->add_control(
+        'multi_xo',
+        array(
+            'label'   => esc_html__( 'Translate X (%)', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => -1000,
+            'max'     => 1000,
+            'step'    => 1,
+        )
+    ); 
+
+    $gsaprepeater->add_control(
+        'multi_yo',
+        array(
+            'label'   => esc_html__( 'Translate Y (%)', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => -1000,
+            'max'     => 1000,
+            'step'    => 1,
+        )
+    ); 
+
+    $gsaprepeater->add_control(
+        'multi_r',
+        array(
+            'label'   => esc_html__( 'Rotation', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => -3600,
+            'max'     => 3600,
+            'step'    => 1,
+        )
+    ); 
+
+    $gsaprepeater->add_control(
+        'multi_rx',
+        array(
+            'label'   => esc_html__( 'Rotation X', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => -3600,
+            'max'     => 3600,
+            'step'    => 1,
+        )
+    ); 
+
+    $gsaprepeater->add_control(
+        'multi_ry',
+        array(
+            'label'   => esc_html__( 'Rotation Y', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => -3600,
+            'max'     => 3600,
+            'step'    => 1,
+        )
+    ); 
+ 
+
+    $gsaprepeater->add_control(
+        'multi_scale',
+        array(
+            'label'   => esc_html__( 'Scale', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => 0,
+            'max'     => 30,
+            'step'    => 0.1,
+        )
+    ); 
+
+    $gsaprepeater->add_control(
+        'multi_scale_x',
+        array(
+            'label'   => esc_html__( 'Scale X', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => 0,
+            'max'     => 30,
+            'step'    => 0.1,
+        )
+    ); 
+
+    $gsaprepeater->add_control(
+        'multi_scale_y',
+        array(
+            'label'   => esc_html__( 'Scale Y', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => 0,
+            'max'     => 30,
+            'step'    => 0.1,
+        )
+    );
+
+    $gsaprepeater->add_control(
+        'multi_width',
+        array(
+            'label'   => esc_html__( 'Width', 'rehub-theme' ),
+            'description' => 'set with px, %, em',
+            'type'    => Elementor\Controls_Manager::TEXT,
+        )
+    ); 
+
+    $gsaprepeater->add_control(
+        'multi_height',
+        array(
+            'label'   => esc_html__( 'Height', 'rehub-theme' ),
+            'description' => 'set with px, %, em',
+            'type'    => Elementor\Controls_Manager::TEXT,
+        )
+    ); 
+
+    $gsaprepeater->add_control(
+        'multi_opacity',
+        array(
+            'label'   => esc_html__( 'Opacity', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => 1,
+            'max'     => 100,
+            'step'    => 1,
+        )
+    );
+    $gsaprepeater->add_control(
+        'multi_bg', [
+            'label' => __('Background Color', 'rehub-theme'),
+            'type' => \Elementor\Controls_Manager::COLOR,
+        ]
+    );
+    $gsaprepeater->add_control( 'multi_origin', [
+        'label' => esc_html__( 'Transform Origin', 'rehub-theme' ),
+        'label_block'  => true,
+        'description' => 'left, right, top, bottom...',
+        'type' => \Elementor\Controls_Manager::TEXT,
+    ]);
+    $gsaprepeater->add_control(
+        'multi_from',
+        array(
+            'label'        => esc_html__( 'Set direction as FROM', 'rehub-theme' ),
+            'type'         => \Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+        )
+    ); 
+    $gsaprepeater->add_control(
+        'multi_duration',
+        array(
+            'label'   => esc_html__( 'Duration (s)', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => 0.1,
+            'max'     => 60,
+            'step'    => 0.1,
+            'default' => 1,
+        )
+    ); 
+    $gsaprepeater->add_control(
+        'multi_delay',
+        array(
+            'label'   => esc_html__( 'Delay (s)', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => 0.1,
+            'max'     => 20,
+            'step'    => 0.1,
+        )
+    ); 
+    $gsaprepeater->add_control( 'multi_time', [
+        'label' => esc_html__( 'Custom start time', 'rehub-theme' ),
+        'label_block'  => true,
+        'description' => '<a href="https://greensock.com/docs/v3/GSAP/Timeline">Documentation</a>',
+        'type' => \Elementor\Controls_Manager::TEXT,
+    ]);
+    $gsaprepeater->add_control( 'multi_ease', [
+        'type'        => \Elementor\Controls_Manager::SELECT,
+        'label'       => esc_html__( 'Ease type', 'rehub-theme' ),
+        'options'     => [
+            'power0-none'   =>  esc_html__('Linear', 'rehub-theme'),
+            'power1-in'   =>  esc_html__('Power 1 in', 'rehub-theme'),
+            'power1-out'   =>  esc_html__('Power 1 out', 'rehub-theme'),
+            'power1-inOut'   =>  esc_html__('Power 1 inOut', 'rehub-theme'),
+            'power2-in'   =>  esc_html__('Power 2 in', 'rehub-theme'),
+            'power2-out'   =>  esc_html__('Power 2 out', 'rehub-theme'),
+            'power2-inOut'   =>  esc_html__('Power 2 inOut', 'rehub-theme'),
+            'power3-in'   =>  esc_html__('Power 3 in', 'rehub-theme'),
+            'power3-out'   =>  esc_html__('Power 3 out', 'rehub-theme'),
+            'power3-inOut'   =>  esc_html__('Power 3 inOut', 'rehub-theme'),
+            'power4-in'   =>  esc_html__('Power 4 in', 'rehub-theme'),
+            'power4-out'   =>  esc_html__('Power 4 out', 'rehub-theme'),
+            'power4-inOut'   =>  esc_html__('Power 4 inOut', 'rehub-theme'),
+            'back-in'   =>  esc_html__('Back in', 'rehub-theme'),
+            'back-out'   =>  esc_html__('Back out', 'rehub-theme'),
+            'back-inOut'   =>  esc_html__('Back inOut', 'rehub-theme'),
+            'elastic-in'   =>  esc_html__('elastic in', 'rehub-theme'),
+            'elastic-out'   =>  esc_html__('elastic out', 'rehub-theme'),
+            'elastic-inOut'   =>  esc_html__('elastic inOut', 'rehub-theme'),
+            'circ-in'   =>  esc_html__('circ in', 'rehub-theme'),
+            'circ-out'   =>  esc_html__('circ out', 'rehub-theme'),
+            'circ-inOut'   =>  esc_html__('circ inOut', 'rehub-theme'),
+            'expo-in'   =>  esc_html__('expo in', 'rehub-theme'),
+            'expo-out'   =>  esc_html__('expo out', 'rehub-theme'),
+            'expo-inOut'   =>  esc_html__('expo inOut', 'rehub-theme'),
+            'cine-in'   =>  esc_html__('cine in', 'rehub-theme'),
+            'cine-out'   =>  esc_html__('cine out', 'rehub-theme'),
+            'cine-inOut'   =>  esc_html__('cine inOut', 'rehub-theme'),
+        ],
+    ]); 
+    $gsaprepeater->add_control( 'multi_obj', [
+        'label' => esc_html__( 'Custom object', 'rehub-theme' ),
+        'label_block'  => true,
+        'description' => 'By default, animation will be applied to current object, but you can set custom class or id of object',
+        'type' => \Elementor\Controls_Manager::TEXT,
+    ]);                                       
+    $obj->add_control( 'rh_gsap_multi', [
+        'label'    => esc_html__( 'Multiple Animations', 'rehub-theme' ),
+        'type'     => \Elementor\Controls_Manager::REPEATER,
+        'fields'   => $gsaprepeater->get_controls(),
+        'title_field' => 'Duration - {{{ multi_duration }}}',
+        'separator' => 'before',
+        'prevent_empty' => false,
+        'condition' => array(
+            'rh_gsap' => 'true',
+        ),
+    ]);
+
     $obj->add_control(
         'svgpath',
         [
-            'label' => __( 'Animation SVG Path', 'rehub-theme' ),
+            'label' => __( 'Animation on SVG Path', 'rehub-theme' ),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
             'condition' => array(
@@ -737,6 +979,44 @@ function RH_parallax_el_elementor( $obj, $args ) {
             'return_value' => 'yes',
             'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
         )
+    );
+    $obj->add_control(
+        'rh_gsap_path_align_x',
+        [
+            'label' => __( 'Align origin point X', 'rehub-theme' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'default' => [
+                'size' => 0.5,
+            ],
+            'label_block' => true,
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 1,
+                    'step' => 0.1,
+                ],
+            ],
+            'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
+        ]
+    );
+    $obj->add_control(
+        'rh_gsap_path_align_y',
+        [
+            'label' => __( 'Align origin point Y', 'rehub-theme' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'default' => [
+                'size' => 0.5,
+            ],
+            'label_block' => true,
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 1,
+                    'step' => 0.1,
+                ],
+            ],
+            'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
+        ]
     );
 
     $obj->add_control(
@@ -793,7 +1073,20 @@ function RH_parallax_el_elementor( $obj, $args ) {
             'max'     => 10,
             'step'    => 0.1,
             'condition' => array(
-                'rh_gsap' => 'true',
+                'rh_gsap' => 'true', 'rh_gsap_st_type!' => ''
+            ),
+        )
+    );
+    $obj->add_control(
+        'rh_gsap_strandom',
+        array(
+            'label'        => esc_html__( 'Enable random order', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'condition' => array(
+                'rh_gsap' => 'true', 'rh_gsap_st_type!' => ''
             ),
         )
     );
@@ -816,7 +1109,7 @@ function RH_parallax_el_elementor( $obj, $args ) {
             'label'   => esc_html__( 'Duration (s)', 'rehub-theme' ),
             'type'    => Elementor\Controls_Manager::NUMBER,
             'min'     => 0.1,
-            'max'     => 20,
+            'max'     => 60,
             'step'    => 0.1,
             'default' => 1,
             'condition' => array(
@@ -894,6 +1187,18 @@ function RH_parallax_el_elementor( $obj, $args ) {
         'rh_gsap_yoyo',
         array(
             'label'        => esc_html__( 'Enable Yoyo style', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'default' => 'yes',
+            'condition'=> [ 'rh_gsap_infinite' => 'yes', 'rh_gsap' => 'true' ],
+        )
+    );
+    $obj->add_control(
+        'rh_gsap_repeatdelay',
+        array(
+            'label'        => esc_html__( 'Enable delay between animations', 'rehub-theme' ),
             'type'         => Elementor\Controls_Manager::SWITCHER,
             'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
             'label_off'    => esc_html__( 'No', 'rehub-theme' ),
@@ -1339,6 +1644,9 @@ function RH_el_custom_widget_render( $content, $widget ) {
         if ( ! empty( $settings['rh_gsap_yoyo'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-yoyo', $settings['rh_gsap_yoyo'] );
         }
+        if ( ! empty( $settings['rh_gsap_repeatdelay'] ) ) {
+            $widget->add_render_attribute( 'ann-wrapper', 'data-repeatdelay', $settings['rh_gsap_repeatdelay'] );
+        }
         if ( ! empty( $settings['rh_gsap_delay'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-delay', $settings['rh_gsap_delay'] );
         }
@@ -1350,6 +1658,9 @@ function RH_el_custom_widget_render( $content, $widget ) {
         }
         if ( ! empty( $settings['rh_gsap_stdelay'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-stdelay', $settings['rh_gsap_stdelay'] );
+        }
+        if ( ! empty( $settings['rh_gsap_strandom'] ) ) {
+            $widget->add_render_attribute( 'ann-wrapper', 'data-strandom', $settings['rh_gsap_strandom'] );
         }
         if ( ! empty( $settings['rh_gsap_bg'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-bg', $settings['rh_gsap_bg'] );
@@ -1375,11 +1686,29 @@ function RH_el_custom_widget_render( $content, $widget ) {
         if ( ! empty( $settings['rh_gsap_path_align'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-path-align', $settings['rh_gsap_path_align'] );
         }
+        if ( ! empty( $settings['rh_gsap_path_align_x'] ) ) {
+            $widget->add_render_attribute( 'ann-wrapper', 'data-path-alignx', $settings['rh_gsap_path_align_x']['size'] );
+        }
+        if ( ! empty( $settings['rh_gsap_path_align_y'] ) ) {
+            $widget->add_render_attribute( 'ann-wrapper', 'data-path-aligny', $settings['rh_gsap_path_align_y']['size'] );
+        }
         if ( ! empty( $settings['rh_gsap_path_orient'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-path-orient', $settings['rh_gsap_path_orient'] );
         }
         if ( ! empty( $settings['rh_gsap_video'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-video', $settings['rh_gsap_video'] );
+        }
+        $settings['multianimations'] = array();
+        if ( ! empty( $settings['rh_gsap_multi'] )) {
+            foreach ($settings['rh_gsap_multi'] as $index => $item) {
+                foreach ($item as $key => $value) {
+                    if(!empty($value)){
+                        if(is_array($value)) $value = $value['size'];
+                        if($value) $settings['multianimations'][$index][$key] = $value;
+                    }
+                }        
+            }
+            $widget->add_render_attribute( 'ann-wrapper', 'data-multianimations', json_encode($settings['multianimations']) );
         }
         $content = '<div '.$widget->get_render_attribute_string( 'ann-wrapper' ).' data-duration="'.$settings['rh_gsap_duration'].'" class="rh-gsap-wrap'.$hideclass.'">'.$content. '</div>';
     }
@@ -1489,6 +1818,9 @@ function rh_el_custom_print_template($content, $widget){
         if ( settings.rh_gsap_yoyo ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-yoyo', settings.rh_gsap_yoyo );
         }
+        if ( settings.rh_gsap_repeatdelay ) {
+            view.addRenderAttribute( 'ann-wrapper', 'data-repeatdelay', settings.rh_gsap_repeatdelay );
+        }
         if ( settings.rh_gsap_delay ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-delay', settings.rh_gsap_delay );
         }
@@ -1500,6 +1832,9 @@ function rh_el_custom_print_template($content, $widget){
         }
         if ( settings.rh_gsap_stdelay ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-stdelay', settings.rh_gsap_stdelay );
+        }
+        if ( settings.rh_gsap_strandom ) {
+            view.addRenderAttribute( 'ann-wrapper', 'data-strandom', settings.rh_gsap_strandom );
         }
         if ( settings.rh_gsap_stagger && settings.rh_gsap_st_type == 'class') {
             view.addRenderAttribute( 'ann-wrapper', 'data-stagger', settings.rh_gsap_stagger );
@@ -1525,12 +1860,22 @@ function rh_el_custom_print_template($content, $widget){
         if ( settings.rh_gsap_path_align ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-path-align', settings.rh_gsap_path_align );
         }
+        if ( settings.rh_gsap_path_align_x ) {
+            view.addRenderAttribute( 'ann-wrapper', 'data-path-alignx', settings.rh_gsap_path_align_x.size );
+        }
+        if ( settings.rh_gsap_path_align_y ) {
+            view.addRenderAttribute( 'ann-wrapper', 'data-path-aligny', settings.rh_gsap_path_align_y.size );
+        }
         if ( settings.rh_gsap_path_orient ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-path-orient', settings.rh_gsap_path_orient );
         }
         if ( settings.rh_gsap_video ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-video', settings.rh_gsap_video );
         }
+        if ( settings.rh_gsap_multi ) {
+            view.addRenderAttribute( 'ann-wrapper', 'data-multianimations', JSON.stringify(settings.rh_gsap_multi) );
+        }
+
         #>
         <div {{{ view.getRenderAttributeString( 'ann-wrapper' ) }}} class=\"rh-gsap-wrap\" data-duration=\"{{{settings.rh_gsap_duration}}}\">" . $content . "</div>
         <# 
@@ -1620,9 +1965,9 @@ function rh_el_add_lazy_load_images($html, $settings, $image_size_key, $image_ke
     if (rehub_option('enable_lazy_images') == '1'){
         if($html){
             if(stripos($html, 'class=') !== false){
-                $html = str_replace('class="', 'class="lazyimages ', $html);                
+                $html = str_replace('class="', 'class="lazyload ', $html);                
             }else{
-                $html = str_replace('img', 'img class="lazyimages"', $html);
+                $html = str_replace('img', 'img class="lazyload"', $html);
             }
 
             $new_src_url = get_template_directory_uri() . '/images/default/blank.gif';

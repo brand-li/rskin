@@ -748,6 +748,9 @@ input[type="submit"].dokan-btn-theme:active, a.dokan-btn-theme:active, .dokan-bt
 		header .search{max-width:500px; width:100% !important}
 		.header_six_style .head_search{min-width:300px}
 		.logo_section_wrap .wpsm-button.medium{padding:12px 16px; font-size:16px}
+	<?php elseif(rehub_option('theme_subset') =='redirect') : ?>
+		#main_header .rh-container{width: 100%; padding: 0 20px}
+		@media (max-width: 500px){#main_header .rh-container{width: 100%; padding: 0 12px}}
 	<?php endif;?>
 <?php endif;?>
 

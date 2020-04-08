@@ -207,6 +207,9 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 						else {
 							$classes[] = 'rh-flex-eq-height column_woo';
 						}
+						if (rehub_option('woo_design') == 'deallist') {
+							$classes[] = 'woo_offer_list';
+						}
 						?>					
 						<div class="products <?php echo implode(' ',$classes);?>">
 							<?php while ( have_posts() ) : the_post(); ?>

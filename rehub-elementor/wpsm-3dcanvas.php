@@ -128,617 +128,6 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
             ]
         );
 
-        $this->add_control(
-            'gltf_p_light',
-            array(
-                'label'        => esc_html__( 'Enable point light?', 'rehub-theme' ),
-                'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-                'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-                'return_value' => 'true',
-                'separator' => 'before',
-                'default' => 'true'
-            )
-        );
-        $this->add_control(
-            'gltf_p_light_s',
-            [
-                'label' => __( 'Strength', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 1,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 10,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_p_light' => 'true',
-                ],
-            ]
-        );
-        $this->add_control(
-            'gltf_p_light_d',
-            [
-                'label' => __( 'Diffuse', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 100,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_p_light' => 'true',
-                ],
-            ]
-        );
-        $this->add_control( 'gltf_p_light_c', [
-            'label' => esc_html__( 'Color', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::COLOR,
-            'default'     => '#ffffff', 
-            'condition' => [
-                'gltf_p_light' => 'true',
-            ],           
-        ]);
-        $this->add_control(
-            'lightx',
-            [
-                'label' => __( 'Light X offset', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 0,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_p_light' => 'true',
-                ],
-            ]
-        );
-        $this->add_control(
-            'lighty',
-            [
-                'label' => __( 'Light Y offset', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 0,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_p_light' => 'true',
-                ],
-            ]
-        );
-        $this->add_control(
-            'lightz',
-            [
-                'label' => __( 'Light z offset', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 0,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_p_light' => 'true',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gltf_d_light',
-            array(
-                'label'        => esc_html__( 'Enable directional light?', 'rehub-theme' ),
-                'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-                'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-                'separator' => 'before',
-                'return_value' => 'true',
-            )
-        );
-        $this->add_control(
-            'gltf_d_light_s',
-            [
-                'label' => __( 'Strength', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 1,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 10,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_d_light' => 'true',
-                ],
-            ]
-        );
-
-        $this->add_control( 'gltf_d_light_c', [
-            'label' => esc_html__( 'Color', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::COLOR,
-            'default'     => '#ffffff', 
-            'condition' => [
-                'gltf_d_light' => 'true',
-            ],           
-        ]);
-        $this->add_control(
-            'lightdx',
-            [
-                'label' => __( 'Light X offset', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 0,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_d_light' => 'true',
-                ],
-            ]
-        );
-        $this->add_control(
-            'lightdy',
-            [
-                'label' => __( 'Light Y offset', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 0,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_d_light' => 'true',
-                ],
-            ]
-        );
-        $this->add_control(
-            'lightdz',
-            [
-                'label' => __( 'Light z offset', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 0,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_d_light' => 'true',
-                ],
-            ]
-        );
-
-        $this->add_control(
-            'gltf_a_light',
-            array(
-                'label'        => esc_html__( 'Enable Ambient light?', 'rehub-theme' ),
-                'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-                'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-                'separator' => 'before',
-                'return_value' => 'true',
-            )
-        );
-        $this->add_control(
-            'gltf_a_light_s',
-            [
-                'label' => __( 'Strength', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 1,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 10,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_a_light' => 'true',
-                ],
-            ]
-        );
-        $this->add_control( 'gltf_a_light_c', [
-            'label' => esc_html__( 'Color', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::COLOR,
-            'default'     => '#ffffff', 
-            'condition' => [
-                'gltf_a_light' => 'true',
-            ],           
-        ]);
-        $this->add_control(
-            'gltf_env',
-            array(
-                'label'        => esc_html__( 'Enable environment image?', 'rehub-theme' ),
-                'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-                'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-                'separator' => 'before',
-                'return_value' => 'true',
-            )
-        );
-        $this->add_control(
-            'gltf_env_s',
-            [
-                'label' => __( 'Strength', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'default' => [
-                    'size' => 1,
-                ],
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 20,
-                        'step' => 0.1,
-                    ],
-                ],
-                'condition' => [
-                    'gltf_env' => 'true',
-                ],
-            ]
-        );
-        $this->add_control( 'gltf_px', [
-            'label' => esc_html__( 'Custom right image (px)', 'rehub-theme' ),
-            'label_block'  => true,
-            'type' => \Elementor\Controls_Manager::MEDIA,
-            'default' => [
-                'url' => \Elementor\Utils::get_placeholder_image_src(),
-            ],
-            'condition' => array(
-                'gltf_env' => 'true'
-            ),
-        ]);
-        $this->add_control( 'gltf_nx', [
-            'label' => esc_html__( 'Custom left image (nx)', 'rehub-theme' ),
-            'label_block'  => true,
-            'type' => \Elementor\Controls_Manager::MEDIA,
-            'default' => [
-                'url' => \Elementor\Utils::get_placeholder_image_src(),
-            ],
-            'condition' => array(
-                'gltf_env' => 'true'
-            ),
-        ]);
-        $this->add_control( 'gltf_py', [
-            'label' => esc_html__( 'Custom top image (py)', 'rehub-theme' ),
-            'label_block'  => true,
-            'type' => \Elementor\Controls_Manager::MEDIA,
-            'default' => [
-                'url' => \Elementor\Utils::get_placeholder_image_src(),
-            ],
-            'condition' => array(
-                'gltf_env' => 'true'
-            ),
-        ]);
-        $this->add_control( 'gltf_ny', [
-            'label' => esc_html__( 'Custom bottom image (ny)', 'rehub-theme' ),
-            'label_block'  => true,
-            'type' => \Elementor\Controls_Manager::MEDIA,
-            'default' => [
-                'url' => \Elementor\Utils::get_placeholder_image_src(),
-            ],
-            'condition' => array(
-                'gltf_env' => 'true'
-            ),
-        ]);
-        $this->add_control( 'gltf_pz', [
-            'label' => esc_html__( 'Custom front image (pz)', 'rehub-theme' ),
-            'label_block'  => true,
-            'type' => \Elementor\Controls_Manager::MEDIA,
-            'default' => [
-                'url' => \Elementor\Utils::get_placeholder_image_src(),
-            ],
-            'condition' => array(
-                'gltf_env' => 'true'
-            ),
-        ]);
-        $this->add_control( 'gltf_nz', [
-            'label' => esc_html__( 'Custom back image (nz)', 'rehub-theme' ),
-            'label_block'  => true,
-            'type' => \Elementor\Controls_Manager::MEDIA,
-            'default' => [
-                'url' => \Elementor\Utils::get_placeholder_image_src(),
-            ],
-            'condition' => array(
-                'gltf_env' => 'true'
-            ),
-        ]);
-
-        $this->add_control( 'shader_url', [
-            'label' => esc_html__( 'Url on shaderfrog json', 'rehub-theme' ),
-            'separator' => 'before',
-            'label_block'  => true,
-            'type' => \Elementor\Controls_Manager::TEXT,
-        ]); 
-        $this->add_control( 'shader_mesh', [
-            'label' => esc_html__( 'Mesh name to apply shader', 'rehub-theme' ),
-            'label_block'  => true,
-            'type' => \Elementor\Controls_Manager::TEXT,
-        ]);
-
-        $repeater = new \Elementor\Repeater();
-
-        $repeater->add_control(
-            'mesh_name',
-            [
-                'label' => __( 'Get by mesh name', 'rehub-theme' ),
-                'description'=> 'Leave blank to get by number',
-                'type' => Controls_Manager::TEXT,
-                'separator' => 'before',
-                'label_block' => true,
-            ]
-        );
-        $repeater->add_control(
-            'model_center',
-            array(
-                'label'        => esc_html__( 'Center pivot and geo', 'rehub-theme' ),
-                'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-                'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-                'return_value' => 'yes',
-            )
-        );
-        $repeater->add_control(
-            'model_rx',
-            [
-                'label' => __( 'Rotation X', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -1000,
-                        'max' => 1000,
-                        'step' => 0.1,
-                    ],
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'model_ry',
-            [
-                'label' => __( 'Rotation Y', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -1000,
-                        'max' => 1000,
-                        'step' => 0.1,
-                    ],
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'model_rz',
-            [
-                'label' => __( 'Rotation Z', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -1000,
-                        'max' => 1000,
-                        'step' => 0.1,
-                    ],
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'model_px',
-            [
-                'label' => __( 'Position X', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.01,
-                    ],
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'model_py',
-            [
-                'label' => __( 'Position Y', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.01,
-                    ],
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'model_pz',
-            [
-                'label' => __( 'Position Z', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.01,
-                    ],
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'model_scale',
-            [
-                'label' => __( 'Scale', 'rehub-theme' ),
-                'type' => Controls_Manager::SLIDER,
-                'label_block' => true,
-                'range' => [
-                    'px' => [
-                        'min' => -100,
-                        'max' => 100,
-                        'step' => 0.01,
-                    ],
-                ],
-            ]
-        );
-        $repeater->add_control(
-            'model_opacity',
-            array(
-                'label'   => esc_html__( 'Opacity', 'rehub-theme' ),
-                'type'    => \Elementor\Controls_Manager::NUMBER,
-                'min'     => 1,
-                'max'     => 100,
-                'step'    => 1,
-            )
-        );
-        $repeater->add_control(
-            'model_duration',
-            array(
-                'label'   => esc_html__( 'Duration (s)', 'rehub-theme' ),
-                'type'    => \Elementor\Controls_Manager::NUMBER,
-                'min'     => 0.1,
-                'max'     => 20,
-                'step'    => 0.1,
-                'default' => 1,
-            )
-        ); 
-        $repeater->add_control(
-            'model_delay',
-            array(
-                'label'   => esc_html__( 'Delay (s)', 'rehub-theme' ),
-                'type'    => \Elementor\Controls_Manager::NUMBER,
-                'min'     => 0.1,
-                'max'     => 20,
-                'step'    => 0.1,
-            )
-        );
-        $repeater->add_control( 'model_ease', [
-            'type'        => \Elementor\Controls_Manager::SELECT,
-            'label'       => esc_html__( 'Ease type', 'rehub-theme' ),
-            'options'     => [
-                'power0-none'   =>  esc_html__('Linear', 'rehub-theme'),
-                'power1-in'   =>  esc_html__('Power 1 in', 'rehub-theme'),
-                'power1-out'   =>  esc_html__('Power 1 out', 'rehub-theme'),
-                'power1-inOut'   =>  esc_html__('Power 1 inOut', 'rehub-theme'),
-                'power2-in'   =>  esc_html__('Power 2 in', 'rehub-theme'),
-                'power2-out'   =>  esc_html__('Power 2 out', 'rehub-theme'),
-                'power2-inOut'   =>  esc_html__('Power 2 inOut', 'rehub-theme'),
-                'power3-in'   =>  esc_html__('Power 3 in', 'rehub-theme'),
-                'power3-out'   =>  esc_html__('Power 3 out', 'rehub-theme'),
-                'power3-inOut'   =>  esc_html__('Power 3 inOut', 'rehub-theme'),
-                'power4-in'   =>  esc_html__('Power 4 in', 'rehub-theme'),
-                'power4-out'   =>  esc_html__('Power 4 out', 'rehub-theme'),
-                'power4-inOut'   =>  esc_html__('Power 4 inOut', 'rehub-theme'),
-                'back-in'   =>  esc_html__('Back in', 'rehub-theme'),
-                'back-out'   =>  esc_html__('Back out', 'rehub-theme'),
-                'back-inOut'   =>  esc_html__('Back inOut', 'rehub-theme'),
-                'elastic-in'   =>  esc_html__('elastic in', 'rehub-theme'),
-                'elastic-out'   =>  esc_html__('elastic out', 'rehub-theme'),
-                'elastic-inOut'   =>  esc_html__('elastic inOut', 'rehub-theme'),
-                'circ-in'   =>  esc_html__('circ in', 'rehub-theme'),
-                'circ-out'   =>  esc_html__('circ out', 'rehub-theme'),
-                'circ-inOut'   =>  esc_html__('circ inOut', 'rehub-theme'),
-                'expo-in'   =>  esc_html__('expo in', 'rehub-theme'),
-                'expo-out'   =>  esc_html__('expo out', 'rehub-theme'),
-                'expo-inOut'   =>  esc_html__('expo inOut', 'rehub-theme'),
-                'cine-in'   =>  esc_html__('cine in', 'rehub-theme'),
-                'cine-out'   =>  esc_html__('cine out', 'rehub-theme'),
-                'cine-inOut'   =>  esc_html__('cine inOut', 'rehub-theme'),
-            ],
-        ]);
-        $repeater->add_control(
-            'model_infinite',
-            array(
-                'label'        => esc_html__( 'Enable infinite', 'rehub-theme' ),
-                'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-                'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-                'return_value' => 'yes',
-            )
-        );
-        $repeater->add_control(
-            'model_yoyo',
-            array(
-                'label'        => esc_html__( 'Enable Yoyo style', 'rehub-theme' ),
-                'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-                'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-                'return_value' => 'yes',
-            )
-        );
-        $repeater->add_control(
-            'model_from',
-            array(
-                'label'        => esc_html__( 'Set direction as FROM', 'rehub-theme' ),
-                'type'         => \Elementor\Controls_Manager::SWITCHER,
-                'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-                'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-                'return_value' => 'yes',
-                'default' => 'yes',
-            )
-        );                                          
-        $this->add_control( 'meshanimations', [
-            'label'    => esc_html__( 'Mesh Animations', 'rehub-theme' ),
-            'type'     => \Elementor\Controls_Manager::REPEATER,
-            'fields'   => $repeater->get_controls(),
-            'title_field' => '{{{ mesh_name }}}',
-            'separator' => 'before',
-            'prevent_empty' => false,
-        ]);
-
         $this->end_controls_section();
 
         $this->start_controls_section( 'canvassize', [
@@ -941,17 +330,647 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
 
         $this->end_controls_section();
 
+        $this->start_controls_section( 'lightsadd', [
+            'label' => esc_html__( 'Lights', 'rehub-theme' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+        ]);
+            $this->add_control(
+                'gltf_p_light',
+                array(
+                    'label'        => esc_html__( 'Enable point light?', 'rehub-theme' ),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+                    'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+                    'return_value' => 'true',
+                    'separator' => 'before',
+                )
+            );
+            $this->add_control(
+                'gltf_p_light_s',
+                [
+                    'label' => __( 'Strength', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 1,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 10,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_p_light' => 'true',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'gltf_p_light_d',
+                [
+                    'label' => __( 'Diffuse', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 100,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_p_light' => 'true',
+                    ],
+                ]
+            );
+            $this->add_control( 'gltf_p_light_c', [
+                'label' => esc_html__( 'Color', 'rehub-theme' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default'     => '#ffffff', 
+                'condition' => [
+                    'gltf_p_light' => 'true',
+                ],           
+            ]);
+            $this->add_control(
+                'lightx',
+                [
+                    'label' => __( 'Light X offset', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 0,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_p_light' => 'true',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'lighty',
+                [
+                    'label' => __( 'Light Y offset', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 0,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_p_light' => 'true',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'lightz',
+                [
+                    'label' => __( 'Light z offset', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 0,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_p_light' => 'true',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'gltf_d_light',
+                array(
+                    'label'        => esc_html__( 'Enable directional light?', 'rehub-theme' ),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+                    'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+                    'separator' => 'before',
+                    'return_value' => 'true',
+                    'default' => 'true'
+                )
+            );
+            $this->add_control(
+                'gltf_d_light_s',
+                [
+                    'label' => __( 'Strength', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 1,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 10,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_d_light' => 'true',
+                    ],
+                ]
+            );
+
+            $this->add_control( 'gltf_d_light_c', [
+                'label' => esc_html__( 'Color', 'rehub-theme' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default'     => '#ffffff', 
+                'condition' => [
+                    'gltf_d_light' => 'true',
+                ],           
+            ]);
+            $this->add_control(
+                'lightdx',
+                [
+                    'label' => __( 'Light X offset', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 0,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_d_light' => 'true',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'lightdy',
+                [
+                    'label' => __( 'Light Y offset', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 0,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_d_light' => 'true',
+                    ],
+                ]
+            );
+            $this->add_control(
+                'lightdz',
+                [
+                    'label' => __( 'Light z offset', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 0,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_d_light' => 'true',
+                    ],
+                ]
+            );
+
+            $this->add_control(
+                'gltf_a_light',
+                array(
+                    'label'        => esc_html__( 'Enable Ambient light?', 'rehub-theme' ),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+                    'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+                    'separator' => 'before',
+                    'return_value' => 'true',
+                )
+            );
+            $this->add_control(
+                'gltf_a_light_s',
+                [
+                    'label' => __( 'Strength', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 1,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 10,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_a_light' => 'true',
+                    ],
+                ]
+            );
+            $this->add_control( 'gltf_a_light_c', [
+                'label' => esc_html__( 'Color', 'rehub-theme' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default'     => '#ffffff', 
+                'condition' => [
+                    'gltf_a_light' => 'true',
+                ],           
+            ]);
+        $this->end_controls_section();
+
+        $this->start_controls_section( 'environmentadd', [
+            'label' => esc_html__( 'Environment and material', 'rehub-theme' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+        ]);
+
+            $this->add_control(
+                'gltf_env',
+                array(
+                    'label'        => esc_html__( 'Enable environment image?', 'rehub-theme' ),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+                    'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+                    'separator' => 'before',
+                    'return_value' => 'true',
+                )
+            );
+            $this->add_control(
+                'gltf_env_s',
+                [
+                    'label' => __( 'Strength', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'default' => [
+                        'size' => 1,
+                    ],
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => 0,
+                            'max' => 20,
+                            'step' => 0.1,
+                        ],
+                    ],
+                    'condition' => [
+                        'gltf_env' => 'true',
+                    ],
+                ]
+            );
+            $this->add_control( 'gltf_px', [
+                'label' => esc_html__( 'Custom right image (px)', 'rehub-theme' ),
+                'label_block'  => true,
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => array(
+                    'gltf_env' => 'true'
+                ),
+            ]);
+            $this->add_control( 'gltf_nx', [
+                'label' => esc_html__( 'Custom left image (nx)', 'rehub-theme' ),
+                'label_block'  => true,
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => array(
+                    'gltf_env' => 'true'
+                ),
+            ]);
+            $this->add_control( 'gltf_py', [
+                'label' => esc_html__( 'Custom top image (py)', 'rehub-theme' ),
+                'label_block'  => true,
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => array(
+                    'gltf_env' => 'true'
+                ),
+            ]);
+            $this->add_control( 'gltf_ny', [
+                'label' => esc_html__( 'Custom bottom image (ny)', 'rehub-theme' ),
+                'label_block'  => true,
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => array(
+                    'gltf_env' => 'true'
+                ),
+            ]);
+            $this->add_control( 'gltf_pz', [
+                'label' => esc_html__( 'Custom front image (pz)', 'rehub-theme' ),
+                'label_block'  => true,
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => array(
+                    'gltf_env' => 'true'
+                ),
+            ]);
+            $this->add_control( 'gltf_nz', [
+                'label' => esc_html__( 'Custom back image (nz)', 'rehub-theme' ),
+                'label_block'  => true,
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+                'condition' => array(
+                    'gltf_env' => 'true'
+                ),
+            ]);
+
+            $this->add_control( 'shader_url', [
+                'label' => esc_html__( 'Url on shaderfrog json', 'rehub-theme' ),
+                'separator' => 'before',
+                'label_block'  => true,
+                'type' => \Elementor\Controls_Manager::TEXT,
+            ]); 
+            $this->add_control( 'shader_mesh', [
+                'label' => esc_html__( 'Mesh name to apply shader', 'rehub-theme' ),
+                'label_block'  => true,
+                'type' => \Elementor\Controls_Manager::TEXT,
+            ]);
+
+        $this->end_controls_section();
+
+        $this->start_controls_section( 'meshanimadd', [
+            'label' => esc_html__( 'Mesh animations', 'rehub-theme' ),
+            'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+        ]);
+
+            $repeater = new \Elementor\Repeater();
+
+            $repeater->add_control(
+                'mesh_name',
+                [
+                    'label' => __( 'Get by mesh name', 'rehub-theme' ),
+                    'description'=> 'Leave blank to get by number',
+                    'type' => Controls_Manager::TEXT,
+                    'separator' => 'before',
+                    'label_block' => true,
+                ]
+            );
+            $repeater->add_control(
+                'model_center',
+                array(
+                    'label'        => esc_html__( 'Center pivot and geo', 'rehub-theme' ),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+                    'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+                    'return_value' => 'yes',
+                )
+            );
+            $repeater->add_control(
+                'model_rx',
+                [
+                    'label' => __( 'Rotation X', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -1000,
+                            'max' => 1000,
+                            'step' => 0.1,
+                        ],
+                    ],
+                ]
+            );
+            $repeater->add_control(
+                'model_ry',
+                [
+                    'label' => __( 'Rotation Y', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -1000,
+                            'max' => 1000,
+                            'step' => 0.1,
+                        ],
+                    ],
+                ]
+            );
+            $repeater->add_control(
+                'model_rz',
+                [
+                    'label' => __( 'Rotation Z', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -1000,
+                            'max' => 1000,
+                            'step' => 0.1,
+                        ],
+                    ],
+                ]
+            );
+            $repeater->add_control(
+                'model_px',
+                [
+                    'label' => __( 'Position X', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.01,
+                        ],
+                    ],
+                ]
+            );
+            $repeater->add_control(
+                'model_py',
+                [
+                    'label' => __( 'Position Y', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.01,
+                        ],
+                    ],
+                ]
+            );
+            $repeater->add_control(
+                'model_pz',
+                [
+                    'label' => __( 'Position Z', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.01,
+                        ],
+                    ],
+                ]
+            );
+            $repeater->add_control(
+                'model_scale',
+                [
+                    'label' => __( 'Scale', 'rehub-theme' ),
+                    'type' => Controls_Manager::SLIDER,
+                    'label_block' => true,
+                    'range' => [
+                        'px' => [
+                            'min' => -100,
+                            'max' => 100,
+                            'step' => 0.01,
+                        ],
+                    ],
+                ]
+            );
+            $repeater->add_control(
+                'model_opacity',
+                array(
+                    'label'   => esc_html__( 'Opacity', 'rehub-theme' ),
+                    'type'    => \Elementor\Controls_Manager::NUMBER,
+                    'min'     => 1,
+                    'max'     => 100,
+                    'step'    => 1,
+                )
+            );
+            $repeater->add_control(
+                'model_duration',
+                array(
+                    'label'   => esc_html__( 'Duration (s)', 'rehub-theme' ),
+                    'type'    => \Elementor\Controls_Manager::NUMBER,
+                    'min'     => 0.1,
+                    'max'     => 20,
+                    'step'    => 0.1,
+                    'default' => 1,
+                )
+            ); 
+            $repeater->add_control(
+                'model_delay',
+                array(
+                    'label'   => esc_html__( 'Delay (s)', 'rehub-theme' ),
+                    'type'    => \Elementor\Controls_Manager::NUMBER,
+                    'min'     => 0.1,
+                    'max'     => 20,
+                    'step'    => 0.1,
+                )
+            );
+            $repeater->add_control( 'model_ease', [
+                'type'        => \Elementor\Controls_Manager::SELECT,
+                'label'       => esc_html__( 'Ease type', 'rehub-theme' ),
+                'options'     => [
+                    'power0-none'   =>  esc_html__('Linear', 'rehub-theme'),
+                    'power1-in'   =>  esc_html__('Power 1 in', 'rehub-theme'),
+                    'power1-out'   =>  esc_html__('Power 1 out', 'rehub-theme'),
+                    'power1-inOut'   =>  esc_html__('Power 1 inOut', 'rehub-theme'),
+                    'power2-in'   =>  esc_html__('Power 2 in', 'rehub-theme'),
+                    'power2-out'   =>  esc_html__('Power 2 out', 'rehub-theme'),
+                    'power2-inOut'   =>  esc_html__('Power 2 inOut', 'rehub-theme'),
+                    'power3-in'   =>  esc_html__('Power 3 in', 'rehub-theme'),
+                    'power3-out'   =>  esc_html__('Power 3 out', 'rehub-theme'),
+                    'power3-inOut'   =>  esc_html__('Power 3 inOut', 'rehub-theme'),
+                    'power4-in'   =>  esc_html__('Power 4 in', 'rehub-theme'),
+                    'power4-out'   =>  esc_html__('Power 4 out', 'rehub-theme'),
+                    'power4-inOut'   =>  esc_html__('Power 4 inOut', 'rehub-theme'),
+                    'back-in'   =>  esc_html__('Back in', 'rehub-theme'),
+                    'back-out'   =>  esc_html__('Back out', 'rehub-theme'),
+                    'back-inOut'   =>  esc_html__('Back inOut', 'rehub-theme'),
+                    'elastic-in'   =>  esc_html__('elastic in', 'rehub-theme'),
+                    'elastic-out'   =>  esc_html__('elastic out', 'rehub-theme'),
+                    'elastic-inOut'   =>  esc_html__('elastic inOut', 'rehub-theme'),
+                    'circ-in'   =>  esc_html__('circ in', 'rehub-theme'),
+                    'circ-out'   =>  esc_html__('circ out', 'rehub-theme'),
+                    'circ-inOut'   =>  esc_html__('circ inOut', 'rehub-theme'),
+                    'expo-in'   =>  esc_html__('expo in', 'rehub-theme'),
+                    'expo-out'   =>  esc_html__('expo out', 'rehub-theme'),
+                    'expo-inOut'   =>  esc_html__('expo inOut', 'rehub-theme'),
+                    'cine-in'   =>  esc_html__('cine in', 'rehub-theme'),
+                    'cine-out'   =>  esc_html__('cine out', 'rehub-theme'),
+                    'cine-inOut'   =>  esc_html__('cine inOut', 'rehub-theme'),
+                ],
+            ]);
+            $repeater->add_control(
+                'model_infinite',
+                array(
+                    'label'        => esc_html__( 'Enable infinite', 'rehub-theme' ),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+                    'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+                    'return_value' => 'yes',
+                )
+            );
+            $repeater->add_control(
+                'model_yoyo',
+                array(
+                    'label'        => esc_html__( 'Enable Yoyo style', 'rehub-theme' ),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+                    'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+                    'return_value' => 'yes',
+                )
+            );
+            $repeater->add_control(
+                'model_from',
+                array(
+                    'label'        => esc_html__( 'Set direction as FROM', 'rehub-theme' ),
+                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+                    'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+                    'return_value' => 'yes',
+                    'default' => 'yes',
+                )
+            );                                          
+            $this->add_control( 'meshanimations', [
+                'label'    => esc_html__( 'Mesh Animations', 'rehub-theme' ),
+                'type'     => \Elementor\Controls_Manager::REPEATER,
+                'fields'   => $repeater->get_controls(),
+                'title_field' => '{{{ mesh_name }}}',
+                'separator' => 'before',
+                'prevent_empty' => false,
+            ]);
+
+        $this->end_controls_section();        
+
         $this->start_controls_section( 'scriptsadd', [
             'label' => esc_html__( 'Three js scripts', 'rehub-theme' ),
             'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
         ]);
-
             $this->add_control(
                 'scenescript',
                 array(
                     'label'   => esc_html__( 'Three JS Scene script', 'rehub-theme' ),
                     'description' => 'available variable is scene',
-                    'type'    => \Elementor\Controls_Manager::TEXTAREA,
+                    'type'    => \Elementor\Controls_Manager::CODE,
                 )
             );
             $this->add_control(
@@ -959,15 +978,15 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
                 array(
                     'label'   => esc_html__( 'Three JS gltf model script', 'rehub-theme' ),
                     'description' => 'available variable is model',
-                    'type'    => \Elementor\Controls_Manager::TEXTAREA,
+                    'type'    => \Elementor\Controls_Manager::CODE,
                 )
             );
             $this->add_control(
                 'animationscript',
                 array(
                     'label'   => esc_html__( 'Three JS animation script', 'rehub-theme' ),
-                    'description' => 'available variables are scene, model',
-                    'type'    => \Elementor\Controls_Manager::TEXTAREA,
+                    'description' => 'available variables are scene, model, mouseX, mouseY',
+                    'type'    => \Elementor\Controls_Manager::CODE,
                 )
             );
 
@@ -1112,12 +1131,12 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
         }
         $widgetId = $this->get_id();
         echo '<div id="rh_three_'.esc_attr($widgetId).'" class="rh-gltf-canvas rh_and_canvas" '.$this->get_render_attribute_string( 'rh_gltfdata' ).'> </div>';
-        wp_enqueue_script('threejs');wp_enqueue_script('orbitcontrol');wp_enqueue_script('gltfloader');wp_enqueue_script('gsapthree');
         if ( ! empty( $settings['shader_url'] )) {wp_enqueue_script('shaderfrog');}
-        if ( ! empty( $settings['mesh'] )) {wp_enqueue_script('gsap');}
-        $scenescript = sanitize_text_field($settings['scenescript']);
-        $animationscript = sanitize_text_field($settings['animationscript']);
-        $modelscript = sanitize_text_field($settings['modelscript']);
+        wp_enqueue_script('threejs');wp_enqueue_script('orbitcontrol');wp_enqueue_script('gltfloader');wp_enqueue_script('gsap');wp_enqueue_script('gsapthree'); 
+        
+        $scenescript = $settings['scenescript'];
+        $animationscript = $settings['animationscript'];
+        $modelscript = $settings['modelscript'];
         //wp_enqueue_script('gltfinit'); 
         $javascript = '
         (function() {
@@ -1126,6 +1145,8 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
             var scene, camera, pointLight, model, envMap, dirLight, shaderurl, shadermaterial, containerwidth, containerheight, modelcenter;
             var renderer, mixer, controls;
             var hasanimation = false;
+            var childmeshes = []; 
+            var childmeshesnames = [];
 
             var mouseX = 0;
             var mouseY = 0;
@@ -1154,7 +1175,6 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
             var camerax = parseFloat(container.dataset.camerax);
             var cameray = parseFloat(container.dataset.cameray);
             var cameraz = parseFloat(container.dataset.cameraz);
-            //camera.position.set( 5, 2, 8 );
 
             // rotation types
             var gltf_rotation = container.dataset.rotationtype;
@@ -1197,252 +1217,93 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
             }    
 
             //Loader of gltf                
+            
+            var gltfobj = container.dataset.url;
+            if (gltfobj){
+                var urlgltf = decodeURIComponent(gltfobj);
+                var loader = new THREE.GLTFLoader();
+                loader.load( urlgltf, function ( gltf ) {
 
-            var loader = new THREE.GLTFLoader();
-            var urlgltf = decodeURIComponent(container.dataset.url);
-            loader.load( urlgltf, function ( gltf ) {
+                    model = gltf.scene;
+                    //model.position.set( 1, 1, 0 );
 
-                model = gltf.scene;
-                //model.position.set( 1, 1, 0 );
+                    //center object in scene
 
-                //center object in scene
+                    var modelbox = new THREE.Box3().setFromObject( model );
+                    modelcenter = modelbox.getCenter( new THREE.Vector3() );
+                    var modelsize = modelbox.getSize(new THREE.Vector3()).length();
+                    model.position.x += ( model.position.x - modelcenter.x );
+                    model.position.y += ( model.position.y - modelcenter.y );
+                    model.position.z += ( model.position.z - modelcenter.z );
 
-                var modelbox = new THREE.Box3().setFromObject( model );
-                modelcenter = modelbox.getCenter( new THREE.Vector3() );
-                var modelsize = modelbox.getSize(new THREE.Vector3()).length();
-                model.position.x += ( model.position.x - modelcenter.x );
-                model.position.y += ( model.position.y - modelcenter.y );
-                model.position.z += ( model.position.z - modelcenter.z );
+                    //update controls and camera according to size
 
-                //update controls and camera according to size
+                    controls.maxDistance = modelsize * 10;
+                    camera.near = modelsize / 100;
+                    camera.far = modelsize * 100;
+                    camera.position.copy(modelcenter);
+                    camera.position.x += modelsize / 2.0;
+                    camera.position.y += modelsize / 5.0;
+                    camera.position.z += modelsize / 2.0;
+                    camera.updateProjectionMatrix();
 
-                controls.maxDistance = modelsize * 10;
-                camera.near = modelsize / 100;
-                camera.far = modelsize * 100;
-                camera.position.copy(modelcenter);
-                camera.position.x += modelsize / 2.0;
-                camera.position.y += modelsize / 5.0;
-                camera.position.z += modelsize / 2.0;
-                camera.updateProjectionMatrix();
+                    //offset camera if need
 
-                //offset camera if need
+                    if(camerax) camera.position.x += camerax;
+                    if(cameray) camera.position.y += cameray;
+                    if(cameraz) camera.position.z += cameraz;
+                    camera.lookAt(modelcenter);
 
-                if(camerax) camera.position.x += camerax;
-                if(cameray) camera.position.y += cameray;
-                if(cameraz) camera.position.z += cameraz;
-                camera.lookAt(modelcenter);
+                    //offset model if need
 
-                //offset model if need
+                    var modelx = parseFloat(container.dataset.modelx);
+                    var modely = parseFloat(container.dataset.modely);
+                    var modelz = parseFloat(container.dataset.modelz);
 
-                var modelx = parseFloat(container.dataset.modelx);
-                var modely = parseFloat(container.dataset.modely);
-                var modelz = parseFloat(container.dataset.modelz);
+                    if(modelx) model.position.x += modelx;
+                    if(modely) model.position.y += modely;
+                    if(modelz) model.position.z += modelz;
 
-                if(modelx) model.position.x += modelx;
-                if(modely) model.position.y += modely;
-                if(modelz) model.position.z += modelz;
+                    //Rescale model if need
 
-                //Rescale model if need
-
-                var rescale = parseFloat(container.dataset.scale);
-                if(rescale){
-                    model.scale.set( rescale, rescale, rescale );
-                }
-
-
-                // Point Light
-
-                var lights = container.dataset.lights;
-                if(lights){
-                    var color = container.dataset.lightcolor;
-                    var intensity = parseFloat(container.dataset.lightstrength);
-                    var diffuse = parseFloat(container.dataset.lightdiffuse);
-                    if(!diffuse) diffuse = 0;
-                    var diffuse = 100 - diffuse; 
-
-                    pointLight = new THREE.PointLight( color, intensity, diffuse);
-                    pointLight.position.copy( camera.position );
-                    //pointLight.target.position.set(modelcenter); 
-
-                    var lightx = parseFloat(container.dataset.lightx);
-                    var lighty = parseFloat(container.dataset.lighty);
-                    var lightz = parseFloat(container.dataset.lightz);
-
-                    if(lightx) pointLight.position.x += lightx;
-                    if(lighty) pointLight.position.y += lighty;
-                    if(lightz) pointLight.position.z += lightz;
-
-                    scene.add( pointLight);
-
-                }
-
-                // Directional Light
-
-                var lightds = container.dataset.lightds;
-                if(lightds){
-                    var colord = container.dataset.lightdcolor;
-                    var intensityd = parseFloat(container.dataset.lightdstrength); 
-
-                    dirLight = new THREE.DirectionalLight( colord, intensityd);
-                    dirLight.position.copy( camera.position );
-                    dirLight.target.position.set(modelcenter); 
-
-                    var lightdx = parseFloat(container.dataset.lightdx);
-                    var lightdy = parseFloat(container.dataset.lightdy);
-                    var lightdz = parseFloat(container.dataset.lightdz);
-
-                    if(lightdx) dirLight.position.x += lightdx;
-                    if(lightdy) dirLight.position.y += lightdy;
-                    if(lightdz) dirLight.position.z += lightdz;
-
-                    scene.add( dirLight);
-
-                }
-
-                // Ambient Light
-
-                var alights = container.dataset.alights;
-                if(alights){
-                    var acolor = container.dataset.alightcolor;
-                    var aintensity = parseFloat(container.dataset.alightstrength); 
-                    scene.add( new THREE.AmbientLight(acolor,aintensity) );                  
-                }
-                
-                // Check all inner objects and assign materials
-
-                var meshanimations = container.dataset.meshanimations;
-                if(meshanimations) meshanimations = JSON.parse(meshanimations);
-
-                var childmeshes = []; 
-                var childmeshesnames = [];
-
-                model.traverse( function ( child ) {
-                    if ( child.isMesh ) {
-                        if(shaderurl){
-                            var shadermesh = container.dataset.shadermesh;
-                            if(shadermesh){
-                                if(child.name == shadermesh){
-                                    child.material = shadermaterial;
-                                }
-                            }else{
-                                child.material = shadermaterial;
-                            }
-                            
-                        }
-                        if(envMap){
-                            child.material.envMap = envMap;
-                            var envintensity = container.dataset.envstrength;
-                            if(envintensity) child.material.envMapIntensity = envintensity;
-                        }
-                        childmeshes.push(child);
-                        childmeshesnames.push(child.name);
+                    var rescale = parseFloat(container.dataset.scale);
+                    if(rescale){
+                        model.scale.set( rescale, rescale, rescale );
                     }
 
+
+                    // Create Lights
+
+                    customLightCreate();
+
+                    //Create gsap animations
+                    customGsapAnimation();
+
+                    //Create Environment
+                    customEnvCreate(model);
+
+                    //Add something to model if need
+                    '.$modelscript.'
+
+                    // finally add model to scene
+                    scene.add( model );
+
+                    // Check if we have animations and play it
+
+                    if(gltf.animations.length > 0){
+                        mixer = new THREE.AnimationMixer( model );
+                        gltf.animations.forEach((clip) => {
+                            mixer.clipAction(clip).reset().play();
+                        });
+                        hasanimation = true;                   
+                    }
+                }, undefined, function ( e ) {
+                    console.error( e );
                 } );
-                
-                if(meshanimations){
-                    for(var curr = 0; curr < meshanimations.length; curr++){
-
-                        var findname = meshanimations[curr].mesh_name;
-
-                        if(findname){
-                            var indexbyname = childmeshesnames.indexOf(findname); 
-                            var mesh = childmeshes[indexbyname]; 
-                        }else{
-                            var mesh = childmeshes[curr];
-                        }
-
-                        if(mesh.name){
-
-                            var pivotcenter = meshanimations[curr].model_center;
-                            if(pivotcenter){
-                                var center = new THREE.Vector3();
-                                mesh.geometry.computeBoundingBox();
-                                mesh.geometry.boundingBox.getCenter(center);
-                                mesh.geometry.center();
-                                mesh.position.copy(center);
-                            }
-
-                            var animatedobj = mesh;
-
-                            let rx = meshanimations[curr].model_rx;
-                            let ry = meshanimations[curr].model_ry;
-                            let rz = meshanimations[curr].model_rz;
-                            let px = meshanimations[curr].model_px;
-                            let py = meshanimations[curr].model_py;
-                            let pz = meshanimations[curr].model_pz;
-                            let sc = meshanimations[curr].model_scale;
-                            let du = meshanimations[curr].model_duration;
-                            let de = meshanimations[curr].model_delay;
-                            let ea = meshanimations[curr].model_ease;
-                            let inf = meshanimations[curr].model_infinite;
-                            let yoyo = meshanimations[curr].model_yoyo;
-                            let from = meshanimations[curr].model_from;
-                            let opacity = meshanimations[curr].model_opacity;
-                            let anargs = {};
-                            anargs.three = {};
-                            if(rx) anargs.three.rotationX = parseFloat(rx);
-                            if(ry) anargs.three.rotationY = parseFloat(ry);
-                            if(rz) anargs.three.rotationZ = parseFloat(rz);
-                            if(px) anargs.three.x = parseFloat(px);
-                            if(py) anargs.three.y = parseFloat(py);
-                            if(pz) anargs.three.z = parseFloat(pz);
-                            if(sc) anargs.three.scale = parseFloat(sc);
-                            if(opacity) anargs.three.opacity = parseInt(opacity)/100;
-                            if(du) anargs.duration = parseFloat(du);
-                            if(de) anargs.delay = parseFloat(de);
-                            if(ea){
-                                var $ease = ea.split("-");
-                                anargs.ease = $ease[0]+"."+$ease[1];
-                                if(anargs.ease === "power0.none"){           
-                                    anargs.ease = "none";
-                                }
-                            }
-                            if(inf=="yes"){
-                                if(yoyo=="yes"){
-                                    anargs.yoyo = true;
-                                }
-                                anargs.repeat = -1;
-                                if(de){
-                                    anargs.repeatDelay = parseFloat(de);
-                                }
-                                
-                            }
-                            if(from=="yes"){
-                                gsap.from(animatedobj, anargs);
-                            }else{
-                                gsap.to(animatedobj, anargs);
-                            }
-                        }
-                    }
-                }
-
-                //Add something to model if need
-                '.$modelscript.'
-
-                // finally add model to scene
-                scene.add( model );
-
-                // Check if we have animations and play it
-
-                if(gltf.animations.length > 0){
-                    mixer = new THREE.AnimationMixer( model );
-                    gltf.animations.forEach((clip) => {
-                        mixer.clipAction(clip).reset().play();
-                    });
-                    hasanimation = true;                   
-                }
-
-                
-
-            }, undefined, function ( e ) {
-
-                console.error( e );
-
-            } );
+            }
 
             //offset camera if need in case if no model. If we have model, camera will be repositioned and offset again because loader is async
-
+            if(!gltfobj) camera.position.set( 5, 2, 8 );
             if(camerax) camera.position.x += camerax;
             if(cameray) camera.position.y += cameray;
             if(cameraz) camera.position.z += cameraz;
@@ -1450,6 +1311,21 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
 
             //Add something to scene if need
             '.$scenescript.'
+
+            //Lights, materials if model is not existed
+
+            if (!gltfobj){
+
+                // Create Lights
+                customLightCreate();
+
+                //Create Environment
+                customEnvCreate(scene);
+
+                //Create gsap animations
+                customGsapAnimation();
+
+            }
 
             //Start animation here
 
@@ -1528,6 +1404,173 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
                 renderer.setSize( containerwidth, containerheight );
             }
 
+            function customLightCreate(){
+                // Point Light
+
+                var lights = container.dataset.lights;
+                if(lights){
+                    var color = container.dataset.lightcolor;
+                    var intensity = parseFloat(container.dataset.lightstrength);
+                    var diffuse = parseFloat(container.dataset.lightdiffuse);
+                    if(!diffuse) diffuse = 0;
+                    var diffuse = 100 - diffuse; 
+
+                    pointLight = new THREE.PointLight( color, intensity, diffuse);
+                    pointLight.position.copy( camera.position );
+
+                    var lightx = parseFloat(container.dataset.lightx);
+                    var lighty = parseFloat(container.dataset.lighty);
+                    var lightz = parseFloat(container.dataset.lightz);
+
+                    if(lightx) pointLight.position.x += lightx;
+                    if(lighty) pointLight.position.y += lighty;
+                    if(lightz) pointLight.position.z += lightz;
+
+                    scene.add( pointLight);
+
+                }
+
+                // Directional Light
+
+                var lightds = container.dataset.lightds;
+                if(lightds){
+                    var colord = container.dataset.lightdcolor;
+                    var intensityd = parseFloat(container.dataset.lightdstrength); 
+
+                    dirLight = new THREE.DirectionalLight( colord, intensityd);
+                    dirLight.position.copy( camera.position );
+                    dirLight.target.position.set(modelcenter); 
+
+                    var lightdx = parseFloat(container.dataset.lightdx);
+                    var lightdy = parseFloat(container.dataset.lightdy);
+                    var lightdz = parseFloat(container.dataset.lightdz);
+
+                    if(lightdx) dirLight.position.x += lightdx;
+                    if(lightdy) dirLight.position.y += lightdy;
+                    if(lightdz) dirLight.position.z += lightdz;
+
+                    scene.add( dirLight);
+
+                }
+
+                // Ambient Light
+
+                var alights = container.dataset.alights;
+                if(alights){
+                    var acolor = container.dataset.alightcolor;
+                    var aintensity = parseFloat(container.dataset.alightstrength); 
+                    scene.add( new THREE.AmbientLight(acolor,aintensity) );                  
+                }
+            }
+
+            function customEnvCreate(model){
+                model.traverse( function ( child ) {
+                    if ( child.isMesh ) {
+                        if(shaderurl){
+                            var shadermesh = container.dataset.shadermesh;
+                            if(shadermesh){
+                                if(child.name == shadermesh){
+                                    child.material = shadermaterial;
+                                }
+                            }else{
+                                child.material = shadermaterial;
+                            }
+                            
+                        }
+                        if(envMap){
+                            child.material.envMap = envMap;
+                            var envintensity = container.dataset.envstrength;
+                            if(envintensity) child.material.envMapIntensity = envintensity;
+                        }
+                        
+                        childmeshes.push(child);
+                        childmeshesnames.push(child.name);
+                    }
+
+                } );
+            }
+
+            function customGsapAnimation(){
+                var meshanimations = container.dataset.meshanimations;
+                if(meshanimations) meshanimations = JSON.parse(meshanimations);
+                if(meshanimations){
+                    for(var curr = 0; curr < meshanimations.length; curr++){
+
+                        var findname = meshanimations[curr].mesh_name;
+
+                        if(findname){
+                            var indexbyname = childmeshesnames.indexOf(findname); 
+                            var mesh = childmeshes[indexbyname]; 
+                        }else{
+                            var mesh = childmeshes[curr];
+                        }
+
+                        if(mesh.uuid){
+
+                            var pivotcenter = meshanimations[curr].model_center;
+                            if(pivotcenter){
+                                var center = new THREE.Vector3();
+                                mesh.geometry.computeBoundingBox();
+                                mesh.geometry.boundingBox.getCenter(center);
+                                mesh.geometry.center();
+                                mesh.position.copy(center);
+                            }
+
+                            var animatedobj = mesh;
+
+                            let rx = meshanimations[curr].model_rx;
+                            let ry = meshanimations[curr].model_ry;
+                            let rz = meshanimations[curr].model_rz;
+                            let px = meshanimations[curr].model_px;
+                            let py = meshanimations[curr].model_py;
+                            let pz = meshanimations[curr].model_pz;
+                            let sc = meshanimations[curr].model_scale;
+                            let du = meshanimations[curr].model_duration;
+                            let de = meshanimations[curr].model_delay;
+                            let ea = meshanimations[curr].model_ease;
+                            let inf = meshanimations[curr].model_infinite;
+                            let yoyo = meshanimations[curr].model_yoyo;
+                            let from = meshanimations[curr].model_from;
+                            let opacity = meshanimations[curr].model_opacity;
+                            let anargs = {};
+                            anargs.three = {};
+                            if(rx) anargs.three.rotationX = parseFloat(rx);
+                            if(ry) anargs.three.rotationY = parseFloat(ry);
+                            if(rz) anargs.three.rotationZ = parseFloat(rz);
+                            if(px) anargs.three.x = parseFloat(px);
+                            if(py) anargs.three.y = parseFloat(py);
+                            if(pz) anargs.three.z = parseFloat(pz);
+                            if(sc) anargs.three.scale = parseFloat(sc);
+                            if(opacity) anargs.three.opacity = parseInt(opacity)/100;
+                            if(du) anargs.duration = parseFloat(du);
+                            if(de) anargs.delay = parseFloat(de);
+                            if(ea){
+                                var $ease = ea.split("-");
+                                anargs.ease = $ease[0]+"."+$ease[1];
+                                if(anargs.ease === "power0.none"){           
+                                    anargs.ease = "none";
+                                }
+                            }
+                            if(inf=="yes"){
+                                if(yoyo=="yes"){
+                                    anargs.yoyo = true;
+                                }
+                                anargs.repeat = -1;
+                                if(de){
+                                    anargs.repeatDelay = parseFloat(de);
+                                }
+                                
+                            }
+                            if(from=="yes"){
+                                gsap.from(animatedobj, anargs);
+                            }else{
+                                gsap.to(animatedobj, anargs);
+                            }
+                        }
+                    }
+                }
+            }
+
 
         })();        
         '; 
@@ -1535,7 +1578,7 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
         if ( Plugin::$instance->editor->is_edit_mode() ) {  
             echo '<script>'.$javascript.'</script>';
         }else{
-            wp_add_inline_script('gltfloader', $javascript);
+            wp_add_inline_script('gsapthree', $javascript);
         }
     }
 

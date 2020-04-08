@@ -384,10 +384,6 @@ var revMenuStyle = function() {
             jQuery('body').append(jQuery('<div class="offsetnav-overlay"></div>').hide().fadeIn());
             NavOverlayRemoved = false;
         }
-        jQuery('#slide-menu-mobile').find('img.lazyimages').each(function(){
-          var source = jQuery(this).attr("data-src");
-          jQuery(this).attr("src", source).css({'opacity': '1'});
-        });
     });
     mobsidebartrigger.on('click', function(e) {
         e.preventDefault();
@@ -494,61 +490,11 @@ jQuery(document).ready(function($) {
     });
 
     // Lazy load images
-    $("img.lazyimages").unveil(40, function() {
+    /*$("img.lazyimages").unveil(40, function() {
         $(this).on('load', function(){
             this.style.opacity = 1;
         });
-    });
-
-    $('.tabs, .vc_tta, .wpsm-tabs, .tab-pane').find('img.lazyimages').trigger("unveil");
-
-    $(document).on('post-load', function(e){
-        $("img.lazyimages").unveil(40, function() {
-            $(this).on('load', function(){
-                this.style.opacity = 1;
-            });
-        });
-    });
-
-    $(document).on('woof_ajax_done', function(e){
-        $("img.lazyimages").unveil(40, function() {
-            $(this).on('load', function(){
-                this.style.opacity = 1;
-            });
-        });
-    });    
-
-    $(document).on('faster-woo-widgets-complete', function(e){
-        $("img.lazyimages").unveil(40, function() {
-            $(this).on('load', function(){
-                this.style.opacity = 1;
-            });
-        });
-    });  
-    
-    $(document).on('fww-recently-viewed-products-complete', function(e){
-        $("img.lazyimages").unveil(40, function() {
-            $(this).on('load', function(){
-                this.style.opacity = 1;
-            });
-        });
-    });  
-    
-    $(document).on('auto-infinite-scroll-complete', function(e){
-        $("img.lazyimages").unveil(40, function() {
-            $(this).on('load', function(){
-                this.style.opacity = 1;
-            });
-        });
-    });  
-    
-    $(document).on('super-speedy-search-complete', function(e){
-        $("img.lazyimages").unveil(40, function() {
-            $(this).on('load', function(){
-                this.style.opacity = 1;
-            });
-        });
-    });
+    });*/
 
     $('.rhniceselect, .woocommerce-ordering .orderby').niceSelect(); 
 
@@ -700,11 +646,7 @@ jQuery(document).ready(function($) {
         }
         $(this).addClass('current').siblings().removeClass('current');
 
-        tabcontainer.find('.tabs-item').hide().removeClass('stuckMoveDownOpacity').eq($(this).index()).show().addClass('stuckMoveDownOpacity');
-        tabcontainer.find('img.lazyimages').each(function(){
-            var source = $(this).attr("data-src");
-            $(this).attr("src", source).css({'opacity': '1'});
-        });    
+        tabcontainer.find('.tabs-item').hide().removeClass('stuckMoveDownOpacity').eq($(this).index()).show().addClass('stuckMoveDownOpacity');   
    });
    $('.tabs-menu li:first-child').trigger('click');
 
@@ -768,12 +710,8 @@ jQuery(document).ready(function($) {
 
    /* review woo tabs */
    $('.rehub_woo_tabs_menu').on('click', 'li:not(.current)', function() {
-      $(this).addClass('current').siblings().removeClass('current').parents('.rehub_woo_review').find('.rehub_woo_review_tabs').hide().eq($(this).index()).fadeIn(700);
-        $(this).closest('.rehub_woo_review').find('img.lazyimages').each(function(){
-            var source = $(this).attr("data-src");
-            $(this).attr("src", source).css({'opacity': '1'});
-        });       
-   })
+      $(this).addClass('current').siblings().removeClass('current').parents('.rehub_woo_review').find('.rehub_woo_review_tabs').hide().eq($(this).index()).fadeIn(700);     
+   });
    $('.rehub_woo_tabs_menu li:first-child').trigger('click');
    $('.btn_offer_block.choose_offer_woo').click(function(event){     
       event.preventDefault();
@@ -971,11 +909,7 @@ jQuery(document).ready(function($) {
          if (response !== 'fail') {
             multi_cat_wrap.html(response);
             multi_cat.find('.cat-pagination a').removeClass('active');
-            multi_cat.find('.cat-pagination a[data-paginated="' + page + '"]').addClass('active');
-            multi_cat.find('img.lazyimages').each(function(){
-                var source = $(this).attr("data-src");
-                $(this).attr("src", source).css({'opacity': '1'});
-            });            
+            multi_cat.find('.cat-pagination a[data-paginated="' + page + '"]').addClass('active');           
          }
          multi_cat_wrap.removeClass('loading');
       });
@@ -1220,11 +1154,7 @@ jQuery(document).ready(function($) {
                     blockforload.html($(response));
                     blockforload.find('.wpsm-bar').each(function(){
                         $(this).find('.wpsm-bar-bar').animate({ width: $(this).attr('data-percent') }, 1500 );
-                    });
-                    blockforload.find('img.lazyimages').each(function(){
-                        var source = $(this).attr("data-src");
-                        $(this).attr("src", source).css({'opacity': '1'});
-                    });                                                                                                     
+                    });                                                                                                    
                 }                                   
             }
         });     
@@ -1575,10 +1505,6 @@ jQuery(document).ready(function($) {
                     else{
                         activecontainer.append($(response).hide().fadeIn(1000));
                     }
-                    activecontainer.find('img.lazyimages').each(function(){
-                        var source = $(this).attr("data-src");
-                        $(this).attr("src", source).css({'opacity': '1'});
-                    });
                     activecontainer.find('.radial-progress').each(function(){
                         $(this).find('.circle .mask.full, .circle .fill:not(.fix)').animate({  borderSpacing: $(this).attr('data-rating')*18 }, {
                             step: function(now,fx) {
@@ -1683,10 +1609,6 @@ jQuery(document).ready(function($) {
                     else{
                         activecontainer.append($(response).hide().fadeIn(1000));
                     }       
-                    activecontainer.find('img.lazyimages').each(function(){
-                        var source = $(this).attr("data-src");
-                        $(this).attr("src", source).css({'opacity': '1'});
-                    });
                     activecontainer.find('.radial-progress').each(function(){
                         $(this).find('.circle .mask.full, .circle .fill:not(.fix)').animate({  borderSpacing: $(this).attr('data-rating')*18 }, {
                             step: function(now,fx) {
@@ -1788,10 +1710,6 @@ jQuery(document).ready(function($) {
                     else{
                         activecontainer.html($(response).hide().fadeIn(1000));
                     }
-                    activecontainer.find('img.lazyimages').each(function(){
-                        var source = $(this).attr("data-src");
-                        $(this).attr("src", source).css({'opacity': '1'});
-                    });
 
                     activecontainer.find('.radial-progress').each(function(){
                         $(this).find('.circle .mask.full, .circle .fill:not(.fix)').animate({  borderSpacing: $(this).attr('data-rating')*18 }, {
@@ -2371,7 +2289,6 @@ jQuery(window).on('load', function(){
             var owl = jQuery(this);
           owl.on('initialized.owl.carousel', function(e) {
             owl.parent().removeClass('loading');
-            owl.find('img.lazyimages').trigger("unveil");
           });
           var carouselplay = (owl.data('auto')==1) ? true : false;
           var showrow = (owl.data('showrow') !='') ? owl.data('showrow') : 4;
@@ -2531,7 +2448,7 @@ jQuery(window).on('load', function(){
             selector: ".slides > .slide",
             slideshow: false,  
             start: function(slider) {
-               slider.find('img.lazyimages').trigger("unveil");                               
+                                              
             }             
          });
       });
@@ -2570,7 +2487,7 @@ jQuery(window).on('load', function(){
                   slider.flexslider("stop");
             },            
             start: function(slider) {
-               slider.find('img.lazyimages').trigger("unveil");               
+                             
                slider.removeClass('loading');
                jQuery('.flex-control-thumbs img').each(function() {
                   var widththumb = jQuery(this).width();

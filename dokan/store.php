@@ -100,6 +100,9 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 						else {
 							$classes[] = 'rh-flex-eq-height column_woo';
 						}
+						if (rehub_option('woo_design') == 'deallist') {
+							$classes[] = 'woo_offer_list';
+						}
 						?>					
 						<div class="products <?php echo implode(' ',$classes);?>">
 							<?php while ( have_posts() ) : the_post(); ?>
@@ -154,11 +157,11 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 					</div>
 				</div>
 				<?php } ?>
-				<?php if( class_exists( 'Dokan_Store_Location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on' && !is_active_widget( '', '', 'dokan-store-location')) { ?>
-				<div role="tabvendor" id="vendor-location">
-					<?php the_widget( 'Dokan_Store_Location', array( 'title' => esc_html__( 'Store Location', 'rehub-theme' ) ), $widget_args ); ?>
-				</div>
-				<?php } ?>
+                <?php if ( dokan()->widgets->is_exists( 'store_location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && ! empty( $map_location ) ) { ?>
+                <div role="tabvendor" id="vendor-location">
+                    <?php the_widget( dokan()->widgets->store_location, array( 'title' => __( 'Store Location', 'rehub-theme' ) ), $widget_args ); ?>
+                </div>
+                <?php } ?>
 				
 				<?php do_action( 'woocommerce_after_main_content' ); ?>				
 			</article>
@@ -291,20 +294,20 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
             <?php do_action( 'dokan_sidebar_store_before', $store_user->data, $store_info ); ?>
             <?php
             if ( ! is_active_sidebar( 'sidebar-store' ) ) {
-                if ( class_exists( 'Dokan_Store_Location' ) ) {
-                    the_widget( 'Dokan_Store_Category_Menu', array( 'title' => esc_html__( 'Store Product Category', 'rehub-theme' ) ), $widget_args );
+                if ( dokan()->widgets->is_exists( 'store_category_menu' ) ) {
+                    the_widget( dokan()->widgets->store_category_menu, array( 'title' => __( 'Store Product Category', 'rehub-theme' ) ), $widget_args );
+                }
 
-                    if ( dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && !empty( $map_location ) ) {
-                        the_widget( 'Dokan_Store_Location', array( 'title' => esc_html__( 'Store Location', 'rehub-theme' ) ), $widget_args );
-                    }
+                if ( dokan()->widgets->is_exists( 'store_location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && ! empty( $map_location ) ) {
+                    the_widget( dokan()->widgets->store_location, array( 'title' => __( 'Store Location', 'rehub-theme' ) ), $widget_args );
+                }
 
-                    if ( dokan_get_option( 'store_open_close', 'dokan_general', 'on' ) == 'on' ) {
-                        the_widget( 'Dokan_Store_Open_Close', array( 'title' => esc_html__( 'Store Time', 'rehub-theme' ) ), $widget_args );
-                    }
+                if ( dokan()->widgets->is_exists( 'store_open_close' ) && dokan_get_option( 'store_open_close', 'dokan_general', 'on' ) == 'on' ) {
+                    the_widget( dokan()->widgets->store_open_close, array( 'title' => __( 'Store Time', 'rehub-theme' ) ), $widget_args );
+                }
 
-                    if ( dokan_get_option( 'contact_seller', 'dokan_general', 'on' ) == 'on' ) {
-                        the_widget( 'Dokan_Store_Contact_Form', array( 'title' => esc_html__( 'Contact Vendor', 'rehub-theme' ) ), $widget_args );
-                    }
+                if ( dokan()->widgets->is_exists( 'store_contact_form' ) && dokan_get_option( 'contact_seller', 'dokan_general', 'on' ) == 'on' ) {
+                    the_widget( dokan()->widgets->store_contact_form, array( 'title' => __( 'Contact Vendor', 'rehub-theme' ) ), $widget_args );
                 }
             }
             ?>

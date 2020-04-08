@@ -394,12 +394,7 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 				$rehub_options['tf_username'] = $tf_username;
 				$tf_purchase_code = strtolower(preg_replace('#([a-z0-9]{8})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{12})#','$1-$2-$3-$4-$5',$tf_purchase_code));
 				$rehub_options['tf_purchase_code'] = $tf_purchase_code;
-                                $rehub_options['tf_support_date'] = "2049-12-12";
-                                $rehub_options['tf_username'] = $tf_username;
-                                $rehub_options['tf_purchase_code'] = $tf_purchase_code;
-                                $result = update_option( 'Rehub_Key', $rehub_options );
-                                echo 'Updated';
-                                wp_die();
+
 				$prepare_request = array(
 					'user-agent' => 'WordPress/'. $wp_version .'; '. home_url(),
 					'sslverify'    => false,

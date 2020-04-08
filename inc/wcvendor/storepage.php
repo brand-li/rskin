@@ -235,6 +235,9 @@ $active_short_description = is_active_widget( '', '', 'wcv_store_short_descripti
 					else {
 						$classes[] = 'rh-flex-eq-height column_woo';
 					}
+					if (rehub_option('woo_design') == 'deallist') {
+						$classes[] = 'woo_offer_list';
+					}
 					?>					
 					<div class="products <?php echo implode(' ',$classes);?>">
 						<?php while ( have_posts() ) : the_post(); ?>
