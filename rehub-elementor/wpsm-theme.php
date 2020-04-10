@@ -74,6 +74,14 @@ class Widget_ThemeElements extends Widget_Base {
                 'themelement' => 'wishlist',
             ],
         ]); 
+        $this->add_control( 'wishlist_label', [
+            'label' => esc_html__( 'Label under icon', 'rehub-theme' ),
+            'label_block'  => true,
+            'type' => \Elementor\Controls_Manager::TEXT,
+            'condition' => [
+                'themelement' => ['wishlist'],
+            ],
+        ]);
 	    $this->add_control( 'iconcolor', [
 	        'label' => esc_html__( 'Set icon color', 'rehub-theme' ),
 	        'type' => \Elementor\Controls_Manager::COLOR,

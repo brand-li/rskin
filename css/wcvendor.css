@@ -395,7 +395,7 @@ body .wvm_style_basic .wvm_plan .wvm_features{background:white; border-left: 1px
 body .wvm_style_basic .wvm_plan .wvm_head .wvm_price{letter-spacing: -1px;font-size: 50px; line-height: 65px; text-shadow: none !important; font-weight: normal;}
 body .wvm_style_basic .wvm_plan .wvm_foot{padding: 16px 30px}
 .recomended-batch, .wvm_recommended_plan::before{display: none !important}
-.wvm_plan{font-family: Roboto; box-shadow: 0 0 20px #ededed; transition: all 0.5s ease; position: relative; top: 0}
+.wvm_plan{box-shadow: 0 0 20px #ededed; transition: all 0.5s ease; position: relative; top: 0}
 .wvm_plan:hover{ box-shadow: 0 0 30px #ddd; top: -15px !important}
 body .wvm_style_basic .wvm_plan .wvm_title{font-size: 22px; font-weight: bold;}
 body .wvm_style_basic .wvm_recommended_plan .wvm_foot{padding: 26px}

@@ -298,7 +298,12 @@ class WPSM_Postfilters{
 	    	$args['meta_key'] = '_rehub_offer_discount';
 	    }
 	    if ($filter_args->orderby == 'price'){
-	    	$args['meta_key'] = 'rehub_main_product_price';
+	    	if ($filter_args->data_source == 'cpt' && $filter_args->post_type=='product') {
+	    		$args['meta_key'] = '_price';
+	    	}else{
+	    		$args['meta_key'] = 'rehub_main_product_price';	    		
+	    	}
+
 	    }
 	    if ($filter_args->orderby == 'hot'){
             $rehub_max_temp = (rehub_option('hot_max')) ? rehub_option('hot_max') : 50;
@@ -3891,7 +3896,7 @@ if( !function_exists('wpsm_searchbox_function') ) {
 			<form  role="search" class="flowhidden" method="get" id="rh-custom-search-<?php echo uniqid();?>" action="<?php echo home_url( '/' ); ?>">
 			  <input type="text" name="s" placeholder="<?php echo ''.$placeholder?>" <?php if ($enable_ajax == '1') {echo 'class="re-ajax-search" autocomplete="off"';} ?> data-posttype="<?php echo ''.$by;?>" data-enable_compare="<?php echo ''.$enable_compare;?>" data-catid="<?php echo ''.$catid;?>">
 			  <input type="hidden" name="post_type" value="<?php echo ''.$by?>" />
-			  <input type="hidden" name="catid" value="<?php echo ''.$catid?>" />
+			  <input type="hidden" name="cat" value="<?php echo ''.$catid?>" />
 			  <i class="far fa-arrow-right inside-search"></i>
 				<?php 
 				    if($color == 'main'){

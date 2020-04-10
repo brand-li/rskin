@@ -47,19 +47,19 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
      * @return array Widget categories.
      */
     public function get_categories() {
-        return [ 'helpler-modules' ];
+        return [ 'rhwow-modules' ];
     }
 
     protected function _register_controls() {
         $this->start_controls_section( 'general', [
             'label' => esc_html__( 'GLTF Model loader', 'rehub-theme' ),
-            'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            'tab'   => Controls_Manager::TAB_CONTENT,
         ]);
 
         $this->add_control( 'gltf_url', [
             'label' => esc_html__( 'Url on gltf, glb model', 'rehub-theme' ),
             'label_block'  => true,
-            'type' => \Elementor\Controls_Manager::TEXT,
+            'type' => Controls_Manager::TEXT,
         ]); 
 
         $this->add_control(
@@ -67,7 +67,7 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
             array(
                 'label'   => esc_html__( 'Model Resize', 'rehub-theme' ),
                 'description' => 'If you don\'t see model, maybe you need to resize it, try 0.0001 value or 10000',
-                'type'    => \Elementor\Controls_Manager::NUMBER,
+                'type'    => Controls_Manager::NUMBER,
                 'min'     => 0,
                 'max'     => 10000,
                 'step'    => 0.0001,
@@ -386,7 +386,7 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
             );
             $this->add_control( 'gltf_p_light_c', [
                 'label' => esc_html__( 'Color', 'rehub-theme' ),
-                'type' => \Elementor\Controls_Manager::COLOR,
+                'type' => Controls_Manager::COLOR,
                 'default'     => '#ffffff', 
                 'condition' => [
                     'gltf_p_light' => 'true',
@@ -460,7 +460,7 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
                 'gltf_d_light',
                 array(
                     'label'        => esc_html__( 'Enable directional light?', 'rehub-theme' ),
-                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'type'         => Controls_Manager::SWITCHER,
                     'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
                     'label_off'    => esc_html__( 'No', 'rehub-theme' ),
                     'separator' => 'before',
@@ -492,7 +492,7 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
 
             $this->add_control( 'gltf_d_light_c', [
                 'label' => esc_html__( 'Color', 'rehub-theme' ),
-                'type' => \Elementor\Controls_Manager::COLOR,
+                'type' => Controls_Manager::COLOR,
                 'default'     => '#ffffff', 
                 'condition' => [
                     'gltf_d_light' => 'true',
@@ -566,7 +566,7 @@ class WPSM_TCanvas_A_Widget extends Widget_Base {
                 'gltf_a_light',
                 array(
                     'label'        => esc_html__( 'Enable Ambient light?', 'rehub-theme' ),
-                    'type'         => \Elementor\Controls_Manager::SWITCHER,
+                    'type'         => Controls_Manager::SWITCHER,
                     'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
                     'label_off'    => esc_html__( 'No', 'rehub-theme' ),
                     'separator' => 'before',

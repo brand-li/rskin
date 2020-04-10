@@ -132,7 +132,6 @@ border-bottom: 1px dotted #fff9 !important;}
 #wcfm-main-contentainer .wcfm_membership_box_head{max-height: 280px}
 #wcfm-main-contentainer .wcfm_featured_membership_box .wcfm_membership_box_head, #wcfm-main-contentainer .wcfm_featured_membership_box_wrraper .wcfm_membership_box_head{max-height: 310px}
 #wcfm-main-contentainer .wcfm_membership_box_head .wcfm_membership_description{font-style: italic;padding: 10px 30px !important; font-size: 95% !important}
-.wcfm_membership_title, #wcfm-main-contentainer input.wcfm_submit_button, #wcfm-main-contentainer button.wcfm_submit_button, #wcfm-main-contentainer a.wcfm_submit_button, #wcfm-main-contentainer .wcfm_add_category_bt, #wcfm-main-contentainer .wcfm_add_attribute, #wcfm-main-contentainer .wcfm_add_attribute_term, #wcfm-main-contentainer input.upload_button, #wcfm-main-contentainer input.remove_button, #wcfm-main-contentainer .dataTables_wrapper .dt-buttons .dt-button, #wcfm_vendor_approval_response_button, #wcfm_bulk_edit_button, #wcfm_enquiry_submit_button{font-family: Roboto}
 .wcfm-membership-wrapper .wc-progress-steps li.done::after{font-family: "Font Awesome\ 5 Pro"; content: "\f058"; font-weight: 900; margin: 0 5px; font-size: 130%}
 .wcfm-membership-wrapper .wc-progress-steps li:not(.active)::before{display: none;}
 .wcfm-membership-wrapper .wc-progress-steps li::befor{border-width: 6px!important }

@@ -2584,7 +2584,7 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
                                 <li class="row_chart_1 heading_row_chart">
                                 </li>                               
                                 <li class="row_chart_2 meta_value_row_chart">
-                                	<?php the_excerpt();?>
+                                	<?php kama_excerpt('maxchar=180'); ?>
                                 </li>                                  
                                 <li class="row_chart_5 meta_value_row_chart">
                                 	<?php WPSM_Woohelper::re_show_brand_tax(); //show brand taxonomy?>
@@ -3841,9 +3841,9 @@ function wpsm_tax_archive_shortcode( $atts, $content = null ) {
 			
 			foreach( $letter_keyed_terms as $letter => $terms ) {
 
-				$term_letter_links .= '<li><a href="#'.rh_convert_to_unicode($letter).'" class="font120 blackcolor rehub_scroll">'.$letter.'</a></li>';
+				$term_letter_links .= '<li><a href="#'.rh_convert_cyr_symbols($letter).'" class="font120 blackcolor rehub_scroll">'.$letter.'</a></li>';
 
-				$term_titles .= '<div class="single-letter mt20 mb20 pb10 border-grey-bottom"><a href="#" name="'.rh_convert_to_unicode($letter).'"></a><div class="letter_tag fontbold font120 lineheight20">'.$letter.'<div class="return_to_letters cursorpointer floatright font80"><span class="rehub_scroll rehub-main-color-bg" data-scrollto="#top_ankor"><i class="far fa-angle-up"></i></span></div></div></div>';
+				$term_titles .= '<div class="single-letter mt20 mb20 pb10 border-grey-bottom"><a href="#" name="'.rh_convert_cyr_symbols($letter).'"></a><div class="letter_tag fontbold font120 lineheight20">'.$letter.'<div class="return_to_letters cursorpointer floatright font80"><span class="rehub_scroll rehub-main-color-bg" data-scrollto="#top_ankor"><i class="far fa-angle-up"></i></span></div></div></div>';
 				$term_titles .= '<div class="tax-wrap flowhidden rh-flex-eq-height">';
 										
 				foreach( $terms as $term ) {
@@ -4868,7 +4868,7 @@ function rh_get_post_thumbnails($atts, $content = NULL){
         </div>
         <?php  wp_enqueue_script('modulobox'); wp_enqueue_style('modulobox');?>
         <?php if($justify):?>
-        	<?php wp_enqueue_script('justifygallery');?>        	
+        	<?php wp_enqueue_script('justifygallery');wp_enqueue_style('justify');?>        	
         <?php endif;?>
         
     <?php endif;?>   

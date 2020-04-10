@@ -7,7 +7,7 @@ use ContentEgg\application\helpers\TemplateHelper;
 
 <?php $random_key = rand(0, 50);?>
 <div class="justified-gallery rh-tilled-gallery modulo-lightbox five-thumbnails" data-galleryid="rhgal_<?php echo (int)$random_key;?>">
-    <?php wp_enqueue_script('justifygallery');  wp_enqueue_script('modulobox'); wp_enqueue_style('modulobox'); ?>
+    <?php wp_enqueue_script('justifygallery');  wp_enqueue_script('modulobox'); wp_enqueue_style('justify');  wp_enqueue_style('modulobox'); ?>
     <?php foreach ($items as $item): ?>
         <?php $offer_title = (!empty($item['title'])) ? $item['title'] : ''; ?> 
         <?php $gallery_images = (!empty ($item['extra']['imageSet'])) ? $item['extra']['imageSet'] : ''?>

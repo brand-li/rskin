@@ -1,8 +1,6 @@
 /* jQuery Countdown plugin v1.0 Copyright 2010, Vassilis Dourdounis */
 !function(a){a.fn.countDown=function(t){return config={},a.extend(config,t),diffSecs=this.setCountDown(config),config.onComplete&&a.data(a(this)[0],"callback",config.onComplete),config.omitWeeks&&a.data(a(this)[0],"omitWeeks",config.omitWeeks),a("#"+a(this).attr("id")+" .digit").html('<div class="top"></div><div class="bottom"></div>'),a(this).doCountDown(a(this).attr("id"),diffSecs,500),this},a.fn.stopCountDown=function(){clearTimeout(a.data(this[0],"timer"))},a.fn.startCountDown=function(){this.doCountDown(a(this).attr("id"),a.data(this[0],"diffSecs"),500)},a.fn.setCountDown=function(t){var e=new Date;t.targetDate?e=new Date(t.targetDate.month+"/"+t.targetDate.day+"/"+t.targetDate.year+" "+t.targetDate.hour+":"+t.targetDate.min+":"+t.targetDate.sec+(t.targetDate.utc?" UTC":"")):t.targetOffset&&(e.setFullYear(t.targetOffset.year+e.getFullYear()),e.setMonth(t.targetOffset.month+e.getMonth()),e.setDate(t.targetOffset.day+e.getDate()),e.setHours(t.targetOffset.hour+e.getHours()),e.setMinutes(t.targetOffset.min+e.getMinutes()),e.setSeconds(t.targetOffset.sec+e.getSeconds()));var s=new Date;return diffSecs=Math.floor((e.valueOf()-s.valueOf())/1e3),a.data(this[0],"diffSecs",diffSecs),diffSecs},a.fn.doCountDown=function(s,i,o){$this=a("#"+s),i<=0&&(i=0,a.data($this[0],"timer")&&clearTimeout(a.data($this[0],"timer"))),secs=i%60,mins=Math.floor(i/60)%60,hours=Math.floor(i/60/60)%24,1==a.data($this[0],"omitWeeks")?(days=Math.floor(i/60/60/24),weeks=Math.floor(i/60/60/24/7)):(days=Math.floor(i/60/60/24)%7,weeks=Math.floor(i/60/60/24/7)),$this.dashChangeTo(s,"seconds_dash",secs,o||800),$this.dashChangeTo(s,"minutes_dash",mins,o||1200),$this.dashChangeTo(s,"hours_dash",hours,o||1200),$this.dashChangeTo(s,"days_dash",days,o||1200),$this.dashChangeTo(s,"weeks_dash",weeks,o||1200),a.data($this[0],"diffSecs",i),i>0?(e=$this,t=setTimeout(function(){e.doCountDown(s,i-1)},1e3),a.data(e[0],"timer",t)):(cb=a.data($this[0],"callback"))&&a.data($this[0],"callback")()},a.fn.dashChangeTo=function(t,e,s,i){$this=a("#"+t);for(var o=$this.find("."+e+" .digit").length-1;o>=0;o--){var n=s%10;s=(s-n)/10,$this.digitChangeTo("#"+$this.attr("id")+" ."+e+" .digit:eq("+o+")",n,i)}},a.fn.digitChangeTo=function(t,e,s){s||(s=800),a(t+" div.top").html()!=e+""&&(a(t+" div.top").css({display:"none"}),a(t+" div.top").html(e||"0").slideDown(s),a(t+" div.bottom").animate({height:""},s,function(){a(t+" div.bottom").html(a(t+" div.top").html()),a(t+" div.bottom").css({display:"block",height:""}),a(t+" div.top").hide().slideUp(10)}))}}(jQuery);
 !function(e,i){"object"==typeof exports&&"undefined"!=typeof module?i(exports):"function"==typeof define&&define.amd?define(["exports"],i):i((e=e||self).window=e.window||{})}(this,function(e){"use strict";function g(){return i||"undefined"!=typeof window&&(i=window.gsap)&&i.registerPlugin&&i}function j(e,i,t){t=!!t,e.visible!==t&&(e.visible=t,e.traverse(function(e){return e.visible=t}))}function k(e){return("string"==typeof e&&"="===e.charAt(1)?e.substr(0,2)+parseFloat(e.substr(2)):e)*t}function l(e){(i=e||g())&&(d=i.core.PropTween,f=1)}var i,f,d,u={x:"position",y:"position",z:"position"},t=Math.PI/180;"position,scale,rotation".split(",").forEach(function(e){return u[e+"X"]=u[e+"Y"]=u[e+"Z"]=e});var n={version:"3.0.0",name:"three",register:l,init:function init(e,i){var t,n,o,r,s,a;for(r in f||l(),i){if(t=u[r],o=i[r],t)n=~(s=r.charAt(r.length-1).toLowerCase()).indexOf("x")?"x":~s.indexOf("z")?"z":"y",this.add(e[t],n,e[t][n],~r.indexOf("rotation")?k(o):o);else if("scale"===r)this.add(e[r],"x",e[r].x,o),this.add(e[r],"y",e[r].y,o),this.add(e[r],"z",e[r].z,o);else if("opacity"===r)for(s=(a=e.material.length?e.material:[e.material]).length;-1<--s;)a[s].transparent=!0,this.add(a[s],r,a[s][r],o);else"visible"===r?e.visible!==o&&(this._pt=new d(this._pt,e,r,o?0:1,o?1:-1,0,0,j)):this.add(e,r,e[r],o);this._props.push(r)}}};g()&&i.registerPlugin(n),e.ThreePlugin=n,e.default=n;if (typeof(window)==="undefined"||window!==e){Object.defineProperty(e,"__esModule",{value:!0})} else {delete e.default}});
-var rhscroller = new ScrollMagic.Controller();
-
 (function($) {
     "use strict";
 
@@ -149,8 +147,8 @@ var rhscroller = new ScrollMagic.Controller();
             jQuery(".play3").fitVids();
         });
 
-        jQuery(".re_carousel").each(function(){
-          var owl = jQuery(this);
+        if($scope.find('.re_carousel').length > 0){
+          var owl = $scope.find('.re_carousel');
           owl.on('initialized.owl.carousel', function(e) {
             owl.parent().removeClass('loading');
           });
@@ -159,6 +157,7 @@ var rhscroller = new ScrollMagic.Controller();
           var laizy = (owl.data('laizy') == 1) ? true : false;
           var navdisable = (owl.data('navdisable') == 1) ? false : true;
           var loopdisable = (owl.data('loopdisable') == 1) ? false : true;
+          var dotenable = (owl.data('dotenable') == 1) ? true : false;
           var rtltrue = (jQuery('body').hasClass('rtl')) ? true : false;
           if (owl.data('fullrow') == 1) {
              var breakpoint = {
@@ -235,7 +234,7 @@ var rhscroller = new ScrollMagic.Controller();
           owl.owlCarousel({
             rtl:rtltrue,
              loop:loopdisable,
-             dots:false,
+             dots:dotenable,
              nav: navdisable,
              lazyLoad: laizy,
              autoplay: carouselplay,
@@ -246,7 +245,8 @@ var rhscroller = new ScrollMagic.Controller();
              autoplayTimeout : 8000,
              autoplayHoverPause : true,
              autoplaySpeed : 1000,
-             navSpeed : 800
+             navSpeed : 800,
+             dotsSpeed : 800
           }); 
 
           var customnext = owl.closest('.custom-nav-car').find('.cus-car-next');
@@ -260,9 +260,35 @@ var rhscroller = new ScrollMagic.Controller();
             customprev.click(function(){
             owl.trigger('prev.owl.carousel', [800]);
           });
-          }      
+          }   
+            if(owl.hasClass('rh-ca-connected')){
+                var connectedid = jQuery('#' + owl.data('connected'));
+                if(connectedid.length > 0){
+                    if (connectedid.find('.elementor-tab-title').length > 0){
+                        var $connectedtabs = connectedid.find('.elementor-tab-title');
+                        connectedid.on("click", $connectedtabs, function(e){
+                            var id = parseInt(jQuery(e.target).closest('.elementor-tab-title').data('tab'));
+                            var id = id - 1;
+                            owl.trigger('to.owl.carousel', [id, 1000, true]);
+                        });
+                        owl.on('changed.owl.carousel', function(e) {
+                            var items = e.item.count;
+                            var item  = e.item.index - 1;
+                            if(item > items) {
+                               item = item - items;
+                            } else if (item < 1) {
+                               item = items;
+                            }
+                            if(!connectedid.find('.elementor-tab-title[data-tab="'+parseInt(item)+'"]').hasClass("elementor-active")){
+                                connectedid.find('.elementor-tab-title[data-tab="'+parseInt(item)+'"]').trigger("click");
+                            }
+                        })
 
-        });
+                    }
+                }
+            }   
+
+        };
 
         $('.main_slider').each(function() {
          var slider = $(this);
@@ -319,14 +345,19 @@ var rhscroller = new ScrollMagic.Controller();
             $(".wpsm-tooltip").tipsy({gravity: "s", fade: true, html: true });
         }        
 
-        $('.tabs-menu').on('click', 'li:not(.current)', function() {
-            var tabcontainer = $(this).closest('.tabs');
-            if(tabcontainer.length == 0) {
-                var tabcontainer = $(this).closest('.elementor-widget-wrap');
-            }
-            $(this).addClass('current').siblings().removeClass('current');
-            tabcontainer.find('.tabs-item').hide().removeClass('stuckMoveDownOpacity').eq($(this).index()).show().addClass('stuckMoveDownOpacity');   
-        });        
+        if($scope.find('.tabs-menu').length > 0){
+          var curtabmenu = $scope.find('.tabs-menu');
+          curtabmenu.on('click', 'li:not(.current)', function() {
+              var tabcontainer = $(this).closest('.tabs');
+              if(tabcontainer.length == 0) {
+                  var tabcontainer = $(this).closest('.elementor-widget-wrap');
+              }
+              $(this).addClass('current').siblings().removeClass('current');
+              tabcontainer.find('.tabs-item').hide().removeClass('stuckMoveDownOpacity').eq($(this).index()).show().addClass('stuckMoveDownOpacity');   
+          });
+          curtabmenu.find('li:first-child').trigger('click');
+
+        }        
 
         $('.radial-progress').each(function(){
           $(this).find('.circle .mask.full, .circle .fill:not(.fix)').animate({  borderSpacing: $(this).attr('data-rating')*18 }, {
@@ -355,8 +386,8 @@ var rhscroller = new ScrollMagic.Controller();
                 var elements = $scope.find(".swiper-slide:not(.swiper-slide-duplicate)");
                 for (var i = elements.length - 1; i >= 0; i--) {
                     if (typeof links[i] !== 'undefined' && links[i] !== null) {
-                        $scope.find("[data-elementor-lightbox-index='" + i + "']").attr('href',links[i]);
-                    } 
+                        jQuery(this).find("[data-swiper-slide-index='" + i + "'] a").attr('href',links[i]);
+                    }
                 }
             }
         }
@@ -374,7 +405,11 @@ var rhscroller = new ScrollMagic.Controller();
             if(current.hasClass('prehidden')){
                 current.removeClass('prehidden');
             }
-            
+            if(current.data('triggertype')){
+                var triggertype = current.data('triggertype');
+            }else{
+                var triggertype = 'custom';
+            }            
 
             if(current.data('x')){
                 anargs.x = current.data('x');
@@ -425,7 +460,7 @@ var rhscroller = new ScrollMagic.Controller();
             }
 
             if(current.data('o')){
-                anargs.opacity = parseInt(current.data('o'))/100;
+                anargs.autoAlpha = parseInt(current.data('o'))/100;
             }
             if(current.data('bg')){
                 anargs.backgroundColor = current.data('bg');
@@ -568,7 +603,7 @@ var rhscroller = new ScrollMagic.Controller();
                     let scy = multianimations[curr].multi_scale_y;
                     let width = multianimations[curr].multi_width;
                     let height = multianimations[curr].multi_height;
-                    let opacity = multianimations[curr].multi_opacity;
+                    let autoAlpha = multianimations[curr].multi_opacity;
                     let bg = multianimations[curr].multi_bg;
                     let origin = multianimations[curr].multi_origin;
                     let de = multianimations[curr].multi_delay;
@@ -577,6 +612,8 @@ var rhscroller = new ScrollMagic.Controller();
                     let from = multianimations[curr].multi_from;
                     let customtime = multianimations[curr].multi_time;
                     let customobj = multianimations[curr].multi_obj;
+                    let onhov = multianimations[curr].multi_hover;
+                    let curanobj = $anobj;
                     
                     let multiargs = {};
                     if(rx) multiargs.rotationX = parseFloat(rx);
@@ -589,10 +626,11 @@ var rhscroller = new ScrollMagic.Controller();
                     if(sc) multiargs.scale = parseFloat(sc);
                     if(scx) multiargs.scaleX = parseFloat(scx);
                     if(scy) multiargs.scaleY = parseFloat(scy);
-                    if(opacity) multiargs.opacity = parseInt(opacity)/100;
+                    if(autoAlpha) multiargs.autoAlpha = parseInt(autoAlpha)/100;
                     if(du) multiargs.duration = parseFloat(du);
                     if(de) multiargs.delay = parseFloat(de);
                     if(origin) multiargs.transformOrigin = parseFloat(origin);
+                    if(!customtime) customtime = ">";
                     if(ea){
                         var $ease = ea.split("-");
                         multiargs.ease = $ease[0]+"."+$ease[1];
@@ -600,47 +638,76 @@ var rhscroller = new ScrollMagic.Controller();
                             multiargs.ease = "none";
                         }
                     }
-                    if(!customtime) customtime = ">";
-
                     if(customobj && $(customobj).length > 0){
                         $anobj = $(customobj);
                     }
                     if(from=="yes"){
-                        animation.from($anobj, multiargs, customtime);
+                        if(onhov == "yes"){
+                            let childanimation = gsap.timeline();
+                            childanimation.from($anobj, multiargs, customtime).reverse();
+                            curanobj.mouseenter(function(event) {
+                                childanimation.play();
+                            });
+                            curanobj.mouseleave(function(event) {
+                                childanimation.reverse();
+                            });
+                        }else{
+                            animation.from($anobj, multiargs, customtime);
+                        }
+                        
                     }else{
-                        animation.to($anobj, multiargs, customtime);
+                        if(onhov == "yes"){
+                            let childanimation = gsap.timeline();
+                            childanimation.to($anobj, multiargs, customtime).reverse();
+                            curanobj.mouseenter(function(event) {
+                                childanimation.play();
+                            });
+                            curanobj.mouseleave(function(event) {
+                                childanimation.reverse();
+                            });
+                        }else{
+                            animation.to($anobj, multiargs, customtime);
+                        } 
                     }
                 }
             
             }
-            
-            if(current.data('customtrigger')){
-                var customtrigger = '#'+current.data('customtrigger');               
-            }else{
-                var customtrigger = $scope;
-            }
-            scrollargs.triggerElement = customtrigger;
+            if(triggertype == 'custom'){
+                if(current.data('customtrigger')){
+                    var customtrigger = '#'+current.data('customtrigger');               
+                }else{
+                    var customtrigger = $scope;
+                }
+                scrollargs.triggerElement = customtrigger;
 
-            if(current.data('triggerheight')){
-                var $hookpos = parseInt(current.data('triggerheight'))/100;
-                scrollargs.triggerHook = $hookpos;
-            }else{
-                scrollargs.triggerHook = 0.85;
-            }
+                if(current.data('triggerheight')){
+                    var $hookpos = parseInt(current.data('triggerheight'))/100;
+                    scrollargs.triggerHook = $hookpos;
+                }else{
+                    scrollargs.triggerHook = 0.85;
+                }
 
-            if(current.data('scrollduration')){
-                var $hookdur = current.data('scrollduration');
-                scrollargs.duration = $hookdur;
-            }   
+                if(current.data('scrollduration')){
+                    var $hookdur = current.data('scrollduration');
+                    scrollargs.duration = $hookdur;
+                }   
 
-            var scene = new ScrollMagic.Scene(scrollargs).setTween(animation).addTo(rhscroller);
-            if(current.data('pin') && current.data('scrollduration')){
-                var pin = '#'+current.data('pin'); 
-                scene.setPin(pin);             
+                var scene = new ScrollMagic.Scene(scrollargs).setTween(animation).addTo(rhscroller);
+                if(current.data('pin') && current.data('scrollduration')){
+                    var pin = '#'+current.data('pin'); 
+                    scene.setPin(pin);             
+                }
+                if(current.data('rev')){
+                    scene.reverse(false);
+                }
             }
-            if(current.data('rev')){
-                scene.reverse(false);
-            } 
+            else if(triggertype == 'waypoint'){
+                current.elementorWaypoint(function(direction) {
+                    animation.play();
+                }, { offset: 'bottom-in-view' }); 
+            }else if(triggertype == 'load'){
+                animation.play();
+            }
         }
 
         //reveal
@@ -649,7 +716,7 @@ var rhscroller = new ScrollMagic.Controller();
             var revealwrap = $scope.find(".rh-reveal-wrap"); 
             var revealcover = $scope.find(".rh-reveal-block");
             var revealcontent = $scope.find(".rh-reveal-cont"); 
-            revealwrap.removeClass('rhhidden');
+            revealwrap.removeClass('prehidden');
             if(revealcover.data('reveal-speed')){
                 var $coverspeed = revealcover.data('reveal-speed');
             }else{
@@ -679,7 +746,7 @@ var rhscroller = new ScrollMagic.Controller();
                 tl.from(revealcover,{ duration:$coverspeed, scaleY: 0, transformOrigin: "bottom", delay: $coverdelay });
                 tl.to(revealcover,{ duration:$coverspeed, scaleY: 0, transformOrigin: "top" }, "reveal");
             }
-            tl.from(revealcontent,{ duration:1, opacity: 0 }, "reveal"); 
+            tl.from(revealcontent,{ duration:1, autoAlpha: 0 }, "reveal"); 
             revealwrap.elementorWaypoint(function(direction) {
                 tl.play();
             }, { offset: 'bottom-in-view' });          

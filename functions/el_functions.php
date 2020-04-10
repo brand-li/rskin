@@ -21,7 +21,8 @@ add_action( 'elementor/elements/categories_registered', function( $elements_mana
      $elements_manager->add_category( 'rehub-category', [ 'title' => esc_html__( 'Rehub Woocommerce Modules', 'rehub-theme' ), 'icon' => 'eicon-woocommerce' ] );
      $elements_manager->add_category( 'content-modules', [ 'title' => esc_html__( 'Rehub Post Modules', 'rehub-theme' ) ] );
      $elements_manager->add_category( 'deal-helper', [ 'title' => esc_html__( 'Rehub Deal/Coupon Modules', 'rehub-theme' ) ] );
-     $elements_manager->add_category( 'helpler-modules', [ 'title' => esc_html__( 'Rehub Helper Modules', 'rehub-theme' ) ] );       
+     $elements_manager->add_category( 'helpler-modules', [ 'title' => esc_html__( 'Rehub Helper Modules', 'rehub-theme' ) ] );  
+    $elements_manager->add_category( 'rhwow-modules', [ 'title' => esc_html__( 'Rehub WOW Animations', 'rehub-theme' ) ] );     
 });
 
 add_action( 'init', function () {
@@ -79,8 +80,10 @@ add_action( 'init', function () {
     require_once (rh_locate_template('rehub-elementor/wpsm-itinerary.php'));    
     require_once (rh_locate_template('rehub-elementor/wpsm-reviewbox.php')); 
     require_once (rh_locate_template('rehub-elementor/wpsm-tabevery.php'));
+    require_once (rh_locate_template('rehub-elementor/wpsm-allcarousel.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-canvas.php'));  
     require_once (rh_locate_template('rehub-elementor/wpsm-3dcanvas.php'));
+    require_once (rh_locate_template('rehub-elementor/wpsm-lottie.php'));
 
     //require_once (rh_locate_template('rehub-elementor/wpsm-twocolnews.php'));
     //require_once (rh_locate_template('rehub-elementor/wpsm-numhead.php')); 
@@ -892,6 +895,16 @@ function RH_parallax_el_elementor( $obj, $args ) {
         'description' => '<a href="https://greensock.com/docs/v3/GSAP/Timeline">Documentation</a>',
         'type' => \Elementor\Controls_Manager::TEXT,
     ]);
+    $gsaprepeater->add_control(
+        'multi_hover',
+        array(
+            'label'        => esc_html__( 'Enable On Hover Action', 'rehub-theme' ),
+            'type'         => \Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+        )
+    );
     $gsaprepeater->add_control( 'multi_ease', [
         'type'        => \Elementor\Controls_Manager::SELECT,
         'label'       => esc_html__( 'Ease type', 'rehub-theme' ),
@@ -1022,7 +1035,7 @@ function RH_parallax_el_elementor( $obj, $args ) {
     $obj->add_control(
         'rhhr2',
         [
-            'label' => __( 'Text, SVG, Multi Animations', 'rehub-theme' ),
+            'label' => __( 'Text, SVG, Stagger', 'rehub-theme' ),
             'type' => \Elementor\Controls_Manager::HEADING,
             'separator' => 'before',
             'condition' => array(
@@ -1037,7 +1050,7 @@ function RH_parallax_el_elementor( $obj, $args ) {
         'options'     => [
             'no'   =>  esc_html__('No', 'rehub-theme'),
             'text'   =>  esc_html__('On Text', 'rehub-theme'),
-            'class'   =>  esc_html__('On Multiple objects', 'rehub-theme'),
+            'class'   =>  esc_html__('Stagger', 'rehub-theme'),
             'svg'   =>  esc_html__('SVG lines', 'rehub-theme'),
         ],
         'condition' => array(
@@ -1235,13 +1248,28 @@ function RH_parallax_el_elementor( $obj, $args ) {
         ]
     );
 
+    $obj->add_control( 'rh_gsap_trigger_type', [
+        'type'        => \Elementor\Controls_Manager::SELECT,
+        'label'       => esc_html__( 'Ease type', 'rehub-theme' ),
+        'options'     => [
+            'custom'   =>  esc_html__('Custom Scroll Magic', 'rehub-theme'),
+            'waypoint'   =>  esc_html__('On inview by waypoint', 'rehub-theme'),
+            'load'   =>  esc_html__('On load', 'rehub-theme'),
+        ],
+        'default' => 'custom',
+        'condition' => array(
+            'rh_gsap' => 'true',
+        ),
+    ]);
+
+
     $obj->add_control( 'rh_gsap_trigger_field', [
         'label' => esc_html__( 'Css ID of custom trigger.', 'rehub-theme' ),
         'description' => esc_html__('By default, animation will start when you scroll to element. You can place here custom ID for trigger', 'rehub-theme'),
         'label_block'  => true,
         'type' => \Elementor\Controls_Manager::TEXT,
         'condition' => array(
-            'rh_gsap' => 'true',
+            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
         ),
     ]); 
 
@@ -1252,7 +1280,7 @@ function RH_parallax_el_elementor( $obj, $args ) {
         'description' => esc_html__('By default, scroll will trigger full animation. If you want to play animation by scrolling, place here number of pixels which will be interpolated with animation. Or place 100% to set object height.', 'rehub-theme'),
         'type' => \Elementor\Controls_Manager::TEXT,
         'condition' => array(
-            'rh_gsap' => 'true',
+            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
         ),
     )
     ); 
@@ -1267,7 +1295,7 @@ function RH_parallax_el_elementor( $obj, $args ) {
         'max'     => 100,
         'step'    => 1,
         'condition' => array(
-            'rh_gsap' => 'true',
+            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
         ),
     )
     ); 
@@ -1277,7 +1305,9 @@ function RH_parallax_el_elementor( $obj, $args ) {
         'description' => esc_html__('We recommend to add also 100% of duration and custom trigger Id to make this working', 'rehub-theme'),
         'label_block'  => true,
         'type' => \Elementor\Controls_Manager::TEXT,
-        'condition'=> [ 'rh_gsap' => 'true' ],
+        'condition' => array(
+            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
+        ),
     ]); 
 
     $obj->add_control(
@@ -1288,7 +1318,9 @@ function RH_parallax_el_elementor( $obj, $args ) {
             'label_on' => __('Yes', 'rehub-theme'),
             'label_off' => __('No', 'rehub-theme'),
             'return_value' => 'yes',
-            'condition'=> [ 'rh_gsap' => 'true' ],
+            'condition' => array(
+                'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
+            ),
         //            
         ]
     );
@@ -1492,17 +1524,22 @@ function RH_el_elementor_frontend( $element) {
         wp_enqueue_script('rh_elparallax');
     } 
     if ( $element->get_settings( 'rh_gsap' ) == 'true' ) {
-        wp_enqueue_script('gsap');wp_enqueue_script('scrollmagic');wp_enqueue_script('gsapinit');
+        wp_enqueue_script('gsap');
+        if($element->get_settings( 'rh_gsap_trigger_type' ) == 'custom' || empty($element->get_settings( 'rh_gsap_trigger_type' ))){
+            wp_enqueue_script('scrollmagic');
+        }
+        wp_enqueue_script('gsapinit');
+        if ( $element->get_settings( 'rh_gsap_st_type' ) == 'text' ) {
+            wp_enqueue_script('gsapsplittext');
+        }
+        if ( $element->get_settings( 'rh_gsap_st_type' ) == 'svg') {
+            wp_enqueue_script('gsapsvgdraw');
+        } 
+        if ( $element->get_settings( 'rh_gsap_path' ) !='') {
+            wp_enqueue_script('gsapsvgpath');
+        }       
     } 
-    if ( $element->get_settings( 'rh_gsap' ) == 'true' && $element->get_settings( 'rh_gsap_st_type' ) == 'text' ) {
-        wp_enqueue_script('gsapsplittext');
-    } 
-    if ( $element->get_settings( 'rh_gsap' ) == 'true' && $element->get_settings( 'rh_gsap_st_type' ) == 'svg') {
-        wp_enqueue_script('gsapsvgdraw');
-    } 
-    if ( $element->get_settings( 'rh_gsap' ) == 'true' && $element->get_settings( 'rh_gsap_path' ) !='') {
-        wp_enqueue_script('gsapsvgpath');
-    } 
+ 
     if ( $element->get_settings( 'rh_reveal' ) == 'true' || $element->get_settings( 'rh_parlx_m_el' ) == 'true') {
         wp_enqueue_script('gsap');wp_enqueue_script('gsapinit');
     }            
@@ -1585,14 +1622,25 @@ function RH_el_custom_widget_render( $content, $widget ) {
         if ( ! empty( $settings['rh_gsap_from'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-from', $settings['rh_gsap_from'] );
         }
-        if ( ! empty( $settings['rh_gsap_trigger_field'] ) ) {
-            $widget->add_render_attribute( 'ann-wrapper', 'data-customtrigger', $settings['rh_gsap_trigger_field'] );
-        }
-        if ( ! empty( $settings['rh_gsap_sc_tr'] ) ) {
-            $widget->add_render_attribute( 'ann-wrapper', 'data-triggerheight', $settings['rh_gsap_sc_tr'] );
-        }
-        if ( ! empty( $settings['rh_gsap_sc_dur'] ) ) {
-            $widget->add_render_attribute( 'ann-wrapper', 'data-scrollduration', $settings['rh_gsap_sc_dur'] );
+        if ( ! empty( $settings['rh_gsap_trigger_type'] ) ) {
+            $widget->add_render_attribute( 'ann-wrapper', 'data-triggertype', $settings['rh_gsap_trigger_type'] );
+            if($settings['rh_gsap_trigger_type'] == 'custom'){
+                if ( ! empty( $settings['rh_gsap_trigger_field'] ) ) {
+                    $widget->add_render_attribute( 'ann-wrapper', 'data-customtrigger', $settings['rh_gsap_trigger_field'] );
+                }
+                if ( ! empty( $settings['rh_gsap_sc_tr'] ) ) {
+                    $widget->add_render_attribute( 'ann-wrapper', 'data-triggerheight', $settings['rh_gsap_sc_tr'] );
+                }
+                if ( ! empty( $settings['rh_gsap_sc_dur'] ) ) {
+                    $widget->add_render_attribute( 'ann-wrapper', 'data-scrollduration', $settings['rh_gsap_sc_dur'] );
+                }
+                if ( ! empty( $settings['rh_gsap_pin'] ) ) {
+                    $widget->add_render_attribute( 'ann-wrapper', 'data-pin', $settings['rh_gsap_pin'] );
+                }
+                if ( ! empty( $settings['rh_gsap_rev'] ) ) {
+                    $widget->add_render_attribute( 'ann-wrapper', 'data-rev', $settings['rh_gsap_rev'] );
+                }               
+            }
         }
         if ( ! empty( $settings['rh_gsap_x'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-x', $settings['rh_gsap_x'] );
@@ -1653,9 +1701,6 @@ function RH_el_custom_widget_render( $content, $widget ) {
         if ( ! empty( $settings['rh_gsap_ease'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-ease', $settings['rh_gsap_ease'] );
         }
-        if ( ! empty( $settings['rh_gsap_pin'] ) ) {
-            $widget->add_render_attribute( 'ann-wrapper', 'data-pin', $settings['rh_gsap_pin'] );
-        }
         if ( ! empty( $settings['rh_gsap_stdelay'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-stdelay', $settings['rh_gsap_stdelay'] );
         }
@@ -1676,9 +1721,6 @@ function RH_el_custom_widget_render( $content, $widget ) {
         }
         if ( ! empty( $settings['rh_gsap_origin'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-origin', $settings['rh_gsap_origin'] );
-        }
-        if ( ! empty( $settings['rh_gsap_rev'] ) ) {
-            $widget->add_render_attribute( 'ann-wrapper', 'data-rev', $settings['rh_gsap_rev'] );
         }
         if ( ! empty( $settings['rh_gsap_path'] ) ) {
             $widget->add_render_attribute( 'ann-wrapper', 'data-path', $settings['rh_gsap_path'] );
@@ -1725,7 +1767,7 @@ function RH_el_custom_widget_render( $content, $widget ) {
         if ( ! empty( $settings['rh_reveal_bgcolor'] )) {
             $widget->add_render_attribute( 'reveal-wrapper', 'data-reveal-bg', $settings['rh_reveal_bgcolor'] );
         }
-        $content = '<div class="rh-reveal-wrap rhhidden position-relative"><div class="rh-reveal-cont">'.$content. '</div><div '.$widget->get_render_attribute_string( 'reveal-wrapper' ).' class="rh-reveal-block abdfullwidth pointernone"></div></div>';
+        $content = '<div class="rh-reveal-wrap prehidden position-relative"><div class="rh-reveal-cont">'.$content. '</div><div '.$widget->get_render_attribute_string( 'reveal-wrapper' ).' class="rh-reveal-block abdfullwidth pointernone"></div></div>';
     }
     if ( ! empty( $settings['rh_parallax_el'] )) {
         if ( ! empty( $settings['rh_parallax_el_dir'] )) {
@@ -1764,14 +1806,25 @@ function rh_el_custom_print_template($content, $widget){
         if ( settings.rh_gsap_from ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-from', settings.rh_gsap_from );
         }
-        if ( settings.rh_gsap_trigger_field ) {
-            view.addRenderAttribute( 'ann-wrapper', 'data-customtrigger', settings.rh_gsap_trigger_field );
-        }
-        if ( settings.rh_gsap_sc_tr ) {
-            view.addRenderAttribute( 'ann-wrapper', 'data-triggerheight', settings.rh_gsap_sc_tr );
-        }
-        if ( settings.rh_gsap_sc_dur ) {
-            view.addRenderAttribute( 'ann-wrapper', 'data-scrollduration', settings.rh_gsap_sc_dur );
+        if ( settings.rh_gsap_trigger_type ) {
+            view.addRenderAttribute( 'ann-wrapper', 'data-triggertype', settings.rh_gsap_trigger_type );
+            if(settings.rh_gsap_trigger_type == 'custom'){
+                if ( settings.rh_gsap_trigger_field ) {
+                    view.addRenderAttribute( 'ann-wrapper', 'data-customtrigger', settings.rh_gsap_trigger_field );
+                }
+                if ( settings.rh_gsap_sc_tr ) {
+                    view.addRenderAttribute( 'ann-wrapper', 'data-triggerheight', settings.rh_gsap_sc_tr );
+                }
+                if ( settings.rh_gsap_sc_dur ) {
+                    view.addRenderAttribute( 'ann-wrapper', 'data-scrollduration', settings.rh_gsap_sc_dur );
+                }
+                if ( settings.rh_gsap_pin ) {
+                    view.addRenderAttribute( 'ann-wrapper', 'data-pin', settings.rh_gsap_pin );
+                }
+                if ( settings.rh_gsap_rev ) {
+                    view.addRenderAttribute( 'ann-wrapper', 'data-rev', settings.rh_gsap_rev );
+                }
+            }
         }
         if ( settings.rh_gsap_x ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-x', settings.rh_gsap_x );
@@ -1827,9 +1880,6 @@ function rh_el_custom_print_template($content, $widget){
         if ( settings.rh_gsap_ease ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-ease', settings.rh_gsap_ease );
         }
-        if ( settings.rh_gsap_pin ) {
-            view.addRenderAttribute( 'ann-wrapper', 'data-pin', settings.rh_gsap_pin );
-        }
         if ( settings.rh_gsap_stdelay ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-stdelay', settings.rh_gsap_stdelay );
         }
@@ -1850,9 +1900,6 @@ function rh_el_custom_print_template($content, $widget){
         }
         if ( settings.rh_gsap_origin ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-origin', settings.rh_gsap_origin );
-        }
-        if ( settings.rh_gsap_rev ) {
-            view.addRenderAttribute( 'ann-wrapper', 'data-rev', settings.rh_gsap_rev );
         }
         if ( settings.rh_gsap_path ) {
             view.addRenderAttribute( 'ann-wrapper', 'data-path', settings.rh_gsap_path );
@@ -1899,7 +1946,7 @@ function rh_el_custom_print_template($content, $widget){
             view.addRenderAttribute( 'reveal-wrapper', 'data-reveal-bg', settings.rh_reveal_bgcolor );
         }
         #>
-        <div class=\"rh-reveal-wrap rhhidden position-relative\"><div class=\"rh-reveal-cont\">" . $content . "</div><div {{{ view.getRenderAttributeString( 'reveal-wrapper' ) }}} class=\"rh-reveal-block abdfullwidth pointernone\"></div></div></div>
+        <div class=\"rh-reveal-wrap prehidden position-relative\"><div class=\"rh-reveal-cont\">" . $content . "</div><div {{{ view.getRenderAttributeString( 'reveal-wrapper' ) }}} class=\"rh-reveal-block abdfullwidth pointernone\"></div></div></div>
         <# 
     }
     else {
@@ -1976,6 +2023,60 @@ function rh_el_add_lazy_load_images($html, $settings, $image_size_key, $image_ke
     }
     return $html;
 
+}
+
+if ( !class_exists( 'Rehub_Lottie_Class' ) ) {
+    class Rehub_Lottie_Class {
+        public static $animations = array();
+
+        function __construct() {
+            add_action( 'wp_footer', array( $this, 'plus_animation_data' ), 5 );            
+        }
+
+        public static function plus_addAnimation( $animation = array() ) {
+            
+            if ( empty( $animation ) || empty( $animation['id'] ) ) {
+                return false;
+            }
+            
+            self::$animations[$animation['container_id']] = $animation;
+        }
+        public static function plus_getAnimations() {
+            return apply_filters( 'wpbdmv-animations', self::$animations );
+        }
+
+        public static function plus_hasAnimations() {
+            $animations = self::plus_getAnimations();
+            return empty( $animations ) ? false : true;
+        }
+
+        function plus_animation_data() {
+            if ( !self::plus_hasAnimations() ) {
+                return;
+            }
+            wp_localize_script( 'lottie-init', 'wpbodymovin', array(
+                'animations' => self::plus_getAnimations()
+            ) );
+        }
+
+    }
+}
+function rh_get_local_el_templates() {
+    $templates = \Elementor\Plugin::$instance->templates_manager->get_source( 'local' )->get_items();
+    $types     = [];
+
+    if ( empty( $templates ) ) {
+        $options = [ '0' => esc_html__( 'You Haven’t Saved Templates Yet.', 'rehub-theme' ) ];
+    } else {
+        $options = [ '0' => esc_html__( 'Select Template', 'rehub-theme' ) ];
+        
+        foreach ( $templates as $template ) {
+            $options[ $template['template_id'] ] = $template['title'] . ' (' . $template['type'] . ')';
+            $types[ $template['template_id'] ] = $template['type'];
+        }
+    }
+
+    return $options;
 }
 //add_action( 'elementor/element/parse_css', 'rh_add_post_css', 10, 2 );
 /*function rh_add_post_css( $post_css, $element ) {

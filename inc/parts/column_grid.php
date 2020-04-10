@@ -17,7 +17,9 @@ $exerpt_count = (isset($exerpt_count)) ? $exerpt_count : '';
 $enable_btn = (isset($enable_btn)) ? $enable_btn : '';
 $image_padding = (isset($image_padding) && $image_padding) ? ' padd20' : '';
 $cardclass = (isset($disablecard) && $disablecard) ? '' : ' rh-cartbox';
-$paddclass = (isset($disablecard) && $disablecard) ? '' : ' pb10 pr20 pl20';
+$paddclass = (isset($disablecard) && $disablecard) ? '' : ' pb0 pr20 pl20';
+$cropimage = (isset($cropimage)) ? $cropimage : true;
+$image_class = (isset($image_class)) ? $image_class : '';
 ?>
 <?php
 $dealcat = '';       
@@ -37,7 +39,7 @@ if(rehub_option('enable_brand_taxonomy') == 1){
         </div>                                                           
     </div>     
     <figure class="mb20 position-relative text-center<?php echo esc_attr($image_padding);?>"><?php echo re_badge_create('tablelabel'); ?>             
-        <a href="<?php echo ''.$link;?>"<?php echo ''.$target;?>><?php wpsm_thumb ('medium_news_s') ?></a>
+        <a href="<?php echo ''.$link;?>"<?php echo ''.$target;?> class="<?php echo esc_attr($image_class);?>"><?php wpsm_thumb ('medium_news_s', true, $cropimage) ?></a>
     </figure>
     <?php do_action( 'rehub_after_grid_column_figure' ); ?>
     <div class="content_constructor<?php echo ''.$paddclass;?>">

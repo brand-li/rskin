@@ -47,7 +47,7 @@ class WPSM_Canvas_A_Widget extends Widget_Base {
      * @return array Widget categories.
      */
     public function get_categories() {
-        return [ 'helpler-modules' ];
+        return [ 'rhwow-modules' ];
     }
 
     protected function _register_controls() {

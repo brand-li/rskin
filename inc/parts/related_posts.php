@@ -4,7 +4,8 @@
 $base_post = $post;
 global $post;
 
-$tag_relative = rehub_option('rehub_enable_tag_relative');
+//$tag_relative = rehub_option('rehub_enable_tag_relative');
+$tag_relative = false;
 $taxonomy = rh_get_taxonomy_of_post( $post, $tag_relative );
 $relatives = get_the_terms( $post->ID, $taxonomy );
 
@@ -50,7 +51,10 @@ if ( !empty($relatives) && !is_wp_error($relatives) ) {
 		<div class="columned_grid_module rh-flex-eq-height col_wrap_fourth mb0" >
 		<?php while( $my_query->have_posts() ) {
 			$my_query->the_post();?>
-			<?php $disablecard = '1'; $disable_meta = '1';?>
+			<?php $disable_meta = '1';?>
+			<?php $cropimage = (rehub_option('crop_dis_related')) ? false : true;?>
+			<?php $disablecard = (!$cropimage) ? false : true;?>
+			<?php $image_class = (!$cropimage) ? 'height-150 img-centered-flex rh-flex-center-align rh-flex-justify-center padd15' : '';?>
 			<?php include(rh_locate_template('inc/parts/column_grid.php')); ?>
 		<?php
 		}

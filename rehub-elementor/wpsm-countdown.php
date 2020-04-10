@@ -43,7 +43,7 @@ class WPSM_Countdown_Widget extends Widget_Base {
      * @return array Widget categories.
      */
     public function get_categories() {
-        return [ 'helpler-modules' ];
+        return [ 'rhwow-modules' ];
     }
     protected function _register_controls() {
         $this->general_controls();

@@ -2,7 +2,6 @@ jQuery(document).ready(function($) {
    'use strict';	
     //GSAP 
     if($('.rh-gsap-wrap').length > 0){
-        var rhscroller = new ScrollMagic.Controller();
         $('.rh-gsap-wrap').each(function(){
 
             var scrollargs = {};
@@ -15,6 +14,12 @@ jQuery(document).ready(function($) {
             var $duration = current.data('duration');
             var $duration = parseFloat($duration);
             anargs.duration = $duration;
+
+            if(current.data('triggertype')){
+                var triggertype = current.data('triggertype');
+            }else{
+                var triggertype = 'custom';
+            }
 
             if(current.data('x')){
                 anargs.x = current.data('x');
@@ -65,7 +70,10 @@ jQuery(document).ready(function($) {
             }
 
             if(current.data('o')){
-                anargs.opacity = parseInt(current.data('o'))/100;
+                anargs.autoAlpha = parseInt(current.data('o'))/100;
+                if(anargs.autoAlpha == 0.01){
+                    anargs.autoAlpha = 0;
+                }
             }
             if(current.data('bg')){
                 anargs.backgroundColor = current.data('bg');
@@ -208,7 +216,7 @@ jQuery(document).ready(function($) {
                     let scy = multianimations[curr].multi_scale_y;
                     let width = multianimations[curr].multi_width;
                     let height = multianimations[curr].multi_height;
-                    let opacity = multianimations[curr].multi_opacity;
+                    let autoAlpha = multianimations[curr].multi_opacity;
                     let bg = multianimations[curr].multi_bg;
                     let origin = multianimations[curr].multi_origin;
                     let de = multianimations[curr].multi_delay;
@@ -217,6 +225,8 @@ jQuery(document).ready(function($) {
                     let from = multianimations[curr].multi_from;
                     let customtime = multianimations[curr].multi_time;
                     let customobj = multianimations[curr].multi_obj;
+                    let onhov = multianimations[curr].multi_hover;
+                    let curanobj = $anobj;
                     
                     let multiargs = {};
                     if(rx) multiargs.rotationX = parseFloat(rx);
@@ -229,7 +239,7 @@ jQuery(document).ready(function($) {
                     if(sc) multiargs.scale = parseFloat(sc);
                     if(scx) multiargs.scaleX = parseFloat(scx);
                     if(scy) multiargs.scaleY = parseFloat(scy);
-                    if(opacity) multiargs.opacity = parseInt(opacity)/100;
+                    if(autoAlpha) multiargs.autoAlpha = parseInt(autoAlpha)/100;
                     if(du) multiargs.duration = parseFloat(du);
                     if(de) multiargs.delay = parseFloat(de);
                     if(origin) multiargs.transformOrigin = parseFloat(origin);
@@ -245,40 +255,71 @@ jQuery(document).ready(function($) {
                         $anobj = $(customobj);
                     }
                     if(from=="yes"){
-                        animation.from($anobj, multiargs, customtime);
+                        if(onhov == "yes"){
+                            let childanimation = gsap.timeline();
+                            childanimation.from($anobj, multiargs, customtime).reverse();
+                            curanobj.mouseenter(function(event) {
+                                childanimation.play();
+                            });
+                            curanobj.mouseleave(function(event) {
+                                childanimation.reverse();
+                            });
+                        }else{
+                            animation.from($anobj, multiargs, customtime);
+                        }
+                        
                     }else{
-                        animation.to($anobj, multiargs, customtime);
+                        if(onhov == "yes"){
+                            let childanimation = gsap.timeline();
+                            childanimation.to($anobj, multiargs, customtime).reverse();
+                            curanobj.mouseenter(function(event) {
+                                childanimation.play();
+                            });
+                            curanobj.mouseleave(function(event) {
+                                childanimation.reverse();
+                            });
+                        }else{
+                            animation.to($anobj, multiargs, customtime);
+                        } 
                     }
                 }
-            
-            }
-            
-            if(current.data('customtrigger')){
-                var customtrigger = '#'+current.data('customtrigger');               
-            }else{
-                var customtrigger = $(this).closest('.elementor-widget');
-            }
-            scrollargs.triggerElement = customtrigger;
-
-            if(current.data('triggerheight')){
-                var $hookpos = parseInt(current.data('triggerheight'))/100;
-                scrollargs.triggerHook = $hookpos;
-            }else{
-                scrollargs.triggerHook = 0.85;
             }
 
-            if(current.data('scrollduration')){
-                var $hookdur = current.data('scrollduration');
-                scrollargs.duration = $hookdur;
-            }   
+            if(triggertype == 'custom'){
+                if(current.data('customtrigger')){
+                    var customtrigger = '#'+current.data('customtrigger');               
+                }else{
+                    var customtrigger = $(this).closest('.elementor-widget');
+                }
+                scrollargs.triggerElement = customtrigger;
 
-            var scene = new ScrollMagic.Scene(scrollargs).setTween(animation).addTo(rhscroller);
-            if(current.data('pin') && current.data('scrollduration')){
-                var pin = '#'+current.data('pin'); 
-                scene.setPin(pin);             
-            }
-            if(current.data('rev')){
-                scene.reverse(false);
+                if(current.data('triggerheight')){
+                    var $hookpos = parseInt(current.data('triggerheight'))/100;
+                    scrollargs.triggerHook = $hookpos;
+                }else{
+                    scrollargs.triggerHook = 0.85;
+                }
+
+                if(current.data('scrollduration')){
+                    var $hookdur = current.data('scrollduration');
+                    scrollargs.duration = $hookdur;
+                }   
+
+                var scene = new ScrollMagic.Scene(scrollargs).setTween(animation).addTo(rhscroller);
+                if(current.data('pin') && current.data('scrollduration')){
+                    var pin = '#'+current.data('pin'); 
+                    scene.setPin(pin);             
+                }
+                if(current.data('rev')){
+                    scene.reverse(false);
+                }
+            }else if(triggertype == 'waypoint'){
+                animation.pause();
+                current.elementorWaypoint(function(direction) {
+                    animation.play();
+                }, { offset: 'bottom-in-view' }); 
+            }else if(triggertype == 'load'){
+                animation.play();
             } 
         });
     }
@@ -290,7 +331,7 @@ jQuery(document).ready(function($) {
             var revealwrap = $(this); 
             var revealcover = $(this).find(".rh-reveal-block");
             var revealcontent = $(this).find(".rh-reveal-cont"); 
-            revealwrap.removeClass('rhhidden');
+            revealwrap.removeClass('prehidden');
             if(revealcover.data('reveal-speed')){
                 var $coverspeed = revealcover.data('reveal-speed');
             }else{
@@ -320,7 +361,7 @@ jQuery(document).ready(function($) {
                 tl.from(revealcover,{ duration:$coverspeed, scaleY: 0, transformOrigin: "bottom", delay: $coverdelay });
                 tl.to(revealcover,{ duration:$coverspeed, scaleY: 0, transformOrigin: "top" }, "reveal");
             }
-            tl.from(revealcontent,{ duration:1, opacity: 0 }, "reveal"); 
+            tl.from(revealcontent,{ duration:1, autoAlpha: 0 }, "reveal"); 
             revealwrap.elementorWaypoint(function(direction) {
                 tl.play();
             }, { offset: 'bottom-in-view' });          

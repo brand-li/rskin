@@ -117,6 +117,98 @@ class Widget_Wpsm_Post_Carousel_Mod extends WPSM_Content_Widget_Base {
             'label_off'   => esc_html__('No', 'rehub-theme'),
             'return_value'      => '1',
         ]);
+           $this->add_control( 'arrow_bg', [
+                'label' => esc_html__( 'Arrow background Color', 'rehub-theme' ),
+                'type' => Controls_Manager::COLOR,
+                'condition' => [
+                    'disable_arrows!' => '1',
+                ],  
+                'selectors' => [
+                    '{{WRAPPER}} .re_carousel .controls' => 'background-color: {{VALUE}};',
+                ],         
+            ]);
+            $this->add_control( 'arrow_hover_bg', [
+                'label' => esc_html__( 'Arrow hover background Color', 'rehub-theme' ),
+                'type' => Controls_Manager::COLOR,
+                'condition' => [
+                    'disable_arrows!' => '1',
+                ],  
+                'selectors' => [
+                    '{{WRAPPER}} .re_carousel .controls:hover' => 'background-color: {{VALUE}};',
+                ],          
+            ]);
+            $this->add_control( 'arrow_color', [
+                'label' => esc_html__( 'Arrow icon Color', 'rehub-theme' ),
+                'type' => Controls_Manager::COLOR,
+                'condition' => [
+                    'disable_arrows!' => '1',
+                ], 
+                'selectors' => [
+                    '{{WRAPPER}} .re_carousel .controls:after' => 'color: {{VALUE}};',
+                ],          
+            ]);
+            $this->add_control( 'arrow_colorhover', [
+                'label' => esc_html__( 'Arrow icon Color on Hover', 'rehub-theme' ),
+                'type' => Controls_Manager::COLOR,
+                'condition' => [
+                    'disable_arrows!' => '1',
+                ], 
+                'selectors' => [
+                    '{{WRAPPER}} .re_carousel .controls:hover:after' => 'color: {{VALUE}};',
+                ],          
+            ]);
+            $this->add_control(
+                'arrow_size',
+                array(
+                    'label'   => esc_html__( 'Size of arrow background', 'rehub-theme' ),
+                    'type'    => Controls_Manager::NUMBER,
+                    'min'     => 30,
+                    'max'     => 120,
+                    'step'    => 1,
+                    'condition' => [
+                        'disable_arrows!' => '1',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .re_carousel .controls' => 'width: {{VALUE}}px;height: {{VALUE}}px;line-height: {{VALUE}}px;',
+                        '{{WRAPPER}} .re_carousel .controls:after' => 'line-height: {{VALUE}}px;',
+                    ], 
+                )
+            );
+            $this->add_control(
+                'arrow_iconsize',
+                array(
+                    'label'   => esc_html__( 'Size of arrow icon', 'rehub-theme' ),
+                    'type'    => Controls_Manager::NUMBER,
+                    'min'     => 15,
+                    'max'     => 120,
+                    'step'    => 1,
+                    'condition' => [
+                        'disable_arrows!' => '1',
+                    ],
+                    'selectors' => [
+                        '{{WRAPPER}} .re_carousel .controls:after' => 'font-size: {{VALUE}}px;',
+                    ], 
+                )
+            );
+            $this->add_control(
+                'carborderradius',
+                [
+                    'label' => __( 'Border radius', 'rehub-theme' ),
+                    'type' => Controls_Manager::DIMENSIONS,
+                    'size_units' => [ 'px', 'em' ],
+                    'selectors' => [
+                        '{{WRAPPER}} .re_carousel .controls' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    ],
+                ]
+            ); 
+            $this->add_group_control(
+                \Elementor\Group_Control_Box_Shadow::get_type(),
+                [
+                    'name' => 'carousel_shadow',
+                    'label' => __( 'Box Shadow', 'rehub-theme' ),
+                    'selector' => '{{WRAPPER}} .re_carousel .controls',
+                ]
+            );
     }
 
     /* Widget output Rendering */

@@ -6,14 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '9.9.8');
+	define('RH_MAIN_THEME_VERSION', '9.9.9');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
 }
 $rehub_options = [
 	'tf_username'      => 'babiato',
-	'tf_purchase_code' => 'nulled-by-babiato',
+	'tf_purchase_code' => 'nulled-by-babak',
 	'tf_support_date'  => '01.01.2030',
 ];
 update_option( 'Rehub_Key', $rehub_options );
@@ -38,6 +38,7 @@ function rehub_framework_register_scripts() {
 	wp_register_style('rhwcfmstore', get_template_directory_uri() . '/css/rhwcfmstore.css', array(), RH_MAIN_THEME_VERSION);
 	wp_register_style('rhcomparesearch', get_template_directory_uri() . '/css/comparesearch.css', array(), RH_MAIN_THEME_VERSION);
 	wp_register_style('modulobox', get_template_directory_uri() . '/css/modulobox.min.css', array(), '1.4.4');
+	wp_register_style('justify', get_template_directory_uri() . '/css/justify.css', array(), '3.6.3');
 	
 	//Scripts
 	wp_register_script('rhinview', get_template_directory_uri() . '/js/inview.js', array('jquery'), '1.0', true);
@@ -78,7 +79,7 @@ function rehub_framework_register_scripts() {
 
 	wp_register_script( 'gsap', get_template_directory_uri() . '/js/gsap.min.js', array('jquery'), '3.2.6', true );
 	wp_register_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array('jquery'), '2.0.7', true );	
-	wp_register_script( 'gsapinit', get_template_directory_uri() . '/js/gsap-init.js', array('jquery','gsap'), '1.2', true );
+	wp_register_script( 'gsapinit', get_template_directory_uri() . '/js/gsap-init.js', array('jquery','gsap'), '1.3', true );
 	wp_register_script( 'gsapsplittext', get_template_directory_uri() . '/js/SplitText.min.js', array('jquery','gsap'), '3.2.6', true );
 	wp_register_script( 'gsapsvgdraw', get_template_directory_uri() . '/js/DrawSVGPlugin.min.js', array('jquery','gsap'), '3.2.6', true );	
 	wp_register_script( 'gsapsvgpath', get_template_directory_uri() . '/js/MotionPathPlugin.min.js', array('jquery','gsap'), '3.2.6', true );
@@ -91,6 +92,9 @@ function rehub_framework_register_scripts() {
 	wp_register_script( 'gsapthree', get_template_directory_uri() . '/js/gsapthree.js', array('threejs'), '1.0', true );
 
 	wp_register_script( 'rhreadingprogress', get_template_directory_uri() . '/js/readingprogress.js', array('jquery', 'rehub'), '1.0.0', true );
+
+	wp_register_script( 'lottie', get_template_directory_uri() . '/js/lottie.min.js', array(), '5.6.7', true );
+	wp_register_script( 'lottie-init', get_template_directory_uri() . '/js/lottie-init.js', array('lottie'), '1.0', true );
 }
 }
 if(!is_admin()) add_action('wp_enqueue_scripts', 'rehub_enqueue_scripts',11);
@@ -792,7 +796,7 @@ class WPSM_image_resizer{
 // Thumbnail function
 //////////////////////////////////////////////////////////////////
 if( !function_exists('wpsm_thumb') ) {
-function wpsm_thumb( $size = 'small', $lazy = true ){
+function wpsm_thumb( $size = 'small', $lazy = true, $crop = true ){
 	if( $size == 'medium_news' ){$width = 444; $height = 250; $nothumb = get_template_directory_uri() . '/images/default/noimage_432_250.png' ;}
 	elseif( $size == 'medium_news_s' ){$width = 350; $height = 200; $nothumb = get_template_directory_uri() . '/images/default/noimage_432_250.png' ;}
 	elseif( $size == 'med_thumbs' ){$width = 123; $height = 90; $nothumb = get_template_directory_uri() . '/images/default/noimage_123_90.png' ;}	
@@ -808,7 +812,7 @@ function wpsm_thumb( $size = 'small', $lazy = true ){
 		$showimg->lazy = false;
 	}
 
-	if( rehub_option( 'rh_image_resize')){
+	if( rehub_option( 'rh_image_resize') || $crop==false){
 		$showimg->size = $size;
 		$showimg->width = $width;
 		$showimg->height = $height;		
@@ -912,7 +916,13 @@ function meta_all ($time_exist, $cats_exist, $admin_exist, $cats_post = false ){
 		</span>
 	<?php }   
 	if(rehub_option('exclude_date_meta') != 1 && ($time_exist != false)){ ?>
- 		<span class="date_meta"><?php the_modified_time(get_option( 'date_format' )); ?></span>	
+ 		<span class="date_meta">
+ 			<?php if(rehub_option('date_publish')):?>
+ 				<?php the_time(get_option( 'date_format' )); ?>
+ 			<?php else:?>
+ 				 <?php the_modified_time(get_option( 'date_format' )); ?>
+ 			<?php endif;?>
+ 		</span>	
 	<?php }
 	if(rehub_option('exclude_cat_meta') != 1 && ($cats_exist != false) && (!empty($cats_exis))){ ?>
 		<?php $cat_name = get_cat_name($cats_exist); ?>
@@ -957,7 +967,13 @@ function rh_post_header_meta ($admin_exist = true, $time_exist = true, $view_exi
 		</span>
 	<?php }   
 	if(rehub_option('exclude_date_meta') != 1 && ($time_exist != false)){ ?>
- 		<span class="date_meta"><?php the_modified_time(get_option( 'date_format' )); ?></span>	
+ 		<span class="date_meta">
+  			<?php if(rehub_option('date_publish')):?>
+ 				<?php the_time(get_option( 'date_format' )); ?>
+ 			<?php else:?>
+ 				 <?php the_modified_time(get_option( 'date_format' )); ?>
+ 			<?php endif;?>
+ 		</span>	
 	<?php }   
 	if(rehub_option('post_view_disable') != 1 && ($view_exist != false) && function_exists('RH_get_post_views')){ ?>
 		<?php $rehub_views = RH_get_post_views($post->ID); if ($rehub_views !='') :?>
@@ -1013,7 +1029,7 @@ function rh_post_header_meta_big (){
 		<div class="floatleft mr15 rtlml15">
 			<?php if(rehub_option('exclude_author_meta') != 1):?>
 				<?php $author_id=$post->post_author; ?>
-				<a href="<?php echo get_author_posts_url( $author_id ) ?>" class="floatleft mr10">
+				<a href="<?php echo get_author_posts_url( $author_id ) ?>" class="floatleft mr10 rtlml10">
 					<?php echo get_avatar( $author_id, '40' ); ?>					
 				</a>	
 			<?php endif;?>
@@ -1024,7 +1040,13 @@ function rh_post_header_meta_big (){
 					</a>
 				<?php endif;?>
 				<?php if(rehub_option('exclude_date_meta') != 1):?>
-					<div class="date_time_post"><?php the_modified_time(get_option( 'date_format' )); ?></div>
+					<div class="date_time_post">
+			 			<?php if(rehub_option('date_publish')):?>
+			 				<?php the_time(get_option( 'date_format' )); ?>
+			 			<?php else:?>
+			 				 <?php the_modified_time(get_option( 'date_format' )); ?>
+			 			<?php endif;?>
+					</div>
 				<?php endif;?>
 			</span>	
 
@@ -1091,7 +1113,13 @@ if( !function_exists('meta_small') ) { //another post meta function
 function meta_small ($time_exist, $cats_exist, $comment_exist, $post_views = false ){
 	global $post;     
 	if(rehub_option('exclude_date_meta') != 1 && ($time_exist != false)){ ?>
- 		<span class="date_meta"><?php the_modified_time(get_option( 'date_format' )); ?></span> 	
+ 		<span class="date_meta">
+  			<?php if(rehub_option('date_publish')):?>
+ 				<?php the_time(get_option( 'date_format' )); ?>
+ 			<?php else:?>
+ 				 <?php the_modified_time(get_option( 'date_format' )); ?>
+ 			<?php endif;?>
+ 		</span> 	
 	<?php }
 	if(rehub_option('exclude_cat_meta') != 1 && ($cats_exist != false)){ ?>
 		<?php $cat_name = get_cat_name($cats_exist); ?>

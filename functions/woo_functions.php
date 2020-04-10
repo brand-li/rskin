@@ -2132,6 +2132,7 @@ if(!function_exists('rh_soldout_bar')){
 			$post_id = get_the_ID();
 		}
 	    $manage_stock = get_post_meta( $post_id, '_manage_stock', true );
+	    $soldout = '';
 	    if($manage_stock == 'yes'):
 	        $stock_available = ( $stock = get_post_meta( $post_id, '_stock', true ) ) ? round( $stock ) : 0;
 	        $stock_sold = ( $total_sales = get_post_meta( $post_id, 'total_sales', true ) ) ? round( $total_sales ) : 0;
@@ -2143,6 +2144,7 @@ if(!function_exists('rh_soldout_bar')){
 	            set_transient( 'rh-soldout-'. $post_id, $soldout, DAY_IN_SECONDS );
 	        endif;
 	    endif;
+	    if ($soldout > 100){ $soldout = 95;}
 	    ?>
 		    <?php if($soldout):?>
 			    <div class="soldoutbar mb10">
