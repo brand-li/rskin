@@ -10,7 +10,9 @@ jQuery(document).ready(function($) {
             if(current.hasClass('prehidden')){
                 current.removeClass('prehidden');
             }
-
+            if(current.closest('.elementor-widget').hasClass('prehidden')){
+                current.closest('.elementor-widget').removeClass('prehidden');
+            }
             var $duration = current.data('duration');
             var $duration = parseFloat($duration);
             anargs.duration = $duration;
@@ -89,17 +91,17 @@ jQuery(document).ready(function($) {
                 }
                 if(current.data('path-align')){
                     anargs.motionPath.align = current.data('path-align');
-                    anargs.motionPath.alignOrigin = [];
-                    if(current.data('path-alignx') !== null && current.data('path-alignx') !== undefined){
-                        anargs.motionPath.alignOrigin[0] = parseFloat(current.data('path-alignx'));
-                    }else{
-                        anargs.motionPath.alignOrigin[0] = 0.5;
-                    }
-                    if(current.data('path-aligny') !== null && current.data('path-aligny') !== undefined){
-                        anargs.motionPath.alignOrigin[1] = parseFloat(current.data('path-aligny'));
-                    }else{
-                        anargs.motionPath.alignOrigin[1] = 0.5;
-                    }
+                }
+                anargs.motionPath.alignOrigin = [];
+                if(current.data('path-alignx') !== null && current.data('path-alignx') !== undefined){
+                    anargs.motionPath.alignOrigin[0] = parseFloat(current.data('path-alignx'));
+                }else{
+                    anargs.motionPath.alignOrigin[0] = 0.5;
+                }
+                if(current.data('path-aligny') !== null && current.data('path-aligny') !== undefined){
+                    anargs.motionPath.alignOrigin[1] = parseFloat(current.data('path-aligny'));
+                }else{
+                    anargs.motionPath.alignOrigin[1] = 0.5;
                 }
                 if(current.data('path-orient')){
                     anargs.motionPath.autoRotate = true;
@@ -370,16 +372,20 @@ jQuery(document).ready(function($) {
 
     //mouse move
     if($('.rh-prlx-mouse').length > 0){
-        $('#content').mousemove(function(event){
-
-            var xPos = (event.clientX/$('#content').width())-0.5,
-               yPos = (event.clientY/$('#content').height())-0.5;
           
-            $(".rh-prlx-mouse").each(function(index, element){
+        $(".rh-prlx-mouse").each(function(index, element){
 
-                var mouseargs = {};
-                var curmouse = $(this);
+            var mouseargs = {};
+            var curmouse = $(this);
+            if(curmouse.data('prlx-cur') == "yes"){
+                var objtrigger = curmouse;
+            }else{
+                var objtrigger = $('#content');
+            }
 
+            objtrigger.mousemove(function(event){
+                var xPos = (event.clientX/ objtrigger.width())-0.5,
+                yPos = (event.clientY/ objtrigger.height())-0.5; 
                 if(curmouse.data('prlx-xy')){
                     var $speedx = curmouse.data('prlx-xy');
                     mouseargs.x = xPos * $speedx;
@@ -390,13 +396,20 @@ jQuery(document).ready(function($) {
                     var $speedtilt = curmouse.data('prlx-tilt');
                     mouseargs.rotationY = xPos * $speedtilt;
                     mouseargs.rotationX = yPos * $speedtilt;
+                    mouseargs.transformPerspective = 500;
+                    mouseargs.transformOrigin = "center center";
                 }
 
                 mouseargs.ease = Power1.easeOut;            
 
                 gsap.to(curmouse, mouseargs);
-            });  
-        });
+            });
+            if(curmouse.data('prlx-rest') == "yes"){
+                curmouse.mouseleave(function(event){
+                    gsap.to(curmouse, {x:0, y:0, rotationY:0, rotationX:0, ease: Power1.easeOut});
+                });
+            }
+        });  
     }
 
 });

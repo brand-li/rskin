@@ -298,7 +298,7 @@ class WPSM_Postfilters{
 	    	$args['meta_key'] = '_rehub_offer_discount';
 	    }
 	    if ($filter_args->orderby == 'price'){
-	    	if ($filter_args->data_source == 'cpt' && $filter_args->post_type=='product') {
+	    	if ($filter_args->post_type == 'product' || $args['post_type'] == 'product') {
 	    		$args['meta_key'] = '_price';
 	    	}else{
 	    		$args['meta_key'] = 'rehub_main_product_price';	    		
@@ -404,7 +404,7 @@ class WPSM_Postfilters{
 	    		$args['meta_query']['relation'] = 'AND';
 	    	}    
 	    	$price_range_array = array_map( 'trim', explode( "-", $filter_args->price_range ) );
-	    	if ($filter_args->data_source == 'cpt' && $filter_args->post_type=='product') {
+	    	if ($filter_args->post_type == 'product' || $args['post_type'] == 'product') {
 	    		$key = '_price';
 	    	}
 	    	else{
@@ -696,7 +696,11 @@ class WPSM_Woohelper{
 	            );
 	        } 	        
 	        if (($filter_args->orderby == 'meta_value' || $filter_args->orderby == 'meta_value_num') && $filter_args->meta_key !='') {$args['meta_key'] = $filter_args->meta_key;}	   
-	        if ($filter_args->offset != '') {$args['offset'] = (int)$filter_args->offset;}     	        
+	        if ($filter_args->offset != '') {$args['offset'] = (int)$filter_args->offset;}  
+		    if ($filter_args->orderby == 'price'){
+				$args['meta_key'] = '_price';
+	    		$args['orderby'] = 'meta_value_num';
+		    }   	        
 	    }
 	    if ($filter_args->show_coupons_only == '1') { 
 	    	$args['meta_query']['relation'] = 'AND';    

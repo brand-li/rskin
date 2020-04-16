@@ -386,7 +386,7 @@ class WPSM_TabsEvery_Widget extends Widget_Base {
                             ),
                         ] );
                     ?>
-                    <li <?php echo $this->get_render_attribute_string( $tab_content_setting_key ); ?>>
+                    <li <?php echo ''.$this->get_render_attribute_string( $tab_content_setting_key ); ?>>
                         <?php if (empty($item['tabiconright'])):?>
                             <span class="tabiconwrapper"><?php \Elementor\Icons_Manager::render_icon( $item['tabicon'], [ 'aria-hidden' => 'true' ] ); ?></span>
                         <?php endif;?>                        

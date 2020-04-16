@@ -51,7 +51,7 @@
                 <?php echo rehub_get_user_rate('admin', 'tax');?> 
                 <?php             
                     if($brandurlurl){
-                        echo '<a class="blockstyle mt15 rehub_main_btn width-100p wpsm-button re_track_btn" href="'.esc_url($brandurl).'" target="_blank" rel="nofollow" data-url="'.esc_url($brandurl).'" data-merchant="'.$tagname.'"><i class="far fa-external-link"></i> '.__('Go to shop', 'rehub-theme').'</a>';
+                        echo '<a class="blockstyle mt15 rehub_main_btn width-100p wpsm-button re_track_btn" href="'.esc_url($brandurl).'" target="_blank" rel="nofollow" data-url="'.esc_url($brandurl).'" data-merchant="'.$tagname.'"><i class="far fa-external-link"></i> '.esc_html__('Go to shop', 'rehub-theme').'</a>';
                     }
                     if($brandshortdesc){
                         echo '<div class="mt15 font80 lineheight20 text-left-align rtltext-right-align">'.do_shortcode( rehub_kses($brandshortdesc)).'</div>';
@@ -62,13 +62,13 @@
                 $catterms = rh_get_crosstaxonomy('dealstore', $tagid, 'category');
                 
                 if(!empty($catterms)){
-                    echo '<div class="rh_category_tab widget rh-cartbox rehub-sec-smooth"><div class="title">'.__('Categories', 'rehub-theme').'</div><ul class="cat_widget_custom">';
+                    echo '<div class="rh_category_tab widget rh-cartbox rehub-sec-smooth"><div class="title">'.esc_html__('Categories', 'rehub-theme').'</div><ul class="cat_widget_custom">';
 
                     foreach ($catterms as $catterm) {
                         $activeclass = ($catterm->tag_slug == $tagcat) ? ' active' : '';
                         echo '<li><a href="'.$taglink.'?dealcategory='.$catterm->tag_slug.'" class="rh-dealstorelink'.$activeclass.'">'.$catterm->tag_name.'</a></li>';
                     }
-                    echo '<li><a href="'.$taglink.'" class="rh-dealstorelink">'.__('All categories', 'rehub-theme').'</a></li>';
+                    echo '<li><a href="'.$taglink.'" class="rh-dealstorelink">'.esc_html__('All categories', 'rehub-theme').'</a></li>';
 
                     echo '</ul></div>';
 

@@ -686,7 +686,7 @@ abstract class WPSM_Content_Widget_Base extends Widget_Base {
         // Return saved values
 
         if ( ! empty( $_POST['saved'] ) && is_array( $_POST['saved'] ) ) {
-            $saved_ids = array_map('intval', $_POST['saved']);
+            $saved_ids = $_POST['saved'];
             $placeholders = array_fill(0, count( $saved_ids ), '%d');
             $format = implode(', ', $placeholders);
 

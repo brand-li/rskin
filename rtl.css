@@ -111,6 +111,8 @@ nav.top_menu > ul > li.floatright{margin-right: auto; margin-left: 0}
 nav.top_menu ul.menu:not(.off-canvas) > li.menu-item-has-children > a:before, .header-top .top-nav > ul > li.menu-item-has-children > a:before {margin: 0 7px 0 0;float: left;}
 @media (max-width: 1023px){#rh-bp-profile-stats {text-align: right;}}
 @media (min-width: 1024px){.rtl #wcvendor_search_shops{float: left;}.rtl .wcvendor_profile_menu_items{float: right; margin-left: 0; margin-right: 170px}}
+.alignleft, img.alignleft { float: left; margin-left: 2em;  }
+.alignright, img.alignright { float: left; margin-right: 2em;}
 
 /****************************************************************************
 
@@ -645,8 +647,8 @@ div.summary{float: left;}
 /* PROS&CONS
 ================================================== */
 .wpsm_pros{padding-left: 0; padding-right: 15px}
-.wpsm_pros ul li:before{ padding-right: 0; padding-left: 8px;content: '\f00c';font-family: 'Font Awesome\ 5 Pro';color: #58c649;}
-.wpsm_cons ul li:before{ padding-right: 0; padding-left: 8px; content: '\f068'; font-family: 'Font Awesome\ 5 Pro';color: #f24f4f;}
+.wpsm_pros ul li:before{ padding-right: 0; padding-left: 8px;}
+.wpsm_cons ul li:before{ padding-right: 0; padding-left: 8px;}
 
 .re-line-badge.re-line-small-label{margin: 0 0 5px 5px;}
 a.rh-cat-label-title, .rh-cat-label-title a{margin: 0 0 5px 5px;}

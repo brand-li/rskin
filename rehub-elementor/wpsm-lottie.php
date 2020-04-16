@@ -547,7 +547,7 @@ class WPSM_Lottie extends Widget_Base {
 		}else{
 			$output ='<h3 class="posts-not-found">'.esc_html__( "JSON Parse Not Working", "rehub-theme" ).'</h3>';
 		}
-		echo $output;
+		echo ''.$output;
 	}
 	
 	protected function render_text($options = array()) {

@@ -104,8 +104,8 @@ body .wpsm_pretty_list ul li { transition: all 0.2s ease; position:relative;list
 .rtl .wpsm_pretty_list.small_gap_list.wpsm_pretty_hover ul li:hover{padding: 6px 34px 6px 12px;}
 .rtl .wpsm_pretty_list.wpsm_pretty_hover ul li:hover:before{right: 12px; left: auto;}
 .rtl .font130 .wpsm_pretty_list ul li{padding-right:34px}
-.wpsm_arrowlist ul li:before{content: "\f104";}
-.rtl .wpsm_arrowlist ul li:before {content: "\f105"}
+.wpsm_arrowlist ul li:before{content: "\f105";}
+.rtl .wpsm_arrowlist ul li:before {content: "\f104"}
 .wpsm_checklist ul li:before {content: "\f00c"; color: #1abf3d}
 .wpsm_starlist ul li:before { content: "\f005"; font-weight: 900 }
 .wpsm_bulletlist ul li:before { content: "\f192"; font-weight: 300 }

@@ -333,7 +333,7 @@ function rehub_generate_offerbtn($args) {
 	            	<span class="rh_price_wrapper">
 	            		<span class="price_count">
 	            			<span class="rh_regular_price"><?php echo esc_html($offer_price) ?></span>
-	            			<?php if($offer_price_old !='') :?> <del><?php echo esc_html($offer_price_old) ; ?></del><?php endif ;?>
+	            			<?php if($offer_price_old !='' && $offer_price_old !=$offer_price) :?> <del><?php echo esc_html($offer_price_old) ; ?></del><?php endif ;?>
 	            		</span>
 	            	</span>
 	            <?php endif ;?>

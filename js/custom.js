@@ -1052,16 +1052,6 @@ jQuery(document).ready(function($) {
       }                
    });
 
-   $(document).on('click', 'body:not(.logged-in) .rehub-errors .warning_type a', function(e) {
-        e.preventDefault();
-        $.pgwModal({
-            titleBar: false,
-            target: '#rehub-reset-popup',
-            mainClassName : 'pgwModal re-user-popup-wrap',
-        }); 
-        $('.re-user-popup-wrap .rehub-errors').html('');        
-   });
-
    // Post login form submit 
    $(document).on('submit','.re-user-popup-wrap #rehub_login_form_modal',function(e){
       e.preventDefault();

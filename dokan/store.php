@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $store_user = get_userdata( get_query_var( 'author' ) );
 $vendor_id = $store_user->ID;
+$map_location = $store_user->get_location();
 $vendor_email = $store_user->user_email;
 $totaldeals = count_user_posts( $vendor_id, $post_type = 'product' );
 $store_info = dokan_get_store_info( $vendor_id );
@@ -21,7 +22,6 @@ if ( isset($store_info['enable_tnc']) && $store_info['enable_tnc'] == 'on' && $t
 	$store_description = wpautop( wptexturize( wp_kses_post( $store_info['store_tnc'] ) ) );
 }
 
-//$map_location = isset( $store_info['location'] ) ? esc_attr( $store_info['location'] ) : '';
 $store_address_arr = $store_info['address'];
 $store_address = '';
 if( is_array( $store_address_arr ) && !empty( $store_address_arr ) ) {

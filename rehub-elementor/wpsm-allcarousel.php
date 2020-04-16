@@ -340,7 +340,7 @@ class Widget_Wpsm_All_Carousel extends Widget_Base {
                     ] );
 
                     ?>
-                    <div <?php echo $this->get_render_attribute_string( $tab_content_setting_key ); ?>>
+                    <div <?php echo ''.$this->get_render_attribute_string( $tab_content_setting_key ); ?>>
                             <?php
                             if(!empty($item['content_template'])){
                                 echo '<div class="rh-inner-full-carousel">'.\Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $item['content_template'] ).'</div>';

@@ -7,10 +7,11 @@ add_action( 'elementor/preview/enqueue_scripts', function () {
     wp_enqueue_script('gsapsplittext');
     wp_enqueue_script('gsapsvgdraw');
     wp_enqueue_script('gsapsvgpath');
+    wp_enqueue_script('gsapsvgpathhelper');
     wp_enqueue_script('scrollmagic');
     wp_enqueue_script('tipsy');
     wp_enqueue_script('zeroclipboard');
-    wp_enqueue_script('rehub-elementor', get_template_directory_uri() . '/rehub-elementor/js/custom-elementor.js', array('jquery'), '2.0', true);
+    wp_enqueue_script('rehub-elementor', get_template_directory_uri() . '/rehub-elementor/js/custom-elementor.js', array('jquery'), '2.1', true);
 }); 
 add_action( 'elementor/preview/enqueue_styles', function() {
     wp_enqueue_style( 'video-pl' );
@@ -496,15 +497,11 @@ function RH_parallax_el_elementor( $obj, $args ) {
             'return_value' => 'true',
         )
     );
-    $obj->add_control(
-        'rhhr1',
+    $obj->start_controls_tabs( 'gsapintabs', ['condition'=> ['rh_gsap' => 'true' ]] );
+    $obj->start_controls_tab(
+        'gsapftab',
         [
-            'label' => __( 'Transform Options', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::HEADING,
-            'separator' => 'before',
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
+            'label' => esc_html__( 'Init Transform', 'rehub-theme' ),
         ]
     );
     $obj->add_control(
@@ -704,6 +701,370 @@ function RH_parallax_el_elementor( $obj, $args ) {
             'rh_gsap' => 'true'
         ],
     ]);
+    $obj->end_controls_tab();
+    $obj->start_controls_tab(
+        'gsapstab',
+        [
+            'label' => esc_html__( 'SVG MotionPath', 'rehub-theme' ),
+        ]
+    );
+    $obj->add_control( 'rh_gsap_path', [
+        'label' => esc_html__( 'Set path', 'rehub-theme' ),
+        'description' => esc_html__('can be ID (place with #), svg path coordinates. Also, type here word "custom" to enable Path draw helper. Alt click will add new point. Del will delete it. Then, click on Copy Motion Path button in bottom of page and insert path parameter here.', 'rehub-theme'),
+        'label_block'  => true,
+        'type' => \Elementor\Controls_Manager::TEXT,
+        'condition'=> ['rh_gsap' => 'true' ],
+    ]); 
+    $obj->add_control( 'rh_gsap_path_align', [
+        'label' => esc_html__( 'Align ID', 'rehub-theme' ),
+        'description' => esc_html__('By default, element is alighned by itself, but you can set id of path or another element', 'rehub-theme'),
+        'label_block'  => true,
+        'type' => \Elementor\Controls_Manager::TEXT,
+        'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
+    ]); 
+    $obj->add_control(
+        'rh_gsap_path_orient',
+        array(
+            'label'        => esc_html__( 'Orient along path', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
+        )
+    );
+    $obj->add_control(
+        'rh_gsap_path_align_x',
+        [
+            'label' => __( 'Align origin point X', 'rehub-theme' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'default' => [
+                'size' => 0.5,
+            ],
+            'label_block' => true,
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 1,
+                    'step' => 0.1,
+                ],
+            ],
+            'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
+        ]
+    );
+    $obj->add_control(
+        'rh_gsap_path_align_y',
+        [
+            'label' => __( 'Align origin point Y', 'rehub-theme' ),
+            'type' => \Elementor\Controls_Manager::SLIDER,
+            'default' => [
+                'size' => 0.5,
+            ],
+            'label_block' => true,
+            'range' => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 1,
+                    'step' => 0.1,
+                ],
+            ],
+            'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
+        ]
+    );
+    $obj->end_controls_tab();
+    $obj->end_controls_tabs();
+
+    $obj->add_control(
+        'rhhrtabsone',
+        [
+            'type' => \Elementor\Controls_Manager::DIVIDER,
+            'condition'=> [ 'rh_gsap' => 'true'],
+        ]
+    ); 
+
+    $obj->start_controls_tabs( 'gsapopttabs', ['condition'=> ['rh_gsap' => 'true' ]] );
+    $obj->start_controls_tab(
+        'gsapttab',
+        [
+            'label' => esc_html__( 'Animation Option', 'rehub-theme' ),
+        ]
+    );
+    $obj->add_control(
+        'rh_gsap_duration',
+        array(
+            'label'   => esc_html__( 'Duration (s)', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => 0.1,
+            'max'     => 60,
+            'step'    => 0.1,
+            'default' => 1,
+            'condition' => array(
+                'rh_gsap' => 'true',
+            ),
+        )
+    ); 
+
+    $obj->add_control(
+        'rh_gsap_delay',
+        array(
+            'label'   => esc_html__( 'Delay (s)', 'rehub-theme' ),
+            'type'    => Elementor\Controls_Manager::NUMBER,
+            'min'     => 0.1,
+            'max'     => 20,
+            'step'    => 0.1,
+            'condition' => array(
+                'rh_gsap' => 'true',
+            ),
+        )
+    );
+
+    $obj->add_control( 'rh_gsap_ease', [
+        'type'        => \Elementor\Controls_Manager::SELECT,
+        'label'       => esc_html__( 'Ease type', 'rehub-theme' ),
+        'options'     => [
+            'power0-none'   =>  esc_html__('Linear', 'rehub-theme'),
+            'power1-in'   =>  esc_html__('Power 1 in', 'rehub-theme'),
+            'power1-out'   =>  esc_html__('Power 1 out', 'rehub-theme'),
+            'power1-inOut'   =>  esc_html__('Power 1 inOut', 'rehub-theme'),
+            'power2-in'   =>  esc_html__('Power 2 in', 'rehub-theme'),
+            'power2-out'   =>  esc_html__('Power 2 out', 'rehub-theme'),
+            'power2-inOut'   =>  esc_html__('Power 2 inOut', 'rehub-theme'),
+            'power3-in'   =>  esc_html__('Power 3 in', 'rehub-theme'),
+            'power3-out'   =>  esc_html__('Power 3 out', 'rehub-theme'),
+            'power3-inOut'   =>  esc_html__('Power 3 inOut', 'rehub-theme'),
+            'power4-in'   =>  esc_html__('Power 4 in', 'rehub-theme'),
+            'power4-out'   =>  esc_html__('Power 4 out', 'rehub-theme'),
+            'power4-inOut'   =>  esc_html__('Power 4 inOut', 'rehub-theme'),
+            'back-in'   =>  esc_html__('Back in', 'rehub-theme'),
+            'back-out'   =>  esc_html__('Back out', 'rehub-theme'),
+            'back-inOut'   =>  esc_html__('Back inOut', 'rehub-theme'),
+            'elastic-in'   =>  esc_html__('elastic in', 'rehub-theme'),
+            'elastic-out'   =>  esc_html__('elastic out', 'rehub-theme'),
+            'elastic-inOut'   =>  esc_html__('elastic inOut', 'rehub-theme'),
+            'circ-in'   =>  esc_html__('circ in', 'rehub-theme'),
+            'circ-out'   =>  esc_html__('circ out', 'rehub-theme'),
+            'circ-inOut'   =>  esc_html__('circ inOut', 'rehub-theme'),
+            'expo-in'   =>  esc_html__('expo in', 'rehub-theme'),
+            'expo-out'   =>  esc_html__('expo out', 'rehub-theme'),
+            'expo-inOut'   =>  esc_html__('expo inOut', 'rehub-theme'),
+            'cine-in'   =>  esc_html__('cine in', 'rehub-theme'),
+            'cine-out'   =>  esc_html__('cine out', 'rehub-theme'),
+            'cine-inOut'   =>  esc_html__('cine inOut', 'rehub-theme'),
+        ],
+        'condition' => array(
+            'rh_gsap' => 'true',
+        ),
+    ]);
+
+    $obj->add_control(
+        'rh_gsap_infinite',
+        array(
+            'label'        => esc_html__( 'Enable infinite', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'condition' => array(
+                'rh_gsap' => 'true',
+            ),
+        )
+    );
+    $obj->add_control(
+        'rh_gsap_yoyo',
+        array(
+            'label'        => esc_html__( 'Enable Yoyo style', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'default' => 'yes',
+            'condition'=> [ 'rh_gsap_infinite' => 'yes', 'rh_gsap' => 'true' ],
+        )
+    );
+    $obj->add_control(
+        'rh_gsap_repeatdelay',
+        array(
+            'label'        => esc_html__( 'Enable delay between animations', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'default' => 'yes',
+            'condition'=> [ 'rh_gsap_infinite' => 'yes', 'rh_gsap' => 'true' ],
+        )
+    );
+
+    $obj->add_control(
+        'rh_gsap_from',
+        array(
+            'label'        => esc_html__( 'Set direction as FROM', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'default' => 'yes',
+            'condition' => array(
+                'rh_gsap' => 'true',
+            ),
+        )
+    ); 
+    $obj->end_controls_tab();
+    $obj->start_controls_tab(
+        'gsapfotab',
+        [
+            'label' => esc_html__( 'Trigger Option', 'rehub-theme' ),
+        ]
+    );
+    $obj->add_control( 'rh_gsap_trigger_type', [
+        'type'        => \Elementor\Controls_Manager::SELECT,
+        'label'       => esc_html__( 'Ease type', 'rehub-theme' ),
+        'options'     => [
+            'custom'   =>  esc_html__('Custom Scroll Magic', 'rehub-theme'),
+            'waypoint'   =>  esc_html__('On inview by waypoint', 'rehub-theme'),
+            'load'   =>  esc_html__('On load', 'rehub-theme'),
+        ],
+        'default' => 'custom',
+        'condition' => array(
+            'rh_gsap' => 'true',
+        ),
+    ]);
+
+
+    $obj->add_control( 'rh_gsap_trigger_field', [
+        'label' => esc_html__( 'Css ID of custom trigger.', 'rehub-theme' ),
+        'description' => esc_html__('By default, animation will start when you scroll to element. You can place here custom ID for trigger', 'rehub-theme'),
+        'label_block'  => true,
+        'type' => \Elementor\Controls_Manager::TEXT,
+        'condition' => array(
+            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
+        ),
+    ]); 
+
+    $obj->add_control(
+    'rh_gsap_sc_dur',
+    array(
+        'label'   => esc_html__( 'Interpolate animation by Scroll', 'rehub-theme' ),
+        'description' => esc_html__('By default, scroll will trigger full animation. If you want to play animation by scrolling, place here number of pixels which will be interpolated with animation. Or place 100% to set object height.', 'rehub-theme'),
+        'type' => \Elementor\Controls_Manager::TEXT,
+        'condition' => array(
+            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
+        ),
+    )
+    ); 
+
+    $obj->add_control(
+    'rh_gsap_sc_tr',
+    array(
+        'label'   => esc_html__( 'Trigger Hook Height', 'rehub-theme' ),
+        'description' => esc_html__('By default, trigger is set to top point of element, but you can change this', 'rehub-theme'),
+        'type'    => Elementor\Controls_Manager::NUMBER,
+        'min'     => 0,
+        'max'     => 100,
+        'step'    => 1,
+        'condition' => array(
+            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
+        ),
+    )
+    ); 
+
+    $obj->add_control( 'rh_gsap_pin', [
+        'label' => esc_html__( 'Css ID of pin item while scroll', 'rehub-theme' ),
+        'description' => esc_html__('We recommend to add also 100% of duration and custom trigger Id to make this working', 'rehub-theme'),
+        'label_block'  => true,
+        'type' => \Elementor\Controls_Manager::TEXT,
+        'condition' => array(
+            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
+        ),
+    ]); 
+
+    $obj->add_control(
+        'rh_gsap_rev', [
+            'label' => __('Disable reverse on scroll', 'rehub-theme'),
+            'type' => \Elementor\Controls_Manager::SWITCHER,
+            'default' => '',
+            'label_on' => __('Yes', 'rehub-theme'),
+            'label_off' => __('No', 'rehub-theme'),
+            'return_value' => 'yes',
+            'condition' => array(
+                'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
+            ),
+        //            
+        ]
+    );
+    $obj->end_controls_tab();
+    $obj->end_controls_tabs();
+
+    $obj->add_control(
+        'rhhr2',
+        [
+            'label' => __( 'Text, SVG, Stagger', 'rehub-theme' ),
+            'type' => \Elementor\Controls_Manager::HEADING,
+            'separator' => 'before',
+            'condition' => array(
+                'rh_gsap' => 'true',
+            ),
+        ]
+    );
+
+    $obj->add_control( 'rh_gsap_st_type', [
+        'type'        => \Elementor\Controls_Manager::SELECT,
+        'label'       => esc_html__( 'Enable Advanced Animation', 'rehub-theme' ),
+        'options'     => [
+            'no'   =>  esc_html__('No', 'rehub-theme'),
+            'text'   =>  esc_html__('On Text', 'rehub-theme'),
+            'class'   =>  esc_html__('Stagger', 'rehub-theme'),
+            'svg'   =>  esc_html__('SVG lines', 'rehub-theme'),
+        ],
+        'condition' => array(
+            'rh_gsap' => 'true',
+        ),
+    ]);
+
+    $obj->add_control( 'rh_gsap_text', [
+        'type'        => \Elementor\Controls_Manager::SELECT,
+        'label'       => esc_html__( 'Break type for text', 'rehub-theme' ),
+        'options'     => [
+            'lines'   =>  esc_html__('Lines', 'rehub-theme'),
+            'chars'   =>  esc_html__('Chars', 'rehub-theme'),
+            'words'   =>  esc_html__('Words', 'rehub-theme'),
+        ],
+        'condition'=> [ 'rh_gsap_st_type' => 'text', 'rh_gsap' => 'true' ],
+    ]);
+
+    $obj->add_control( 'rh_gsap_stagger', [
+        'label' => esc_html__( 'Set stagger class', 'rehub-theme' ),
+        'description' => esc_html__('this will trigger animation on all elements with this class with some delay between each item', 'rehub-theme'),
+        'label_block'  => true,
+        'type' => \Elementor\Controls_Manager::TEXT,
+        'condition'=> [ 'rh_gsap_st_type' => 'class', 'rh_gsap' => 'true' ],
+    ]); 
+
+    $obj->add_control(
+        'rh_gsap_stdelay',
+        array(
+            'label'   => esc_html__( 'Stagger delay', 'rehub-theme' ),
+            'type'    => \Elementor\Controls_Manager::NUMBER,
+            'min'     => 0,
+            'max'     => 10,
+            'step'    => 0.1,
+            'condition' => array(
+                'rh_gsap' => 'true', 'rh_gsap_st_type!' => ''
+            ),
+        )
+    );
+    $obj->add_control(
+        'rh_gsap_strandom',
+        array(
+            'label'        => esc_html__( 'Enable random order', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'condition' => array(
+                'rh_gsap' => 'true', 'rh_gsap_st_type!' => ''
+            ),
+        )
+    );
 
     $gsaprepeater = new \Elementor\Repeater();
     $gsaprepeater->add_control(
@@ -958,373 +1319,6 @@ function RH_parallax_el_elementor( $obj, $args ) {
     ]);
 
     $obj->add_control(
-        'svgpath',
-        [
-            'label' => __( 'Animation on SVG Path', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::HEADING,
-            'separator' => 'before',
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
-        ]
-    );
-    $obj->add_control( 'rh_gsap_path', [
-        'label' => esc_html__( 'Set path', 'rehub-theme' ),
-        'description' => esc_html__('can be ID (place with #), svg path coordinates', 'rehub-theme'),
-        'label_block'  => true,
-        'type' => \Elementor\Controls_Manager::TEXT,
-        'condition'=> ['rh_gsap' => 'true' ],
-    ]); 
-    $obj->add_control( 'rh_gsap_path_align', [
-        'label' => esc_html__( 'Align ID', 'rehub-theme' ),
-        'description' => esc_html__('By default, element is alighned by itself, but you can set id of path or another element', 'rehub-theme'),
-        'label_block'  => true,
-        'type' => \Elementor\Controls_Manager::TEXT,
-        'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
-    ]); 
-    $obj->add_control(
-        'rh_gsap_path_orient',
-        array(
-            'label'        => esc_html__( 'Orient along path', 'rehub-theme' ),
-            'type'         => Elementor\Controls_Manager::SWITCHER,
-            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-            'return_value' => 'yes',
-            'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
-        )
-    );
-    $obj->add_control(
-        'rh_gsap_path_align_x',
-        [
-            'label' => __( 'Align origin point X', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::SLIDER,
-            'default' => [
-                'size' => 0.5,
-            ],
-            'label_block' => true,
-            'range' => [
-                'px' => [
-                    'min' => 0,
-                    'max' => 1,
-                    'step' => 0.1,
-                ],
-            ],
-            'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
-        ]
-    );
-    $obj->add_control(
-        'rh_gsap_path_align_y',
-        [
-            'label' => __( 'Align origin point Y', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::SLIDER,
-            'default' => [
-                'size' => 0.5,
-            ],
-            'label_block' => true,
-            'range' => [
-                'px' => [
-                    'min' => 0,
-                    'max' => 1,
-                    'step' => 0.1,
-                ],
-            ],
-            'condition'=> ['rh_gsap' => 'true', 'rh_gsap_path!' => '' ],
-        ]
-    );
-
-    $obj->add_control(
-        'rhhr2',
-        [
-            'label' => __( 'Text, SVG, Stagger', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::HEADING,
-            'separator' => 'before',
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
-        ]
-    );
-
-    $obj->add_control( 'rh_gsap_st_type', [
-        'type'        => \Elementor\Controls_Manager::SELECT,
-        'label'       => esc_html__( 'Enable Advanced Animation', 'rehub-theme' ),
-        'options'     => [
-            'no'   =>  esc_html__('No', 'rehub-theme'),
-            'text'   =>  esc_html__('On Text', 'rehub-theme'),
-            'class'   =>  esc_html__('Stagger', 'rehub-theme'),
-            'svg'   =>  esc_html__('SVG lines', 'rehub-theme'),
-        ],
-        'condition' => array(
-            'rh_gsap' => 'true',
-        ),
-    ]);
-
-    $obj->add_control( 'rh_gsap_text', [
-        'type'        => \Elementor\Controls_Manager::SELECT,
-        'label'       => esc_html__( 'Break type for text', 'rehub-theme' ),
-        'options'     => [
-            'lines'   =>  esc_html__('Lines', 'rehub-theme'),
-            'chars'   =>  esc_html__('Chars', 'rehub-theme'),
-            'words'   =>  esc_html__('Words', 'rehub-theme'),
-        ],
-        'condition'=> [ 'rh_gsap_st_type' => 'text', 'rh_gsap' => 'true' ],
-    ]);
-
-    $obj->add_control( 'rh_gsap_stagger', [
-        'label' => esc_html__( 'Set stagger class', 'rehub-theme' ),
-        'description' => esc_html__('this will trigger animation on all elements with this class with some delay between each item', 'rehub-theme'),
-        'label_block'  => true,
-        'type' => \Elementor\Controls_Manager::TEXT,
-        'condition'=> [ 'rh_gsap_st_type' => 'class', 'rh_gsap' => 'true' ],
-    ]); 
-
-    $obj->add_control(
-        'rh_gsap_stdelay',
-        array(
-            'label'   => esc_html__( 'Stagger delay', 'rehub-theme' ),
-            'type'    => \Elementor\Controls_Manager::NUMBER,
-            'min'     => 0,
-            'max'     => 10,
-            'step'    => 0.1,
-            'condition' => array(
-                'rh_gsap' => 'true', 'rh_gsap_st_type!' => ''
-            ),
-        )
-    );
-    $obj->add_control(
-        'rh_gsap_strandom',
-        array(
-            'label'        => esc_html__( 'Enable random order', 'rehub-theme' ),
-            'type'         => Elementor\Controls_Manager::SWITCHER,
-            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-            'return_value' => 'yes',
-            'condition' => array(
-                'rh_gsap' => 'true', 'rh_gsap_st_type!' => ''
-            ),
-        )
-    );
-
-    $obj->add_control(
-        'rhhr3',
-        [
-            'label' => __( 'Animation Options', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::HEADING,
-            'separator' => 'before',
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
-        ]
-    );
-
-    $obj->add_control(
-        'rh_gsap_duration',
-        array(
-            'label'   => esc_html__( 'Duration (s)', 'rehub-theme' ),
-            'type'    => Elementor\Controls_Manager::NUMBER,
-            'min'     => 0.1,
-            'max'     => 60,
-            'step'    => 0.1,
-            'default' => 1,
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
-        )
-    ); 
-
-    $obj->add_control(
-        'rh_gsap_delay',
-        array(
-            'label'   => esc_html__( 'Delay (s)', 'rehub-theme' ),
-            'type'    => Elementor\Controls_Manager::NUMBER,
-            'min'     => 0.1,
-            'max'     => 20,
-            'step'    => 0.1,
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
-        )
-    );
-
-    $obj->add_control( 'rh_gsap_ease', [
-        'type'        => \Elementor\Controls_Manager::SELECT,
-        'label'       => esc_html__( 'Ease type', 'rehub-theme' ),
-        'options'     => [
-            'power0-none'   =>  esc_html__('Linear', 'rehub-theme'),
-            'power1-in'   =>  esc_html__('Power 1 in', 'rehub-theme'),
-            'power1-out'   =>  esc_html__('Power 1 out', 'rehub-theme'),
-            'power1-inOut'   =>  esc_html__('Power 1 inOut', 'rehub-theme'),
-            'power2-in'   =>  esc_html__('Power 2 in', 'rehub-theme'),
-            'power2-out'   =>  esc_html__('Power 2 out', 'rehub-theme'),
-            'power2-inOut'   =>  esc_html__('Power 2 inOut', 'rehub-theme'),
-            'power3-in'   =>  esc_html__('Power 3 in', 'rehub-theme'),
-            'power3-out'   =>  esc_html__('Power 3 out', 'rehub-theme'),
-            'power3-inOut'   =>  esc_html__('Power 3 inOut', 'rehub-theme'),
-            'power4-in'   =>  esc_html__('Power 4 in', 'rehub-theme'),
-            'power4-out'   =>  esc_html__('Power 4 out', 'rehub-theme'),
-            'power4-inOut'   =>  esc_html__('Power 4 inOut', 'rehub-theme'),
-            'back-in'   =>  esc_html__('Back in', 'rehub-theme'),
-            'back-out'   =>  esc_html__('Back out', 'rehub-theme'),
-            'back-inOut'   =>  esc_html__('Back inOut', 'rehub-theme'),
-            'elastic-in'   =>  esc_html__('elastic in', 'rehub-theme'),
-            'elastic-out'   =>  esc_html__('elastic out', 'rehub-theme'),
-            'elastic-inOut'   =>  esc_html__('elastic inOut', 'rehub-theme'),
-            'circ-in'   =>  esc_html__('circ in', 'rehub-theme'),
-            'circ-out'   =>  esc_html__('circ out', 'rehub-theme'),
-            'circ-inOut'   =>  esc_html__('circ inOut', 'rehub-theme'),
-            'expo-in'   =>  esc_html__('expo in', 'rehub-theme'),
-            'expo-out'   =>  esc_html__('expo out', 'rehub-theme'),
-            'expo-inOut'   =>  esc_html__('expo inOut', 'rehub-theme'),
-            'cine-in'   =>  esc_html__('cine in', 'rehub-theme'),
-            'cine-out'   =>  esc_html__('cine out', 'rehub-theme'),
-            'cine-inOut'   =>  esc_html__('cine inOut', 'rehub-theme'),
-        ],
-        'condition' => array(
-            'rh_gsap' => 'true',
-        ),
-    ]);
-
-    $obj->add_control(
-        'rh_gsap_infinite',
-        array(
-            'label'        => esc_html__( 'Enable infinite', 'rehub-theme' ),
-            'type'         => Elementor\Controls_Manager::SWITCHER,
-            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-            'return_value' => 'yes',
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
-        )
-    );
-    $obj->add_control(
-        'rh_gsap_yoyo',
-        array(
-            'label'        => esc_html__( 'Enable Yoyo style', 'rehub-theme' ),
-            'type'         => Elementor\Controls_Manager::SWITCHER,
-            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-            'return_value' => 'yes',
-            'default' => 'yes',
-            'condition'=> [ 'rh_gsap_infinite' => 'yes', 'rh_gsap' => 'true' ],
-        )
-    );
-    $obj->add_control(
-        'rh_gsap_repeatdelay',
-        array(
-            'label'        => esc_html__( 'Enable delay between animations', 'rehub-theme' ),
-            'type'         => Elementor\Controls_Manager::SWITCHER,
-            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-            'return_value' => 'yes',
-            'default' => 'yes',
-            'condition'=> [ 'rh_gsap_infinite' => 'yes', 'rh_gsap' => 'true' ],
-        )
-    );
-
-    $obj->add_control(
-        'rh_gsap_from',
-        array(
-            'label'        => esc_html__( 'Set direction as FROM', 'rehub-theme' ),
-            'type'         => Elementor\Controls_Manager::SWITCHER,
-            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
-            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
-            'return_value' => 'yes',
-            'default' => 'yes',
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
-        )
-    ); 
-
-    $obj->add_control(
-        'rhhr4',
-        [
-            'label' => __( 'Trigger Options', 'rehub-theme' ),
-            'type' => \Elementor\Controls_Manager::HEADING,
-            'separator' => 'before',
-            'condition' => array(
-                'rh_gsap' => 'true',
-            ),
-        ]
-    );
-
-    $obj->add_control( 'rh_gsap_trigger_type', [
-        'type'        => \Elementor\Controls_Manager::SELECT,
-        'label'       => esc_html__( 'Ease type', 'rehub-theme' ),
-        'options'     => [
-            'custom'   =>  esc_html__('Custom Scroll Magic', 'rehub-theme'),
-            'waypoint'   =>  esc_html__('On inview by waypoint', 'rehub-theme'),
-            'load'   =>  esc_html__('On load', 'rehub-theme'),
-        ],
-        'default' => 'custom',
-        'condition' => array(
-            'rh_gsap' => 'true',
-        ),
-    ]);
-
-
-    $obj->add_control( 'rh_gsap_trigger_field', [
-        'label' => esc_html__( 'Css ID of custom trigger.', 'rehub-theme' ),
-        'description' => esc_html__('By default, animation will start when you scroll to element. You can place here custom ID for trigger', 'rehub-theme'),
-        'label_block'  => true,
-        'type' => \Elementor\Controls_Manager::TEXT,
-        'condition' => array(
-            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
-        ),
-    ]); 
-
-    $obj->add_control(
-    'rh_gsap_sc_dur',
-    array(
-        'label'   => esc_html__( 'Interpolate animation by Scroll', 'rehub-theme' ),
-        'description' => esc_html__('By default, scroll will trigger full animation. If you want to play animation by scrolling, place here number of pixels which will be interpolated with animation. Or place 100% to set object height.', 'rehub-theme'),
-        'type' => \Elementor\Controls_Manager::TEXT,
-        'condition' => array(
-            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
-        ),
-    )
-    ); 
-
-    $obj->add_control(
-    'rh_gsap_sc_tr',
-    array(
-        'label'   => esc_html__( 'Trigger Hook Height', 'rehub-theme' ),
-        'description' => esc_html__('By default, trigger is set to top point of element, but you can change this', 'rehub-theme'),
-        'type'    => Elementor\Controls_Manager::NUMBER,
-        'min'     => 0,
-        'max'     => 100,
-        'step'    => 1,
-        'condition' => array(
-            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
-        ),
-    )
-    ); 
-
-    $obj->add_control( 'rh_gsap_pin', [
-        'label' => esc_html__( 'Css ID of pin item while scroll', 'rehub-theme' ),
-        'description' => esc_html__('We recommend to add also 100% of duration and custom trigger Id to make this working', 'rehub-theme'),
-        'label_block'  => true,
-        'type' => \Elementor\Controls_Manager::TEXT,
-        'condition' => array(
-            'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
-        ),
-    ]); 
-
-    $obj->add_control(
-        'rh_gsap_rev', [
-            'label' => __('Disable reverse on scroll', 'rehub-theme'),
-            'type' => \Elementor\Controls_Manager::SWITCHER,
-            'default' => '',
-            'label_on' => __('Yes', 'rehub-theme'),
-            'label_off' => __('No', 'rehub-theme'),
-            'return_value' => 'yes',
-            'condition' => array(
-                'rh_gsap_trigger_type' => 'custom', 'rh_gsap' => 'true',
-            ),
-        //            
-        ]
-    );
-    $obj->add_control(
         'videoobj',
         [
             'label' => __( 'Video Object', 'rehub-theme' ),
@@ -1486,6 +1480,34 @@ function RH_parallax_el_elementor( $obj, $args ) {
             'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
             'label_off'    => esc_html__( 'No', 'rehub-theme' ),
             'return_value' => 'true',
+        )
+    );
+
+    $obj->add_control(
+        'rh_parlx_m_el_cur',
+        array(
+            'label'        => esc_html__( 'Bounds by Object', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'condition' => array(
+                'rh_parlx_m_el' => 'true',
+            ),
+        )
+    );
+    $obj->add_control(
+        'rh_parlx_restore',
+        array(
+            'label'        => esc_html__( 'Restore on Mouse Leave', 'rehub-theme' ),
+            'type'         => Elementor\Controls_Manager::SWITCHER,
+            'label_on'     => esc_html__( 'Yes', 'rehub-theme' ),
+            'label_off'    => esc_html__( 'No', 'rehub-theme' ),
+            'return_value' => 'yes',
+            'condition' => array(
+                'rh_parlx_m_el' => 'true',
+                'rh_parlx_m_el_cur' => 'yes'
+            ),
         )
     );
 
@@ -1782,6 +1804,12 @@ function RH_el_custom_widget_render( $content, $widget ) {
         if ( ! empty( $settings['rh_parlx_m_el_speed'] )) {
             $widget->add_render_attribute( 'rhmprlx-wrapper', 'data-prlx-xy', $settings['rh_parlx_m_el_speed'] );
         }
+        if ( ! empty( $settings['rh_parlx_m_el_cur'] )) {
+            $widget->add_render_attribute( 'rhmprlx-wrapper', 'data-prlx-cur', $settings['rh_parlx_m_el_cur'] );
+        }
+        if ( ! empty( $settings['rh_parlx_restore'] )) {
+            $widget->add_render_attribute( 'rhmprlx-wrapper', 'data-prlx-rest', $settings['rh_parlx_restore'] );
+        }
         if ( ! empty( $settings['rh_parlx_m_el_tilt'] )) {
             $widget->add_render_attribute( 'rhmprlx-wrapper', 'data-prlx-tilt', $settings['rh_parlx_m_el_tilt'] );
         }
@@ -1973,6 +2001,12 @@ function rh_el_custom_print_template($content, $widget){
     $content = "<# if ( settings.rh_parlx_m_el ) {
         if ( settings.rh_parlx_m_el_speed ) {
             view.addRenderAttribute( 'rhmprlx-wrapper', 'data-prlx-xy', settings.rh_parlx_m_el_speed );
+        }
+        if ( settings.rh_parlx_m_el_cur ) {
+            view.addRenderAttribute( 'rhmprlx-wrapper', 'data-prlx-cur', settings.rh_parlx_m_el_cur );
+        }
+        if ( settings.rh_parlx_restore ) {
+            view.addRenderAttribute( 'rhmprlx-wrapper', 'data-prlx-rest', settings.rh_parlx_restore );
         }
         if ( settings.rh_parlx_m_el_tilt ) {
             view.addRenderAttribute( 'rhmprlx-wrapper', 'data-prlx-tilt', settings.rh_parlx_m_el_tilt );

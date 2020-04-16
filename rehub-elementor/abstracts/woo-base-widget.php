@@ -256,6 +256,7 @@ abstract class WPSM_Widget_Base extends Widget_Base {
                 'comment_count' => esc_html__( 'Number of comments', 'rehub-theme' ),
                 'meta_value'    => esc_html__( 'Meta value', 'rehub-theme'),
                 'meta_value_num'=> esc_html__( 'Meta value number', 'rehub-theme'),
+                'price'         => esc_html__( 'Price', 'rehub-theme'),
                 'rand'          => esc_html__( 'Random order', 'rehub-theme'),
             ],
             'label_block' => true,

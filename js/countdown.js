@@ -1,2 +1,146 @@
-/* jQuery Countdown plugin v1.0 Copyright 2010, Vassilis Dourdounis */
-!function(a){a.fn.countDown=function(t){return config={},a.extend(config,t),diffSecs=this.setCountDown(config),config.onComplete&&a.data(a(this)[0],"callback",config.onComplete),config.omitWeeks&&a.data(a(this)[0],"omitWeeks",config.omitWeeks),a("#"+a(this).attr("id")+" .digit").html('<div class="top"></div><div class="bottom"></div>'),a(this).doCountDown(a(this).attr("id"),diffSecs,500),this},a.fn.stopCountDown=function(){clearTimeout(a.data(this[0],"timer"))},a.fn.startCountDown=function(){this.doCountDown(a(this).attr("id"),a.data(this[0],"diffSecs"),500)},a.fn.setCountDown=function(t){var e=new Date;t.targetDate?e=new Date(t.targetDate.month+"/"+t.targetDate.day+"/"+t.targetDate.year+" "+t.targetDate.hour+":"+t.targetDate.min+":"+t.targetDate.sec+(t.targetDate.utc?" UTC":"")):t.targetOffset&&(e.setFullYear(t.targetOffset.year+e.getFullYear()),e.setMonth(t.targetOffset.month+e.getMonth()),e.setDate(t.targetOffset.day+e.getDate()),e.setHours(t.targetOffset.hour+e.getHours()),e.setMinutes(t.targetOffset.min+e.getMinutes()),e.setSeconds(t.targetOffset.sec+e.getSeconds()));var s=new Date;return diffSecs=Math.floor((e.valueOf()-s.valueOf())/1e3),a.data(this[0],"diffSecs",diffSecs),diffSecs},a.fn.doCountDown=function(s,i,o){$this=a("#"+s),i<=0&&(i=0,a.data($this[0],"timer")&&clearTimeout(a.data($this[0],"timer"))),secs=i%60,mins=Math.floor(i/60)%60,hours=Math.floor(i/60/60)%24,1==a.data($this[0],"omitWeeks")?(days=Math.floor(i/60/60/24),weeks=Math.floor(i/60/60/24/7)):(days=Math.floor(i/60/60/24)%7,weeks=Math.floor(i/60/60/24/7)),$this.dashChangeTo(s,"seconds_dash",secs,o||800),$this.dashChangeTo(s,"minutes_dash",mins,o||1200),$this.dashChangeTo(s,"hours_dash",hours,o||1200),$this.dashChangeTo(s,"days_dash",days,o||1200),$this.dashChangeTo(s,"weeks_dash",weeks,o||1200),a.data($this[0],"diffSecs",i),i>0?(e=$this,t=setTimeout(function(){e.doCountDown(s,i-1)},1e3),a.data(e[0],"timer",t)):(cb=a.data($this[0],"callback"))&&a.data($this[0],"callback")()},a.fn.dashChangeTo=function(t,e,s,i){$this=a("#"+t);for(var o=$this.find("."+e+" .digit").length-1;o>=0;o--){var n=s%10;s=(s-n)/10,$this.digitChangeTo("#"+$this.attr("id")+" ."+e+" .digit:eq("+o+")",n,i)}},a.fn.digitChangeTo=function(t,e,s){s||(s=800),a(t+" div.top").html()!=e+""&&(a(t+" div.top").css({display:"none"}),a(t+" div.top").html(e||"0").slideDown(s),a(t+" div.bottom").animate({height:""},s,function(){a(t+" div.bottom").html(a(t+" div.top").html()),a(t+" div.bottom").css({display:"block",height:""}),a(t+" div.top").hide().slideUp(10)}))}}(jQuery);
+/*!
+ * jQuery Countdown plugin v1.0
+ * http://www.littlewebthings.com/projects/countdown/
+ *
+ * Copyright 2010, Vassilis Dourdounis
+ * Copyright 2010, Marcello Barnaba <marcello.barnaba@gmail.com>
+ * 
+ */
+(function($) {
+
+	$.fn.countDown = function (options) {
+		// Public methods invocation
+		//
+		if (typeof options == 'string') {
+			return $(this).data('countDown')[options].apply(this) || this;
+		}
+
+		return this.each (function () {
+			// Initialization
+			//
+			var element = $(this), targetTime = new Date(), timer;
+
+			if (element.data ('countDown'))
+				return; // Already initialized
+
+			if (options.targetDate)
+			{
+				targetTime = new Date(
+					options.targetDate.month + '/' + options.targetDate.day + '/' + options.targetDate.year + ' ' +
+					options.targetDate.hour + ':' + options.targetDate.min + ':' + options.targetDate.sec +
+					(options.targetDate.utc ? ' UTC' : '')
+				);
+			}
+			else if (options.targetOffset)
+			{
+				targetTime.setFullYear(options.targetOffset.year + targetTime.getFullYear());
+				targetTime.setMonth(options.targetOffset.month   + targetTime.getMonth());
+				targetTime.setDate(options.targetOffset.day      + targetTime.getDate());
+				targetTime.setHours(options.targetOffset.hour    + targetTime.getHours());
+				targetTime.setMinutes(options.targetOffset.min   + targetTime.getMinutes());
+				targetTime.setSeconds(options.targetOffset.sec   + targetTime.getSeconds());
+			}
+
+			element.find('.digit').html('<div class="top"></div><div class="bottom"></div>');
+
+			// Public methods definition
+			//
+			element.data ('countDown', {
+				stop: function () {
+					if (timer == undefined)
+						return;
+
+					clearInterval(timer);
+					timer = undefined
+				},
+
+				start: function () {
+					if (timer != undefined)
+						return;
+
+					var diffSecs = Math.floor((+targetTime - +new Date())/1000);
+					var duration = 500;
+
+					if (diffSecs < 0)
+						diffSecs = 0;
+
+					var loop = function () {
+						render(diffSecs, duration);
+						diffSecs -= 1;
+					}
+
+					loop();
+					if (diffSecs > 0)
+						timer = setInterval (loop, 1000)
+				}
+			});
+
+			// Private method to render the whole thing
+			//
+			function render (diffSecs, duration) {
+				secs = diffSecs % 60;
+				mins = Math.floor(diffSecs/60)%60;
+				hours = Math.floor(diffSecs/60/60)%24;
+				if (options.omitWeeks)
+				{
+					days = Math.floor(diffSecs/60/60/24);
+					weeks = Math.floor(diffSecs/60/60/24/7);
+				}
+				else
+				{
+					days = Math.floor(diffSecs/60/60/24)%7;
+					weeks = Math.floor(diffSecs/60/60/24/7);
+				}
+
+				dashChangeTo('.seconds_dash', secs,  duration);
+				dashChangeTo('.minutes_dash', mins,  duration);
+				dashChangeTo('.hours_dash',   hours, duration);
+				dashChangeTo('.days_dash',    days,  duration);
+				dashChangeTo('.weeks_dash',   weeks, duration);
+
+				if (diffSecs <= 0)
+					complete();
+			}
+
+			// Privat method invoked by render() when the countdown is over
+			//
+			function complete() {
+				element.data('countDown').stop ();
+
+				if (options.onComplete)
+					options.onComplete.apply(element);
+
+				return true;
+			}
+
+			// Private method to update a single digit couple
+			//
+			function dashChangeTo (selector, n, duration) {
+				element.find (selector + ' .digit').each (function (i) {
+					// The first digit is i=0, the second i=1
+					digitChangeTo($(this), i == 0 ? Math.floor(n/10) : n%10, duration);
+				})
+			};
+
+			// Private method to update a single digit
+			//
+			function digitChangeTo (digit, n, duration) {
+				var top = digit.find('.top'),
+						bot = digit.find('.bottom');
+
+				if (top.html() != n + '')
+				{
+					top.html(n || '0').slideDown(duration);
+
+					bot.animate({height: 0}, duration, function() {
+						bot.html(n || '0').css({height: '100%'});
+						top.hide();
+					});
+				}
+			};
+
+			element.data('countDown').start();
+		});
+	};
+
+})(jQuery);

@@ -5,6 +5,7 @@ $store_user = dokan()->vendor->get( get_query_var( 'author' ) );
 $store_id = $store_user->get_id();
 $store_rating = $store_user->get_rating();
 $store_featured = $store_user->is_featured();
+$map_location = $store_user->get_location();
 // $store_trusted = $store_user->is_trusted();
 $store_url = $store_user->get_shop_url();
 $store_tnc_enable = $store_user->toc_enabled();
@@ -47,7 +48,7 @@ $store_address = apply_filters( 'dokan_store_header_adress', $short_address, $st
 								<?php echo rh_woo_rating_icons_wrapper('', $store_rating['rating'], $store_rating['count']); ?>
 							<?php endif;?>
 						</div>
-                        <?php if ( dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on' && !empty( $store_address ) && !is_active_widget( '', '', 'dokan-store-location') ) { ?>
+                        <?php if ( dokan()->widgets->is_exists( 'store_location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && ! empty( $map_location ) ) { ?>
                             <i class="far fa-map-marker-alt"></i> <?php echo esc_attr($store_address); ?>
 							<span class="rh_gmw_map_in_wcv_profile"><?php esc_html_e( '(Show on map)', 'rehub-theme' ); ?></span>
                         <?php } ?>	

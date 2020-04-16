@@ -4,7 +4,7 @@
 	Description: A Hybrid magazine/shop/review/news Theme
 	Author: Brandli
 	Author URI: https://github.com/brand-li/
-	Version: 9.9.9
+	Version: 9.9.9.3
 	Tags: two-columns, fluid-layout, custom-background, threaded-comments, translation-ready, custom-menu
 	License: 
 	License URI:
@@ -1268,7 +1268,7 @@ div.pagination-centered ul>li { float: none; display: inline-block; }
 .top_rating_item .rehub_offer_coupon{display: block;}
 .top_rating_item .buttons_col{padding: 15px 25px; width: 210px; min-width: 210px}
 
-.listitem_title .postcont { font-size: 15px; line-height: 18px; color: #888; margin: 8px 0; }
+.listitem_title .postcont { font-size: 15px; line-height: 22px; color: #888; margin: 8px 0; }
 .listitem_title .postcont ul li{list-style: none; margin: 0 0 8px 0}
 .listitem_column, .listitem_content_meta > div, .rh_listcolumn{padding: 0 15px}
 .listitem_column.listbuild_image{min-width: 160px; max-width: 160px; padding-left: 25px}
@@ -1899,7 +1899,6 @@ ul.hidden-links li{float: left;}.zind2{z-index: 2;}
 .heart_thumb_wrap .heartplus:hover, .button_action .heart_thumb_wrap .heartplus:hover{ color: #cc0000}
 .heart_thumb_wrap .heartplus:before, .heart_thumb_wrap:hover .heartplus.alreadywish:not(.wishlisted):before{content: "\f004"; font-weight: 300}
 .heart_thumb_wrap .heartplus.alreadywish:before{content: "\f004"; color: #cc0000; font-weight: 900}
-.re-favorites-posts .heartplus.alreadywish:before, .re-favorites-posts .heart_thumb_wrap:hover .heartplus.alreadywish:before{content: "\f00d";}
 .button_action .wpsm-button.wpsm-button-new-compare, .button_action .heart_thumb_wrap .heartplus, .button_action .quick_view_wrap .quick_view_button{color: #aaa}
 .button_action .thumbscount, .button_action .wishaddedwrap, .button_action .wishremovedwrap, .button_action .wishaddwrap{display: none !important;}
 .thumbscount{font-size: 12px;line-height: 29px; margin: 0 0 0 8px; display: inline-block; color: #67a827 }
@@ -1913,7 +1912,7 @@ ul.hidden-links li{float: left;}.zind2{z-index: 2;}
 .woocommerce .products.grid_woo .product.thumb_enabled_col, .woocommerce .products.column_woo .product.thumb_enabled_col{padding-bottom: 55px }
 .thumbminus.loading:before, .thumbplus.loading:before, .heartplus.loading:before{content: "\f021" !important; font-family: Font Awesome\ 5 Pro; -webkit-animation: fa-spin 1s linear infinite; animation: fa-spin 1s linear infinite;}
 .fonscale {height: 15px; position: relative;border: 1px solid #ddd;border-radius: 10px; background-color: #ececec; background: -webkit-linear-gradient(top, #f5f5f5 1px, #f0f0f0 1px, #eeeeee); background: linear-gradient(to bottom, #f5f5f5 1px, #f0f0f0 1px, #eeeeee) }
-.scaleperc { height: 7px; width: 0;position: absolute; left: 4px; top: 3px; border: 1px solid #AC0000; background-color: #CA212A; background: -webkit-linear-gradient(top, #DE6E6E 1px, #CA212A); background: linear-gradient(to bottom, #DE6E6E 1px,#CA212A); border-radius: 5px; max-width: calc(100% - 8px); }
+.scaleperc { height: 7px; width: 0;position: absolute; left: 4px; top: 3px;  background-color: #ff4e0d; border-radius: 5px; max-width: calc(100% - 8px); }
 .scaleperc.cold_bar { background: none #1F7BC5; border: 1px solid #174E7B; }
 .hotmeter { position: relative; width: 100%; display: table; }
 .hotmeter button { padding: 0; cursor: pointer; }
@@ -1940,10 +1939,11 @@ ul.hidden-links li{float: left;}.zind2{z-index: 2;}
 .hoticonfireclass:before{ font-family: Font Awesome\ 5 Pro; content: "\f06d"; margin-right: 5px; color: #CA212A; font-weight: 900 }
 .gradus_icon:before{vertical-align:top; content: "°"; margin: 0 2px; }
 .cold_temp .gradus_icon:before{content: "\f2dc"; font-weight: normal;font-family: Font Awesome\ 5 Pro; font-size: 80%}
+.re-favorites-posts .heartplus.alreadywish:before, .re-favorites-posts .heart_thumb_wrap:hover .heartplus.alreadywish:before{content: "\f00d";}
 .re-favorites-posts{border-collapse: collapse;}
 .re-favorites-posts .yith_woo_chart{display: none;}
 .re-favorites-posts .price-woo-compare-chart{font-size: 15px; margin: 0}
-.re-favorites-posts .priced_block .btn_offer_block, .re-favorites-posts .priced_block .rh_price_wrapper{display: block;}
+.re-favorites-posts .priced_block .btn_offer_block, .re-favorites-posts .priced_block .rh_price_wrapper, .re-favorites-posts .rh_button_wrapper{display: block; float: none;margin-bottom: 10px;}
 .re-favorites-posts img{ max-width: 50px;}
 .favorshop_like i{margin: 0 !important; padding: 0 !important;}
 .favorrightside .heart_thumb_wrap{position: absolute; top: 5px; right: 3px;}
@@ -2383,7 +2383,7 @@ body .deal_daywoo .title:after{display: none;}
 rating circle meters
 *************************************************/	
 
-.radial-progress { width: 65px; height: 65px; background-color: rgba(239, 239, 239, 0.63); border-radius: 50%; margin: 0 auto; position: relative; }
+.radial-progress { overflow:hidden; width: 65px; height: 65px; background-color: rgba(239, 239, 239, 0.63); border-radius: 50%; margin: 0 auto; position: relative; }
 .radial-progress .circle .mask, .radial-progress .circle .fill, .radial-progress .circle .shadow { width: 65px; height: 65px; position: absolute; border-radius: 50%; }
 .radial-progress .circle .shadow { box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2) inset; }
 .radial-progress .circle .mask, .radial-progress .circle .fill { -webkit-backface-visibility: hidden; backface-visibility: hidden; transition: -webkit-transform 1s linear 0.1s; transition: -ms-transform 1s linear 0.1s; transition: transform 1s linear 0.1s; border-radius: 50%; }

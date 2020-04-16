@@ -2584,7 +2584,7 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
                                 <li class="row_chart_1 heading_row_chart">
                                 </li>                               
                                 <li class="row_chart_2 meta_value_row_chart">
-                                	<?php kama_excerpt('maxchar=180'); ?>
+                                	<?php the_excerpt(); ?>
                                 </li>                                  
                                 <li class="row_chart_5 meta_value_row_chart">
                                 	<?php WPSM_Woohelper::re_show_brand_tax(); //show brand taxonomy?>

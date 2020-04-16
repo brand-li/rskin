@@ -2149,7 +2149,7 @@ if(!function_exists('rh_soldout_bar')){
 		    <?php if($soldout):?>
 			    <div class="soldoutbar mb10">
 			        <div class="wpsm-bar minibar wpsm-clearfix mb5" data-percent="<?php echo (float)$soldout;?>%">
-			            <div class="wpsm-bar-bar" style="background: <?php echo $color; ?>"></div>
+			            <div class="wpsm-bar-bar" style="background: <?php echo ''.$color; ?>"></div>
 			        </div>
 			        <div class="soldoutpercent greycolor font70 lineheight15"><?php esc_html_e( 'Already Sold:', 'rehub-theme' );?> <?php echo (float)$soldout;?>%</div>
 			    </div>

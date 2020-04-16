@@ -11,6 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 $store_user = get_userdata( get_query_var( 'author' ) );
 $vendor_id = $store_user->ID;
 $vendor_email = $store_user->user_email;
+$map_location = $store_user->get_location();
 $totaldeals = count_user_posts( $vendor_id, $post_type = 'product' );
 $store_info = dokan_get_store_info( $vendor_id );
 $store_url = dokan_get_store_url( $vendor_id );
@@ -21,7 +22,6 @@ if ( isset($store_info['enable_tnc']) && $store_info['enable_tnc'] == 'on' && $t
     $store_description = wpautop( wptexturize( wp_kses_post( $store_info['store_tnc'] ) ) );
 }
 
-//$map_location = isset( $store_info['location'] ) ? esc_attr( $store_info['location'] ) : '';
 $store_address_arr = $store_info['address'];
 $store_address = '';
 if( is_array( $store_address_arr ) && !empty( $store_address_arr ) ) {
@@ -62,12 +62,12 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
                           <?php do_action( 'dokan_review_tab_before_comments' ); ?>
 
                         <ol class="commentlist">
-                            <?php echo $dokan_template_reviews->render_store_tab_comment_list( $comments , $store_user->ID); ?>
+                            <?php echo ''.$dokan_template_reviews->render_store_tab_comment_list( $comments , $store_user->ID); ?>
                         </ol>
 
                         </div>
                     </div>
-                    <?php echo $dokan_template_reviews->review_pagination( $id, $post_type, $limit, $status ); ?>
+                    <?php echo ''.$dokan_template_reviews->review_pagination( $id, $post_type, $limit, $status ); ?>
                 </div>
                 <?php if( !empty( $store_description ) ) { ?>
                 <div role="tabvendor" class="tab-pane" id="vendor-about">

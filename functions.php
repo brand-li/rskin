@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '9.9.9');
+	define('RH_MAIN_THEME_VERSION', '9.9.9.3');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
@@ -47,7 +47,7 @@ function rehub_framework_register_scripts() {
 	wp_register_script('rhcuttab', get_template_directory_uri() . '/js/cuttabs.js', array('jquery'), '3.3.6', true);
 	wp_register_script('rhhoverintent', get_template_directory_uri() . '/js/hoverintent.js', array('jquery'), '1.9', true);
 	wp_register_script('rhniceselect', get_template_directory_uri() . '/js/niceselect.js', array('jquery'), '1.0', true);
-	wp_register_script('rhcountdown', get_template_directory_uri() . '/js/countdown.js', array('jquery'), '1.0', true);
+	wp_register_script('rhcountdown', get_template_directory_uri() . '/js/countdown.js', array('jquery'), '1.1', true);
 	wp_register_script('rehub', get_template_directory_uri() . '/js/custom.js', array('jquery', 'rhinview', 'rhunveil', 'rhhoverintent', 'rhcountdown', 'rhniceselect'), RH_MAIN_THEME_VERSION, true);
 	wp_register_script('flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'), '2.2.2', true);
 	wp_register_script('totemticker', get_template_directory_uri() . '/js/jquery.totemticker.js', array('jquery'), '', true);
@@ -78,11 +78,12 @@ function rehub_framework_register_scripts() {
 	wp_register_script( 'rh_elparticle', get_template_directory_uri() . '/js/particles.min.js', array('jquery'), '2.2', true );	
 
 	wp_register_script( 'gsap', get_template_directory_uri() . '/js/gsap.min.js', array('jquery'), '3.2.6', true );
-	wp_register_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array('jquery'), '2.0.7', true );	
-	wp_register_script( 'gsapinit', get_template_directory_uri() . '/js/gsap-init.js', array('jquery','gsap'), '1.3', true );
+	wp_register_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array('jquery'), '2.0.8', true );	
+	wp_register_script( 'gsapinit', get_template_directory_uri() . '/js/gsap-init.js', array('jquery','gsap'), '1.5', true );
 	wp_register_script( 'gsapsplittext', get_template_directory_uri() . '/js/SplitText.min.js', array('jquery','gsap'), '3.2.6', true );
 	wp_register_script( 'gsapsvgdraw', get_template_directory_uri() . '/js/DrawSVGPlugin.min.js', array('jquery','gsap'), '3.2.6', true );	
 	wp_register_script( 'gsapsvgpath', get_template_directory_uri() . '/js/MotionPathPlugin.min.js', array('jquery','gsap'), '3.2.6', true );
+	wp_register_script( 'gsapsvgpathhelper', get_template_directory_uri() . '/js/MotionPathHelper.min.js', array('jquery','gsap', 'gsapsvgpath'), '3.2.6', true );
 	wp_register_script( 'rh_elcanvas', get_template_directory_uri() . '/js/elcanvas.js', array('jquery'), '1.0.0', true );
 	
 	wp_register_script( 'threejs', get_template_directory_uri() . '/js/three.min.js', array(), '0.112', true );
@@ -797,8 +798,8 @@ class WPSM_image_resizer{
 //////////////////////////////////////////////////////////////////
 if( !function_exists('wpsm_thumb') ) {
 function wpsm_thumb( $size = 'small', $lazy = true, $crop = true ){
-	if( $size == 'medium_news' ){$width = 444; $height = 250; $nothumb = get_template_directory_uri() . '/images/default/noimage_432_250.png' ;}
-	elseif( $size == 'medium_news_s' ){$width = 350; $height = 200; $nothumb = get_template_directory_uri() . '/images/default/noimage_432_250.png' ;}
+	if( $size == 'medium_news' ){$width = 444; $height = 250; $nothumb = get_template_directory_uri() . '/images/default/blank.gif' ;}
+	elseif( $size == 'medium_news_s' ){$width = 350; $height = 200; $nothumb = get_template_directory_uri() . '/images/default/blank.gif' ;}
 	elseif( $size == 'med_thumbs' ){$width = 123; $height = 90; $nothumb = get_template_directory_uri() . '/images/default/noimage_123_90.png' ;}	
 	elseif( $size == 'news_big' ){$width = 378; $height = 310; $nothumb = get_template_directory_uri() . '/images/default/noimage_378_310.png' ;}
 	elseif( $size == 'grid_thumb' ){$width = 250; $height = 180; $nothumb = get_template_directory_uri() . '/images/default/noimage_250_180.png' ;}
