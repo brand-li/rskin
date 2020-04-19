@@ -28,8 +28,11 @@ class Widget_Wpsm_Woo_Products_Featured extends WPSM_Widget_Base {
     } 
 
     public function get_script_depends() {
+        return [ 'flexslider', 'flexinit' ];
+    } 
+    public function get_style_depends() {
         return [ 'flexslider' ];
-    }   
+    }  
     protected function get_sections() {
         return [
             'general'   => esc_html__('Data query', 'rehub-theme'),

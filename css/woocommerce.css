@@ -233,7 +233,7 @@ form.cart div.quantity .screen-reader-text{display: none;}
 .woo_column_item:hover, .woo_grid_compact:hover{border:1px solid #eee;box-shadow:0px 8px 32px 0px rgba(0,0,0,.1); background-color: #fff}
 .woo_column_item:hover .woo_column_desc{transform: translateY(-45px);}
 .woo_column_item .rh_woo_star, .woo_column_item .button_action {margin: 0 auto 10px auto; display: none; }
-.woo_column_btn{position: absolute;z-index: 601; display: none; left: 20px; right: 20px; bottom:15px;}
+.woo_column_btn{position: absolute;z-index: 601; display: none; left: 20px; right: 20px; bottom:15px; font-size: 15px}
 .products .button_action{z-index:2; position: absolute;top: 10px;left: 10px; right:auto;background: rgba(255, 255, 255, 0.78);border-radius: 100px;padding: 0 5px;}
 .list_woo.products .button_action{left: auto; right: 10px}
 .woo_column_item:hover .woo_column_btn{display: block; -webkit-animation: stuckMoveUpOpacity .4s;animation: stuckMoveUpOpacity .4s;}
@@ -344,6 +344,7 @@ form.cart div.quantity .screen-reader-text{display: none;}
 .gallery-pics .wwcAmzAff-availability-icon{ display: none;}
 .woocommerce table.shop_table, .woocommerce-page table.shop_table {  margin: 0 0 24px 0; text-align: left; width: 100%;border: 1px solid #ddd; background-color: #fff}
 .woocommerce table.shop_table .button{ padding: 8px 14px}
+.woocommerce table.shop_table td.download-remaining{text-align:center}
 .woocommerce table.shop_table #coupon_code{ padding: 6px; border-radius: 3px}
 .woocommerce table.shop_table thead th, .woocommerce-page table.shop_table thead th {  font-weight: bold; line-height: 18px; padding: 1em; border-right: 1px solid #DBDBDB;border-bottom: 1px solid #DBDBDB;}
 .woocommerce table tr th:last-child, .woocommerce table tr td:last-child{ border-right: none;}

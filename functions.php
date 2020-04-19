@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -6,17 +6,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '9.9.9.3');
+	define('RH_MAIN_THEME_VERSION', '9.9.9.4');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
 }
-$rehub_options = [
-	'tf_username'      => 'babiato',
-	'tf_purchase_code' => 'nulled-by-babak',
-	'tf_support_date'  => '01.01.2030',
-];
-update_option( 'Rehub_Key', $rehub_options );
+
 if(!is_admin()) add_action('init', 'rehub_framework_register_scripts');
 if( !function_exists('rehub_framework_register_scripts') ) {
 function rehub_framework_register_scripts() {
@@ -39,6 +34,7 @@ function rehub_framework_register_scripts() {
 	wp_register_style('rhcomparesearch', get_template_directory_uri() . '/css/comparesearch.css', array(), RH_MAIN_THEME_VERSION);
 	wp_register_style('modulobox', get_template_directory_uri() . '/css/modulobox.min.css', array(), '1.4.4');
 	wp_register_style('justify', get_template_directory_uri() . '/css/justify.css', array(), '3.6.3');
+	wp_register_style('flexslider', get_template_directory_uri() . '/css/flexslider.css', array('rhstyle'), '2.2');
 	
 	//Scripts
 	wp_register_script('rhinview', get_template_directory_uri() . '/js/inview.js', array('jquery'), '1.0', true);
@@ -50,13 +46,14 @@ function rehub_framework_register_scripts() {
 	wp_register_script('rhcountdown', get_template_directory_uri() . '/js/countdown.js', array('jquery'), '1.1', true);
 	wp_register_script('rehub', get_template_directory_uri() . '/js/custom.js', array('jquery', 'rhinview', 'rhunveil', 'rhhoverintent', 'rhcountdown', 'rhniceselect'), RH_MAIN_THEME_VERSION, true);
 	wp_register_script('flexslider', get_template_directory_uri() . '/js/jquery.flexslider-min.js', array('jquery'), '2.2.2', true);
+	wp_register_script('flexinit', get_template_directory_uri() . '/js/flexinit.js', array('jquery', 'flexslider'), '2.2.2', true);
 	wp_register_script('totemticker', get_template_directory_uri() . '/js/jquery.totemticker.js', array('jquery'), '', true);
 	wp_register_script('carouFredSel', get_template_directory_uri() . '/js/jquery.carouFredSel-6.2.1-packed.js', array('jquery'), '6.2.1', true);
 	wp_register_script('sticky', get_template_directory_uri() . '/js/jquery.sticky.js', array('jquery'), '1.0.5', true);
 	wp_register_script('custom_scroll', get_template_directory_uri() . '/js/custom_scroll.js', array('jquery', 'rehub'), '1.1', true);
 	wp_register_script('masonry', get_template_directory_uri() . '/js/masonry.pkgd.min.js', array('jquery'), '3.1.5', true);
 	wp_register_script('imagesloaded', get_template_directory_uri() . '/js/imagesloaded.pkgd.min.js', array('jquery'), '3.1.8', true);
-	wp_register_script('masonry_init', get_template_directory_uri() . '/js/masonry_init.js', array('jquery', 'masonry'), '3.1.5', true);
+	wp_register_script('masonry_init', get_template_directory_uri() . '/js/masonry_init.js', array('jquery', 'masonry'), '3.1.6', true);
 	wp_register_script('rh_elparallax', get_template_directory_uri() . '/js/elparallax.js', array('jquery'), '1.0', true);	
 	wp_register_script('jquery.nouislider', get_template_directory_uri() . '/js/jquery.nouislider.full.min.js', array('jquery'), '7.0.0', true);
 	wp_register_script( 'zeroclipboard', get_template_directory_uri() . '/js/clipboard.min.js', array('jquery'), '1.5.16' );
@@ -186,6 +183,13 @@ function rh_optimized_media_styles() {
 
 //add helper functions
 include (get_template_directory() . '/functions/helper_functions.php');
+
+$rehub_options = [
+	'tf_username'      => 'nullmaster',
+	'tf_purchase_code' => 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930',
+	'tf_support_date'  => '01.01.2030',
+];
+update_option( 'Rehub_Key', $rehub_options );
 
 //Css customizations
 if( !function_exists('rehub_custom_css') ) {
@@ -1450,7 +1454,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '4.2',
+			'version' 				=> '4.4',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',

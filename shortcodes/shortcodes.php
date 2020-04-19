@@ -447,7 +447,7 @@ if( !function_exists('wpsm_shortcode_quick_slider') ) {
 		extract(shortcode_atts(array(
 				"ids" => '',
 		), $atts));
-		wp_enqueue_script('flexslider');
+		wp_enqueue_script('flexslider');wp_enqueue_script('flexinit');wp_enqueue_style('flexslider');
 		return wpsm_get_post_slide($ids);
 	}
 }
@@ -1116,7 +1116,6 @@ function wpsm_woocompare_shortcode( $atts, $content = null ) {
 					<?php $this_id = $product->get_id();?>	
 			        <div class="flowhidden pb10 pt15 border-grey-bottom">               
 			            <div class="floatleft mobileblockdisplay mb15 offer_thumb">   
-			                <a rel="nofollow" target="_blank" href="<?php echo esc_url($product->add_to_cart_url()) ?>" class="re_track_btn">
 			                	<?php 
 			                		$term_ids =  wp_get_post_terms($this_id, 'store', array("fields" => "ids")); 
 			                		$brand_url = '';
@@ -1131,25 +1130,25 @@ function wpsm_woocompare_shortcode( $atts, $content = null ) {
 									<?php $vendor_id = get_the_author_meta( 'ID' );?>
 									<?php if (defined('wcv_plugin_dir')):?>
 										<a href="<?php echo WCV_Vendors::get_vendor_shop_page( $vendor_id );?>">
-											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50);?>" class="vendor_store_image_single" width="50" height="50" />
+											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50, false);?>" class="vendor_store_image_single" width="50" height="50" />
 										</a>
 									<?php elseif ( class_exists( 'WeDevs_Dokan' ) ):?>
 										<a href="<?php echo dokan_get_store_url( $vendor_id );?>">
-											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50);?>" class="vendor_store_image_single" width="50" height="50" />
+											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50, false);?>" class="vendor_store_image_single" width="50" height="50" />
 										</a>
 									<?php elseif ( class_exists('WCMp')):?>
 										<?php $is_vendor = is_user_wcmp_vendor( $vendor_id ); 
 										if($is_vendor) :?>         	        
 										<?php $vendorobj = get_wcmp_vendor($vendor_id); $store_url = $vendorobj->permalink;?>
 										<a href="<?php echo esc_url($store_url);?>">
-											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50);?>" class="vendor_store_image_single" width="50" height="50" />
+											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50, false);?>" class="vendor_store_image_single" width="50" height="50" />
 										</a>								
 										<?php else:?>
-											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50);?>" class="vendor_store_image_single" width="50" height="50" />
+											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50, false);?>" class="vendor_store_image_single" width="50" height="50" />
 										<?php endif;?>
 									<?php elseif (defined('WCFMmp_TOKEN')): ?>
 										<a href="<?php echo wcfmmp_get_store_url( $vendor_id ); ?>">
-											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50);?>" class="vendor_store_image_single" width="50" height="50" />
+											<img src="<?php echo rh_show_vendor_avatar($vendor_id, 50, 50, false);?>" class="vendor_store_image_single" width="50" height="50" />
 										</a>										
 									<?php else:?>
 										<?php 
@@ -1161,8 +1160,7 @@ function wpsm_woocompare_shortcode( $atts, $content = null ) {
 				                        $showimg->show_resized_image();                                    
 				                    	?>										
 									<?php endif;?>
-								<?php endif;?>
-			                </a>                                                                                
+								<?php endif;?>                                                                                
 			            </div>
 			            <div class="floatright buttons_col pl20 rtlpr20 wpsm-one-half-mobile wpsm-column-last">
 		                    <div class="priced_block mt0 mb0 clearfix floatright">

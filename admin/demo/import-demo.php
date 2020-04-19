@@ -85,90 +85,18 @@ function rehub_before_import_setup( $current_import ){
 		exit();		
 	}	
 
-	if( 'ReCash' === $current_import['import_file_name'] ) {
-		if(REHUB_NAME_ACTIVE_THEME != 'RECASH'){
-			echo 'This demo requires <a href="'.$childthemeurl.'" target="_blank">Recash child theme</a> to be installed and activated.';		
-			exit();				
-		}
-		if ( ! did_action( 'elementor/loaded' ) ) {
-			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">Elementor</a> plugin to be installed and activated.';		
-			exit();	
-		}
-	}
-
 	if( 'RePick' === $current_import['import_file_name'] ) {
 		if(REHUB_NAME_ACTIVE_THEME != 'REPICK'){
 			echo 'This demo requires <a href="'.$childthemeurl.'" target="_blank">Repick child theme</a> to be installed and activated.';		
 			exit();				
 		}
-	}
-
-	if( 'ReWise' === $current_import['import_file_name'] || 'ReCompare' === $current_import['import_file_name'] || 'ReTour' === $current_import['import_file_name']) {
+	}else{
 		if ( ! did_action( 'elementor/loaded' ) ) {
 			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">Elementor</a> plugin to be installed and activated.';		
 			exit();	
 		}		
 	}
-
-	if( 'ReVendor' === $current_import['import_file_name']) {
-		if(REHUB_NAME_ACTIVE_THEME != 'REVENDOR'){
-			echo 'This demo requires <a href="'.$childthemeurl.'" target="_blank">Revendor child theme</a> to be installed and activated.';		
-			exit();				
-		}
-		if (!class_exists('WPBakeryVisualComposerAbstract')){
-			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">WPBakery Visual Composer</a> plugin to be installed and activated.';		
-			exit();	
-		}		
-	}
-	if( 'ReDokan' === $current_import['import_file_name']) {
-		if(REHUB_NAME_ACTIVE_THEME != 'REDOKAN'){
-			echo 'This demo requires <a href="'.$childthemeurl.'" target="_blank">Redokan child theme</a> to be installed and activated.';		
-			exit();				
-		}
-		if (!class_exists('WPBakeryVisualComposerAbstract')){
-			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">WPBakery Visual Composer</a> plugin to be installed and activated.';		
-			exit();	
-		}		
-	}
-	if( 'ReMarket' === $current_import['import_file_name'] || 'ReDokanNew' === $current_import['import_file_name'] || 'ReDirect' === $current_import['import_file_name']) {
-		if ( ! did_action( 'elementor/loaded' ) ) {
-			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">Elementor</a> plugin to be installed and activated.';		
-			exit();	
-		}	
-	}		
-	if( 'ReThing' === $current_import['import_file_name']) {
-		if(REHUB_NAME_ACTIVE_THEME != 'RETHING'){
-			echo 'This demo requires <a href="'.$childthemeurl.'" target="_blank">Rething child theme</a> to be installed and activated.';		
-			exit();				
-		}
-		if (!class_exists('WPBakeryVisualComposerAbstract')){
-			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">WPBakery Visual Composer</a> plugin to be installed and activated.';		
-			exit();	
-		}		
-	}
-
-	if( 'ReMag' === $current_import['import_file_name']) {
-		if(REHUB_NAME_ACTIVE_THEME != 'REHUB'){
-			echo 'This demo requires Rehub theme to be installed and activated without child themes.';		
-			exit();				
-		}
-		if ( ! did_action( 'elementor/loaded' ) ) {
-			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">Elementor</a> plugin to be installed and activated.';		
-			exit();	
-		}		
-	}
-	if( 'ReCart' === $current_import['import_file_name']) {
-		if ( ! did_action( 'elementor/loaded' ) ) {
-			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">Elementor</a> plugin to be installed and activated.';		
-			exit();	
-		}		
-	}
-	if( 'ReDeal' === $current_import['import_file_name']) {
-		if ( ! did_action( 'elementor/loaded' ) ) {
-			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">Elementor</a> plugin to be installed and activated.';		
-			exit();	
-		}		
-	}							
+						
 
 }
 /* 
@@ -292,6 +220,8 @@ function rehub_import_files() {
 		$rhblognotice = '<li><code>Theme options -> Affiliate -> Enable separate blog post type</code> <span style="color:red"> - NOT active</span>. <a href="'.$themeoptions.'" target="_blank">'.$installonotice.'</a></li>';		
 	}
 
+	$tutorialnotice = 'After installation, please, go to Tutorial Link in your main menu for further setup and explanations';
+
 	$remagnotice = $requirednotice.'<ol>';
 	$remagnotice .= $rhelnotice;
 	$remagnotice .='</ol>';
@@ -360,7 +290,8 @@ function rehub_import_files() {
 	$redirectnotice .= $themeoptionnotice.'<ol>';
 	$redirectnotice .= $rhblognotice;
 	$redirectnotice .= $rhstorenotice;	
-	$redirectnotice .='</ol>';		
+	$redirectnotice .='</ol>';
+	$redirectnotice .= $tutorialnotice;		
 
 	$repicknotice = $requirednotice.'<ol>';
 	$repicknotice .= $rhcenotice;
@@ -432,49 +363,31 @@ function rehub_import_files() {
 	$redokannewnotice .= $rhelnotice;
 	$redokannewnotice .= $rhwoonotice;	
 	$redokannewnotice .='</ol>';		
-	$redokannewnotice .= 'After installation, go to settings of vendor plugin for basic configuration. We recommend to read our guide for some additional information about <a href="https://wpsoul.com/how-to-create-multi-vendor-shop-on-wordpress/" target="_blank">Multi vendor sites</a> and also docs for Vendor plugin';	
+	$redokannewnotice .= $tutorialnotice;	
 
 	$revendornotice = $requirednotice.'<ol>';
-	$revendornotice .= $rhvcnotice;
-	$revendornotice .= $rhwoonotice;
-	$revendornotice .= $rhvendornotice;
-	$revendornotice .= $rhbpnotice;	
+	$revendornotice .= $rhelnotice;
+	$revendornotice .= $rhwoonotice;	
 	$revendornotice .='</ol>';
 	$revendornotice .= $optionalnotice.' <a href="'.$wpplugins.'" target="_blank">'.$installpnotice.'</a><ol>';
-	$revendornotice .= '<li>Buddypress Follow</li>';
+	$revendornotice .= $rhbpnotice;
 	$revendornotice .= $rhgmwnotice;
-	$revendornotice .='</ol>';
-	$revendornotice .=$themenotice.'<ol>';
-	if (REHUB_NAME_ACTIVE_THEME != 'REVENDOR'){
-		$revendornotice .= '<li><span style="color:red">Revendor - not active.</span> <a href="'.$childthemeurl.'" target="_blank">'.$installtnotice.'</a></li>';
-	}
-	else{
-		$revendornotice .= '<li>Revendor - <span style="color:green">active</span></li>';
-	}
 	$revendornotice .='</ol>';		
-	$revendornotice .= 'After installation, go to settings of vendor plugin for basic configuration. We recommend to read our guide for some additional information about <a href="https://wpsoul.com/how-to-create-multi-vendor-shop-on-wordpress/" target="_blank">Multi vendor sites</a> and also docs for Vendor plugin. <br><br><a href="http://rehubdocs.wpsoul.com/docs/rehub-theme/shop-options-woo-edd/better-product-filtering/" target="_blank">Better Product Filtering.</a>';	
+	$revendornotice .= $tutorialnotice;	
 
 	$remarketnotice = $requirednotice.'<ol>';
 	$remarketnotice .= $rhelnotice;
 	$remarketnotice .= $rhwoonotice;	
 	$remarketnotice .='</ol>';		
-	$remarketnotice .= 'After installation, go to Tutorial link in your menu to get some tutorials. We recommend to read our guide for some additional information about <a href="https://wpsoul.com/how-to-create-multi-vendor-shop-on-wordpress/" target="_blank">Multi vendor sites</a> and also docs for Vendor plugin.';
+	$remarketnotice .= $tutorialnotice;
 
 	$rethingnotice = $requirednotice.'<ol>';
-	$rethingnotice .= $rhvcnotice;
+	$rethingnotice .= $rhelnotice;
 	$rethingnotice .='</ol>';
 	$rethingnotice .= $optionalnotice.' <a href="'.$wpplugins.'" target="_blank">'.$installpnotice.'</a><ol>';
 	$rethingnotice .= $rhcenotice;	
 	$rethingnotice .='</ol>';
-	$rethingnotice .=$themenotice.'<ol>';
-	if (REHUB_NAME_ACTIVE_THEME != 'RETHING'){
-		$rethingnotice .= '<li><span style="color:red">Rething child theme - not active.</span> <a href="'.$childthemeurl.'" target="_blank">'.$installtnotice.'</a></li>';
-	}
-	else{
-		$rethingnotice .= '<li>Rething child theme - <span style="color:green">active</span></li>';
-	}
-	$rethingnotice .='</ol>';
-	$rethingnotice .= 'After installation, go to settings of Content Egg and enable Amazon and other modules. <a href="http://www.keywordrush.com/en/docs/content-egg" target="_blank">Check docs of Content Egg</a>. Choose "Shortcode only" for Add Content Option. <br><br><a href="https://wpsoul.com/guide-creating-profitable/" target="_blank">How to use plugin with theme in posts</a>, <br><br><a href="https://wpsoul.com/make-smart-profitable-deal-affiliate-comparison-site-woocommerce/" target="_blank">How to use plugin with theme for price comparison in products.</a>';
+	$rethingnotice .= 'After installation, go to settings of Content Egg and enable Offer or other modules. <a href="http://www.keywordrush.com/en/docs/content-egg" target="_blank">Check docs of Content Egg</a>. Choose "Shortcode only" for Add Content Option. <br><br><a href="https://wpsoul.com/guide-creating-profitable/" target="_blank">How to use plugin with theme in posts</a>, <br><br><a href="https://wpsoul.com/make-smart-profitable-deal-affiliate-comparison-site-woocommerce/" target="_blank">How to use plugin with theme for price comparison in products.</a>';
 
 	$recartnotice = $requirednotice.'<ol>';
 	$recartnotice .= $rhelnotice;
@@ -584,27 +497,14 @@ function rehub_import_files() {
 		array(
 			'import_file_name' => 'ReVendor',
 			'categories' => array( esc_html__( 'Multi vendor', 'rehub-theme' ) ),
-			'import_file_url' => PLUGIN_REPO . 'demoimport/revendor-content.xml',
-			'import_widget_file_url' => PLUGIN_REPO . 'demoimport/revendor-widgets.wie',
+			'import_file_url' => PLUGIN_REPO . 'demoimport/vendor-content.xml',
+			'import_widget_file_url' => PLUGIN_REPO . 'demoimport/redokannew-widgets.wie',
 			'local_import_theme_file' => get_template_directory() . '/admin/demo/revendor-theme.json',
 			'import_preview_image_url'   => get_template_directory_uri() .'/admin/screens/images/demo6_preview.jpg',
-			'gmwforms' => PLUGIN_REPO . 'demoimport/revendor-gmw.json',	
-			'rhfrontend' => PLUGIN_REPO . 'demoimport/revendor-frontend.json',					
+			'gmwforms' => PLUGIN_REPO . 'demoimport/revendor-gmw.json',					
 			'import_notice' => $revendornotice,
-			'preview_url' => 'http://revendor.wpsoul.net/',
-		),
-		array(
-			'import_file_name' => 'ReDokan',
-			'categories' => array( esc_html__( 'Multi vendor', 'rehub-theme' ) ),
-			'import_file_url' => PLUGIN_REPO . 'demoimport/redokan-content.xml',
-			'import_widget_file_url' => PLUGIN_REPO . 'demoimport/redokan-widgets.wie',
-			'local_import_theme_file' => get_template_directory() . '/admin/demo/redokan-theme.json',
-			'sliders' => array('http://rehubdocs.wpsoul.com/wp-content/uploads/2017/10/redokan1.zip'),
-			'gmwforms' => PLUGIN_REPO . 'demoimport/redokan-gmw.json',
-			'import_preview_image_url'   => get_template_directory_uri() .'/admin/screens/images/demo8_preview.jpg',
-			'import_notice' => $redokannotice,
-			'preview_url' => 'http://redokan.wpsoul.net/',
-		),														
+			'preview_url' => 'https://revendor.wpsoul.net/',
+		),													
 		array(
 			'import_file_name' => 'ReThing',
 			'categories' => array( esc_html__( 'Other', 'rehub-theme' ) ),
@@ -613,7 +513,7 @@ function rehub_import_files() {
 			'local_import_theme_file' => get_template_directory() . '/admin/demo/rething-theme.json',
 			'import_preview_image_url'   => get_template_directory_uri() .'/admin/screens/images/demo3_preview.jpg',
 			'import_notice' => $rethingnotice,
-			'preview_url' => 'http://rething.wpsoul.net/',
+			'preview_url' => 'https://rething.wpsoul.net/',
 		),
 		array(
 			'import_file_name' => 'ReDirect',
@@ -625,7 +525,7 @@ function rehub_import_files() {
 			'local_import_theme_file' => get_template_directory() . '/admin/demo/redirect-theme.json',
 			'import_preview_image_url'   => get_template_directory_uri() .'/admin/screens/images/demo5_preview.jpg',
 			'import_notice' => $redirectnotice,
-			'preview_url' => 'http://redirect.wpsoul.net/',
+			'preview_url' => 'https://redirect.wpsoul.net/',
 		),
 		array(
 			'import_file_name' => 'ReMag',
@@ -665,7 +565,7 @@ function rehub_after_import_setup( $current_import ) {
 			$top_menu = get_term_by( 'slug', 'top-menu', 'nav_menu' );
 			break;
 		case 'ReThing':
-			$front_page = get_page_by_title( 'Home Rething' );
+			$front_page = get_page_by_title( 'Homepage Rething' );
 			$main_menu = get_term_by( 'slug', 'main-menu', 'nav_menu' );
 			break;
 		case 'ReCash':
@@ -682,21 +582,8 @@ function rehub_after_import_setup( $current_import ) {
 			$main_menu = get_term_by( 'slug', 'main-menu', 'nav_menu' );		
 			break;
 		case 'ReVendor':
-			$front_page = get_page_by_title( 'Home Revendor' );
-			$blog_page = get_page_by_title( 'Reviews' );
-			$main_menu = get_term_by( 'slug', 'main-menu', 'nav_menu' );
-			$userarray = array(
-				array (
-					'email' => 'revendor@test.com',
-					'name' => 'Revendortest',
-					'role' => 'vendor',
-					'meta' => array(
-						'pv_shop_name' => 'Revendortest'
-					),
-					'location'=> '18 West St, Brooklyn, NY 11222, USA',
-					'products' => 5,
-				),
-			);			
+			$front_page = get_page_by_title( 'Revendor Home' );
+			$main_menu = get_term_by( 'slug', 'main-menu', 'nav_menu' );			
 			break;
 		case 'ReWise':
 			$front_page = get_page_by_title( 'Home page Rewise' );
@@ -831,42 +718,7 @@ function rehub_after_import_setup( $current_import ) {
 			}
 			echo 'Menu hierarchy was fixed-------';
 		}
-	}	
-
-	if ($import_file_name == 'ReVendor'){
-		$firstparent = get_page_by_title( 'Unique Functions', OBJECT, 'nav_menu_item');
-		$menus = get_posts(array('meta_key'=>'_menu_item_menu_item_parent', 'meta_value'=>'674', 'post_type'=> 'nav_menu_item'));
-		if(!empty($menus) && !empty($firstparent)){
-			foreach ($menus as $menu) {
-				update_post_meta($menu->ID, '_menu_item_menu_item_parent', $firstparent->ID);
-			}
-			echo 'Menu hierarchy was fixed-------';
-		}
-		$parent2 = get_page_by_title( 'Product Types', OBJECT, 'nav_menu_item');
-		$menus2 = get_posts(array('meta_key'=>'_menu_item_menu_item_parent', 'meta_value'=>'678', 'post_type'=> 'nav_menu_item'));
-		if(!empty($menus2) && !empty($parent2)){
-			foreach ($menus2 as $menu2) {
-				update_post_meta($menu2->ID, '_menu_item_menu_item_parent', $parent2->ID);
-			}
-			echo 'Menu hierarchy was fixed-------';
-		}
-		$parent3 = get_page_by_title( 'Simple Product Types', OBJECT, 'nav_menu_item');
-		$menus3 = get_posts(array('meta_key'=>'_menu_item_menu_item_parent', 'meta_value'=>'679', 'post_type'=> 'nav_menu_item'));
-		if(!empty($menus3) && !empty($parent3)){
-			foreach ($menus3 as $menu3) {
-				update_post_meta($menu3->ID, '_menu_item_menu_item_parent', $parent3->ID);
-			}
-			echo 'Menu hierarchy was fixed-------';
-		}
-		$parent4 = get_page_by_title( 'Advanced Product Types', OBJECT, 'nav_menu_item');
-		$menus4 = get_posts(array('meta_key'=>'_menu_item_menu_item_parent', 'meta_value'=>'680', 'post_type'=> 'nav_menu_item'));
-		if(!empty($menus4) && !empty($parent4)){
-			foreach ($menus4 as $menu4) {
-				update_post_meta($menu4->ID, '_menu_item_menu_item_parent', $parent4->ID);
-			}
-			echo 'Menu hierarchy was fixed-------';
-		}							
-	}			
+	}				
 
 	if ($import_file_name == 'RePick'){
 		$firstparent = get_page_by_title( 'Examples of posts', OBJECT, 'nav_menu_item');
@@ -1105,7 +957,7 @@ function rehub_after_import_setup( $current_import ) {
 		}										
 	}	
 
-	if ($import_file_name == 'ReDokanNew' || $import_file_name == 'ReMarket'){
+	if ($import_file_name == 'ReDokanNew' || $import_file_name == 'ReMarket' || $import_file_name == 'ReVendor'){
 		$parent = get_page_by_title( 'Browse Categories', OBJECT, 'nav_menu_item');
 		$menus = get_posts(array('meta_key'=>'_menu_item_menu_item_parent', 'meta_value'=>'487', 'post_type'=> 'nav_menu_item'));
 		if(!empty($menus) && !empty($parent)){

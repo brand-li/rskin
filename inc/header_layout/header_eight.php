@@ -1,5 +1,5 @@
 <!-- Logo section -->
-<div class="logo_section_wrap">
+<div class="logo_section_wrap<?php if (rehub_option('rehub_logo_inmenu') !='') {echo ' hideontablet';}?>">
     <div class="rh-container">
         <div class="logo-section rh-flex-center-align tabletblockdisplay header_eight_style clearfix">
             <div class="logo">

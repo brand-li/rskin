@@ -135,10 +135,6 @@ span.date_meta:before, span.cat_link_meta:before, span.comm_count_meta:before, s
 .sticky h2 i, .news .detail h4 i { margin-right: 0px; margin-left: 6px }
 .grid_onsale{left: 3px; right: auto}
 
-/******** Feature Slider ********/
-.flex-viewport{direction: ltr;}
-.main_slider.flexslider { float: right }
-.featured_slider .wrap {text-align: right;}
 
 /******** Feature Side Coloumn ********/
 

@@ -25,6 +25,10 @@ class Widget_Wpsm_Post_Featured_Section extends WPSM_Content_Widget_Base {
     }
 
     public function get_script_depends() {
+        return [ 'flexslider', 'flexinit' ];
+    }
+
+    public function get_style_depends() {
         return [ 'flexslider' ];
     }
 
@@ -58,7 +62,7 @@ class Widget_Wpsm_Post_Featured_Section extends WPSM_Content_Widget_Base {
             'type'        => \Elementor\Controls_Manager::SELECT,
             'label'       => esc_html__( 'Type of area', 'rehub-theme' ),
             'description' => esc_html__('Featured area works only in full width row', 'rehub-theme'),
-            'default'     => '1',
+            'default'     => '3',
             'options'     => [
                 '1'             => esc_html__( 'Featured area (slider + 2 posts)', 'rehub-theme' ),
                 '2'             => esc_html__( 'Featured full width slider', 'rehub-theme' ),

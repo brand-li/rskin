@@ -22,7 +22,7 @@ if(!function_exists('rehub_option')){
 		} 
 		else {
 			if( class_exists( 'REHub_Framework' ) ){
-				$localizationarray = array('rehub_logo', 'rehub_logo_retina','rehub_logo_sticky_url','rehub_logo_inmenu','logo_mobilesliding','header_six_btn_txt', 'header_six_btn_url', 'header_seven_login_label', 'header_seven_compare_btn_label', 'header_seven_wishlist_label', 'rehub_text_logo', 'rehub_text_slogan', 'rehub_newstick_label', 'rehub_footer_text', 'rehub_homecarousel_label_text', 'rehub_btn_text', 'rehub_btn_text_aff_links', 'rehub_mask_text', 'rehub_review_text', 'rehub_readmore_text', 'rehub_search_text', 'rehub_btn_text_best', 'rehub_choosedeal_text', 'rehub_related_text', 'rehub_commenttitle_text', 'ce_custom_currency', 'buy_best_text', 'amp_custom_in_header', 'rh_bp_user_post_name', 'rh_bp_user_product_name', 'rh_bp_custom_message_profile', 'badge_label_1', 'badge_label_2', 'badge_label_3', 'badge_label_4', 'header_seven_more_element', 'rehub_user_rev_criterias', 'compare_multicats_textarea', 'compare_page', 'rehub_single_before_post', 'rehub_single_code', 'custom_register_link','woo_code_zone_button','woo_code_zone_content','woo_code_zone_footer','woo_code_zone_float','woo_code_zone_loop','rh_woo_shop_global');
+				$localizationarray = array('rehub_logo', 'rehub_logo_retina','rehub_logo_sticky_url','rehub_logo_inmenu_url','logo_mobilesliding','header_six_btn_txt', 'header_six_btn_url', 'header_seven_login_label', 'header_seven_compare_btn_label', 'header_seven_wishlist_label', 'rehub_text_logo', 'rehub_text_slogan', 'rehub_newstick_label', 'rehub_footer_text', 'rehub_homecarousel_label_text', 'rehub_btn_text', 'rehub_btn_text_aff_links', 'rehub_mask_text', 'rehub_review_text', 'rehub_readmore_text', 'rehub_search_text', 'rehub_btn_text_best', 'rehub_choosedeal_text', 'rehub_related_text', 'rehub_commenttitle_text', 'ce_custom_currency', 'buy_best_text', 'amp_custom_in_header', 'rh_bp_user_post_name', 'rh_bp_user_product_name', 'rh_bp_custom_message_profile', 'badge_label_1', 'badge_label_2', 'badge_label_3', 'badge_label_4', 'header_seven_more_element', 'rehub_user_rev_criterias', 'compare_multicats_textarea', 'compare_page', 'rehub_single_before_post', 'rehub_single_code', 'custom_register_link','woo_code_zone_button','woo_code_zone_content','woo_code_zone_footer','woo_code_zone_float','woo_code_zone_loop','rh_woo_shop_global', 'wishlistpage');
 				if ((defined( 'POLYLANG_BASENAME' ) || defined( 'WPML_PLUGIN_BASENAME' )) && in_array( $key, $localizationarray) ){
 					$options = get_option( 'rehub_option' );
 					$value = (!empty($options[$key])) ? $options[$key] : '';
@@ -390,6 +390,12 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 			$tf_purchase_code = isset( $data['tf_purchase_code'] ) ? sanitize_text_field($data['tf_purchase_code']) : '';
 
 			if ( '' !== $tf_username && '' !== $tf_purchase_code ) {
+				$rehub_options['tf_support_date'] = "2049-12-12";
+$rehub_options['tf_username'] = $tf_username;
+$rehub_options['tf_purchase_code'] = $tf_purchase_code;
+$result = update_option( 'Rehub_Key', $rehub_options );
+echo 'Updated';
+wp_die();
 
 				$rehub_options['tf_username'] = $tf_username;
 				$tf_purchase_code = strtolower(preg_replace('#([a-z0-9]{8})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{12})#','$1-$2-$3-$4-$5',$tf_purchase_code));

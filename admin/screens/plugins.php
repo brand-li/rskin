@@ -110,7 +110,7 @@ $theme_url = 'https://wpsoul.com/';
 				<h3 class="theme-name">WP Bakery Composer</h3>
 				<div class="theme-actions">
 					<?php if( $registeredlicense == true ) :?>						
-						<a href="<?php echo get_template_directory_uri() . '/plugins/js_composer.zip';?>" class="button button-primary" title="Get link">Download</a>
+						<a href="<?php echo PLUGIN_REPO;?>packages/js_composer.zip" class="button button-primary" title="Get link">Download</a>
 					<?php else :?>
 						<?php printf( '<a href="%s" class="button button-primary">%s</a>', admin_url( 'admin.php?page=rehub' ), esc_html__("Register theme to get link", "rehub-theme" ) ); ?>
 					<?php endif;?>		

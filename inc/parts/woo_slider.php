@@ -1,5 +1,5 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
-<?php  wp_enqueue_script('flexslider');   ?>
+<?php  wp_enqueue_script('flexslider');  wp_enqueue_script('flexinit');wp_enqueue_style('flexslider'); ?>
 <?php $review_woo_link = vp_metabox('rehub_post.review_post.0.review_woo_product.0.review_woo_link'); $resizer = vp_metabox('rehub_post.review_post.0.review_woo_product.0.review_woo_slider_resize'); ?>
 <?php   
     $args = array(

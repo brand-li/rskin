@@ -1128,7 +1128,7 @@ if ( !function_exists('rh_show_vendor_ministore') ) {
 }
 
 if ( !function_exists('rh_show_vendor_avatar') ) {
-	function rh_show_vendor_avatar( $vendor_id, $width=150, $height=150 ) {
+	function rh_show_vendor_avatar( $vendor_id, $width=150, $height=150, $crop = true ) {
 		if( !$vendor_id ) 
 			return;
 		$store_icon_url = '';
@@ -1185,7 +1185,7 @@ if ( !function_exists('rh_show_vendor_avatar') ) {
 		$showimg->use_thumb = false;
 		$showimg->height = $height;
 		$showimg->width = $width;
-		$showimg->crop = true;           
+		$showimg->crop = $crop;           
 		$img = $showimg->get_resized_url();
 		return $img;	
 	}
@@ -1566,7 +1566,7 @@ if (defined('wcv_plugin_dir')) {
 		remove_action( 'woocommerce_before_single_product', array($wcvendors_pro->wcvendors_pro_vendor_controller, 'store_single_header'));		
 		remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9 );
 		remove_action( 'woocommerce_product_meta_start', array( 'WCV_Vendor_Cart', 'sold_by_meta' ), 10, 2 );
-		add_action( 'rehub_vendor_show_action', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9);
+		add_action( 'rehub_vendor_show_action', 'wcv_vendor_show_vendor_loop', 9);
 		add_action( 'wcvendors_settings_before_form', 'rh_show_gmw_form_before_wcvendor');
 	}
 	else{
@@ -1575,7 +1575,7 @@ if (defined('wcv_plugin_dir')) {
 		remove_action( 'woocommerce_before_single_product', array('WCV_Vendor_Shop', 'vendor_mini_header'));
 		remove_action( 'woocommerce_after_shop_loop_item', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9 );
 		remove_action( 'woocommerce_product_meta_start', array( 'WCV_Vendor_Cart', 'sold_by_meta' ), 10, 2 );
-		add_action( 'rehub_vendor_show_action', array('WCV_Vendor_Shop', 'template_loop_sold_by'), 9);
+		add_action( 'rehub_vendor_show_action', 'wcv_vendor_show_vendor_loop', 9);
 		add_filter('wcv_dashboard_nav_items', 'wcv_add_custom_submit_links');
 		add_filter('wcv_dashboard_nav_item_classes', 'rhwcv_dashboard_nav_item_classes', 10, 2);
 	}
@@ -1606,6 +1606,11 @@ if (defined('wcv_plugin_dir')) {
 		function rhwcv_dashboard_nav_item_classes($classes, $item_id){
 			unset ($classes[0]);
 			return $classes;
+		}
+	}
+	function wcv_vendor_show_vendor_loop($product_id){
+		if(class_exists('WCV_Vendor_Shop')){
+			echo WCV_Vendor_Shop::template_loop_sold_by($product_id);
 		}
 	}			
 } 

@@ -1030,7 +1030,7 @@ $rand_id = 'woo_feat'.mt_rand();
 ob_start(); 
 ?>
 <?php if( !is_paged()) : ?>
-<?php if ($feat_type=='1') {wp_enqueue_script('flexslider');} ;?>
+<?php if ($feat_type=='1') {wp_enqueue_script('flexslider');wp_enqueue_script('flexinit');wp_enqueue_style('flexslider');} ;?>
 <?php if(!$show) $build_args['show'] = 5;
 	$argsfilter = new WPSM_Woohelper($build_args);
 	$args = $argsfilter->extract_filters();
@@ -3553,7 +3553,7 @@ ob_start();
 	<?php if ($playlist_type == 'slider') :?>
 		<?php $idshosts = WPSM_video_class::parse_videoid_from_urls($videolinks, 'arrayhost') ;?>	
 
-		<?php  wp_enqueue_script('flexslider'); ?>
+		<?php  wp_enqueue_script('flexslider');wp_enqueue_script('flexinit');wp_enqueue_style('flexslider'); ?>
 		<div class="gallery_video_wrap">
 			<div class="flexslider post_slider media_slider gallery_top_slider loading"> 
 			<ul class="slides">     <script src="//a.vimeocdn.com/js/froogaloop2.min.js"></script>
@@ -3636,7 +3636,7 @@ $rand_id = 'feat_area'.mt_rand();
 ob_start(); 
 ?>
 <?php if( !is_paged()) : ?>
-<?php if ($feat_type=='1' || $feat_type == '2') {wp_enqueue_script('flexslider');} ;?>
+<?php if ($feat_type=='1' || $feat_type == '2') {wp_enqueue_style('flexslider'); wp_enqueue_script('flexslider');wp_enqueue_script('flexinit');} ;?>
 <?php
 	global $wp_query; 
 	$argsfilter = new WPSM_Postfilters($build_args);

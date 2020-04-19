@@ -78,7 +78,7 @@
 			<?php endif; ?>		
 		<?php endif ?>									  
 	<?php elseif(vp_metabox('rehub_post.rehub_framework_post_type') == 'gallery') : ?>
-		<?php  wp_enqueue_script('flexslider');  ?>
+		<?php  wp_enqueue_script('flexslider'); wp_enqueue_script('flexinit');wp_enqueue_style('flexslider'); ?>
 		<?php $gallery_images = vp_metabox('rehub_post.gallery_post.0.gallery_post_images'); $resizer = vp_metabox('rehub_post.gallery_post.0.gallery_post_images_resize');?>
 		<div class="post_slider flexslider media_slider<?php if ($resizer =='1') :?> blog_slider<?php else :?> gallery_top_slider<?php endif ;?> loading">	
 		    <i class="far fa-spinner fa-pulse"></i>

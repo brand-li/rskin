@@ -8,10 +8,9 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-$store_user = get_userdata( get_query_var( 'author' ) );
-$vendor_id = $store_user->ID;
+$store_user = dokan()->vendor->get( get_query_var( 'author' ) );
+$vendor_id = $store_user->get_id();
 $map_location = $store_user->get_location();
-$vendor_email = $store_user->user_email;
 $totaldeals = count_user_posts( $vendor_id, $post_type = 'product' );
 $store_info = dokan_get_store_info( $vendor_id );
 $store_url = dokan_get_store_url( $vendor_id );
@@ -196,7 +195,6 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 					<?php endif;?>					
 					
 					<div class="profile-stats">
-						<div><i class="far fa-user-circle"></i> <?php esc_html_e( 'Registration', 'rehub-theme' );  echo ': ' . date_i18n( get_option( "date_format" ), strtotime( $store_user->user_registered )); ?></div>
 						<div><i class="far fa-heartbeat"></i><?php esc_html_e( 'Product Votes', 'rehub-theme' ); echo ': ' . $count_p_votes; ?></div>
 						<div><i class="far fa-briefcase"></i><?php esc_html_e( 'Total submitted', 'rehub-theme' ); echo ': ' . $totaldeals; ?></div>
 	                    <?php if (!empty($mycredpoint)) :?><div><i class="far fa-bar-chart"></i><?php echo esc_html($mycredlabel);?>: <?php echo ''.$mycredpoint;?> </div><?php endif;?>
@@ -208,17 +206,13 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 							<?php if ( isset( $store_address ) && !empty( $store_address ) ) { ?>
 								<i class="far fa-map-marker-alt"></i> <?php echo ''.$store_address; ?>
 							<?php } ?>
-							<?php if ( isset( $store_info['phone'] ) && !empty( $store_info['phone'] ) ) { ?>
+							<?php if ( !empty( $store_user->get_phone() ) ) { ?>
 								<br />
-								<i class="far fa-mobile"></i> <a href="tel:<?php echo esc_html( $store_info['phone'] ); ?>"><?php echo esc_html( $store_info['phone'] ); ?></a>
+								<i class="far fa-mobile"></i> <a href="tel:<?php echo esc_html( $store_user->get_phone() ); ?>"><?php echo esc_html( $store_user->get_phone() ); ?></a>
 							<?php } ?>
-							<?php if ( $store_user->user_url ):?>
+							<?php if ( $store_user->show_email() == 'yes' ) { ?>
 								<br />
-								<i class="far fa-globe"></i> <a href="<?php echo esc_url( $store_user->user_url ); ?>" target="_blank" rel="nofollow"><?php echo esc_url($store_user->user_url); ?></a>
-							<?php endif;?>
-							<?php if ( isset( $store_info['show_email'] ) && $store_info['show_email'] == 'yes' ) { ?>
-								<br />
-								<i class="far fa-envelope"></i> <a href="mailto:<?php echo antispambot( $vendor_email ); ?>"><?php echo antispambot( $vendor_email ); ?></a>
+								<i class="far fa-envelope"></i> <a href="mailto:<?php echo antispambot( $store_user->get_email() ); ?>"><?php echo antispambot( $store_user->get_email() ); ?></a>
 							<?php } ?>							
 							</p>
 						</div>

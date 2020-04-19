@@ -146,7 +146,7 @@ See the", "rehub-theme" ); ?><br /> <?php printf( '<a href="%s">%1s</a> %2s', ad
 						<h3 class="theme-name"><?php echo esc_html($demo_details['name']); ?></h3>
 						<div id="linkdemo-<?php echo esc_attr($demo); ?>" style="display:none;">
 	     					<p>	
-	     					<?php if($demo_details['name'] == 'redokannew'):?>
+	     					<?php if($demo_details['name'] == 'redokannew' || $demo_details['name'] == 'remarket' || $demo_details['name'] == 'revendor'):?>
 	     						Post Content file - <a href="<?php echo PLUGIN_REPO . 'demoimport/vendor-content.xml'?>" download target="_blank">Download</a>
 	     						<br />     					
 	     					<?php else:?>

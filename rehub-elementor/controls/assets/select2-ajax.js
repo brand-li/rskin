@@ -99,7 +99,7 @@ jQuery( window ).on( 'elementor:init', function() {
 
             return {
                 allowClear: true,
-                placeholder: this.getSelect2Placeholder(),
+                //placeholder: this.getSelect2Placeholder(),
                 dir: elementorCommon.config.isRTL ? 'rtl' : 'ltr',
                 ajax: {
                     method: 'POST',

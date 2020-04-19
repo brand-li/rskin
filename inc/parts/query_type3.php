@@ -1,4 +1,9 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+<?php
+    if(rehub_option('theme_subset') == 'rething') {
+        return include(rh_locate_template('rethingsub/inc/parts/query_type3.php'));
+    }
+?>
 <?php 
 global $post;
 if (isset($aff_link) && $aff_link == '1') {

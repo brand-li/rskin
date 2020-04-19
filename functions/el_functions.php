@@ -82,6 +82,7 @@ add_action( 'init', function () {
     require_once (rh_locate_template('rehub-elementor/wpsm-reviewbox.php')); 
     require_once (rh_locate_template('rehub-elementor/wpsm-tabevery.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-allcarousel.php'));
+    require_once (rh_locate_template('rehub-elementor/wpsm-svgshape.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-canvas.php'));  
     require_once (rh_locate_template('rehub-elementor/wpsm-3dcanvas.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-lottie.php'));

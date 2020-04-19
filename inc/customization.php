@@ -327,7 +327,8 @@ ul.postpagination li a:focus,
 #ywqa-submit-question,
 .woocommerce .widget_price_filter .ui-slider .ui-slider-range,
 .rh-hov-bor-line > a:after, nav.top_menu > ul:not(.off-canvas) > li > a:after, .rh-border-line:after,
-.wpsm-table.wpsm-table-main-color table tr th{ background: <?php echo ''.$maincolor;?>;}
+.wpsm-table.wpsm-table-main-color table tr th,
+.rehub_chimp_flat #mc_embed_signup input#mc-embedded-subscribe{ background: <?php echo ''.$maincolor;?>;}
 @media (max-width: 767px) {
 	.postNavigation a{ background: <?php echo ''.$maincolor; ?>; }
 }
@@ -751,6 +752,31 @@ input[type="submit"].dokan-btn-theme:active, a.dokan-btn-theme:active, .dokan-bt
 	<?php elseif(rehub_option('theme_subset') =='redirect') : ?>
 		#main_header .rh-container{width: 100%; padding: 0 20px}
 		@media (max-width: 500px){#main_header .rh-container{width: 100%; padding: 0 12px}}
+	<?php elseif(rehub_option('theme_subset') =='rething') : ?>
+		.rething_item a.cat {font: 12px Arial;text-transform: uppercase;color: #666 !important;text-decoration: none !important;}
+		.rething_item.small_post{ overflow: hidden; float: left;   padding: 0; border: 1px solid #ddd; text-align: center;}
+		.rething_item.small_post .cat_link_meta:before{ display: none;}
+		.rething_item.small_post .priced_block.block_btnblock .btn_offer_block{display: block;}
+		.small_post .re-line-badge.re-line-table-badge{left: 0}
+		.small_post .re-line-badge.re-line-table-badge span::before{display: none;}
+		.wrap_thing { padding: 20px 30px;}
+		.hover_anons {position: relative;overflow: hidden;min-height: 220px;max-height: 220px;margin: 0px auto 5px;max-width: 900px;display: block;}
+		.hover_anons:after {content: " ";display: block;position: absolute;border-bottom: 0;left: 0;bottom: 0px;width: 100%;height: 70px;
+		background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+		background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+		background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+		background-repeat: repeat-x;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffffff', GradientType=0);}
+		.thing-post-like{ -webkit-transition: all 0.4s ease 0s; -moz-transition: all 0.4s ease 0s; -ms-transition: all 0.4s ease 0s; -o-transition: all 0.4s ease 0s; transition: all 0.4s ease 0s; background-color: rgba(255, 255, 255, 0.9); width: 60px; height: 55px; text-align: center; position: absolute; bottom: -55px; left: 50%; margin-left: -30px; z-index: 9}
+		figure:hover .thing-post-like{bottom:0;}
+		.thing-post-like .thumbscount{ color: #111; font-size: 14px; margin: 0 auto; display: block;}
+		.thing-post-like .wishaddwrap, .thing-post-like .wishaddedwrap, .thing-post-like .wishremovedwrap{display: none;}
+		.thing-post-like .thumbplus:before{color: red}
+		.rething_item.small_post figure{ margin: 0; overflow: hidden;}
+		.rething_item.small_post .priced_block { margin: 0}
+		.rething_item.small_post h2{ letter-spacing: 1px; margin-bottom: 15px}
+		.featured_mediad_wrap{ float: right; margin: 35px 0 15px 55px; width: 300px; height: 250px}
+		.rething_button .btn_more{background-color: transparent;display: inline-block; padding: 10px 22px;font-size: 13px;line-height: 1.33333;text-transform: uppercase; position: relative;  text-decoration: none !important;}
 	<?php endif;?>
 <?php endif;?>
 
