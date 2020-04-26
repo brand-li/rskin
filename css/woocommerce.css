@@ -245,7 +245,7 @@ form.cart div.quantity .screen-reader-text{display: none;}
 .woocommerce .products.grid_woo .product{padding: 12px 12px 80px 12px; border:1px solid #e2e2e2; background-color: #fff}
 .woocommerce .products.grid_woo .product .woo_loop_btn_actions{text-align: center;margin-bottom: 10px;}
 .woo_loop_btn{display: inline-block;}.woo_gridloop_btn .woo_loop_btn{display: block;}
-.woocommerce .products .woo_grid_compact h3{display: -webkit-box; font-size: 18px; font-weight: normal; line-height: 22px; height: 44px;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;text-overflow: ellipsis; margin-bottom: 15px}
+.woocommerce .products .woo_grid_compact h3{font-size: 18px; font-weight: normal; line-height: 22px; height: 44px; margin-bottom: 15px}
 .woocommerce .products .woo_grid_compact .woo_loop_btn{padding: 0; border-radius: 100px !important;font-size: 0;width: 38px;height: 38px;line-height: 38px;text-align: center; display: flex;}
 .woocommerce .products .woo_grid_compact .woo_loop_btn.loading:before{border-radius: 100px}
 .woo_grid_compact figure:not(.notresized), .woo_grid_compact figure:not(.notresized) a.rh-flex-center-align{ height: 180px; width: 100% }
@@ -829,7 +829,7 @@ background-size: 16px 48px;
 	.woofiltersbig .prdctfltr_woocommerce.prdctfltr_wc form.prdctfltr_woocommerce_ordering{display: block !important;}
 	.rh_post_layout_fullimage .review_big_circle{float: none; margin: 0 0 20px 0;}
 	.woocommerce .products.grid_woo .product{padding: 8px 8px 80px 8px}
-	.woo_grid_compact figure, .woo_grid_compact figure a.rh-flex-center-align{height: 100px}
+	.woo_grid_compact figure:not(.notresized), .woo_grid_compact figure:not(.notresized) a.rh-flex-center-align{height: 100px}
 	.woocommerce .onsale, .woocommerce .onfeatured { padding: 2px 5px;}
 	.woocommerce .onsale.onsalefeatured{top: 25px}
 	.woocommerce .products .woo_grid_compact h3{line-height: 16px;height: 32px; font-size: 14px}
@@ -837,6 +837,8 @@ background-size: 16px 48px;
 
 }
 @media only screen and (max-width: 479px) {
+	.woo_offer_list .rh_offer_list .button_action{position: static; margin: 0 0 10px 0; overflow: hidden; padding: 0; float: none}
+	.woo_column_grid .price{float: left;}
 	.woo-desc-w-review table td{text-align: right;}
 	.woocommerce .woocommerce-result-count{float: none;margin-bottom: 10px;}
 	.woocommerce .woocommerce-ordering, .woocommerce .woocommerce-ordering .nice-select, .woocommerce .woocommerce-ordering .nice-select .list, .woocommerce .woocommerce-ordering select{width: 100%}

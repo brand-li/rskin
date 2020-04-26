@@ -78,16 +78,9 @@ jQuery(document).ready(function() {
 			<option value="secondary"><?php esc_html_e('Secondary Theme Color', 'rehub-theme') ;?></option>
 			<option value="btncolor" selected="selected"><?php esc_html_e('Main Color of Buttons', 'rehub-theme') ;?></option>
 			<option value="red"><?php esc_html_e('Red', 'rehub-theme') ;?></option>
-			<option value="orange"><?php esc_html_e('Orange', 'rehub-theme') ;?></option>
-			<option value="blue"><?php esc_html_e('Blue', 'rehub-theme') ;?></option>
 			<option value="green"><?php esc_html_e('Green', 'rehub-theme') ;?></option>
 			<option value="black"><?php esc_html_e('Black', 'rehub-theme') ;?></option>
-			<option value="rosy"><?php esc_html_e('Rosy', 'rehub-theme') ;?></option>
-			<option value="brown"><?php esc_html_e('Brown', 'rehub-theme') ;?></option>
-			<option value="pink"><?php esc_html_e('Pink', 'rehub-theme') ;?></option>
-			<option value="purple"><?php esc_html_e('Purple', 'rehub-theme') ;?></option>
 			<option value="gold"><?php esc_html_e('Gold', 'rehub-theme') ;?></option>
-			<option value="teal"><?php esc_html_e('Teal', 'rehub-theme') ;?></option>
 			<option value="white"><?php esc_html_e('White', 'rehub-theme') ;?></option>
         </select>
         <small><?php esc_html_e('You can set theme colors in Theme option - appearance or via Customizer', 'rehub-theme') ;?></small>

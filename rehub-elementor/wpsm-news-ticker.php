@@ -24,6 +24,10 @@ class WPSM_News_Ticker_Widget extends Widget_Base {
         return esc_html__('News ticker', 'rehub-theme');
     }
 
+    public function get_style_depends() {
+        return [ 'rhnewsticker' ];
+    }
+
         /**
      * Get widget icon.
      * @since 1.0.0

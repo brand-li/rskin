@@ -24,6 +24,10 @@ class WPSM_Hover_Banner_Widget extends Widget_Base {
         return esc_html__('Hover Banner', 'rehub-theme');
     }
 
+    public function get_style_depends() {
+        return [ 'rhbanner' ];
+    }
+
         /**
      * Get widget icon.
      * @since 1.0.0
@@ -143,6 +147,20 @@ class WPSM_Hover_Banner_Widget extends Widget_Base {
             'label_off'   => esc_html__('No', 'rehub-theme'),
             'default'     => 'yes',
         ]);
+        $this->add_control( 'btn', [
+            'type'        => \Elementor\Controls_Manager::SWITCHER,
+            'label'       => esc_html__( 'Enable button', 'rehub-theme' ),
+            'label_on'    => esc_html__('Yes', 'rehub-theme'),
+            'label_off'   => esc_html__('No', 'rehub-theme'),
+            'return'      => 'yes',
+        ]);
+        $this->add_control( 'btn_label', [
+            'type'        => \Elementor\Controls_Manager::TEXT,
+            'label'       => esc_html__( 'Button Label', 'rehub-theme' ),
+            'label_block'  => true,
+            'default' => 'Buy this',
+            'condition'=> [ 'btn' => 'yes' ]
+        ]);
         $this->add_control( 'overlay', [
             'type'        => \Elementor\Controls_Manager::SWITCHER,
             'label'       => esc_html__( 'Enable Overlay?', 'rehub-theme' ),
@@ -214,7 +232,71 @@ class WPSM_Hover_Banner_Widget extends Widget_Base {
                 '{{WRAPPER}} .wpsm-banner-wrapper h6' => 'color: {{VALUE}} !important',
             ],
             'default'     => '#ffffff', 
-        ]);        
+        ]); 
+
+       $this->add_control(
+            'hvbnrrhhr1',
+            [
+                'label' => __( 'Button control', 'rehub-theme' ),
+                'type' => \Elementor\Controls_Manager::HEADING,
+                'separator' => 'before',
+                'condition'=> [ 'btn' => 'yes' ]
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Background::get_type(),
+            [
+                'name' => 'btnbg',
+                'label' => esc_html__( 'Set background', 'rehub-theme' ),
+                'types' => [ 'classic', 'gradient' ],
+                'selector' => '{{WRAPPER}} .wpsm-banner-wrapper .wpsm-button',
+                'condition'=> [ 'btn' => 'yes' ]
+            ]
+        );
+
+        $this->add_control( 'btncolor', [
+            'label' => esc_html__( 'Button text color', 'rehub-theme' ),
+            'type' => \Elementor\Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .wpsm-banner-wrapper .wpsm-button' => 'color: {{VALUE}} !important',
+                'condition'=> [ 'btn' => 'yes' ]
+            ], 
+        ]); 
+
+        $this->add_control(
+            'btnpadding',
+            [
+                'label' => __( 'Button padding', 'rehub-theme' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} .wpsm-banner-wrapper .wpsm-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition'=> [ 'btn' => 'yes' ]
+            ]
+        );
+        $this->add_control(
+            'btnmargin',
+            [
+                'label' => __( 'Button margin', 'rehub-theme' ),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', 'em' ],
+                'selectors' => [
+                    '{{WRAPPER}} .wpsm-banner-wrapper .wpsm-button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'condition'=> [ 'btn' => 'yes' ]
+            ]
+        );
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'btntypo',
+                'label' => esc_html__( 'Button Typography', 'rehub-theme' ),
+                'selector' => '{{WRAPPER}} .wpsm-banner-wrapper .wpsm-button',
+                'condition'=> [ 'btn' => 'yes' ]
+            ]
+        );        
 
         $this->end_controls_section();
     }

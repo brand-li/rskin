@@ -276,7 +276,7 @@
                                         </a> 
                                     <?php else:?>
                                         <?php if ( $product->add_to_cart_url() !='') : ?>
-                                            <?php if($product->get_type() == 'variable') {
+                                            <?php if($product->get_type() == 'variable' || $product->get_type() == 'booking') {
                                                 $url = '#top_ankor';
                                             }else{
                                                 $url = esc_url( $product->add_to_cart_url() );

@@ -250,7 +250,7 @@ function wpsm_promobox_shortcode( $atts, $content = null ) {
 			'title' => '',
 			'description' => ''
 		), $atts));	
-
+	wp_enqueue_style('rhpromobox');
 	$out = '<div class="wpsm_promobox" style="background-color:'.$background.' !important;';
 	if((isset($atts['border_size']) && $atts['border_size']) && (isset($atts['border_color']) && $atts['border_color'])):
 		$out .= ' border-width:'.$border_size.';border-color:'.$border_color.'!important; border-style:solid;';
@@ -279,9 +279,8 @@ function wpsm_promobox_shortcode( $atts, $content = null ) {
 
 if(!function_exists('wpsm_numbox_shortcode')) {
 		function wpsm_numbox_shortcode($atts, $content) {  
-			// get the optional style value
 			extract(shortcode_atts( array('num' => '1', 'style' => '1'), $atts));
-			// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
+			wp_enqueue_style('rhnumbox');
 			$content = do_shortcode($content);
 			$content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
 			$Old     = array( '<br />', '<br>' );
@@ -302,7 +301,7 @@ if(!function_exists('wpsm_numhead_shortcode')) {
 		function wpsm_numhead_shortcode($atts, $content) {  
 			// get the optional style value
 			extract(shortcode_atts( array('num' => '1', 'style' => '1', 'heading' => '2'), $atts));
-			// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
+			wp_enqueue_style('rhnumbox');
 			$content = do_shortcode($content);
 			$content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
 			$Old     = array( '<br />', '<br>' );
@@ -372,9 +371,7 @@ if(!function_exists('wpsm_code_shortcode')) {
 
 // Main
 if( !function_exists('wpsm_accordion_main_shortcode') ) {
-	function wpsm_accordion_main_shortcode( $atts, $content = null  ) {	
-		// Enque scripts
-		wp_enqueue_script('jquery-ui-accordion');	
+	function wpsm_accordion_main_shortcode( $atts, $content = null  ) {		
         
 		// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
 		$content = do_shortcode($content);
@@ -384,7 +381,7 @@ if( !function_exists('wpsm_accordion_main_shortcode') ) {
 		$content = str_replace( $Old, $New, $content );
 		
 		// Display the accordion	
-		return '<div class="wpsm-accordion">' . do_shortcode($content) . '</div>';
+		return '<div class="wpsm-accordion" data-accordion="yes">' . do_shortcode($content) . '</div>';
 	}
 }
 
@@ -394,15 +391,35 @@ if( !function_exists('wpsm_accordion_section_shortcode') ) {
 		extract( shortcode_atts( array(
 		  'title' => 'Title',
 		), $atts ) );
-		
+		  
+	   return '<div class="wpsm-accordion-item close"><h3 class="wpsm-accordion-trigger">'. $title .'</h3><div class="accordion-content">' . do_shortcode($content) . '</div></div>';
+	}
+}
+
+//////////////////////////////////////////////////////////////////
+// Toggle
+//////////////////////////////////////////////////////////////////
+if( !function_exists('wpsm_toggle_shortcode') ) {
+	function wpsm_toggle_shortcode( $atts, $content = null ) {
+		extract( shortcode_atts( array( 'title' => 'Toggle Title', 'class' => ''), $atts ) );
+
 		// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
 		$content = do_shortcode($content);
         $content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
 		$Old     = array( '<br />', '<br>' );
 		$New     = array( '','' );
 		$content = str_replace( $Old, $New, $content );
-		  
-	   return '<h3 class="wpsm-accordion-trigger"><a href="#">'. $title .'</a></h3><div>' . do_shortcode($content) . '</div>';
+		
+		// Display the Toggle
+
+		$opens = '';
+		if ( $class == 'active' ) {  
+			$opens = ' open';
+		} else {
+			$opens = ' close';
+		}
+
+		return '<div class="wpsm-accordion" data-accordion="no"><div class="wpsm-accordion-item'.$opens.'"><h3 class="wpsm-accordion-trigger">'. $title .'</h3><div class="accordion-content">' . do_shortcode($content) . '</div></div></div>';
 	}
 }
 
@@ -416,6 +433,7 @@ if( !function_exists('wpsm_testimonial_shortcode') ) {
 			'image' => '',
 		  ), $atts ) );
 		// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
+		wp_enqueue_style('rhtestimonial');
 		$content = do_shortcode($content);
         $content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
 		$Old     = array( '<br />', '<br>' );
@@ -518,11 +536,11 @@ if (! function_exists( 'wpsm_shortcode_googlemaps' ) ) :
 		$output = '';
   
 	  	if ($location){
-	   		$output .= '<div id="map_canvas_'.mt_rand().'" class="wpsm_googlemap wpsm_gmap_loc" style="height:'.$height.';width:100%">';
+	   		$output .= '<div id="map_canvas_'.mt_rand().'" class="wpsm_googlemap position-relative wpsm_gmap_loc" style="height:'.$height.';width:100%">';
 	    	$output .= (!empty($title)) ? '<input class="title" type="hidden" value="'.$title.'" />' : '';
 	    	$output .= '<input class="location" type="hidden" value="'.$location.'" />';
 	    	$output .= '<input class="zoom" type="hidden" value="'.$zoom.'" />';
-	    	$output .= '<div class="map_canvas"></div>';
+	    	$output .= '<div class="map_canvas width-100p"></div>';
 	   		$output .= '</div>';   
 	  	}  
   		elseif ($lat && $lng){
@@ -531,7 +549,7 @@ if (! function_exists( 'wpsm_shortcode_googlemaps' ) ) :
     		$output .= '<input class="lat" type="hidden" value="'.$lat.'" />';
     		$output .= '<input class="lng" type="hidden" value="'.$lng.'" />';    
     		$output .= '<input class="zoom" type="hidden" value="'.$zoom.'" />';
-    		$output .= '<div class="map_canvas"></div>';
+    		$output .= '<div class="map_canvas width-100p"></div>';
    			$output .= '</div>';   
   		}
   	return $output;   
@@ -551,6 +569,7 @@ if( !function_exists('wpsm_divider_shortcode') ) {
 		  ),
 		  $atts ) );
 		$style_attr = '';
+		wp_enqueue_style('rhdividers');
 		if ( $top && $bottom ) {  
 			$style_attr = 'style="margin-top: '. $top .';margin-bottom: '. $bottom .';"';
 		} elseif( $bottom ) {
@@ -570,13 +589,14 @@ if( !function_exists('wpsm_divider_shortcode') ) {
 //////////////////////////////////////////////////////////////////
 if( !function_exists('wpsm_price_shortcode') ) {
 	function wpsm_price_shortcode( $atts, $content = null  ) {
-	  // Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
-	  $content = do_shortcode($content);
-	  $content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
-	  $Old     = array( '<br />', '<br>' );
-	  $New     = array( '','' );
-	  $content = str_replace( $Old, $New, $content );		
-	   return '<ul class="wpsm-price clearfix">' . $content . '</ul><br class="clear" />';
+	  	// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
+	  	$content = do_shortcode($content);
+	  	$content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
+	  	$Old     = array( '<br />', '<br>' );
+	  	$New     = array( '','' );
+	  	$content = str_replace( $Old, $New, $content );
+	  	wp_enqueue_style('rhpricetable');
+	   	return '<ul class="wpsm-price mt20 mb20 clearfix">' . $content . '</ul><br class="clear" />';
 	}
 }
 /* Column of price*/
@@ -634,11 +654,6 @@ if( !function_exists('wpsm_price_column_shortcode') ) {
 if (!function_exists('wpsm_tabgroup_shortcode')) {
 	function wpsm_tabgroup_shortcode( $atts, $content = null ) {
 		
-		//Enque scripts
-		wp_enqueue_script('jquery-ui-tabs');
-		
-		// Display Tabs
-		
 		$defaults = array();
 		extract( shortcode_atts( $defaults, $atts ) );
 		preg_match_all( '/tab title="([^\"]+)"/i', $content, $matches, PREG_OFFSET_CAPTURE );
@@ -654,10 +669,10 @@ if (!function_exists('wpsm_tabgroup_shortcode')) {
 		if( isset($matches[1]) ){ $tab_titles = $matches[1]; }
 		$output = '';
 		if( count($tab_titles) ){
-		    $output .= '<div id="wpsm-tab-'. rand(1, 100) .'" class="wpsm-tabs">';
-			$output .= '<ul class="ui-tabs-nav wpsm-clearfix">';
-			foreach( $tab_titles as $tab ){
-				$output .= '<li><a href="#wpsm-tab-'. sanitize_title( $tab[0] ) .'">' . $tab[0] . '</a></li>';
+		    $output .= '<div id="wpsm-tab-'. rand(1, 100) .'" class="wpsm-tabs tabs">';
+			$output .= '<ul class="tabs-menu rh-tab-shortcode scroll-on-mobile">';
+			foreach( $tab_titles as $index=>$tab){
+				$output .= '<li><span class="cursorpointer">' . $tab[0] . '</span></li>';
 			}
 		    $output .= '</ul>';
 		    $output .= do_shortcode( $content );
@@ -673,43 +688,10 @@ if (!function_exists('wpsm_tab_shortcode')) {
 		$defaults = array( 'title' => 'Tab' );
 		extract( shortcode_atts( $defaults, $atts ) );
 		
-		// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
-		$content = do_shortcode($content);
-        $content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
-		$Old     = array( '<br />', '<br>' );
-		$New     = array( '','' );
-		$content = str_replace( $Old, $New, $content );
-		
-		return '<div id="wpsm-tab-'. sanitize_title( $title ) .'" class="tab-content">'. do_shortcode( $content ) .'</div>';
+		return '<div class="tab-content tabs-item rhhidden">'. do_shortcode( $content ) .'</div>';
 	}
 }
 
-//////////////////////////////////////////////////////////////////
-// Toggle
-//////////////////////////////////////////////////////////////////
-if( !function_exists('wpsm_toggle_shortcode') ) {
-	function wpsm_toggle_shortcode( $atts, $content = null ) {
-		extract( shortcode_atts( array( 'title' => 'Toggle Title', 'class' => ''), $atts ) );
-		
-		// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
-		$content = do_shortcode($content);
-        $content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
-		$Old     = array( '<br />', '<br>' );
-		$New     = array( '','' );
-		$content = str_replace( $Old, $New, $content );
-		
-		// Display the Toggle
-
-		$opens = '';
-		if ( $class == 'active' ) {  
-			$opens = 'style="display:block"';
-		} else {
-			$opens = NULL;
-		}
-
-		return '<div class="wpsm-toggle"><h3 class="wpsm-toggle-trigger '.$class.'">'. $title .'</h3><div class="wpsm-toggle-container"'.$opens.'>' . do_shortcode($content) . '</div></div>';
-	}
-}
 
 //////////////////////////////////////////////////////////////////
 // Get feeds
@@ -781,7 +763,7 @@ function wpsm_list_shortcode( $atts, $content = null ) {
 			'gap' => '',
 			'darklink' => ''
 		), $atts ) ); 
-		// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
+		wp_enqueue_style('rhprettylist');
 		$content = do_shortcode($content);
         $content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
 		$Old     = array( '<br />', '<br>' );
@@ -857,11 +839,16 @@ function wpsm_member_shortcode( $atts, $content = null ) {
 	$Old     = array( '<br />', '<br>' );
 	$New     = array( '','' );
 	$content = str_replace( $Old, $New, $content );	
+	$css = '
+		.wpsm-members { background: none repeat scroll 0 0 #FAFAFA; border: 1px solid #ddd; color: #444; margin: 25px 0 18px 0; padding: 17px 15px 10px 15px; position: relative; }
+		.wpsm-members > strong:first-child { font-size: 12px; padding: 0 10px; width: auto !important; color: #FFFFFF; height: 20px; left:10px; line-height: 21px; position: absolute; text-align: center; top: -10px; width: 20px; }';
+	wp_register_style( 'wpsm_member_shortcode', false );
+	wp_enqueue_style( 'wpsm_member_shortcode' );
+	wp_add_inline_style( 'wpsm_member_shortcode', $css); 
 	if (is_user_logged_in() && !is_null( $content ) && !is_feed()) {
 		return '<div class="wpsm-members"><strong>'.__("Members only", "rehub-theme").'</strong>' . do_shortcode( $content ) . '</div>';
 	}
 	else { 
-
 		return '<div class="wpsm-members not-logined"><strong>'.__("Members only", "rehub-theme").'</strong> '.$guest_text.'</div>';	
 		 }
 
@@ -2738,6 +2725,7 @@ function wpsm_categorizator_shortcode( $atts, $content = null ) {
 		'include' => explode(',', $include),
     );
     $terms = get_terms($args );
+    wp_enqueue_style('rhcategorizator');
 
 	ob_start(); 
     ?>
@@ -5882,12 +5870,17 @@ function wpsm_banner_shortcode( $atts, $content = null ) {
 			'vertical' => 'middle',
 			'bg' => '#cecece',
 			'image_url' => '',
-			'targetself' => ''
+			'targetself' => '',
+			'btn' => '',
+			'btn_label' => 'Buy this',
+
 		),
 		$atts,
 		'wpsm_hover_banner'
 	);
 	extract( $atts );
+
+	wp_enqueue_style('rhbanner');
 
 	if ($image_id) {
 		$image_url = wp_get_attachment_image_src($image_id, 'full');
@@ -5932,6 +5925,9 @@ function wpsm_banner_shortcode( $atts, $content = null ) {
 			$output .= '<div class="wpsm-banner-text"><div class="tabledisplay">';
 				$output .= '<div class="celldisplay'. $text_align .'">';
 					$output .= sprintf( '%s<h4>%s</h4><h6>%s</h6>', $icon, $title, $subtitle );
+					if($btn) {
+						$output .= '<span class="wpsm-button medium wpsm-nobrd">'.esc_attr($btn_label).'</span>';
+					}
 				$output .='</div>';
 			$output .= '</div></div>';
 		if (!empty($url)) { $output .= '</a>'; }
@@ -6012,6 +6008,7 @@ if( !function_exists('wpsm_versus_shortcode') ) {
 			'wpsm_versus'
 		);
 		extract($atts);
+		wp_enqueue_style('rhversus');
 		$fclass = $sclass = $tclass = array();
 		$fclass[] = 'vs-1-col';
 		$sclass[] = 'vs-2-col';

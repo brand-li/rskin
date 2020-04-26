@@ -192,7 +192,7 @@ class Widget_ThemeElements extends Widget_Base {
 				if ($woocommerce){
 					if($woocommerce->cart){
 						$cartbtn = !empty($settings['woobtn']) ? 'pt10 pb10 pr15 pl15 rehub-main-btn-bg rehub-main-smooth menu-cart-btn ' : '';
-						echo '<div class="celldisplay rh_woocartmenu_cell text-center"><span class="inlinestyle '.$cartbtn.'"><a class="rh-header-icon rh-flex-center-align rh_woocartmenu-link cart-contents cart_count_'.$woocommerce->cart->cart_contents_count.'" href="'.wc_get_cart_url().'"><span class="rh_woocartmenu-icon"><span class="rh-icon-notice rehub-main-color-bg">'.$woocommerce->cart->cart_contents_count.'</span></span><span class="rh_woocartmenu-amount">'.$woocommerce->cart->get_cart_total().'</span></a></span><div class="woocommerce widget_shopping_cart"></div></div>';
+						echo '<div class="celldisplay rh_woocartmenu_cell text-center"><span class="inlinestyle '.$cartbtn.'"><a class="rh-header-icon rh-flex-center-align rh_woocartmenu-link cart-contents cart_count_'.$woocommerce->cart->cart_contents_count.'" href="'.wc_get_cart_url().'"><span class="rh_woocartmenu-icon"><span class="rh-icon-notice rehub-main-color-bg">'.$woocommerce->cart->cart_contents_count.'</span></span><span class="rh_woocartmenu-amount">'.$woocommerce->cart->get_total().'</span></a></span><div class="woocommerce widget_shopping_cart"></div></div>';
 					}
 				}
 			?>

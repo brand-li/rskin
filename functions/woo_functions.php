@@ -409,9 +409,9 @@ if (rehub_option('woo_cart_place') =='1' || rehub_option('woo_cart_place') =='2'
 		ob_start();
 		?>
 		<?php if (rehub_option('woo_cart_place') =='1'):?>
-			<a class="cart-contents cart_count_<?php echo ''.$woocommerce->cart->cart_contents_count; ?>" href="<?php echo wc_get_cart_url(); ?>"><i class="far fa-shopping-cart"></i> <?php esc_html_e( 'Cart', 'rehub-theme' ); ?> (<?php echo ''.$woocommerce->cart->cart_contents_count; ?>) - <?php echo ''.$woocommerce->cart->get_cart_total(); ?></a>		
+			<a class="cart-contents cart_count_<?php echo ''.$woocommerce->cart->cart_contents_count; ?>" href="<?php echo wc_get_cart_url(); ?>"><i class="far fa-shopping-cart"></i> <?php esc_html_e( 'Cart', 'rehub-theme' ); ?> (<?php echo ''.$woocommerce->cart->cart_contents_count; ?>) - <?php echo ''.$woocommerce->cart->get_total(); ?></a>		
 		<?php elseif (rehub_option('woo_cart_place') =='2' || rehub_option('rehub_header_style') =='header_nine' || (rehub_option('rehub_header_style') =='header_seven' && rehub_option('header_seven_cart')!= '') ):?>
-			<a class="rh-flex-center-align rh-header-icon rh_woocartmenu-link cart-contents cart_count_<?php echo ''.$woocommerce->cart->cart_contents_count; ?>" href="<?php echo wc_get_cart_url(); ?>"><span class="rh_woocartmenu-icon"><span class="rh-icon-notice rehub-main-color-bg"><?php echo ''.$woocommerce->cart->cart_contents_count;?></span></span><span class="rh_woocartmenu-amount"><?php echo ''.$woocommerce->cart->get_cart_total();?></span></a>
+			<a class="rh-flex-center-align rh-header-icon rh_woocartmenu-link cart-contents cart_count_<?php echo ''.$woocommerce->cart->cart_contents_count; ?>" href="<?php echo wc_get_cart_url(); ?>"><span class="rh_woocartmenu-icon"><span class="rh-icon-notice rehub-main-color-bg"><?php echo ''.$woocommerce->cart->cart_contents_count;?></span></span><span class="rh_woocartmenu-amount"><?php echo ''.$woocommerce->cart->get_total();?></span></a>
 		<?php endif;?>
 		<?php
 		$fragments['a.cart-contents'] = ob_get_clean();
@@ -2056,7 +2056,7 @@ if( !function_exists('ajax_action_product_quick_view') ) {
 
 		$nonce = sanitize_text_field($_GET['nonce']);
 		
- 		if ( ! wp_verify_nonce( $nonce, 'ajaxed-nonce' ) )
+ 		if ( ! wp_verify_nonce( $nonce, 'quickview-nonce' ) )
 			wp_die ( 'Nope!' ); 
 		
 		$product_id = intval($_GET['product_id']);

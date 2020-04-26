@@ -57,11 +57,8 @@ jQuery(document).ready(function() {
 	<p><label><?php esc_html_e('Style', 'rehub-theme') ;?></label>
        	<select name="titlebox-style" id="titlebox-style" size="1">
 			<option value="1" selected="selected"><?php esc_html_e('Grey', 'rehub-theme') ;?></option>
-			<option value="2"><?php esc_html_e('Black', 'rehub-theme') ;?></option>
-			<option value="3"><?php esc_html_e('Orange', 'rehub-theme') ;?></option>
 			<option value="main"><?php esc_html_e('Main Theme Color', 'rehub-theme') ;?></option>
 			<option value="secondary"><?php esc_html_e('Secondary Theme Color', 'rehub-theme') ;?></option>
-			<option value="4"><?php esc_html_e('Double dotted', 'rehub-theme') ;?></option>
         </select>
     </p>  
     <p>

@@ -85,7 +85,7 @@
                                     <?php if (rehub_option('woo_cart_place') =='1') : ?>
                                         <?php global $woocommerce; ?>
                                         <?php if($woocommerce):?>
-                                            <a class="cart-contents cart_count_<?php echo (int)$woocommerce->cart->cart_contents_count; ?>" href="<?php echo wc_get_cart_url(); ?>"><i class="far fa-shopping-cart"></i> <?php esc_html_e( 'Cart', 'rehub-theme' ); ?> (<?php echo ''.$woocommerce->cart->cart_contents_count; ?>) - <?php echo ''.$woocommerce->cart->get_cart_total(); ?></a>
+                                            <a class="cart-contents cart_count_<?php echo (int)$woocommerce->cart->cart_contents_count; ?>" href="<?php echo wc_get_cart_url(); ?>"><i class="far fa-shopping-cart"></i> <?php esc_html_e( 'Cart', 'rehub-theme' ); ?> (<?php echo ''.$woocommerce->cart->cart_contents_count; ?>) - <?php echo ''.$woocommerce->cart->get_total(); ?></a>
                                          <?php endif; ?>
                                     <?php endif; ?>
                                 </div>

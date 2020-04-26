@@ -605,7 +605,7 @@ class Kama_Contents{
         $class_patt = $tag_patt = $level_tags = array();
         foreach( $tags as $tag ){
             // class
-            if( $tag{0} == '.' ){
+            if( isset($tag[0]) && $tag[0] == '.' ){
                 $tag  = substr( $tag, 1 );
                 $link = & $class_patt;
             }
@@ -1490,18 +1490,7 @@ h1, h2, h3, h4, h5, h6, .rehub-main-font, .wpsm-button, .btn_offer_block, .offer
     $btncolor = rehub_option('rehub_btnoffer_color');
   } 
   else {
-    if (REHUB_NAME_ACTIVE_THEME == 'REPICK') {
-      $btncolor = '#D7541A';  
-    }
-    elseif (REHUB_NAME_ACTIVE_THEME == 'RETHING') {
-      $btncolor = '#B07C01';  
-    }
-    elseif (REHUB_NAME_ACTIVE_THEME == 'REWISE') {
-      $btncolor = '#43c801';  
-    }   
-    else{
-      $btncolor = '#43c801';      
-    }
+      $btncolor = REHUB_BUTTON_COLOR;      
   }
 ?>
 <?php if (rehub_option('enable_smooth_btn') == 1):?>

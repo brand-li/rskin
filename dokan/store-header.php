@@ -50,7 +50,7 @@ $store_address = apply_filters( 'dokan_store_header_adress', $short_address, $st
 						</div>
                         <?php if ( dokan()->widgets->is_exists( 'store_location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && ! empty( $map_location ) ) { ?>
                             <i class="far fa-map-marker-alt"></i> <?php echo esc_attr($store_address); ?>
-							<span class="rh_gmw_map_in_wcv_profile"><?php esc_html_e( '(Show on map)', 'rehub-theme' ); ?></span>
+							<span class="rehub_scroll" data-scrollto="#dokan-store-location"><?php esc_html_e( '(Show on map)', 'rehub-theme' ); ?></span>
                         <?php } ?>	
 					</div>
 	    		</div>	        			        		

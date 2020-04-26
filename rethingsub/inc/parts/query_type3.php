@@ -21,9 +21,9 @@ else {
         <figure><?php echo re_badge_create('tablelabel'); ?>
             <?php if(rehub_option('repick_social_disable') !='1') :?> <?php echo rehub_social_inimage(''); ?> <?php endif;?>
             <div class="thing-post-like"> 
-                <?php $wishlistadd = __('Save', 'rehubchild');?>           
-                <?php $wishlistadded = __('Saved', 'rehubchild');?>
-                <?php $wishlistremoved = __('Removed', 'rehubchild');?>
+                <?php $wishlistadd = __('Save', 'rehub-theme');?>           
+                <?php $wishlistadded = __('Saved', 'rehub-theme');?>
+                <?php $wishlistremoved = __('Removed', 'rehub-theme');?>
                 <?php echo RH_get_wishlist($post->ID, $wishlistadd, $wishlistadded, $wishlistremoved);?>
             </div>            
             <a href="<?php echo ''.$link;?>"<?php echo ''.$target;?>>

@@ -693,7 +693,8 @@ abstract class WPSM_Content_Widget_Base extends Widget_Base {
             $new_query = [
                 "select" => $query['select'],
                 "where"  => $query['where'],
-                "id"     => "AND ID IN( $format )"
+                "id"     => "AND ID IN( $format )",
+                "order"  => "ORDER BY field(ID, " . implode(",", $saved_ids) . ")"
             ];
 
             $final_query = $wpdb->prepare( implode(" ", $new_query), $saved_ids );

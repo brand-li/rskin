@@ -572,7 +572,6 @@ article.post .rate_bar_wrap_two_reviews a.link_to_review{ right: inherit; left: 
 .egg-wrap .media-left {padding-right: 20px; padding-left: 0px; }
 
 .user-ava-intop:after{padding-right: 4px}
-.wpsm-tabs ul.ui-tabs-nav li{ float: right !important;}
 .wpsm-table table tr th, .wpsm-table table tr td{text-align: right;}
 .wpsm-price .wpsm-price-column{float: right;}
 .wpsm-bar-title, .vc_progress_bar .vc_single_bar .vc_bar, .wpsm-numbox span, .wpsm-numhead span{right: 0; left: auto;}
@@ -639,6 +638,10 @@ div.summary{float: left;}
 .rhgreedylinks{-ms-justify-content: flex-start;-webkit-justify-content: flex-start;justify-content: flex-start;}
 .delimiter .fa-angle-right:before{content: "\f104";}
 .smart-scroll-mobile > div{margin-right: 0 !important; margin-left: 10px !important}
+.rtl .wpsm-tabs ul li{float: right;}
+.rtl .wpsm-accordion .wpsm-accordion-trigger:before{margin-left: 5px;}
+.rtl .wpsm-tabs ul li:first-child span{border-left:none;}
+.rtl .wpsm-tabs ul li:last-child span{border-left: 1px solid #ddd;}
 
 /* PROS&CONS
 ================================================== */

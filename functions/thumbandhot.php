@@ -800,7 +800,7 @@ add_action( 'wp_ajax_rh-user-favor-shop', 'rh_user_favorite_shop' );
 if (!function_exists('rh_user_favorite_shop')){
 function rh_user_favorite_shop() {
     $nonce = sanitize_text_field($_POST['favornonce']);
-    if ( ! wp_verify_nonce( $nonce, 'hotnonce' ) )
+    if ( ! wp_verify_nonce( $nonce, 'favornonce' ) )
         die ( 'Nope!' );
     
     if ( isset( $_POST['rh_user_favorite_shop'] ) ) {

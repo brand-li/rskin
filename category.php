@@ -94,7 +94,7 @@ $cat_filter_panel = rehub_option('category_filter_panel');
                 }?>
                 <?php $prepare_filter = urlencode(json_encode($prepare_filter));?>
                 <?php rehub_vc_filterpanel_render($prepare_filter, $containerid);?>
-            <?php elseif(REHUB_NAME_ACTIVE_THEME == 'REPICK'):?>
+            <?php elseif(REHUB_NAME_ACTIVE_THEME == 'REPICK' || rehub_option('theme_subset') == 'repick'):?>
                 <?php $prepare_filter = array();?>
                 <?php 
                     $prepare_filter[] = array (

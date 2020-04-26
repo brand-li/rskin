@@ -76,14 +76,20 @@ $theme_url = 'https://wpsoul.com/';
         </form>
         <div class="feature-section">
             <strong>Some important tutorials to make your site better:</strong>
-            <ul>
-                <li><a href="https://wpsoul.com/make-smart-profitable-deal-affiliate-comparison-site-woocommerce/" target="_blank">Step by step guide to create affiliate profitable price comparison site on woocommerce</a></li>                  
-                <li><a href="https://wpsoul.com/guide-creating-profitable/" target="_blank">Step by step guide for affiliate websites</a></li>             
+                <ul>
+                <li><a href="https://wpsoul.com/make-smart-profitable-deal-affiliate-comparison-site-woocommerce/" target="_blank">Step by step guide to creating affiliate profitable price comparison site on WooCommerce</a></li>
+                <li><a href="https://wpsoul.com/smart-autoblog-affiliate-websites-rehub-theme-plugins/" target="_blank">Making smart autoblog on theme and plugins</a></li>
+                <li><a href="https://wpsoul.com/how-to-make-cashback-site-on-wordpress-and-rehub-theme/" target="_blank">How to create cashback site on WordPress</a></li>
+                <li><a href="https://wpsoul.com/guide-creating-profitable/" target="_blank">Step by step guide for affiliate websites based on posts</a></li>
                 <li><a href="https://wpsoul.com/how-optimize-speed-of-wordpress/" target="_blank">How to optimize speed of site</a></li>
                 <li><a href="https://wpsoul.com/optimize-seo-wordpress/" target="_blank">How to make the best SEO optimization on site</a></li>
-                <li><a href="https://wpsoul.com/directory-review-classified-on-woocommerce/" target="_blank">Creating Directory site with Rehub</a></li>    
-                <li><a href="https://wpsoul.com/how-to-create-multi-vendor-shop-on-wordpress/" target="_blank">Creating Multivendor site with Rehub</a></li>                                                             
-            </ul>
+                <li><a href="https://wpsoul.com/creating-social-business-advanced-membership-site-buddypress-and-s2member/" target="_blank">Set extended Membership on your site</a></li>
+                <li><a href="https://wpsoul.com/directory-review-classified-on-woocommerce/" target="_blank">Creating Directory. Classified, Review site with Rehub</a></li>
+                <li><a href="https://wpsoul.com/how-to-create-multi-vendor-shop-on-wordpress/" target="_blank">Creating Multivendor site with Rehub</a></li>
+                <li><a href="https://wpsoul.com/amp-wordpress-setup/" target="_blank">How to use AMP</a>. How to <a href="https://wpsoul.com/create-mobile-app-wordpress/" target="_blank">create mobile App</a></li>
+                <li><a href="https://wpsoul.com/how-to-know-what-error-do-you-have-on-wordpress-site/" target="_blank">How to know what error do you have on WordPress site</a></li>
+                <li><a href="https://wpsoul.com/how-to-make-user-driven-community-with-rehub-theme/" target="_blank">How to make User Driven Community</a></li>
+                </ul>
         </div>
     	<div class="feature-section col three-col">
             <div class="col">
@@ -112,11 +118,11 @@ $theme_url = 'https://wpsoul.com/';
     				<p><?php echo esc_html__( "Want to send private information or access to your site? Use this link to contact us with email", "rehub-theme" ); ?></p>
                     <?php printf( '<a href="%s" class="button button-large button-primary rehub-large-button" target="_blank">%s</a>', 'http://themeforest.net/user/sizam#contact', esc_html__( "Write to email", "rehub-theme" ) ); ?>
                 </div>            
-                <div class="col last-feature">
+                <!--<div class="col last-feature">
                 	<h4><span class="dashicons dashicons-carrot"></span><?php echo esc_html__( "Give us a new Idea", "rehub-theme" ); ?></h4>
     				<p><?php echo esc_html__( "Want to give idea for new updates. Use our site", "rehub-theme" ); ?></p>
                     <?php printf( '<a href="%s" class="button button-large button-primary rehub-large-button" target="_blank">%s</a>', 'https://wpsoul.com/questions/', esc_html__( "Give an Idea", "rehub-theme" ) ); ?>
-                </div> 
+                </div> -->
             <?php endif ;?>
 
         </div>

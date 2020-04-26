@@ -29,7 +29,7 @@ $review_text = $count > 1 ? esc_html__('Reviews', 'rehub-theme') : esc_html__('R
 
 <a href="#reviews">
 <?php if ($count > 0) { ?>	
-    <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating" class="wcmp_star_rating rh_woo_star" title="<?php echo sprintf(__('Rated %s out of', 'rehub-theme'), $rating) ?> 5">
+    <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating" class="wcmp_star_rating rh_woo_star" title="<?php echo sprintf(esc_html__('Rated %s out of', 'rehub-theme'), $rating) ?> 5">
     <?php    
     if($rating > 0){
         for ($i = 1; $i <= 5; $i++){

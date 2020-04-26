@@ -37,9 +37,16 @@ if(rehub_option('enable_brand_taxonomy') == 1){
             <?php $wishlistremoved = esc_html__('Removed from wishlist', 'rehub-theme');?>
             <?php echo RH_get_wishlist($post->ID, '', $wishlistadded, $wishlistremoved);?>  
         </div>                                                           
-    </div>     
-    <figure class="mb20 position-relative text-center<?php echo esc_attr($image_padding);?>"><?php echo re_badge_create('tablelabel'); ?>             
-        <a href="<?php echo ''.$link;?>"<?php echo ''.$target;?> class="<?php echo esc_attr($image_class);?>"><?php wpsm_thumb ('medium_news_s', true, $cropimage) ?></a>
+    </div> 
+    <?php $discountpercentage = get_post_meta($post->ID, 'rehub_offer_discount', true);?>    
+    <figure class="<?php if ($discountpercentage) :?> border-lightgrey <?php endif;?>mb20 position-relative text-center<?php echo esc_attr($image_padding);?>"><?php echo re_badge_create('tablelabel'); ?>             
+        <a href="<?php echo ''.$link;?>"<?php echo ''.$target;?> class="<?php echo esc_attr($image_class);?>">
+            <?php if ($discountpercentage) :?>
+                <span class="sale_tag_inwoolist"><h5><?php echo esc_html($discountpercentage);?></h5></span>
+            <?php else :?>
+                <?php wpsm_thumb ('medium_news_s', true, $cropimage) ?>
+            <?php endif;?>
+        </a>
     </figure>
     <?php do_action( 'rehub_after_grid_column_figure' ); ?>
     <div class="content_constructor<?php echo ''.$paddclass;?>">

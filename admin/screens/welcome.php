@@ -97,8 +97,10 @@ else{
 		</div>
 	</div>
     <div class="feature-section">
+    	<br />
         <strong>Some important tutorials to make your site better:</strong>
         <ul>
+        	<li><a href="<?php echo esc_url(wp_nonce_url(admin_url('plugins.php?page=rehub_wizard&rehub_install=1'), '_wpnonce'));?>"><?php echo esc_html__("Run Installation Wizard","rehub-theme") ?></a></li>
 			<li><a href="https://wpsoul.com/make-smart-profitable-deal-affiliate-comparison-site-woocommerce/" target="_blank" rel="noopener">Step by step guide to create affiliate profitable price comparison site on woocommerce</a></li>        	
  			<li><a href="https://wpsoul.com/guide-creating-profitable/" target="_blank">Step by step guide for affiliate websites</a></li>        
             <li><a href="https://wpsoul.com/how-optimize-speed-of-wordpress/" target="_blank">How to optimize speed of site</a></li>

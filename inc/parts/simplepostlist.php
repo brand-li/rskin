@@ -8,7 +8,7 @@
 <?php $compareenable = (isset($compareenable)) ? $compareenable : '';?>
 <?php $hotenable = (isset($hotenable)) ? $hotenable : '';?>
 <?php $cropenable = (isset($cropenable)) ? $cropenable : '';?>
-<?php if (REHUB_NAME_ACTIVE_THEME == 'RECASH') {
+<?php if (rehub_option('theme_subset') == 'recash') {
 	$hotenable = $priceenable = true;
 }?>
 <div class="col_item item-small-news<?php if($image):?> item-small-news-image<?php endif;?><?php if($border):?> border-lightgrey pb10 pl10 pr10 pt10 mb20<?php endif;?>">

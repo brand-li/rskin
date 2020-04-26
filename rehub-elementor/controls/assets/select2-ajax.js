@@ -70,8 +70,16 @@ jQuery( window ).on( 'elementor:init', function() {
         },
         updateOptions: function () {
             let select2options = this.getSelect2Options();
-            this.ui.select.select2( select2options );
-
+            if(this.ui.select !== undefined){
+                this.ui.select.select2( select2options );
+            }
+            // reorder by selected
+            this.ui.select.on('select2:select', function (e) {
+              var id = e.params.data.id;
+              var option = $(e.target).children('[value="'+id+'"]');
+              option.detach();
+              $(e.target).append(option).change();
+            });
             // Fetch saved values
             this.printSavedValues();
         },
@@ -105,8 +113,7 @@ jQuery( window ).on( 'elementor:init', function() {
                     method: 'POST',
                     dataType: 'json',
                     delay: 250,
-                    cache: true,
-                    minimumInputLength: 1,
+                    minimumInputLength: 2,
                     url: ajaxurl,
                     data: function (params) {
                         return Object.assign({}, self.getLinkedData(), {
@@ -118,7 +125,6 @@ jQuery( window ).on( 'elementor:init', function() {
                     processResults: function (response, params) {
                         params.page = params.page || 1;
                         let limit = self.model.get('query_limit') || 100;
-
                         self._updateCache( response.data.results );
                         return {
                             results: response.data.results,
@@ -126,9 +132,10 @@ jQuery( window ).on( 'elementor:init', function() {
                                 more: (params.page * limit) < response.data.total_count
                             }
                         };
+
                     },
-                    complete: function () {
-                        // self.ui.select.val([self.onLoadSelection]).trigger('change');
+                    complete: function (response) {
+                        //self.ui.select.val([self.onLoadSelection]).trigger('change');
                         // self.applySavedValue();
                     },
                     cache: true
@@ -159,7 +166,9 @@ jQuery( window ).on( 'elementor:init', function() {
                 })
             })
             .then( res => {
-                this.ui.select.children().remove();
+                if(this.ui.select !== undefined){
+                    this.ui.select.children().remove();
+                }
 
                 var data = {},
                     matchValues = [];
@@ -172,14 +181,19 @@ jQuery( window ).on( 'elementor:init', function() {
                     }
 
                     var option = new Option(data.text, data.id, selected, selected);
-                    this.ui.select.append(option);
-                });
+                    if(this.ui.select !== undefined){
+                        this.ui.select.append(option);
+                    }
 
+                });
                 if ( matchValues ) {
                     this.setInputValue('[data-setting="' + this.model.get("name") + '"]', savedData);
                 }
 
-                this.ui.select.trigger('change');
+                if(this.ui.select !== undefined){
+                    this.ui.select.trigger('change');
+
+                }
             });
         },
 

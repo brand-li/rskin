@@ -86,10 +86,7 @@ function rehub_before_import_setup( $current_import ){
 	}	
 
 	if( 'RePick' === $current_import['import_file_name'] ) {
-		if(REHUB_NAME_ACTIVE_THEME != 'REPICK'){
-			echo 'This demo requires <a href="'.$childthemeurl.'" target="_blank">Repick child theme</a> to be installed and activated.';		
-			exit();				
-		}
+
 	}else{
 		if ( ! did_action( 'elementor/loaded' ) ) {
 			echo 'This demo requires <a href="'.$rplugins.'" target="_blank">Elementor</a> plugin to be installed and activated.';		
@@ -230,15 +227,7 @@ function rehub_import_files() {
 	$remagnotice .= $rhfrontendnotice;	
 	$remagnotice .= $rhcenotice;
 	$remagnotice .= '<li>Mycred</li>';	
-	$remagnotice .='</ol>';
-	$remagnotice .=$themenotice.'<ol>';
-	if (REHUB_NAME_ACTIVE_THEME != 'REHUB'){
-		$remagnotice .= '<li><span style="color:red">Child theme is active, disable child theme of Re:hub and enable just Rehub theme</span></li>';
-	}
-	else{
-		$remagnotice .= '<li>Rehub - <span style="color:green">active</span></li>';
-	}
-	$remagnotice .='</ol>';			
+	$remagnotice .='</ol>';		
 
 	$recashnotice = $requirednotice.'<ol>';
 	$recashnotice .= $rhfrontendnotice;
@@ -247,14 +236,6 @@ function rehub_import_files() {
 	$recashnotice .= $optionalnotice.' <a href="'.$wpplugins.'" target="_blank">'.$installpnotice.'</a><ol>';
 	$recashnotice .= $rhbpnotice;
 	$recashnotice .= '<li>MyCred</li>';	
-	$recashnotice .='</ol>';
-	$recashnotice .=$themenotice.'<ol>';
-	if (REHUB_NAME_ACTIVE_THEME != 'RECASH'){
-		$recashnotice .= '<li><span style="color:red">Recash - not active.</span> <a href="'.$childthemeurl.'" target="_blank">'.$installtnotice.'</a></li>';
-	}
-	else{
-		$recashnotice .= '<li>Recash - <span style="color:green">active</span></li>';
-	}
 	$recashnotice .='</ol>';
 	$recashnotice .= $themeoptionnotice.'<ol>';
 	$recashnotice .= $rhstorenotice;
@@ -295,14 +276,6 @@ function rehub_import_files() {
 
 	$repicknotice = $requirednotice.'<ol>';
 	$repicknotice .= $rhcenotice;
-	$repicknotice .='</ol>';
-	$repicknotice .=$themenotice.'<ol>';
-	if (REHUB_NAME_ACTIVE_THEME != 'REPICK'){
-		$repicknotice .= '<li><span style="color:red">Repick - not active.</span> <a href="'.$childthemeurl.'" target="_blank">'.$installtnotice.'</a></li>';
-	}
-	else{
-		$repicknotice .= '<li>Repick - <span style="color:green">active</span></li>';
-	}
 	$repicknotice .='</ol>';
 	$repicknotice .= 'After installation, go to settings of Content Egg and enable Amazon and other modules. <a href="http://www.keywordrush.com/en/docs/content-egg" target="_blank">Check docs of Content Egg</a>. Choose "Shortcode only" for Add Content Option. <a href="https://wpsoul.com/guide-creating-profitable/" target="_blank">How to use plugin with theme in posts.</a>';
 
@@ -348,15 +321,7 @@ function rehub_import_files() {
 	$redokannotice .= '<li>Buddypress Follow</li>';
 	$redokannotice .= $rhgmwnotice;	
 	$redokannotice .= $rhrslidernotice;
-	$redokannotice .='</ol>';
-	$redokannotice .=$themenotice.'<ol>';
-	if (REHUB_NAME_ACTIVE_THEME != 'REDOKAN'){
-		$redokannotice .= '<li><span style="color:red">Redokan - not active.</span> <a href="'.$childthemeurl.'" target="_blank">'.$installtnotice.'</a></li>';
-	}
-	else{
-		$redokannotice .= '<li>Redokan - <span style="color:green">active</span></li>';
-	}
-	$redokannotice .='</ol>';		
+	$redokannotice .='</ol>';	
 	$redokannotice .= 'After installation, go to settings of vendor plugin for basic configuration. We recommend to read our guide for some additional information about <a href="https://wpsoul.com/how-to-create-multi-vendor-shop-on-wordpress/" target="_blank">Multi vendor sites</a> and also docs for Vendor plugin';
 
 	$redokannewnotice = $requirednotice.'<ol>';
@@ -639,6 +604,12 @@ function rehub_after_import_setup( $current_import ) {
 		$options_raw_data = OCDI\Helpers::data_from_file( $options_file_path );
 		if ( !is_wp_error( $options_raw_data ) ) {
 			$theme_options_data = json_decode( $options_raw_data, true );
+			$rehub_wizard_option = get_option('rehub_wizard_option');
+			if(!empty($rehub_wizard_option)){
+				foreach ($rehub_wizard_option as $opkey => $opvalue) {
+					$theme_options_data[$opkey] = sanitize_text_field($opvalue);
+				}
+			}
 			update_option( 'rehub_option', $theme_options_data );	
 			echo 'Theme Options was updated-------';	
 			if(class_exists('REHub_Framework_Customizer')){

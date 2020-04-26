@@ -236,7 +236,7 @@
                                     <div class="float-panel-woo-button rhhidden rh-flex-right-align mobilevisible">
                                         <?php if(!rehub_option('woo_btn_inner_disable')) :?>
                                             <?php if ( $product->add_to_cart_url() !='') : ?>
-                                                <?php if($product->get_type() == 'variable') {
+                                                <?php if($product->get_type() == 'variable' || $product->get_type() == 'booking') {
                                                     $url = '#top_ankor';
                                                 }else{
                                                     $url = esc_url( $product->add_to_cart_url() );

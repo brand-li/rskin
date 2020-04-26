@@ -1,4 +1,9 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+<?php
+    if(rehub_option('theme_subset') == 'repick') {
+        return include(rh_locate_template('repicksub/inc/parts/woogridpart.php'));
+    }
+?>
 <?php global $product; global $post;?>
 <?php if (empty( $product ) ) {return;}?>
 <?php $classes = array('product', 'col_item', 'woo_grid_compact', 'two_column_mobile', 'type-product','rh-hover-up');?>
@@ -120,7 +125,7 @@
         } ?>                         
     </div>
     <?php do_action('woocommerce_before_shop_loop_item');?> 
-    <h3 class="<?php echo getHotIconclass($post->ID, true); ?>">
+    <h3 class="<?php echo getHotIconclass($post->ID, true); ?> text-clamp text-clamp-2">
         <?php echo rh_expired_or_not($post->ID, 'span');?>
         <?php if ( $product->is_featured() ) : ?>
             <i class="fas fa-bolt mr5 ml5 orangecolor" aria-hidden="true"></i>

@@ -98,7 +98,7 @@
 	padding-top: 5px;
 }
 .registration-form-container {
-	float: left;
+	overflow: hidden;
 	width: 95%;
 	margin-bottom: 0;
 }

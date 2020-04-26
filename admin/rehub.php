@@ -55,72 +55,13 @@ if(!defined('PLUGIN_REPO')){
 }
 
 //Set default colors
-if (REHUB_NAME_ACTIVE_THEME == 'REDOKAN') {
-	define( 'REHUB_MAIN_COLOR', '#54ae3f');
-	define( 'REHUB_SECONDARY_COLOR', '#000000');
-	define( 'REHUB_BUTTON_COLOR', '#ff4e0c');
-	define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');
-	define( 'REHUB_DEFAULT_LAYOUT', 'communitylist');
-	define( 'REHUB_BOX_DISABLE', '1');
-}
-elseif (REHUB_NAME_ACTIVE_THEME == 'REVENDOR') {
-	define( 'REHUB_MAIN_COLOR', '#22bdb1');
-	define( 'REHUB_SECONDARY_COLOR', '#ff4e0c');
-	define( 'REHUB_BUTTON_COLOR', '#ff4e0c');
-	define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');				
-	define( 'REHUB_DEFAULT_LAYOUT', 'communitylist');
-	define( 'REHUB_BOX_DISABLE', '1');
-}
-elseif (REHUB_NAME_ACTIVE_THEME == 'RECASH') {
-	define( 'REHUB_MAIN_COLOR', '#fa9e19');
-	define( 'REHUB_SECONDARY_COLOR', '#000000');
-	define( 'REHUB_BUTTON_COLOR', '#2caa17');
-	define( 'REHUB_DEFAULT_LAYOUT', 'dealgrid');
-	define( 'REHUB_BOX_DISABLE', '0');
-	define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');				
-}elseif (REHUB_NAME_ACTIVE_THEME == 'REPICK') {
-	define( 'REHUB_MAIN_COLOR', '#D7541A');
-	define( 'REHUB_SECONDARY_COLOR', '#44aeff');
-	define( 'REHUB_BUTTON_COLOR', '#D7541A');
-	define( 'REHUB_DEFAULT_LAYOUT', 'gridfull');
-	define( 'REHUB_BOX_DISABLE', '0');
-	define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');				
-}elseif (REHUB_NAME_ACTIVE_THEME == 'RETHING') {
-	define( 'REHUB_MAIN_COLOR', '#B07C01');
-	define( 'REHUB_SECONDARY_COLOR', '#B07C01');
-	define( 'REHUB_BUTTON_COLOR', '#B07C01');
-	define( 'REHUB_DEFAULT_LAYOUT', 'gridfull');
-	define( 'REHUB_BOX_DISABLE', '0');
-	define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');				
-}elseif (REHUB_NAME_ACTIVE_THEME == 'REWISE') {
-	define( 'REHUB_MAIN_COLOR', '#ff823a');
-	define( 'REHUB_SECONDARY_COLOR', '#111111');
-	define( 'REHUB_BUTTON_COLOR', '#43c801');
-	define( 'REHUB_DEFAULT_LAYOUT', 'communitylist');
-	define( 'REHUB_BOX_DISABLE', '1');
-	define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');				
-}elseif (REHUB_NAME_ACTIVE_THEME == 'REDIRECT') {
-	define( 'REHUB_MAIN_COLOR', '#ff8a00');
-	define( 'REHUB_SECONDARY_COLOR', '#111111');
-	define( 'REHUB_BUTTON_COLOR', '#ff8a00');
-	define( 'REHUB_DEFAULT_LAYOUT', 'communitylist');
-	define( 'REHUB_BOX_DISABLE', '1');
-	define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');				
-}elseif (REHUB_NAME_ACTIVE_THEME == 'RECART') {
-	define( 'REHUB_MAIN_COLOR', '#7000f4');
-	define( 'REHUB_SECONDARY_COLOR', '#111111');
-	define( 'REHUB_BUTTON_COLOR', '#de1414');
-	define( 'REHUB_DEFAULT_LAYOUT', 'communitylist');
-	define( 'REHUB_BOX_DISABLE', '1');
-	define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');				
-}else{
-	define( 'REHUB_MAIN_COLOR', '#8035be');
-	define( 'REHUB_SECONDARY_COLOR', '#000000');
-	define( 'REHUB_BUTTON_COLOR', '#de1414');
-	define( 'REHUB_DEFAULT_LAYOUT', 'communitylist');
-	define( 'REHUB_BOX_DISABLE', '0');
-	define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');				
-}
+
+define( 'REHUB_MAIN_COLOR', '#8035be');
+define( 'REHUB_SECONDARY_COLOR', '#000000');
+define( 'REHUB_BUTTON_COLOR', '#de1414');
+define( 'REHUB_DEFAULT_LAYOUT', 'communitylist');
+define( 'REHUB_BOX_DISABLE', '0');
+define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');				
 
 //////////////////////////////////////////////////////////////////
 // Demo import
@@ -282,48 +223,10 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 					}
 				}
 
-		        if (REHUB_NAME_ACTIVE_THEME == 'RECASH') {
-		            if(!defined('THEMESHILD_SLUG')){
-						define('THEMESHILD_SLUG', 'recash');
-					} 
-					require_once ( locate_template( 'admin/update-checker.php' ) );					
-		        }
-		        elseif (REHUB_NAME_ACTIVE_THEME == 'REPICK') {
-		            if(!defined('THEMESHILD_SLUG')){
-						define('THEMESHILD_SLUG', 'repick');
-					} 
-					require_once ( locate_template( 'admin/update-checker.php' ) );					
-		        }
-		        elseif (REHUB_NAME_ACTIVE_THEME == 'RETHING') {
-		            if(!defined('THEMESHILD_SLUG')){
-						define('THEMESHILD_SLUG', 'rething');
-					}
-					require_once ( locate_template( 'admin/update-checker.php' ) );					
-		        }
-		        elseif (REHUB_NAME_ACTIVE_THEME == 'REVENDOR') {
-		            if(!defined('THEMESHILD_SLUG')){
-						define('THEMESHILD_SLUG', 'revendor');
-					} 
-					require_once ( locate_template( 'admin/update-checker.php' ) );					
-		        }  
-		        elseif (REHUB_NAME_ACTIVE_THEME == 'REDOKAN') {
-		            if(!defined('THEMESHILD_SLUG')){
-						define('THEMESHILD_SLUG', 'redokan');
-					} 
-					require_once ( locate_template( 'admin/update-checker.php' ) );					
-		        } 		         
-		        elseif (REHUB_NAME_ACTIVE_THEME == 'REDIRECT') {
-		            if(!defined('THEMESHILD_SLUG')){
-						define('THEMESHILD_SLUG', 'redirect');
-					} 
-					require_once ( locate_template( 'admin/update-checker.php' ) );					
-		        }           
-		        elseif (REHUB_NAME_ACTIVE_THEME == 'REWISE') {
-		            if(!defined('THEMESHILD_SLUG')){
-						define('THEMESHILD_SLUG', 'rewise');
-					}
-					require_once ( locate_template( 'admin/update-checker.php' ) );					 
-		        }
+				//if(!defined('THEMESHILD_SLUG')){
+					//define('THEMESHILD_SLUG', 'rewise');
+				//}
+				//require_once ( locate_template( 'admin/update-checker.php' ) );
 
 			}
 		}
@@ -390,12 +293,6 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 			$tf_purchase_code = isset( $data['tf_purchase_code'] ) ? sanitize_text_field($data['tf_purchase_code']) : '';
 
 			if ( '' !== $tf_username && '' !== $tf_purchase_code ) {
-				$rehub_options['tf_support_date'] = "2049-12-12";
-$rehub_options['tf_username'] = $tf_username;
-$rehub_options['tf_purchase_code'] = $tf_purchase_code;
-$result = update_option( 'Rehub_Key', $rehub_options );
-echo 'Updated';
-wp_die();
 
 				$rehub_options['tf_username'] = $tf_username;
 				$tf_purchase_code = strtolower(preg_replace('#([a-z0-9]{8})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{12})#','$1-$2-$3-$4-$5',$tf_purchase_code));
@@ -450,24 +347,7 @@ wp_die();
 					$maincolor = rehub_option('rehub_custom_color');
 				} 
 				else {
-					if (REHUB_NAME_ACTIVE_THEME == 'REPICK') {
-						$maincolor = '#D7541A';	
-					}
-					elseif (REHUB_NAME_ACTIVE_THEME == 'RETHING') {
-						$maincolor = '#B07C01';	
-					}
-					elseif (REHUB_NAME_ACTIVE_THEME == 'REVENDOR') {
-						$maincolor = '#17baae';	
-					}
-					elseif (REHUB_NAME_ACTIVE_THEME == 'REDOKAN') {
-						$maincolor = '#54ae3f';	
-					}	
-					elseif (REHUB_NAME_ACTIVE_THEME == 'RECART') {
-						$maincolor = '#7000f4';	
-					}												
-					else{
-						$maincolor = '#43c801';			
-					}
+					$maincolor = REHUB_MAIN_COLOR;			
 				}
 			?>			
 			<style type="text/css">
@@ -476,13 +356,6 @@ wp_die();
 					font-family:"<?php echo rehub_option('rehub_headings_font'); ?>", trebuchet ms !important;
 					font-weight:<?php echo rehub_option('rehub_headings_font_weight'); ?> !important;
 					font-style:<?php echo rehub_option('rehub_headings_font_style'); ?> !important;
-					<?php if(rehub_option('rehub_headings_font_upper') =='1') : ?>text-transform:uppercase !important;<?php endif; ?>			
-				}
-			<?php elseif(REHUB_NAME_ACTIVE_THEME == 'RECART') : ?>
-				.editor-post-title__block .editor-post-title__input, .wp-block-heading h1, .wp-block-heading h2, .wp-block-heading h3, .wp-block-heading h4, .wp-block-heading h5, .wp-block-heading h6, .wp-block-quote.is-style-large, .wp-block-button .wp-block-button__link{
-					font-family:"Poppins", trebuchet ms !important;
-					font-weight:700 !important;
-					font-style: normal !important;
 					<?php if(rehub_option('rehub_headings_font_upper') =='1') : ?>text-transform:uppercase !important;<?php endif; ?>			
 				}				
 			<?php endif;?>

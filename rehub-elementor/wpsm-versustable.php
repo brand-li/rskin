@@ -23,6 +23,9 @@ class WPSM_Versus_Line_Widget extends Widget_Base {
         return esc_html__('Versus Table', 'rehub-theme');
     }
 
+    public function get_style_depends() {
+        return [ 'rhversus' ];
+    }
         /**
      * Get widget icon.
      * @since 1.0.0

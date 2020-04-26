@@ -14,7 +14,7 @@ add_action( 'elementor/preview/enqueue_scripts', function () {
     wp_enqueue_script('rehub-elementor', get_template_directory_uri() . '/rehub-elementor/js/custom-elementor.js', array('jquery'), '2.1', true);
 }); 
 add_action( 'elementor/preview/enqueue_styles', function() {
-    wp_enqueue_style( 'video-pl' );
+    //wp_enqueue_style( 'video-pl' );
     //wp_enqueue_style('modulobox');
 } );    
 
@@ -71,7 +71,6 @@ add_action( 'init', function () {
     require_once (rh_locate_template('rehub-elementor/wpsm-taxarchive.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-videolist.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-catbox.php'));
-    require_once (rh_locate_template('rehub-elementor/wpsm-proscons.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-searchbox.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-cardbox.php'));
     require_once (rh_locate_template('rehub-elementor/wpsm-getter.php'));
@@ -90,6 +89,7 @@ add_action( 'init', function () {
     //require_once (rh_locate_template('rehub-elementor/wpsm-twocolnews.php'));
     //require_once (rh_locate_template('rehub-elementor/wpsm-numhead.php')); 
     //require_once (rh_locate_template('rehub-elementor/wpsm-box.php'));
+    //require_once (rh_locate_template('rehub-elementor/wpsm-proscons.php'));
 },11);
 
 if(!function_exists('rh_add_el_page_settings_controls')){

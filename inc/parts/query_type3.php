@@ -3,6 +3,9 @@
     if(rehub_option('theme_subset') == 'rething') {
         return include(rh_locate_template('rethingsub/inc/parts/query_type3.php'));
     }
+    elseif(rehub_option('theme_subset') == 'repick') {
+        return include(rh_locate_template('repicksub/inc/parts/query_type3.php'));
+    }
 ?>
 <?php 
 global $post;

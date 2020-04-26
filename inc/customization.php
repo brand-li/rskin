@@ -431,8 +431,10 @@ input#ywqa-send-answer,
 nav.top_menu > ul > li.vertical-menu.border-sec-color > .sub-menu{border-color: <?php echo ''.$secondarycolor ?>}
 .rh_wrapper_video_playlist .rh_video_currently_playing, .rh_wrapper_video_playlist .rh_video_currently_playing.rh_click_video:hover {background-color: <?php echo ''.$secondarycolor; ?>;box-shadow: 1200px 0 0 <?php echo ''.$secondarycolor; ?> inset;}	
 .rehub-sec-color{color: <?php echo ''.$secondarycolor ?>}	
-<?php if (REHUB_NAME_ACTIVE_THEME == 'REPICK'):?>
+<?php if (rehub_option('theme_subset') == 'repick'):?>
 .rehub_chimp{background-color: <?php echo ''.$secondarycolor; ?>;border-color: <?php echo ''.$secondarycolor; ?>;}
+.rehub_chimp h3{color: #fff}
+.rehub_chimp p.chimp_subtitle, .rehub_chimp p{color: #eaeaea !important}
 <?php endif;?>
 
 /**********BUTTON COLOR SCHEME*************/
@@ -463,6 +465,7 @@ nav.top_menu > ul > li.vertical-menu.border-sec-color > .sub-menu{border-color: 
 <?php if (rehub_option('enable_smooth_btn') == 1):?>
 	<?php $boxshadow = hex2rgba($btncolor, 0.25);?>
 	<?php $boxshadowhover = hex2rgba($btncolorhover, 0.35);?>
+	form.search-form input[type="text"]{border-radius: 4px}
 	.price_count, .rehub_offer_coupon, #buddypress .dir-search input[type=text], .gmw-form-wrapper input[type=text], .gmw-form-wrapper select, .rh_post_layout_big_offer .priced_block .btn_offer_block, #buddypress a.button, .btn_more, #main_header .wpsm-button, #rh-header-cover-image .wpsm-button, #wcvendor_image_bg .wpsm-button, .rate-bar-bar, .rate-bar, .rehub-main-smooth, .re_filter_instore span.re_filtersort_btn:hover, .re_filter_instore span.active.re_filtersort_btn, .head_search .search-form, .head_search form.search-form input[type="text"]{border-radius: 100px}
 	.news .priced_block .price_count, .blog_string  .priced_block .price_count, .main_slider .price_count{margin-right: 5px}
 	.right_aff .priced_block .btn_offer_block, .right_aff .priced_block .price_count{border-radius: 0 !important}
@@ -477,6 +480,7 @@ nav.top_menu > ul > li.vertical-menu.border-sec-color > .sub-menu{border-color: 
 <?php elseif (rehub_option('enable_smooth_btn') == 2):?>
 	<?php $boxshadow = hex2rgba($btncolor, 0.2);?>
 	<?php $boxshadowhover = hex2rgba($btncolorhover, 0.4);?>
+	form.search-form input[type="text"]{border-radius: 4px}
 	.news .priced_block .price_count, .blog_string  .priced_block .price_count, .main_slider .price_count{margin-right: 5px}	
 	.right_aff .priced_block .btn_offer_block, .right_aff .priced_block .price_count{border-radius: 0 !important}
 	form.search-form.product-search-form input[type="text"]{border-radius: 4px 0 0 4px;}
@@ -704,14 +708,6 @@ input[type="submit"].dokan-btn-theme:active, a.dokan-btn-theme:active, .dokan-bt
 	#branded_bg {height: 100%;left: 0;position: fixed;top: 0;width: 100%;z-index: 0;}
 	footer, .top_theme, .content, .footer-bottom, header { position: relative; z-index: 1 }
 <?php endif; ?>	
-<?php if (REHUB_NAME_ACTIVE_THEME == 'REHUB' || REHUB_NAME_ACTIVE_THEME == 'RECASH') :?>
-	@media(min-width: 1224px) {
-		.single-post .full_width > article.post, single-product .full_width > article.post{padding: 32px}
-		.title_single_area.full_width{margin: 25px 32px 0 32px;}	
-		.main-side .title_single_area.full_width{margin: 0;}
-		.full_width .wpsm-comptable td img{padding:5px}
-	}
-<?php endif; ?>	
 <?php if(rehub_option('rehub_bpheader_image') !='') : ?>
 	#bprh-full-header-image{background-image: url("<?php echo rehub_option('rehub_bpheader_image'); ?>");background-position:center top;background-repeat:no-repeat;background-size:cover;}
 <?php endif; ?>
@@ -742,42 +738,159 @@ input[type="submit"].dokan-btn-theme:active, a.dokan-btn-theme:active, .dokan-bt
 		.woocommerce .onsale{background-color: <?php echo rehub_option('wooloop_sale_color');?>}
 	<?php endif;?>				
 <?php endif;?>
-<?php if(rehub_option('theme_subset') !='') : ?>
-	<?php if(rehub_option('theme_subset') =='redeal') : ?>
-		.litesearchstyle form.search-form [type="submit"]{height:40px; line-height:40px; padding: 0 16px}
-		.litesearchstyle form.search-form input[type="text"]{padding-left:15px; height:40px}
-		header .search{max-width:500px; width:100% !important}
-		.header_six_style .head_search{min-width:300px}
-		.logo_section_wrap .wpsm-button.medium{padding:12px 16px; font-size:16px}
-	<?php elseif(rehub_option('theme_subset') =='redirect') : ?>
-		#main_header .rh-container{width: 100%; padding: 0 20px}
-		@media (max-width: 500px){#main_header .rh-container{width: 100%; padding: 0 12px}}
-	<?php elseif(rehub_option('theme_subset') =='rething') : ?>
-		.rething_item a.cat {font: 12px Arial;text-transform: uppercase;color: #666 !important;text-decoration: none !important;}
-		.rething_item.small_post{ overflow: hidden; float: left;   padding: 0; border: 1px solid #ddd; text-align: center;}
-		.rething_item.small_post .cat_link_meta:before{ display: none;}
-		.rething_item.small_post .priced_block.block_btnblock .btn_offer_block{display: block;}
-		.small_post .re-line-badge.re-line-table-badge{left: 0}
-		.small_post .re-line-badge.re-line-table-badge span::before{display: none;}
-		.wrap_thing { padding: 20px 30px;}
-		.hover_anons {position: relative;overflow: hidden;min-height: 220px;max-height: 220px;margin: 0px auto 5px;max-width: 900px;display: block;}
-		.hover_anons:after {content: " ";display: block;position: absolute;border-bottom: 0;left: 0;bottom: 0px;width: 100%;height: 70px;
-		background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
-		background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
-		background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
-		background-repeat: repeat-x;
-		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffffff', GradientType=0);}
-		.thing-post-like{ -webkit-transition: all 0.4s ease 0s; -moz-transition: all 0.4s ease 0s; -ms-transition: all 0.4s ease 0s; -o-transition: all 0.4s ease 0s; transition: all 0.4s ease 0s; background-color: rgba(255, 255, 255, 0.9); width: 60px; height: 55px; text-align: center; position: absolute; bottom: -55px; left: 50%; margin-left: -30px; z-index: 9}
-		figure:hover .thing-post-like{bottom:0;}
-		.thing-post-like .thumbscount{ color: #111; font-size: 14px; margin: 0 auto; display: block;}
-		.thing-post-like .wishaddwrap, .thing-post-like .wishaddedwrap, .thing-post-like .wishremovedwrap{display: none;}
-		.thing-post-like .thumbplus:before{color: red}
-		.rething_item.small_post figure{ margin: 0; overflow: hidden;}
-		.rething_item.small_post .priced_block { margin: 0}
-		.rething_item.small_post h2{ letter-spacing: 1px; margin-bottom: 15px}
-		.featured_mediad_wrap{ float: right; margin: 35px 0 15px 55px; width: 300px; height: 250px}
-		.rething_button .btn_more{background-color: transparent;display: inline-block; padding: 10px 22px;font-size: 13px;line-height: 1.33333;text-transform: uppercase; position: relative;  text-decoration: none !important;}
-	<?php endif;?>
+<?php if(rehub_option('dark_theme')) : ?>
+.dark_body .rh-fullbrowser .top_chart li > div, .dark_body .rh-fullbrowser .top_chart_controls .controls, .dark_body.woocommerce .widget_layered_nav ul li a, .dark_body.woocommerce .widget_layered_nav ul li span, .dark_body .sidebar .widget.widget-meta-data-filter h3, .dark_body .sidebar .widget.widget-meta-data-filter h5, .dark_body .sidebar .widget.widget-meta-data-filter h4 a, .dark_body .sidebar .mdf_widget_found_count, .dark_body .sidebar .widget.widget-meta-data-filter, .dark_body .sidebar .widget.widget-meta-data-filter h4.data-filter-section-title, .dark_body .main-side .wpsm-title *, .dark_body .main-side .top_rating_text > *, .dark_body .main-side .top_rating_text, .dark_body .main-side .top_rating_text a, .dark_body .main-side .title h1, .dark_body .main-side .title h5, .dark_body .main-side #infscr-loading, .dark_body .sidebar .widget .title, .dark_body .widget_search i, .dark_body .sidebar .widget, .dark_body .sidebar .widget a, .dark_body .home_picker_next i, .dark_body .filter_home_pick, .dark_body .filter_home_pick li span, .dark_body .woocommerce-result-count, .dark_body .no_more_posts, .dark_body .rh_post_layout_outside .title_single_area h1, .dark_body .sidebar .rh-deal-name a, .dark_body ul.page-numbers li a, .dark_body div.sortingloading:after, .dark_body .re_filter_panel ul.re_filter_ul li span:not(.active){color: #fff;}
+.dark_body .woocommerce-breadcrumb, 
+.dark_body .woocommerce-breadcrumb a,
+.dark_body .rh_post_layout_outside .breadcrumb,
+.dark_body .rh_post_layout_outside .breadcrumb a,
+.dark_body .rh_post_layout_outside .post-meta span a, 
+.dark_body .rh_post_layout_outside .post-meta a.admin, 
+.dark_body .rh_post_layout_outside .post-meta a.cat,
+.dark_body .top_theme a,
+.dark_body .top_theme,
+.dark_body .widget .tabs-item .detail h5 a, 
+.dark_body .rh_post_layout_outside .title_single_area .post-meta span,
+.dark_body .sidebar .price del{color: #eee}
+.dark_body .products .product{background-color: #fff}
+.dark_body .rh_post_layout_outside a.comment_two{border-color: #fff; color: #fff !important}
+.dark_body .rh_post_layout_outside a.comment_two:after{border-top-color:#fff }
+.rh_post_layout_outside .title_single_area, .dark_body .widget.better_woocat{border: none !important;}
+.dark_body .main-side .rh-post-wrapper .title h1{color: #111}
+.dark_body .sidebar .widget p, .dark_body .sidebar .widget .post-meta, .dark_body .sidebar .widget .post-meta a { color: #999}
+.dark_body .sidebar .widget, .sidebar .widget.tabs, .sidebar .widget.better_menu{ padding: 0; background: none transparent; border:none;}
+.dark_body .sidebar .widget, .dark_body .sidebar .widget.tabs, .dark_body .sidebar .widget.better_menu{box-shadow: none;}
+.dark_body .sidebar .widget, .sidebar .widget.tabs{ }
+.dark_body .sidebar .widget.top_offers, .dark_body .sidebar .widget.cegg_widget_products{ border: none; padding: 0 }
+.dark_body .widget.widget_affegg_widget .wooaff_tag{ color: #eee !important}
+.dark_body .widget.widget_affegg_widget .egg_widget_grid.tabs-item figure{ background-color: #fff!important; padding: 10px !important}
+.dark_body .sidebar .widget.widget_affegg_widget{ padding: 0 !important; border: none !important}
+.dark_body .wrap_thing{background-color: #EFF3F6}
+.dark_body .hover_anons:after { background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #EFF3F6 100%); background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #EFF3F6 100%); background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #EFF3F6 100%); background-repeat: repeat-x; }
+.dark_body .repick_item.small_post{box-shadow: none !important;}
+.main-side .title h1{margin-top: 10px}
+.dark_body .widget.widget_affegg_widget .tabs-item figure{padding: 5px;background-color: #fff;}
+.dark_body .sidebar .widget.widget-meta-data-filter, .dark_body .sidebar .widget.widget-meta-data-filter h4.data-filter-section-title{padding: 0 !important; border: none !important;background: none transparent}
+.dark_body .widget.top_offers .tabs-item, .dark_body .widget.cegg_widget_products .tabs-item{border: 1px solid #7c7c7c;}
+.dark_body .widget.tabs .tabs-item{border: 1px solid #7c7c7c;}
+.dark_body .sidebar .tabs-item > div, .dark_body .footer-bottom .tabs-item > div {border-bottom: 1px solid #5f5f5f;}
+.dark_body .color_sidebar:not(.dark_sidebar) .tabs-item{ background-color: transparent;}
+.dark_body .main-side, .dark_body .vc_row.vc_rehub_container > .vc_col-sm-8, .no_bg_wrap.main-side, .dark_body .masonry_grid_fullwidth .small_post, .dark_body .repick_item.small_post, .dark_body .tabsajax .re_filter_panel {border:none; box-shadow: none;}
+.dark_body .postNavigation a { box-shadow: none;}
+.dark_body .main-nav {box-shadow: 0 1px 3px #111;}
+body.dark_body.noinnerpadding .rh-post-wrapper {background:#fff; border: 1px solid #e3e3e3;padding: 25px;box-shadow: 0 2px 2px #ECECEC;}
+.dark_body .widget.tabsajax .re_filter_panel ul.re_filter_ul li span:not(.active){color:#111;}
+<?php endif;?>
+
+<?php if(rehub_option('theme_subset') =='redeal') : ?>
+	.litesearchstyle form.search-form [type="submit"]{height:40px; line-height:40px; padding: 0 16px}
+	.litesearchstyle form.search-form input[type="text"]{padding-left:15px; height:40px}
+	header .search{max-width:500px; width:100% !important}
+	.header_six_style .head_search{min-width:300px}
+	.logo_section_wrap .wpsm-button.medium{padding:12px 16px; font-size:16px}
+<?php elseif(rehub_option('theme_subset') =='redirect') : ?>
+	#main_header .rh-container{width: 100%; padding: 0 20px}
+	@media (max-width: 500px){#main_header .rh-container{width: 100%; padding: 0 12px}}
+<?php elseif(rehub_option('theme_subset') =='rething') : ?>
+	.rething_item a.cat {font: 12px Arial;text-transform: uppercase;color: #666 !important;text-decoration: none !important;}
+	.rething_item.small_post{ overflow: hidden; float: left;   padding: 0; border: 1px solid #ddd; text-align: center;}
+	.rething_item.small_post .cat_link_meta:before{ display: none;}
+	.rething_item.small_post .priced_block.block_btnblock .btn_offer_block{display: block;}
+	.small_post .re-line-badge.re-line-table-badge{left: 0}
+	.small_post .re-line-badge.re-line-table-badge span::before{display: none;}
+	.wrap_thing { padding: 20px 30px;}
+	.hover_anons {position: relative;overflow: hidden;min-height: 220px;max-height: 220px;margin: 0px auto 5px;max-width: 900px;display: block;}
+	.hover_anons:after {content: " ";display: block;position: absolute;border-bottom: 0;left: 0;bottom: 0px;width: 100%;height: 70px;
+	background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+	background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffffff', GradientType=0);}
+	.thing-post-like{ -webkit-transition: all 0.4s ease 0s; -moz-transition: all 0.4s ease 0s; -ms-transition: all 0.4s ease 0s; -o-transition: all 0.4s ease 0s; transition: all 0.4s ease 0s; background-color: rgba(255, 255, 255, 0.9); width: 60px; height: 55px; text-align: center; position: absolute; bottom: -55px; left: 50%; margin-left: -30px; z-index: 9}
+	figure:hover .thing-post-like{bottom:0;}
+	.thing-post-like .thumbscount{ color: #111; font-size: 14px; margin: 0 auto; display: block;}
+	.thing-post-like .wishaddwrap, .thing-post-like .wishaddedwrap, .thing-post-like .wishremovedwrap{display: none;}
+	.thing-post-like .thumbplus:before{color: red}
+	.rething_item.small_post figure{ margin: 0; overflow: hidden;}
+	.rething_item.small_post .priced_block { margin: 0}
+	.rething_item.small_post h2{ letter-spacing: 1px; margin-bottom: 15px}
+	.featured_mediad_wrap{ float: right; margin: 35px 0 15px 55px; width: 300px; height: 250px}
+	.rething_button .btn_more{background-color: transparent;display: inline-block; padding: 10px 22px;font-size: 13px;line-height: 1.33333;text-transform: uppercase; position: relative;  text-decoration: none !important;}
+<?php elseif(rehub_option('theme_subset') =='repick') : ?>
+	.filter_home_pick .re_filter_panel{box-shadow:none;}
+	.repick_item.small_post { float: left;padding: 0; overflow: visible;  }
+	.masonry_grid_fullwidth .small_post{border: 1px solid #ddd;}
+	.repick_item figure { min-height: 300px; overflow: hidden; text-align: center; }
+	.repick_item figure img {transition: opacity 0.5s ease;}
+	.repick_item.centered_im_grid figure img { 
+	height: auto !important; 
+	position: relative;
+	top: 50%; 
+	transform: translateY(-50%);
+	-ms-transform: translateY(-50%); 
+	-webkit-transform: translateY(-50%); 
+	-o-transform: translateY(-50%); }
+	.repick_item.contain_im_grid figure img { height: auto !important; width: 100% !important; }
+	.repick_item figure.pad_wrap { padding: 20px; }
+	.repick_item figure.pad_wrap img { max-height: 100%; max-width: 100%;  }
+	.masonry_grid_fullwidth.loaded{padding-top: 10px}
+	.small_post .onsale, .small_post .onfeatured{display: none;}
+	@media (min-width: 400px) {
+	  figure.mediad_wrap_pad{ padding: 20px}
+	}
+	.repick_item figure.h_reduce img { transform: none; position: static; }
+	.hover_anons { position: relative; overflow: hidden; min-height: 150px; max-height: 150px; margin: 0px auto 5px; max-width: 900px; display: block; }
+	.hover_anons.meta_enabled{min-height: 210px; max-height: 210px}
+	.hover_anons:after { content: " "; display: block; position: absolute; border-bottom: 0; left: 0; bottom: 0px; width: 100%; height: 70px; background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%); background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #ffffff 100%); background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 100%); background-repeat: repeat-x; }
+	.repick_item.small_post figure { margin: 0 !important }
+	.repick_item.small_post .priced_block { margin: 0 }
+	.repick_item.small_post h2 { letter-spacing: 0; margin-bottom: 15px; font-size: 20px }
+	.repick_item a.cat{ font: 12px Arial; text-transform: uppercase; color: #111; text-decoration: none !important }
+	.wrap_thing { padding: 20px 20px 50px 20px; position: relative; overflow: hidden;  }
+	.repick_item .wrap_thing p { font-size: 15px; line-height: 21px; margin-bottom: 0 }
+	.repick_item .priced_block .price_count { position: absolute; bottom: 0; left: 0; font-size: 14px; padding: 7px 14px; line-height: 14px; border-radius: 0 !important}
+	.repick_item .priced_block .price_count del { display: none; }
+	.repick_item .priced_block .btn_offer_block, .repick_item .btn_more, .repick_item .rehub_offer_coupon, .repick_item .priced_block .button { position: absolute; bottom: 0; right: 0; padding: 10px 18px !important; border-radius: 0 !important }
+	.repick_item .rehub_offer_coupon.not_masked_coupon{display: none;}
+	.repick_item .priced_block .btn_offer_block:hover { padding: 10px 20px }
+	.repick_item .priced_block .btn_offer_block:active { top: auto; }
+	.repick_item .price_count { background: #F9CC50; color: #111 }
+	.repick_item .btn_more { border: none; }
+	.repick_item .hotmeter_wrap { position: absolute; bottom: 0; left: 0; z-index: 9; padding: 18px; background-color: rgba(255, 255, 255, 0.82); }
+	.repick_item .priced_block .btn_offer_block { font-size: 15px; }
+	.repick_item .coupon_btn:before{display: none;}
+	.repick_grid_meta{ margin: 15px 0; overflow: hidden; }
+	.repick_grid_meta .admin_meta_grid{font: 12px/29px Arial; color: #aaa; float: left; margin-right: 15px}
+	.repick_grid_meta .admin_meta_grid img{border-radius: 50%; margin-right: 8px; vertical-align: middle;}
+	.repick_grid_meta .post_thumbs_comm{margin-right: 15px}
+	.repick_grid_meta .admin_meta_grid a{color: #aaa}
+	.repick_grid_meta .thumbscount{color:#67A827}
+	.repick_grid_meta .thumbscount.cold_temp{color: #D10000;}
+	.repick_item.centered_im_grid figure{height: 310px}
+	.repick_item.centered_im_grid figure > a img{width: auto;}
+	body .woocommerce .products.grid_woo .product{padding: 0}
+	@media only screen and (min-width: 480px) and (max-width: 767px) {
+		.repick_item figure{min-height: 250px}
+		.repick_item.centered_im_grid figure{ height: 250px}
+	}
+<?php elseif(rehub_option('theme_subset') =='recash') : ?>
+	.widget.tabs > ul{border: none;}
+	.widget.better_menu .bordered_menu_widget, .sidebar .widget.tabs, .widget.outer_widget{border: none; padding: 0; background-color: transparent; box-shadow: none;}
+	.postNavigation a{ background-color: #868686}
+
+	.showmefulln{position: absolute;bottom: 20px;left: 20px; margin-top: 15px; line-height: 12px; font-size: 12px; font-weight: normal !important; float: right;}
+	.showmefulln:after{ font-family: Font Awesome\ 5 Pro; content: "\f107"; margin: 0 3px; display: inline-block; }
+	.showmefulln.compress:after{content: "\f106";}
+	.newscom_content_ajax .post_carousel_block, .newscom_content_ajax .countdown_dashboard, .newscom_content_ajax .post_slider{display: none !important}
+	.showmefulln.compress{position: static;}
+
+	@media screen and (max-width: 767px){
+			.showmefulln{position: static;}
+		.carousel-style-3 .controls.prev { left: 10px;  }
+		.carousel-style-3 .controls.next { right: 10px; }	
+	}
+	.widget.tabsajax .title:before{font-family: Font Awesome\ 5 Pro;content:"\f3a5"; color:#fa9e19; margin-right:8px;}
+	body .sidebar .wpsm_recent_posts_list .item-small-news, body .elementor-widget-sidebar .wpsm_recent_posts_list .item-small-news {border-bottom: 1px solid #E4E4E4;padding: 10px 0;background: radial-gradient(ellipse at top, rgba(255,255,255,0.75), rgba(255,255,255,0) 75%);}
 <?php endif;?>
 
 </style>

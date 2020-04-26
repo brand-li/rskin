@@ -7,7 +7,7 @@
 		$args['tax_query'] = array(array('taxonomy' => trim($catslug), 'terms' => trim($catname), 'field' => 'name'));
 	}
 	
-	wp_enqueue_script('totemticker');
+	wp_enqueue_script('totemticker');wp_enqueue_style('rhnewsticker');
 ?>
 <!-- NEWS SLIDER -->
 <div class="top_theme">

@@ -3,7 +3,7 @@
 global $post; global $product;
 ?>  
 <?php if (empty( $product ) ) {return;}?>
-<?php $classes = array('product', 'col_item', 'column_grid', 'type-product','rh-hover-up', 'rh-cartbox', 'woo_column_grid', 'rh-shadow4', 'flowvisible');?>
+<?php $classes = array('product', 'col_item', 'column_grid', 'type-product','rh-hover-up', 'rh-cartbox', 'two_column_mobile', 'woo_column_grid', 'rh-shadow4', 'flowvisible');?>
 <?php $attrelpanel = (isset($attrelpanel)) ? $attrelpanel : '';?>
 <?php $woolinktype = (isset($woolinktype)) ? $woolinktype : '';?>
 <?php $woo_aff_btn = rehub_option('woo_aff_btn');?>
@@ -45,7 +45,31 @@ global $post; global $product;
     <?php  $badge = get_post_meta($post->ID, 'is_editor_choice', true); ?>
     <?php if ($badge !='' && $badge !='0') :?> 
         <?php echo re_badge_create('ribbonleft'); ?>
-    <?php endif; ?>  
+    <?php endif; ?> 
+    <div class="button_action rh-shadow-sceu pt5 pb5 rhhidden showonsmobile">
+        <div>
+            <?php $wishlistadded = esc_html__('Added to wishlist', 'rehub-theme');?>
+            <?php $wishlistremoved = esc_html__('Removed from wishlist', 'rehub-theme');?>
+            <?php echo RH_get_wishlist($post->ID, '', $wishlistadded, $wishlistremoved);?>  
+        </div>
+        <?php if(rehub_option('woo_quick_view')):?>
+            <div>
+                <?php echo RH_get_quick_view($post->ID, 'icon', 'pt10 pl5 pr5 pb10'); ?>
+            </div>
+        <?php endif;?>
+        <?php if(rehub_option('compare_page') || rehub_option('compare_multicats_textarea')) :?>
+            <span class="compare_for_grid">            
+                <?php 
+                    $cmp_btn_args = array(); 
+                    $cmp_btn_args['class']= 'comparecompact';
+                    if(rehub_option('compare_woo_cats') != '') {
+                        $cmp_btn_args['woocats'] = esc_html(rehub_option('compare_woo_cats'));
+                    }
+                ?>                                                  
+                <?php echo wpsm_comparison_button($cmp_btn_args); ?> 
+            </span>
+        <?php endif;?>                                                            
+    </div>  
     <figure class="text-center mb0<?php if(!$customcrop) echo ' eq_figure';?>">      
         <a class="img-centered-flex rh-flex-justify-center<?php if(!$customcrop) echo ' rh-flex-center-align';?>" href="<?php echo esc_url($woolink) ;?>"<?php echo ''.$wootarget ;?>>
             <?php if($custom_col) : ?>
@@ -65,11 +89,11 @@ global $post; global $product;
     </figure>
     </div>
     <?php do_action( 'rehub_after_grid_column_figure' ); ?>
-    <div class="pb10 pr20 pl20">
+    <div class="pb10 pr15 pl15">
         <div class="colored_rate_bar floatleft">
         <?php $reviewscore = wpsm_reviewbox(array('compact'=>'smallcircle', 'id'=> $product->get_id()));?><?php echo ''.$reviewscore;?>
         </div>         
-        <h3 class="mb15 mt0 font105 fontnormal lineheight20 <?php echo getHotIconclass($post->ID, true); ?>">
+        <h3 class="text-clamp text-clamp-3 mb15 mt0 font105 mobfont100 fontnormal lineheight20 <?php echo getHotIconclass($post->ID, true); ?>">
             <?php if ( $product->is_featured() ) : ?>
                 <i class="fas fa-bolt mr5 ml5 orangecolor" aria-hidden="true"></i>
             <?php endif; ?>
@@ -135,7 +159,7 @@ global $post; global $product;
         <?php do_action( 'woocommerce_after_shop_loop_item' );?>
     </div>
     <div class="border-top pt10 pr10 pl10 pb10 rh-flex-center-align abposbot">
-        <div class="button_action position-static">
+        <div class="button_action position-static hideonsmobile">
             <div class="floatleft mr5 rtlfloatleft">
                 <?php $wishlistadded = esc_html__('Added to wishlist', 'rehub-theme');?>
                 <?php $wishlistremoved = esc_html__('Removed from wishlist', 'rehub-theme');?>
@@ -159,7 +183,7 @@ global $post; global $product;
                 </span>
             <?php endif;?>                                                            
         </div>
-        <div class="rh-flex-right-align rehub-main-font pr5 pricefont100 greencolor fontbold mb0 lineheight20">
+        <div class="rh-flex-right-align mobilesblockdisplay rehub-main-font pr5 pricefont100 greencolor fontbold mb0 lineheight20">
             <?php wc_get_template( 'loop/price.php' ); ?>
             <?php echo ''.$sales_html; ?>            
         </div>        

@@ -64,7 +64,7 @@ function rehub_register_sidebars() {
 		'before_title' => '<div class="title">',
 		'after_title' => '</div>',
 	));
-	if(rehub_option('enable_brand_taxonomy') == 1 || REHUB_NAME_ACTIVE_THEME == 'RECASH'){
+	if(rehub_option('enable_brand_taxonomy') == 1){
 		register_sidebar(array(
 			'id' => 'dealstore-sidebar',
 			'name' => esc_html__('Affiliate store archive sidebar', 'rehub-theme'),

@@ -1,12 +1,17 @@
+@media(min-width: 1224px) {
+	.single-post .full_width > article.post, single-product .full_width > article.post{padding: 32px}
+	.title_single_area.full_width{margin: 25px 32px 0 32px;}	
+	.main-side .title_single_area.full_width{margin: 0;}
+	.full_width .wpsm-comptable td img{padding:5px}
+}
 @media screen and (max-width: 1279px) and (min-width: 1141px){
-nav.top_menu > ul > li > a { padding-left: 12px; padding-right: 12px}
+	nav.top_menu > ul > li > a { padding-left: 12px; padding-right: 12px}
 }
-@media screen and (max-width: 1140px) {
-}
+
 @media screen and (max-width: 1140px) and (min-width: 1024px){
-.main_slider .flex-overlay h2{ font-size: 36px; line-height: 34px}
-nav.top_menu > ul > li > a { font-size: 14px; padding-left: 8px; padding-right: 8px   }
-nav.top_menu > ul > li{border: none;}
+	.main_slider .flex-overlay h2{ font-size: 36px; line-height: 34px}
+	nav.top_menu > ul > li > a { font-size: 14px; padding-left: 8px; padding-right: 8px   }
+	nav.top_menu > ul > li{border: none;}
 }
 
 /****************************************************************************
@@ -72,7 +77,6 @@ body:not(.noinnerpadding) .rh-post-wrapper figure.alignwide, body:not(.noinnerpa
 #wcvendor_image_bg .woocommerce .star-rating{float: none; display: inline-block; margin-bottom: 5px}
 .table_view_charts .is-sticky h2{font-size: 14px}
 nav.top_menu, .header_top_wrap, .float-panel-woo-title, #float-panel-woo-area del, .rh-float-panel .float-panel-woo-info{ display: none;}
-.top_theme #vertical-ticker { font-size: 12px }
 .rate-line .line span { height: 18px }
 .rate-line .count { top: -3px }
 article h1 { font-size: 28px; line-height: 26px }
@@ -124,7 +128,6 @@ header .logo-section .search { width: 90% !important; float:none !important; mar
 header .logo {  float: none; margin: 0 auto 10px; text-align:center }
 a.comment{ padding: 1px 3px; font-size:12px}
 .footer_most_bottom{padding: 0 20px; text-align: center;}
-.floatright.postviewcomm{margin-top: 15px; float: none; }
 .sidebar.authorsidebar{margin: 0 0 20px 0}
 .footer-bottom .widget{margin-bottom: 15px}
 .footer-bottom .footer_widget { width: 100%; float: none; display: block; }

@@ -65,7 +65,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
                         </a>
                     </div>
                     <?php if (method_exists('TemplateHelper', 'getCashbackStr') && $cashback_str = TemplateHelper::getCashbackStr($item)): ?>
-                        <div class="font90 inlinestyle mb10 rehub-main-color"><?php echo sprintf(__('Plus %s CashBack', 'rehub-theme'), $cashback_str); ?></div>
+                        <div class="font90 inlinestyle mb10 rehub-main-color"><?php echo sprintf(esc_html__('Plus %s CashBack', 'rehub-theme'), $cashback_str); ?></div>
                     <?php endif; ?>                          
                     <?php if (!empty($item['extra']['estimatedDeliveryTime'])): ?>
                         <small class="small_size">

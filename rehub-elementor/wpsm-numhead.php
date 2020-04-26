@@ -22,6 +22,10 @@ class Widget_NumHead extends Widget_Base {
 		return esc_html__('Numbered Heading', 'rehub-theme');
 	}
 
+    public function get_style_depends() {
+        return [ 'rhnumbox' ];
+    }
+
 	/* Widget Icon */
 	public function get_icon() {
 		return 'eicon-counter-circle';

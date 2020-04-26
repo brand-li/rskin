@@ -3124,7 +3124,7 @@ ob_start();
 ?>
 <?php wp_enqueue_script('owlcarousel'); ?>
 <?php $autodata = ($autorotate) ? 'data-auto="1"' : 'data-auto="0"' ;?>
-<?php $full_row_data = ($showrow == '5' || $showrow == '6') ? 'data-fullrow="1"' : 'data-fullrow="0"' ;?>
+<?php $full_row_data = 'data-fullrow="1"' ;?>
 <?php if ($carouseltype == 'columned') {
 	$columnclass = ' column_woo products carouselpost';
 }
@@ -3136,7 +3136,6 @@ elseif($carouseltype == 'compact'){
 }
 elseif($carouseltype == 'review'){
 	$columnclass = ' woogridrev products carouselpost';
-	$full_row_data = 'data-fullrow="0"';
 }
 else{
 	$columnclass = '';

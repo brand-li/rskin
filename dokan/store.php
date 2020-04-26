@@ -156,11 +156,6 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 					</div>
 				</div>
 				<?php } ?>
-                <?php if ( dokan()->widgets->is_exists( 'store_location' ) && dokan_get_option( 'store_map', 'dokan_general', 'on' ) == 'on'  && ! empty( $map_location ) ) { ?>
-                <div role="tabvendor" id="vendor-location">
-                    <?php the_widget( dokan()->widgets->store_location, array( 'title' => __( 'Store Location', 'rehub-theme' ) ), $widget_args ); ?>
-                </div>
-                <?php } ?>
 				
 				<?php do_action( 'woocommerce_after_main_content' ); ?>				
 			</article>
@@ -282,10 +277,10 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 					<?php endif; ?>
 	            </div>	    		
 			</div>
+			<?php do_action( 'dokan_sidebar_store_before', $store_user->data, $store_info ); ?>
 	        <?php if ( is_active_sidebar( 'sidebar-store' ) ) : ?>
 	            <?php dynamic_sidebar( 'sidebar-store' ); ?>
 	        <?php endif;?>
-            <?php do_action( 'dokan_sidebar_store_before', $store_user->data, $store_info ); ?>
             <?php
             if ( ! is_active_sidebar( 'sidebar-store' ) ) {
                 if ( dokan()->widgets->is_exists( 'store_category_menu' ) ) {

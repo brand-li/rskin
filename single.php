@@ -10,25 +10,23 @@
     }
 } ?>
 <?php if ($rh_post_layout_style == '') :?>
-    <?php       
-    if (REHUB_NAME_ACTIVE_THEME == 'RECASH') {
+    <?php  
+    $theme_subset = rehub_option('theme_subset');     
+    if ($theme_subset == 'recash') {
         $rh_post_layout_style = 'meta_compact'; 
     }
-    elseif (REHUB_NAME_ACTIVE_THEME == 'REPICK') {
+    elseif ($theme_subset == 'repick') {
         $rh_post_layout_style = 'corner_offer';
     }
-    elseif (REHUB_NAME_ACTIVE_THEME == 'RETHING') {
+    elseif ($theme_subset == 'rething') {
         $rh_post_layout_style = 'meta_center';
     }
-    elseif (REHUB_NAME_ACTIVE_THEME == 'REVENDOR') {
+    elseif ($theme_subset == 'revendor') {
         $rh_post_layout_style = 'meta_outside';
     }   
-    elseif (REHUB_NAME_ACTIVE_THEME == 'REDIRECT') {
+    elseif ($theme_subset == 'redirect') {
         $rh_post_layout_style = 'meta_compact_dir';
-    }           
-    elseif (REHUB_NAME_ACTIVE_THEME == 'REWISE') {
-        $rh_post_layout_style = 'default';
-    }                           
+    }                                     
     else{
         $rh_post_layout_style = 'default';       
     }?>

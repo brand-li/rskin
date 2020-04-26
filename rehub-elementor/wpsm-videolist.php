@@ -28,6 +28,10 @@ class WPSM_Video_Playlist_Block_Widget extends Widget_Base {
         return [ 'video_playlist', 'flexslider' ];
     }
 
+    public function get_style_depends() {
+        return [ 'video-pl' ];
+    }
+
         /**
      * Get widget icon.
      * @since 1.0.0

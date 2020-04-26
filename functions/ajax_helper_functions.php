@@ -81,7 +81,20 @@ function rehub_ajax_search() {
         else {
             $args['cat'] = ''.esc_html($_POST['catid']).'';
         }
-    }    
+    } 
+    if( in_array( 'product', $posttypes ) ){
+        if ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {
+            $args['tax_query'][] = array(
+                'relation' => 'AND',
+                array(
+                    'taxonomy' => 'product_visibility',
+                    'field'    => 'name',
+                    'terms'    => 'outofstock',
+                    'operator' => 'NOT IN',
+                )
+            );
+        } 
+    }  
 
     $search_query = new WP_Query($args);
 
