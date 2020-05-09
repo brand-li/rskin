@@ -4,7 +4,7 @@
 	Description: Shop theme
 	Author: Brandli
 	Author URI: https://github.com/brand-li/
-	Version: 10.0
+	Version: 10.0.1
 	Tags: two-columns, fluid-layout, custom-background, threaded-comments, translation-ready, custom-menu
 	License: 
 	License URI:
@@ -242,7 +242,7 @@ nav.top_menu .vmegamenu-bg-ext  {right: -55px;bottom: -55px}
 #slide-menu-mobile{display: none;}
 #slide-menu-mobile *{}
 #slide-menu-mobile .subline{display: block;font-size: 12px;font-weight: normal;color: #999;}
-#slide-menu-mobile ul.off-canvas { position: fixed; width: 270px; top: 0; left: 0; bottom:0; padding: 0; overflow-x: hidden; overflow-y: auto; background-color: #fff;z-index: 99999; -webkit-transform: translateX(-100%); -o-transform: translateX(-100%); transform: translateX(-100%);transition: transform 0.3s ease; backface-visibility: hidden;-webkit-backface-visibility: hidden;will-change: transform;}
+#slide-menu-mobile ul.off-canvas { position: fixed; width: 270px; top: 0; left: 0; bottom:0; padding: 0; overflow-x: hidden; overflow-y: auto; background-color: #fff;z-index: 99999;transform: translateX(-100%);transition: transform 0.3s ease; backface-visibility: hidden;-webkit-backface-visibility: hidden;will-change: transform;}
 #slide-menu-mobile ul li.menu-item { border-bottom: 1px solid #eee; position: static; display: block; margin: 0; float: none; overflow: hidden; width: 100% }
 #slide-menu-mobile ul li.menu-item > a {line-height: 22px !important;float:left; padding: 10px 15px; font-size: 16px; text-transform: none; border-top: none; width: calc(100% - 50px); text-decoration: none; color: #111; font-weight: bold; }
 #slide-menu-mobile ul ul.sub-menu { transition: all 0.3s ease; opacity: 1; visibility: visible; position: absolute; border: 0; width: 100%; min-height: 100%; top: 0; left: 0; background-color: #fff; -webkit-transform: translateX(-100%); -o-transform: translateX(-100%); transform: translateX(-100%); backface-visibility: hidden;-webkit-backface-visibility: hidden; will-change: transform}
@@ -1199,7 +1199,7 @@ div.pagination-centered ul>li { float: none; display: inline-block; }
 
 .top_rating_item .rank_count { z-index:2; border-radius: 50%;font-weight:bold; font-size: 18px; line-height:18px; background-color: #111; border: 2px solid #fff; box-shadow: 0 0 4px #999; color: #fff; width: 30px; height: 30px; display: block; line-height: 26px; text-align: center; position: absolute;top: 50%;left: 0;margin: -20px 0 0 -37px;}
 #rank_1.top_rating_item .rank_count{line-height: 30px}
-.top_rating_item h2 { margin: 0; font-size: 18px; line-height: 22px;margin-bottom: 8px}
+.top_rating_item h2, .top_rating_item .top_rating_title { margin: 0; font-size: 18px; line-height: 22px;margin-bottom: 8px}
 .top_rating_item figure { width: 126px; height: 126px; position: relative; margin: 0 0 0 10px; overflow: visible; }
 .top_rating_item figure > a {width: 126px; height: 126px;border: 1px solid #eee;padding: 2px;vertical-align: middle;text-align: center;position: relative;display: table-cell; background-color: #fff}
 .top_rating_item figure > a img { width: auto; max-height: 120px;max-width: 120px; }
@@ -1215,7 +1215,7 @@ div.pagination-centered ul>li { float: none; display: inline-block; }
 .listitem_column.listbuild_btn{min-width: 200px; max-width: 200px; padding-right: 25px}
 .listitem_column.listbuild_btn .priced_block .btn_offer_block, .listitem_column.listbuild_btn a.woo_loop_btn {margin: 0 auto;display: block;font-size: 17px;line-height: 20px;padding: 13px 20px;}
 .listitem_column.listbuild_btn .rehub_offer_coupon{display: block;}
-.top_rating_item .listitem_title_row h2{font-size: 16px}
+.top_rating_item .listitem_title_row .top_rating_title{font-size: 16px}
 .rh_listitem {margin-bottom:15px;background-color: #fff;border: 1px solid #eee;box-shadow: 0px 5px 20px 0 rgba(0,0,0,.03);position: relative;}
 
 .rh_listcolumn_image{min-width: 120px; max-width: 120px}
@@ -1669,7 +1669,7 @@ input[type="text"]:focus, textarea:focus, input[type="tel"]:focus, input[type="p
 background-color: #f2f2f2; text-decoration: none !important; box-shadow: 0 -1px 2px 0 rgba(60,64,67,0.1), 0 5px 10px 0 rgba(60,64,67,0.14);color: #111;}
 .def_btn:active, input[type="submit"]:active { box-shadow: 0 1px 1px 0 rgba(60,64,67,0.2), 0 1px 1px 0 rgba(60,64,67,0.2); background: #e9e9e9; }
 .def_btn:active, input[type="submit"]:focus{outline: 0}
-select{padding: 8px 10px; border-radius: 0;-webkit-appearance: none;}select:focus{outline: 0}
+select{padding: 8px 10px; border-radius: 0;}select:focus{outline: 0}
 .def_btn_group .active a{background: #fff; font-weight: bold;}
 ul.def_btn_link_tabs li a{padding: 3px 8px; border: 1px dashed transparent;}ul.def_btn_link_tabs li.active a{font-weight: bold;}
 .rh_tab_links{ overflow: hidden; margin: 0 0 30px 0}
@@ -2529,7 +2529,7 @@ body.pgwModalOpen .rh-container, body.pgwModalOpen #main_header {-webkit-filter:
 #pgwModal .coupon_reveal_popup{ display: block}
 .cpn_btn_inner{display:block; width: 250px; margin: -25px auto 30px auto;}
 .cpn_modal_container{min-width: 250px;background: url(images/check.webp) no-repeat right center #9300fe;border: 1px dashed #e3bdfd;padding: 5px 50px 5px 20px;}
-.coupon_code_in_modal input.code {padding:9px 10px; box-shadow: none; outline: 0; color: #fff; font-weight: bold; font-size: 22px; border:none; background-color: transparent;}
+.coupon_code_in_modal input.code {padding:9px 10px; box-shadow: none; outline: 0; color: #fff; font-weight: bold; font-size: 23px; border:none; background-color: transparent;}
 .shop_in_cpn img{margin-right: 5px; vertical-align: middle; max-height: 50px}
 .thumb_in_modalcoupon{width: 70px;}.thumb_in_modalcoupon .thumbscount{display: none;}
 .cpn_post_title{width: calc(100% - 80px);}
@@ -2538,7 +2538,7 @@ body.pgwModalOpen .rh-container, body.pgwModalOpen #main_header {-webkit-filter:
 .printthecoupon{display: inline-block;margin: 10px 0 20px 0;font-size: 16px; cursor: pointer;}
 .printthecoupon:before{content:"\f02f "; font-family: Font Awesome\ 5 Pro; font-size: 20px; margin-right: 10px}
 @media (max-width: 479px) {
-	.coupon_code_in_modal input.code{max-width: 210px; font-size: 18px}
+	.coupon_code_in_modal input.code{max-width: 210px; font-size: 20px}
 }
 
 /* Columns */

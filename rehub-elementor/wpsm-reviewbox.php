@@ -12,7 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-class Widget_Reviewbox extends WPSM_Content_Widget_Base {
+class Widget_Reviewbox extends Widget_Base {
 
 
     /* Widget Name */
@@ -38,11 +38,31 @@ class Widget_Reviewbox extends WPSM_Content_Widget_Base {
 
     public function get_categories() {
         return [ 'helpler-modules' ];
-    }    
+    }   
+
+    protected function _register_controls() {
+        $sections = $this->get_sections();
+
+        foreach( $sections as $control => $label ) {
+            $fields_method = $control . '_fields';
+
+            if ( ! method_exists( $this, $fields_method ) ) {
+                continue;
+            }
+
+            $this->start_controls_section( $fields_method, [
+                'label' => $label,
+                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]);
+
+            call_user_func([ $this, $fields_method ]);
+
+            $this->end_controls_section();
+        }
+    } 
 
     protected function get_sections() {
         return [
-            'query'   => esc_html__('Data query', 'rehub-theme'),
             'general'   => esc_html__('General', 'rehub-theme'),
             'pros'   => esc_html__('Positives', 'rehub-theme'),
             'cons'   => esc_html__('Negatives', 'rehub-theme'),

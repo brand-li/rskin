@@ -15,11 +15,7 @@ global $product, $post;
         echo '<div class="upsells-woo-area flowhidden" id="upsell-section-woo-area"><div class="rh-container mt30 mb30">';
         $upsells = implode(',',$upsells);
         echo '<h3>'.__( 'You may also like&hellip;', 'rehub-theme' ).'</h3>';
-        $upsells_array = array('ids'=>$upsells, 'columns'=>'5_col', 'data_source'=>'ids', 'show'=> 5);
-        if(rehub_option('width_layout') =='extended'){
-            $upsells_array['columns'] = '6_col';
-            $upsells_array['show'] = 6;
-        }         
+        $upsells_array = array('ids'=>$upsells, 'columns'=>'6_col', 'data_source'=>'ids', 'show'=> 6);        
         if (rehub_option('woo_design') == 'grid') { 
             echo wpsm_woogrid_shortcode($upsells_array);                  
         }

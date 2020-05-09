@@ -119,7 +119,21 @@ class Widget_Wpsm_Review_List extends WPSM_Content_Widget_Base {
                 'type' => Controls_Manager::TEXTAREA,
                 'condition'=> [ 'contentpos' => 'titleexc' ],
             ]
-        );          
+        ); 
+
+        $this->add_control( 'headingtag', [
+            'type'        => \Elementor\Controls_Manager::SELECT,
+            'label'       => esc_html__( 'Heading Tag', 'rehub-theme' ),
+            'options'     => [
+                'h2' =>  'H2',
+                'h3' =>  'H3',
+                'h4' =>  'H4',
+                'div' =>  'div',
+                ],
+            'default' => 'h2',
+            'label_block' => true,
+            'condition'=> [ 'contentpos' => ['titleexc', 'titlerow'] ],
+        ]);         
 
         $this->add_control( 'togglelink', [
             'type'        => \Elementor\Controls_Manager::SELECT,
@@ -330,7 +344,7 @@ class Widget_Wpsm_Review_List extends WPSM_Content_Widget_Base {
             $settings['listargs']['section'][$index] = wp_array_slice_assoc( $settings['section'][$index], $argssettings );
             
         }       
-        $argstoadd = array('image', 'button', 'review', 'contentpos', 'stacktablet', 'togglefield', 'disclaimer', 'togglecontent', 'togglelink', 'afflink');
+        $argstoadd = array('image', 'button', 'review', 'contentpos', 'headingtag', 'stacktablet', 'togglefield', 'disclaimer', 'togglecontent', 'togglelink', 'afflink');
         foreach ($argstoadd as $add) {
             if(!empty($settings[$add])){
                 $settings['listargs'][$add] = $settings[$add];

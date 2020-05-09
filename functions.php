@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '10.0');
+	define('RH_MAIN_THEME_VERSION', '10.0.1');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
@@ -773,15 +773,17 @@ class WPSM_image_resizer{
 				else {
 					$nothumb_url = get_template_directory_uri() . '/images/default/wooproductph.png';
 				}
-				$nothumb_url = apply_filters('rh_no_thumb_url', $nothumb_url);				
+				$nothumb_url = apply_filters('rh_no_thumb_url', $nothumb_url);
+				$image1 = (!empty($image[1])) ? esc_attr( $image[1] ) : '';	
+				$image2 = (!empty($image[2])) ? esc_attr( $image[2] ) : '';			
 				$output = sprintf(
 					'<img src="%s" data-src="%s" alt="%s" class="lazyload %s" width="%s" height="%s">',
 					esc_url( $transparent ),
 					esc_url( $nothumb_url),
 					esc_attr( $alt ),
 					esc_attr( $css_class ),
-					esc_attr( $image[1] ),
-					esc_attr( $image[2] )
+					$image1,
+					$image2
 				);
 			}
 		} else {
@@ -1452,7 +1454,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '4.6',
+			'version' 				=> '4.7',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',

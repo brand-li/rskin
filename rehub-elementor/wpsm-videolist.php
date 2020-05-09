@@ -105,6 +105,12 @@ class WPSM_Video_Playlist_Block_Widget extends Widget_Base {
             ),
             'default' => 'youtube',
         ]);
+        $this->add_control( 'key', [
+            'type'        => \Elementor\Controls_Manager::TEXT,
+            'label'       => esc_html__( 'Youtube API key', 'rehub-theme' ),
+            'description' => esc_html__('Place here your own API key for youtube if default is not working', 'rehub-theme').' <a href="https://developers.google.com/youtube/v3/getting-started" target="_blank">API Youtube</a>',
+            'label_block'  => true,
+        ]);
 
         $this->end_controls_section();
     }

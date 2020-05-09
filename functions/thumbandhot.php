@@ -453,8 +453,14 @@ if (!function_exists('getHotLikeTitle')){
 function getHotLikeTitle( $post_id, $wish = false ) {
 
     if ($wish == true){
+        if(rehub_option('wishlist_disable')){
+            return;
+        } 
         $like_count = get_post_meta( $post_id, "post_wish_count", true );
     }else{
+        if(rehub_option('hotmeter_disable')){
+            return;
+        }
         $like_count = get_post_meta( $post_id, "post_hot_count", true );
     }
     if ( ( !$like_count ) || ( $like_count && $like_count == "0" ) ) { // no votes, set up empty variable

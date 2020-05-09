@@ -24,6 +24,10 @@ class Widget_Offerbox extends WPSM_Content_Widget_Base {
         return esc_html__('Offerbox', 'rehub-theme');
     }
 
+    public function get_script_depends() {
+        return [ 'affegg_coupons' ];
+    }
+
     /**
      * Get widget icon.
      * @since 1.0.0
@@ -127,7 +131,7 @@ class Widget_Offerbox extends WPSM_Content_Widget_Base {
             'label'       => esc_html__( 'Mask coupon code?', 'rehub-theme' ),
             'label_on'    => esc_html__('Yes', 'rehub-theme'),
             'label_off'   => esc_html__('No', 'rehub-theme'),
-            'return_value' => 1,
+            'return_value' => '1',
         ]);
         $this->add_control(
             'offer_coupon_mask_text',
@@ -135,7 +139,7 @@ class Widget_Offerbox extends WPSM_Content_Widget_Base {
                 'label' => esc_html__( 'Mask Text', 'rehub-theme' ),
                 'type' => Controls_Manager::TEXT,
                 'default' => esc_html__('Reveal coupon', 'rehub-theme'),
-                'condition' => [ 'offer_coupon_mask' => 1 ]
+                'condition' => [ 'offer_coupon_mask' => '1' ]
             ]
         );        
         $this->add_control(
@@ -159,7 +163,7 @@ class Widget_Offerbox extends WPSM_Content_Widget_Base {
             'label' => esc_html__( 'Border color', 'rehub-theme' ),
             'type' => \Elementor\Controls_Manager::COLOR,
             'selectors' => [
-                 '{{WRAPPER}} .border-lightgrey-double' => 'border-color: {{VALUE}}',
+                 '{{WRAPPER}} .bigofferblock' => 'border: 2px solid {{VALUE}}',
             ],
         ]);                       
                      

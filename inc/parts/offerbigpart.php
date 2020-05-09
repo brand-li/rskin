@@ -1,6 +1,6 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 
-<?php if($btnwoo) :?>
+<?php if(!empty($btnwoo)) :?>
     <?php if ($product->get_type() =='external'):?>
         <?php $afflink = $product->add_to_cart_url(); $afftarget = ' target="_blank" rel="nofollow sponsored"';?>
     <?php else:?>
@@ -34,7 +34,7 @@
     ?>
 <?php endif ;?> 
 <?php
-    if ($offer_coupon_mask_text =='') {
+    if (empty($offer_coupon_mask_text)) {
         if(rehub_option('rehub_mask_text') !=''){
             $offer_coupon_mask_text = rehub_option('rehub_mask_text');
         }
@@ -42,9 +42,13 @@
             $offer_coupon_mask_text = esc_html__('Reveal', 'rehub-theme');
         }
     }
+    $styles = '';
+    if ( isset( $inline_styles ) ) {
+        $styles .= ' style="' . esc_attr( $inline_styles ) . '"';
+    }
 ?>
 <?php $coupon_mask_enabled = (!empty($offer_coupon) && ($offer_coupon_mask =='1' || $offer_coupon_mask =='on') && $expired!='1') ? '1' : ''; ?> <?php $reveal_enabled = ($coupon_mask_enabled =='1') ? ' reveal_enabled' : '';?>
-<div class="bigofferblock pt20 pl20 pr20 <?php echo ''.$reveal_enabled; echo ''.$coupon_style; ?>">
+<div class="bigofferblock pt20 pl20 pr20 <?php echo ''.$reveal_enabled; echo ''.$coupon_style; ?>"<?php echo ''.$styles;?>>
 <div class="col_wrap_two mb0">
     <div class="product_egg">
         <div class="image col_item mobileblockdisplay">
@@ -60,11 +64,11 @@
             </a>                             
         </div>
         <div class="product-summary col_item mobileblockdisplay">         
-            <h2 class="product_title entry-title">
+            <h3 class="product_title entry-title font150">
                 <a class="re_track_btn" href="<?php echo esc_url($afflink) ;?>"<?php echo ''.$afftarget ;?>>
                     <?php echo esc_attr($offer_title); ?> 
                 </a>
-            </h2>
+            </h3>
             <?php  if ((int)$rating > 0 && (int)$rating <= 5): ?>
                 <div class="cegg-rating">
                     <?php
@@ -92,7 +96,7 @@
             <div class="buttons_col">
                 <div class="priced_block clearfix">
                     <div>
-                        <?php if($btnwoo):?>
+                        <?php if(!empty($btnwoo)):?>
                             <?php echo ''.$btnwoo;?>
                         <?php else:?>
                             <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ;?>"<?php echo ''.$afftarget ;?>>
@@ -108,7 +112,7 @@
                     </div>
                     <?php if(!empty($offer_coupon)) :
                         wp_enqueue_script('zeroclipboard');
-                        if (empty($atts['offer_coupon_mask'])) :
+                        if (!$offer_coupon_mask) :
                             echo '<div class="rehub_offer_coupon mt15 not_masked_coupon ';
                                 if(!empty($offer_coupon_date)) :
                                     echo ''.$coupon_style;

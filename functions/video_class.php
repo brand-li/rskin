@@ -182,10 +182,10 @@ class WPSM_video_class {
 	/**
 	 * Pull information about multiple video ids
 	 */
-	static function api_get_videos_info( $video_ids, $list_type ) {
+	static function api_get_videos_info( $video_ids, $list_type, $key='') {
 		switch ( $list_type ) {
 			case 'youtube':
-				return self::youtube_api_get_videos_info( $video_ids );
+				return self::youtube_api_get_videos_info( $video_ids, $key );
 				break;
 			case 'vimeo':
 				return self::vimeo_api_get_videos_info( $video_ids );
@@ -197,9 +197,9 @@ class WPSM_video_class {
 	/**
 	 * Pull information about multiple youtube ids using just one api call to YT
 	 */
-	private static function youtube_api_get_videos_info( $video_ids ) {
+	private static function youtube_api_get_videos_info( $video_ids, $key = 'AIzaSyCaUcoU-5ih0bAFW1EHQKKh0i6wEsRdf00' ) {
 		$video_ids_comma = implode( ',', $video_ids );
-		$yk = 'AIzaSyDAbKe1Ee2wOORIDsKpzXLWQOw1XIvHe6U';
+		$yk = $key;
 		$api_url = 'https://www.googleapis.com/youtube/v3/videos?id=' . $video_ids_comma . '&part=id,contentDetails,snippet&key='.$yk.'';
 	    $response = wp_remote_get( $api_url, [
 	        'timeout' => 500
@@ -297,7 +297,7 @@ class WPSM_video_class {
         return $out;
     }
 
-	public static function get_video_data( $video_ids, $list_type ) {
+	public static function get_video_data( $video_ids, $list_type, $key='' ) {
 		global $post;
 
 		$list_name = 'youtube_ids'; //array key for youtube in the post meta db array
@@ -327,7 +327,7 @@ class WPSM_video_class {
 
 			if ( !empty( $uncached_ids ) ) {
 				// request data for the id's that are not in the cache
-				$uncached_videos = self::api_get_videos_info( $uncached_ids, $list_type );
+				$uncached_videos = self::api_get_videos_info( $uncached_ids, $list_type, $key);
 
 				// update the cache
 				if ( $uncached_videos !== false ) {
@@ -354,7 +354,7 @@ class WPSM_video_class {
 		return false;
 	}
 
-    public static function render_playlist( $atts, $list_type ) {
+    public static function render_playlist( $atts, $list_type, $key='' ) {
 
     	$idshosts = WPSM_video_class::parse_videoid_from_urls($atts['videolinks'], 'arrayhost');
 
@@ -372,7 +372,7 @@ class WPSM_video_class {
         }
 
 	    // read the youtube and vimeo ids
-	    $videos_meta = self::get_video_data( $video_ids, $list_type );
+	    $videos_meta = self::get_video_data( $video_ids, $list_type, $key );
 
 
 

@@ -20,7 +20,7 @@
         <?php $label_font_color = ($metavalue['column_meta_label_color'] !='') ? 'color:'.$metavalue["column_meta_label_color"].';' : ''; ?>
         <?php $icon_font_size = ($metavalue['column_meta_icon_size'] !='') ? 'font-size:'.$metavalue["column_meta_icon_size"].'px;' : ''; ?>
         <?php $icon_font_color = ($metavalue['column_meta_icon_color'] !='') ? 'color:'.$metavalue["column_meta_icon_color"].';' : ''; ?>        
-        <?php $label_font_style = (($metavalue['column_customize'] =='' || $metavalue['column_meta_label_size'] !='') && $metavalue['column_customize'] =='1') ? ' style="'.$label_font_size.$label_font_color.'"' : ''; ?> 
+        <?php $label_font_style = (($metavalue['column_meta_label_color'] =='' || $metavalue['column_meta_label_size'] !='') && !empty($metavalue['column_customize'])) ? ' style="'.$label_font_size.$label_font_color.'"' : ''; ?> 
         <?php $icon_font_style = (($metavalue['column_meta_icon_color'] !='' || $metavalue['column_meta_icon_size'] !='') && $metavalue['column_customize'] =='1') ? ' style="'.$icon_font_size.$icon_font_color.'"' : ''; ?> 
         <?php $value_font_style = (($metavalue['column_meta_value_color'] !='' || $metavalue['column_meta_value_size'] !='') && $metavalue['column_customize'] =='1') ? ' style="'.$value_font_size.$value_font_color.'"' : ''; ?>       
     	<?php if($field_type =='checkbox') : ?>

@@ -1488,7 +1488,7 @@ function rehub_exerpt_function( $atts, $content = null ) {
 						$perc_criteria = $criteria['review_post_score']*10;
 						$out .= '<div class="flowhidden font90 lineheight15 position-relative pr15 text-left-align pb5 rtltext-right-align"><div class="floatleft">'.$criteria["review_post_name"].'</div><div class="abdposright fontbold">'.$criteria["review_post_score"].'</div></div>';
 						$out .= '<div class="rate-bar clearfix mb10" data-percent="'.$perc_criteria.'%">';
-						$out .= '<div class="rate-bar-bar r_score_'.round($criteria["review_post_score"]).'"></div>';
+						$out .= '<div class="rate-bar-bar r_score_'.round($criteria["review_post_score"]).'" width="'.$perc_criteria.'%"></div>';
 						$out .= '</div>';
 					}
 				$out .= '</div>';
@@ -4589,6 +4589,9 @@ function wpsm_get_bigoffer($atts){
     ), $atts));
 
 	if($post_id && is_numeric($post_id)){
+		if(!defined('\ContentEgg\PLUGIN_PATH')){
+			return 'Content Egg is not installed on your site';
+		}
 		$title = (!empty($title)) ? $title : get_the_title($post_id);
 		ob_start();
 		?>
@@ -5534,7 +5537,7 @@ function wpsm_reviewbox( $atts, $content = null ) {
 					    	$perc_criteria = $criteriascore*10;
 					    	$out .='<div class="rate-bar clearfix" data-percent="'.$perc_criteria.'%">
 								<div class="rate-bar-title"><span>'.esc_html($criterianame).'</span></div>
-								<div class="rate-bar-bar"></div>
+								<div class="rate-bar-bar r_score_'.round($criteriascore).'"></div>
 								<div class="rate-bar-percent">'.esc_html($criteriascore).'</div>
 							</div>';
 						}

@@ -11,7 +11,7 @@
         <?php $field_type = $metavalue['column_meta_type'] ;?>
         <?php $value_font_size = ($metavalue['column_meta_value_size'] !='') ? 'font-size:'.$metavalue["column_meta_value_size"].'px !important;' : ''; ?>
         <?php $value_font_color = ($metavalue['column_meta_value_color'] !='') ? 'color:'.$metavalue["column_meta_value_color"].' !important;' : ''; ?>               
-        <?php $value_font_style = (($metavalue['column_meta_value_color'] !='' || $metavalue['column_meta_value_size'] !='') && $metavalue['column_customize'] =='1') ? ' style="'.$value_font_size.$value_font_color.'"' : ''; ?>       
+        <?php $value_font_style = (($metavalue['column_meta_value_color'] !='' || $metavalue['column_meta_value_size'] !='') && !empty($metavalue['column_customize'])) ? ' style="'.$value_font_size.$value_font_color.'"' : ''; ?>       
     	<?php if($field_type =='checkbox') : ?>
             <div class="rehub_meta_field rehub_field_<?php echo ''.$count; ?>">
                 <?php $field_value_check = ($field_value =='1' || $field_value =='on') ? '<i class="far fa-check"></i>' : '<i class="far fa-ban"></i>' ?>

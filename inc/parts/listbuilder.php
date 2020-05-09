@@ -7,6 +7,7 @@
 }?>
 <?php $disclaimer = (isset($disclaimer) && $disclaimer) ? $disclaimer : '';?>
 <?php $contentpos = (isset($contentpos) && $contentpos) ? $contentpos : '';?>
+<?php $headingtag = (isset($headingtag) && $headingtag) ? $headingtag : 'h2';?>
 <?php $togglelink = (isset($togglelink) && $togglelink) ? $togglelink : '';?>
 <?php $togglecontent = (isset($togglecontent) && $togglecontent) ? $togglecontent : '';?>
 <?php $togglefield = (isset($togglefield) && $togglefield) ? $togglefield : '';?>
@@ -47,7 +48,7 @@ else {
                     <?php endif;?>                                                            
                 </div>
             <?php endif;?>                        
-            <h2 class="font80 mt0 mb0"><a href="<?php echo ''.$link;?>"<?php echo ''.$target;?>><?php the_title();?></a></h2>
+            <<?php echo esc_attr($headingtag);?> class="font80 mt0 mb0 top_rating_title fontbold blackcolor"><a href="<?php echo ''.$link;?>"<?php echo ''.$target;?>><?php the_title();?></a></<?php echo esc_attr($headingtag);?>>
         </div>
     <?php endif;?>
     <div class="rh-flex-center-align rh-flex-justify-center pt15 pb15 <?php if(isset($stacktablet) && $stacktablet):?> tabletblockdisplay<?php else:?>mobileblockdisplay<?php endif;?>">
@@ -75,7 +76,7 @@ else {
 
         <?php if($contentpos == 'titleexc'):?>
             <div class="rh-flex-grow1 listitem_title listitem_column">
-                <h2><a href="<?php echo ''.$link;?>"<?php echo ''.$target;?>><?php the_title();?></a></h2>
+                <<?php echo esc_attr($headingtag);?> class="top_rating_title fontbold blackcolor"><a href="<?php echo ''.$link;?>"<?php echo ''.$target;?>><?php the_title();?></a></<?php echo esc_attr($headingtag);?>>
                 <div class="postcont">
                     <?php if($post->post_excerpt):?>
                         <?php echo ''.$post->post_excerpt; ?>

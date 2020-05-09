@@ -5,7 +5,7 @@
 	Description: A Hybrid magazine/shop/review/news Wordpress Theme
 	Author: Sizam
 	Author URI: https://wpsoul.com/
-	Version: 9.9.5	
+	Version: 10.0	
 	Tags: two-columns, fluid-layout, custom-background, threaded-comments, translation-ready, custom-menu
 	License: 
 	License URI:
@@ -52,7 +52,7 @@ nav.top_menu ul.menu > li.menu-item-has-children > a:before { margin: 3px 7px 0p
 nav.top_menu ul li.menu-item-has-children ul li.menu-item-has-children > a:before { content: "\f104"; float: left; padding-right: 8px; padding-left: 0px; }
 nav.top_menu ul li ul li ul { right: 100%; left: inherit; }
 nav.top_menu > ul > li > ul > li:first-child > a:after {right: 19px;}
-nav.top_menu ul.sub-menu{right: -999999px; left: auto;}
+nav.top_menu ul.sub-menu, .top-nav ul.sub-menu{right: -999999px; left: auto;}
 nav.top_menu > ul > li.hovered > .sub-menu{left: auto; right: 0}
 nav.top_menu > ul > li > ul.sub-menu > li.hovered > ul.sub-menu{left: auto; right: 100%}
 .top-nav > ul > li.hovered ul.sub-menu{right: 0; left: auto;}
@@ -113,6 +113,8 @@ nav.top_menu ul.menu:not(.off-canvas) > li.menu-item-has-children > a:before, .h
 @media (min-width: 1024px){.rtl #wcvendor_search_shops{float: left;}.rtl .wcvendor_profile_menu_items{float: right; margin-left: 0; margin-right: 170px}}
 .alignleft, img.alignleft { float: left; margin-left: 2em;  }
 .alignright, img.alignright { float: left; margin-right: 2em;}
+.rh_category_tab ul.cat_widget_custom li a:before{margin-left: .618em;margin-right: 0;}
+nav.top_menu>ul>li.vertical-menu>ul>li>.sub-menu{border-right: none; border-left: 2px solid transparent}
 
 /****************************************************************************
 
@@ -351,10 +353,6 @@ ul.postspermonth { border-left: 0; border-right: 2px solid #DFDFE0; margin: 0 35
 
 .gallery-pics .gp-overlay { left: initial; right: 0 }
 .gallery-pics .gp-overlay a { margin: -20px -20px 0 0; background-position: -43px -101px; }
-.re_carousel .controls.prev { left: initial; right: 0 }
-.re_carousel .controls.next { right: initial; left: 0 }
-.re_carousel .controls.prev:after{content: "\f105"; left: inherit; right: 22px; }
-.re_carousel .controls.next:after{content: "\f104"; right: inherit; left: 22px; }
 .re_carousel .preview { float: right; }
 .views-in-carosel { left: inherit; right: 15px }
 .carousel-style-2 .carousel-stamp{right: 25px; left: auto; }

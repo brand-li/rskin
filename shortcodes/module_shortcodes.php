@@ -3539,7 +3539,8 @@ $build_args =shortcode_atts(array(
 	'playlist_auto_play' => '0',
 	'playlist_host' => 'youtube',
 	'playlist_width' => 'full',
-	'playlist_type' => 'playlist'
+	'playlist_type' => 'playlist',
+	'key' => ''
 ), $atts, 'video_mod'); 
 extract($build_args); 
 $rand_id = mt_rand().time();      
@@ -3557,7 +3558,7 @@ ob_start();
 			<div class="flexslider post_slider media_slider gallery_top_slider loading"> 
 			<ul class="slides">     <script src="//a.vimeocdn.com/js/froogaloop2.min.js"></script>
 			<?php if (!empty ($idshosts['youtube']) && $playlist_host == 'youtube') :?>
-				<?php $videoarraytube = WPSM_video_class::get_video_data($idshosts['youtube'], 'youtube'); ?>
+				<?php $videoarraytube = WPSM_video_class::get_video_data($idshosts['youtube'], 'youtube', $key); ?>
 				<?php foreach ($videoarraytube as $video_id=>$video_data):?>
 					<li data-thumb="<?php echo esc_url($video_data['thumb']) ?>" class="play3">
 					    <?php echo WPSM_video_class::embed_video_from_id($video_id, 'youtube');?>
@@ -3579,9 +3580,9 @@ ob_start();
 
 		<?php $idshosts = WPSM_video_class::parse_videoid_from_urls($videolinks, 'arrayhost') ;?>
 		<?php if (!empty ($idshosts['youtube']) && $playlist_host == 'youtube') :?>
-			<?php echo WPSM_video_class::render_playlist( $atts, 'youtube' ); ?>
+			<?php echo WPSM_video_class::render_playlist( $atts, 'youtube', $key ); ?>
 		<?php elseif (!empty ($idshosts['vimeo']) && $playlist_host == 'vimeo') :?>
-			<?php echo WPSM_video_class::render_playlist( $atts, 'vimeo' ); ?>
+			<?php echo WPSM_video_class::render_playlist( $atts, 'vimeo', $key ); ?>
 		<?php endif;?>
 
 	<?php endif; ?>

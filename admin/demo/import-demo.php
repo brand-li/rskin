@@ -394,7 +394,7 @@ function rehub_import_files() {
 			'local_import_theme_file' => get_template_directory() . '/admin/demo/recompare-theme.json',
 			'import_preview_image_url'   => get_template_directory_uri() .'/admin/screens/images/demo10_preview.jpg',
 			'import_notice' => $recomparenotice,
-			'preview_url' => 'http://recompare.wpsoul.net/',
+			'preview_url' => 'https://recompare.wpsoul.net/',
 		),
 		array(
 			'import_file_name' => 'ReDeal',
@@ -426,7 +426,7 @@ function rehub_import_files() {
 			'local_import_theme_file' => get_template_directory() . '/admin/demo/repick-theme.json',
 			'import_preview_image_url'   => get_template_directory_uri() .'/admin/screens/images/demo2_preview.jpg',
 			'import_notice' => $repicknotice,
-			'preview_url' => 'http://repick.wpsoul.net/',
+			'preview_url' => 'https://repick.wpsoul.net/',
 		),
 		array(
 			'import_file_name' => 'ReCash',
@@ -437,7 +437,7 @@ function rehub_import_files() {
 			'local_import_theme_file' => get_template_directory() . '/admin/demo/recash-theme.json',		
 			'import_preview_image_url'   => get_template_directory_uri() .'/admin/screens/images/demo4_preview.jpg',
 			'import_notice' => $recashnotice,
-			'preview_url' => 'http://recash.wpsoul.net/',
+			'preview_url' => 'https://recash.wpsoul.net/',
 		),
 		array(
 			'import_file_name' => 'ReDokanNew',

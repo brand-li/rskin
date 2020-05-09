@@ -1227,7 +1227,7 @@ function coupon_get_code(){
         $response .= '<div class="coupon_code_in_modal"><div class="coupon_top_part text-center violetgradient_bg padd20"><div class="re_title_inmodal rehub-main-font whitecolor font150 pt5 pb15">'.__('Here is your coupon code', 'rehub-theme').'</div>';
         $response .= '<div class="add_modal_coupon font80"><span class="text_copied_coupon pinkLcolor">'.__('Code is copied. Use code on site.', 'rehub-theme').'</span></div>';      
 
-        $response .= '<div class="coupon_modal_coupon position-relative"><div class="cpn_modal_container text-center position-relative roundborder8 inlinestyle"><input type="text" size=20 class="code text-center upper-text-trans" value="'.$offer_coupon.'" readonly=""></div>';
+        $response .= '<div class="coupon_modal_coupon position-relative"><div class="cpn_modal_container text-center position-relative roundborder8 inlinestyle"><input type="text" size=20 class="code text-center" value="'.$offer_coupon.'" readonly=""></div>';
         $response .= $printout;
         $response .= '</div></div>';
         $response .='<a href="'.$offer_link.'" target="_blank" rel="nofollow sponsored" class="text-center cpn_btn_inner font150 pb10 pl30 pr30 pt10 rehub-main-btn-bg rehub_main_btn cpn_btn_inner position-relative">'.__('Go to Website', 'rehub-theme').'</a>';

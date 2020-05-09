@@ -15,7 +15,13 @@
 <?php $membertype = (!empty($_GET['membertype'])) ? esc_html($_GET['membertype']) : '';?>
 <?php $membertypelink = ($membertype) ? '&membertype='.$membertype : '';?>
 <?php $memberpx = ($islogin == 'login') ? '500px' : '900px';?>
-<?php $addstyles = '.buddypress-page.main-side.full_width{padding: 30px 35px 20px 35px; background: #fff;box-shadow: 0 0 50px #e3e3e3;}.rh-container{max-width:'.$memberpx.'}';
+<?php $addstyles = '.buddypress-page.main-side.full_width{padding: 30px 35px 20px 35px; background: #fff;}.rh-container{max-width:'.$memberpx.'}';
+if (rehub_option('rehub_header_color_background') !=''){
+    $addstyles .= 'body{background: none '.rehub_option("rehub_header_color_background").' !important}.bp-text-bottom-r{color:#fff}';
+}
+else{
+    $addstyles .= 'body{background: none white !important}.buddypress-page.main-side.full_width{box-shadow: 0 0 50px #e3e3e3;}';
+}
 wp_register_style( 'rhheader-inline-style', false );
 wp_enqueue_style( 'rhheader-inline-style' );
 wp_add_inline_style('rhheader-inline-style', $addstyles);
@@ -100,7 +106,7 @@ wp_add_inline_style('rhheader-inline-style', $addstyles);
     </div>
     <!-- /CONTENT -->    
 
-<div class="mt15 mb30 text-center rh-container">
+<div class="mt15 mb30 text-center rh-container bp-text-bottom-r">
 	<?php if($islogin == ''):?>	
 		<div class="font120"><?php esc_html_e('Already have an account?', 'rehub-theme'); ?> <a href="<?php echo esc_url(bp_get_signup_page()); ?>?type=login<?php echo ''.$membertypelink;?>" class="color_link bp_log_link_login"><?php esc_html_e('Login', 'rehub-theme'); ?></a>
 		</div>
