@@ -571,7 +571,7 @@ abstract class WPSM_Content_Widget_Base extends Widget_Base {
             $repeater->add_control( 'filtertaxkey', [
                 'type'      => \Elementor\Controls_Manager::TEXT,
                 'label'     => esc_html__('Additional Taxonomy slug', 'rehub-theme'),
-                'description'=> 'Enter slug of your taxonomy. Examples: if you want to use post categories - use <strong>category</strong>. If you want to use woocommerce product category - use <strong>product_cat</strong>, woocommerce tags - <strong>product_tag</strong>',
+                'description'=> 'Enter slug of your taxonomy. Examples: if you want to use post categories - use category. If you want to use woocommerce product category - use product_cat, woocommerce tags - product_tag',
                 'condition' => [ 'filtertype' => 'tax' ],
                 'label_block'=> true,
             ]);

@@ -662,7 +662,7 @@ abstract class WPSM_Widget_Base extends Widget_Base {
             $repeater->add_control( 'filtertaxkey', [
                 'type'      => \Elementor\Controls_Manager::TEXT,
                 'label'     => esc_html__('Taxonomy slug', 'rehub-theme'),
-                'description'=> esc_html__('Enter slug of your taxonomy. Examples: if you want to use woocommerce product category - use <strong>product_cat</strong>, for woocommerce tags - <strong>product_tag</strong> key', 'rehub-theme' ),
+                'description'=> esc_html__('Enter slug of your taxonomy. Examples: if you want to use woocommerce product category - use product_cat, for woocommerce tags - product_tag', 'rehub-theme' ),
                 'condition' => [ 'filtertype' => 'tax' ],
                 'label_block'=> true,
             ]);

@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '10.0.1');
+	define('RH_MAIN_THEME_VERSION', '10.0.2');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
@@ -1454,7 +1454,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '4.7',
+			'version' 				=> '4.8',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',

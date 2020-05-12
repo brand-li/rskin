@@ -381,7 +381,7 @@ if( !function_exists('wpsm_accordion_main_shortcode') ) {
 		$content = str_replace( $Old, $New, $content );
 		
 		// Display the accordion	
-		return '<div class="wpsm-accordion" data-accordion="yes">' . do_shortcode($content) . '</div>';
+		return '<div class="wpsm-accordion" data-accordion="yes" itemscope="" itemtype="https://schema.org/FAQPage">' . do_shortcode($content) . '</div>';
 	}
 }
 
@@ -392,7 +392,7 @@ if( !function_exists('wpsm_accordion_section_shortcode') ) {
 		  'title' => 'Title',
 		), $atts ) );
 		  
-	   return '<div class="wpsm-accordion-item close"><h3 class="wpsm-accordion-trigger">'. $title .'</h3><div class="accordion-content">' . do_shortcode($content) . '</div></div>';
+	   return '<div class="wpsm-accordion-item close" itemscope="" itemprop="mainEntity" itemtype="https://schema.org/Question"><h3 class="wpsm-accordion-trigger" itemprop="name">'. $title .'</h3><div class="accordion-content"  itemscope="" itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><div itemprop="text">' . do_shortcode($content) . '</div></div></div>';
 	}
 }
 
