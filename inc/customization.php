@@ -772,8 +772,7 @@ input[type="submit"].dokan-btn-theme:active, a.dokan-btn-theme:active, .dokan-bt
 .dark_body .widget.widget_affegg_widget .tabs-item figure{padding: 5px;background-color: #fff;}
 .dark_body .sidebar .widget.widget-meta-data-filter, .dark_body .sidebar .widget.widget-meta-data-filter h4.data-filter-section-title{padding: 0 !important; border: none !important;background: none transparent}
 .dark_body .widget.top_offers .tabs-item, .dark_body .widget.cegg_widget_products .tabs-item{border: 1px solid #7c7c7c;}
-.dark_body .widget.tabs .tabs-item{border: 1px solid #7c7c7c;}
-.dark_body .sidebar .tabs-item > div, .dark_body .footer-bottom .tabs-item > div {border-bottom: 1px solid #5f5f5f;}
+.dark_body .sidebar .tabs-item > div, .dark_body .footer-bottom .tabs-item > div, .dark_body .sidebar .tabs-item .lastcomm-item {border-bottom: 1px solid #5f5f5f;}
 .dark_body .color_sidebar:not(.dark_sidebar) .tabs-item{ background-color: transparent;}
 .dark_body .main-side, .dark_body .vc_row.vc_rehub_container > .vc_col-sm-8, .no_bg_wrap.main-side, .dark_body .masonry_grid_fullwidth .small_post, .dark_body .repick_item.small_post, .dark_body .tabsajax .re_filter_panel {border:none; box-shadow: none;}
 .dark_body .postNavigation a { box-shadow: none;}

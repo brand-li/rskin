@@ -54,7 +54,7 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 
                     <?php
                         if ( ! empty( $store_info['vendor_biography'] ) ) {
-                            printf( '%s', $store_info['vendor_biography'] );
+                            printf( '%s', apply_filters( 'the_content', $store_info['vendor_biography'] ) );
                         }
                     ?>
 

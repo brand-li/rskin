@@ -1488,7 +1488,7 @@ function rehub_exerpt_function( $atts, $content = null ) {
 						$perc_criteria = $criteria['review_post_score']*10;
 						$out .= '<div class="flowhidden font90 lineheight15 position-relative pr15 text-left-align pb5 rtltext-right-align"><div class="floatleft">'.$criteria["review_post_name"].'</div><div class="abdposright fontbold">'.$criteria["review_post_score"].'</div></div>';
 						$out .= '<div class="rate-bar clearfix mb10" data-percent="'.$perc_criteria.'%">';
-						$out .= '<div class="rate-bar-bar r_score_'.round($criteria["review_post_score"]).'" width="'.$perc_criteria.'%"></div>';
+						$out .= '<div class="rate-bar-bar r_score_'.round($criteria["review_post_score"]).'" style="width:'.$perc_criteria.'%"></div>';
 						$out .= '</div>';
 					}
 				$out .= '</div>';
@@ -1636,7 +1636,11 @@ extract(shortcode_atts(array(
 	'title' => '',
 	'product_id' => '',
 ), $atts));
-if(class_exists('Woocommerce') && !empty($product_id)){
+if(class_exists('Woocommerce')){
+	if(!$product_id){
+		global $post;
+		$product_id = $post->ID;
+	}
 	$the_product = wc_get_product( $product_id );
 	if(!empty($the_product)){
 		ob_start();
@@ -1807,15 +1811,17 @@ function wpsm_toprating_shortcode( $atts, $content = null ) {
 			    do_action('rh_after_module_args_query', $wp_query);
 	        ?>
             <?php $i=0; if ($wp_query->have_posts()) :?>
-            <div class="rh_list_builder review_visible_circle">
+            <div class="rh_list_builder rh-shadow4 disablemobileshadow">
             <?php while ($wp_query->have_posts()) : $wp_query->the_post(); global $post; $i ++?>
             	<?php $disclaimer = get_post_meta($post->ID, 'rehub_offer_disclaimer', true);?>     
-                <div class="r_offer_details rh_listitem top_rating_item"> 
-                <div class="rh-flex-center-align rh-flex-justify-center pt15 pb15 mobileblockdisplay">                   
-		            <div class="listbuild_image listitem_column text-center">
-		                <figure class="position-relative">
-		                    <?php echo re_badge_create('ribbon'); ?>
-		                    <span class="rank_count" id="rank_<?php echo (int)$i?>"><?php echo (int)$i?></span>
+                <div class="top_table_list_item border-lightgrey whitebg"> 
+                <div class="rh-flex-eq-height mobileblockdisplay">                   
+		            <div class="listbuild_image border-right listitem_column text-center rh-flex-center-align position-relative pt15 pb15 pr20 pl20">
+	            		<div class="colored_rate_bar abdposright mt15">
+				        	<?php $reviewscore = wpsm_reviewbox(array('compact'=>'smallcircle', 'id'=> $post->ID));?>
+				        	<?php echo ''.$reviewscore;?>
+				        </div>
+		                <figure class="position-relative margincenter">
 		                    <a class="img-centered-flex rh-flex-center-align rh-flex-justify-center" href="<?php the_permalink();?>">
 		                    <?php 
 		                    $showimg = new WPSM_image_resizer();
@@ -1828,9 +1834,9 @@ function wpsm_toprating_shortcode( $atts, $content = null ) {
 		                    </a> 
 		                </figure>                              
 		            </div>                            
-	                <div class="rh-flex-grow1 listitem_title listitem_column">
-	                    <h2><a href="<?php the_permalink();?>"><?php the_title();?></a></h2>
-	                    <p class="postcont">
+	                <div class="rh-flex-grow1 border-right listitem_title listitem_column pt15 pb15 pr20 pl20">
+	                    <h3 class="font120 mb10 mt0"><a href="<?php the_permalink();?>" class="rehub-main-color"><?php the_title();?></a><span class="blockstyle"><?php echo re_badge_create('labelsmall'); ?></span></h3>
+	                    <div class="lineheight20">
 	                    	<?php if ($module_desc =='post') :?>
 	                    		<?php if ($full_width == 1):?>
 	                    			<?php kama_excerpt('maxchar=250'); ?>                        			
@@ -1856,35 +1862,10 @@ function wpsm_toprating_shortcode( $atts, $content = null ) {
 	                    			<?php kama_excerpt('maxchar=120'); ?> 
 	                    		<?php endif;?>	
 	                		<?php endif;?>
-	                    </p>
-	                    <div class="star"><?php rehub_get_user_results('small', 'yes') ?></div>
-	                </div>
-	                <div class="listbuild_review listitem_column text-center">
-	            	<?php if(get_post_type($post->ID) == 'product'):?>
-	                	<?php $overall_review  = get_post_meta($post->ID, 'rehub_review_overall_score', true);?>
-	                	<?php if ($overall_review){ $overall_review = $overall_review;}?>
-	            	<?php else:?>	
-	            		<?php $overall_review  = rehub_get_overall_score();?>
-	            	<?php endif;?>                	
-	                    <div class="top-rating-item-circle-view">
-	                        <div class="radial-progress" data-rating="<?php echo ''.$overall_review?>">
-	                            <div class="circle">
-	                                <div class="mask full">
-	                                    <div class="fill"></div>
-	                                </div>
-	                                <div class="mask half">
-	                                    <div class="fill"></div>
-	                                    <div class="fill fix"></div>
-	                                </div>
-	                                
-	                            </div>
-	                            <div class="inset">
-	                                <div class="percentage"><?php echo ''.$overall_review ?></div>
-	                            </div>
-	                        </div>
 	                    </div>
 	                </div>
-	                <div class="listbuild_btn listitem_column text-center">
+	                <div class="listbuild_btn listitem_column text-center rh-flex-center-align pt15 pb15 pr20 pl20 rh-flex-justify-center">
+	                	<div>
 		            	<?php if(get_post_type($post->ID) == 'product'):?>
 			            	<?php global $product;?>
 							<?php if ( $product->add_to_cart_url() !='') : ?>
@@ -1907,7 +1888,8 @@ function wpsm_toprating_shortcode( $atts, $content = null ) {
 		            	<?php else:?>	
 		            		<?php rehub_generate_offerbtn('wrapperclass=block_btnblock mobile_block_btnclock mb5');?>
 		            	<?php endif;?>                 
-	                    <a href="<?php the_permalink();?>" class="read_full font70"><?php if(rehub_option('rehub_review_text') !='') :?><?php echo rehub_option('rehub_review_text') ; ?><?php else :?><?php esc_html_e('Read full review', 'rehub-theme'); ?><?php endif ;?></a>
+	                    <a href="<?php the_permalink();?>" class="read_full font85"><?php if(rehub_option('rehub_review_text') !='') :?><?php echo rehub_option('rehub_review_text') ; ?><?php else :?><?php esc_html_e('Read full review', 'rehub-theme'); ?><?php endif ;?></a>
+	                	</div>
 	                </div>
 	            </div>
                 </div>
@@ -2390,20 +2372,40 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
 	        );
 	        ?>	
 
-	        <?php $common_attributes = array(); $common_criterias = false; ?>
+	        <?php $common_attributes = $attributes_group = array(); $common_criterias = false; ?>
 	        <?php $common = new WP_Query($args); if ($common->have_posts()) : ?>
 	        <?php while ($common->have_posts()) : $common->the_post(); global $product; global $post; ?>
-	        	<?php $attributes = $product->get_attributes();?>
-	        	<?php foreach ($attributes as $key => $attribute) {
-	        		if($attribute['is_visible'] == 1){
-	        			$key = $attribute['name'];
-	        			if(!empty($common_attributes) && array_key_exists($key, $common_attributes)){
-	        				continue;
-	        			}
-	        			$common_attributes[$key] = $attribute;
-	        		}
-	        	}
-	        	?>
+	        	<?php $attributes_group = (function_exists('rh_get_attributes_group')) ? rh_get_attributes_group( $product ) : ''; ?>
+				<?php if(!empty($attributes_group)): ?>
+					<?php foreach( $attributes_group as $group_key => $attribute_group ): ?>
+						<?php 
+						if(!is_array($attribute_group['attributes'])) continue; 
+						ksort($attribute_group['attributes']); 
+						$common_attributes[$group_key]['name'] = $attribute_group['name']; 
+						$attributes = $attribute_group['attributes']; 
+						foreach ($attributes as $key => $attribute) {
+							$key = $attribute['name'];
+							if(!empty($common_attributes[$group_key]['attributes']) && array_key_exists($key, $common_attributes[$group_key]['attributes'])){
+								continue;
+							}
+							$common_attributes[$group_key]['attributes'][$key] = $attribute;
+						}
+						?>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<?php $attributes = $product->get_attributes();?>
+					<?php 
+					foreach ($attributes as $key => $attribute) {
+						if($attribute['is_visible'] == 1){
+							$key = $attribute['name'];
+							if(!empty($common_attributes) && array_key_exists($key, $common_attributes)){
+								continue;
+							}
+							$common_attributes[$key] = $attribute;
+						}
+					}
+					?>
+				<?php endif; ?>
 	        	<?php 
 	        		$thecriteria = get_post_meta((int)$post->ID, '_review_post_criteria', true);
 	        		if($thecriteria) {$common_criterias = true;}
@@ -2446,17 +2448,24 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
                             <?php esc_html_e('Review', 'rehub-theme');?>
                         </li> 
                         <?php endif;?>                          
-                        <?php if(!empty($common_attributes)):?>
-	                        <li class="row_chart_8 heading_row_chart">
-	                            <?php esc_html_e('Attributes', 'rehub-theme');?>
-	                        </li>                        
-	                        <?php $i = 8; foreach($common_attributes as $attribute_value):?>
-	                            <?php $i++;?>
-	                            <li class="row_chart_<?php echo (int)$i;?> meta_value_row_chart">
-	                                <?php echo wc_attribute_label( $attribute_value['name'] ); ?>
-	                            </li>
-	                        <?php endforeach;?>
-                    	<?php endif;?>
+						<?php if(!empty($common_attributes)): ?>
+							<?php if(!empty($attributes_group)): ?>
+		                        <?php $i = 7; foreach($common_attributes as $common_attribute):?>
+		                            <?php $i++; ?>
+									<li class="row_chart_<?php echo (int)$i;?> heading_row_chart sub_heading_row_chart"><?php echo $common_attribute['name']; ?></li> 
+									<?php foreach($common_attribute['attributes'] as $attribute_name => $attribute_value): ?>
+										<?php $i++; ?>
+										<li class="row_chart_<?php echo (int)$i;?> meta_value_row_chart"><?php echo wc_attribute_label( $attribute_name ); ?></li>
+									<?php endforeach;?>
+		                        <?php endforeach;?>
+							<?php else: ?>
+								<li class="row_chart_8 heading_row_chart"><?php esc_html_e('Attributes', 'rehub-theme');?></li>
+		                        <?php $i = 8; foreach($common_attributes as $attribute_value):?>
+		                            <?php $i++;?>
+		                            <li class="row_chart_<?php echo (int)$i;?> meta_value_row_chart"><?php echo wc_attribute_label( $attribute_value['name'] ); ?></li>
+		                        <?php endforeach;?>
+							<?php endif;?>
+						<?php endif;?>
                     </ul>
                 </div>
 		    	<div class="top_chart_wrap woocommerce"><div class="top_chart_carousel">
@@ -2600,42 +2609,67 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
 		                            <?php echo rehub_exerpt_function(array('reviewcriterias'=> 'editor'));?>
 		                        </li> 
 		                        <?php endif;?>                                
-                                <?php if(!empty($common_attributes)):?>                                
-	                                <li class="row_chart_8 heading_row_chart">
-	                                </li>    
-	                                <?php 
-	                                	$currentattr =  $product->get_attributes(); 
-	                                	$attrnames = array();
-	                                ?>
-						        	<?php foreach ($currentattr as $key => $attr) {
-						        		if($attr['is_visible'] == 1){
-						        			$key = $attr['name'];
-						        			$attrnames[$key] = $attr;
-						        		}
-						        	}
-						        	?>	                                                                                        
-			                        <?php $i = 8; foreach($common_attributes as $attkey => $attribute):?>
-			                            <?php $i++;?>
-			                            <li class="row_chart_<?php echo (int)$i;?> meta_value_row_chart">
-											<?php 
-												$currentname = $attribute['name'];
-												if(array_key_exists($currentname, $attrnames)){
-													if ( $attribute['is_taxonomy'] ) {
-														$values = wc_get_product_terms( $product->get_id(), $currentname, array( 'fields' => 'names' ) );
+	                            <?php if(!empty($common_attributes)): ?> 
+									<?php $attrnames = array(); ?>
+									<?php if(!empty($attributes_group)): ?>
+										<?php $i = 7; foreach($common_attributes as $attr_group): ?>
+											<?php $i++;?>
+											<li class="row_chart_<?php echo (int)$i; ?> heading_row_chart sub_heading_row_chart"></li>
+											<?php $currentattr =  $attr_group['attributes']; ?>
+											<?php foreach($currentattr as $attribute):?>
+												<?php $i++;?>
+												<li class="row_chart_<?php echo (int)$i; ?> meta_value_row_chart">
+													<?php 
+													if($attribute['is_visible'] != 1) continue;
+												//	if(!in_array()) continue;
+													if ($attribute['is_taxonomy']) {
+														$values = wc_get_product_terms( $product->get_id(), $attribute['name'], array( 'fields' => 'names' ) );
 														if(!empty($values)){
-															echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );	
+															echo apply_filters('woocommerce_attribute', wpautop(wptexturize(implode(', ', $values))), $attribute, $values );	
 														}
 													} else {
-														$curtextattr = $attrnames[$currentname];
-														echo wc_implode_text_attributes( $curtextattr->get_options() );
+														if($product->get_attribute($attribute['name'])){
+															echo wc_implode_text_attributes($attribute->get_options());
+														}
 													}
-												}
-											?>
-			                            </li>
-			                        <?php endforeach;?> 
-			                    <?php else:?>
-			                    	<?php $i = 7;?>
-		                        <?php endif;?>                                                              
+													?>
+												</li>
+											<?php endforeach;?>
+										<?php endforeach;?>
+									<?php else: ?>
+										<?php $i = 8;?>
+										<li class="row_chart_<?php echo (int)$i; ?> heading_row_chart"></li>
+										<?php $currentattr =  $product->get_attributes(); ?>
+										<?php foreach ($currentattr as $key => $attr) {
+											if($attr['is_visible'] == 1){
+												$key = $attr['name'];
+												$attrnames[$key] = $attr;
+											}
+										}
+										?>	                                                                                        
+										<?php foreach($common_attributes as $attkey => $attribute):?>
+											<?php $i++;?>
+											<li class="row_chart_<?php echo (int)$i;?> meta_value_row_chart">
+												<?php 
+													$currentname = $attribute['name'];
+													if(array_key_exists($currentname, $attrnames)){
+														if ( $attribute['is_taxonomy'] ) {
+															$values = wc_get_product_terms( $product->get_id(), $currentname, array( 'fields' => 'names' ) );
+															if(!empty($values)){
+																echo apply_filters( 'woocommerce_attribute', wpautop( wptexturize( implode( ', ', $values ) ) ), $attribute, $values );	
+															}
+														} else {
+															$curtextattr = $attrnames[$currentname];
+															echo wc_implode_text_attributes( $curtextattr->get_options() );
+														}
+													}
+												?>
+											</li>
+										<?php endforeach;?>
+									<?php endif;?>	
+				                <?php else:?>
+									<?php $i = 7;?>
+								<?php endif;?>                                                              
 			            </ul>
 			            </div>
 			        <?php endwhile; ?>

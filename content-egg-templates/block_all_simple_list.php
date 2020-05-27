@@ -59,7 +59,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
             <div class="floatleft mobileblockdisplay mb15 offer_thumb<?php if(!$logo) {echo ' nologo_thumb';}?>">   
                 <?php if($logo) :?>
                     <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn">
-                    <img src="<?php echo esc_attr($logo); ?>" alt="<?php echo esc_attr($offer_title); ?>" height="35" style="max-height: 35px" />
+                    <img src="<?php echo esc_attr($logo); ?>" alt="<?php echo esc_attr($offer_title); ?>" height="45" style="max-height: 45px" />
                     </a>
                     <?php if (!empty($item['extra']['estimatedDeliveryTime'])): ?>
                         <small class="font70 blockstyle lineheight15">

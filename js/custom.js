@@ -2134,9 +2134,6 @@ jQuery(window).on('load', function(){
           jQuery(this).removeClass('loading');
        });
    } 
-   jQuery('.meta_value_row_chart, .woo_attribute_row_chart').on('click', function(){
-        jQuery(this).toggleClass('heightauto');
-   }); 
 
    /* OWL CAROUSEL */
    if(jQuery(".re_carousel").length > 0){

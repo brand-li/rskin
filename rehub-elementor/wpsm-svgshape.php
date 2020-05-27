@@ -375,8 +375,8 @@ class Widget_SvgShape extends Widget_Base {
         if ( ! empty( $settings['borderdash'] )) {
             $this->add_render_attribute( 'svgdata', 'stroke-dasharray', $settings['dashone'].','.$settings['dashtwo']  );
         }
-		$width = $settings['svgwidth']['size'];
-		$height = $settings['svgheight']['size'];
+		$width = (!empty($settings['svgwidth']['size'])) ? $settings['svgwidth']['size'] : '';
+		$height = (!empty($settings['svgheight']['size'])) ? $settings['svgheight']['size'] : '';
 		if($settings['shape'] == '1'){
 			$this->add_render_attribute( 'svgdatainner', 'cx', $width/2  );
 			$this->add_render_attribute( 'svgdatainner', 'cy', $width/2  );

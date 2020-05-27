@@ -3117,7 +3117,8 @@ $build_args = shortcode_atts(array(
 	'showrow'=> '5',
 	'aff_link' => '',
 	'carouseltype' =>'columned',
-	'soldout' => '',				
+	'soldout' => '',
+	'price_range' => '',				
 ), $atts, 'woo_mod');
 extract($build_args); 
 ob_start(); 

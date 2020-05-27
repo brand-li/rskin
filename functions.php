@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '10.0.2');
+	define('RH_MAIN_THEME_VERSION', '10.1');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
@@ -639,9 +639,9 @@ class WPSM_image_resizer{
 		$alt = (!empty($this->title)) ? $this->title : the_title_attribute (array('echo' => 0) );
 		if ($this->lazy == true){
 			if(function_exists('is_amp_endpoint') && is_amp_endpoint()){
-				echo '<img class="lazyload" data-src="'.$this->get_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->get_resized_url().'" />';
+				echo '<img class="lazyload" data-src="'.$this->get_resized_url().'"'.$width_param.$height_param.' alt="'.$alt.'" src="'.$this->get_resized_url().'" />';
 			}else{			
-				echo '<img class="lazyload" data-src="'.$this->get_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->no_thumb().'" />';
+				echo '<img class="lazyload" data-src="'.$this->get_resized_url().'"'.$width_param.$height_param.' alt="'.$alt.'" src="'.$this->no_thumb().'" />';
 			}
 		}
 		else {
@@ -655,9 +655,9 @@ class WPSM_image_resizer{
 		$alt = (!empty($this->title)) ? $this->title : the_title_attribute (array('echo' => 0) );		
 		if ($this->lazy == true){
 			if(function_exists('is_amp_endpoint') && is_amp_endpoint()){
-				echo '<img class="lazyload" data-src="'.$this->get_not_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->get_not_resized_url().'" />';
+				echo '<img class="lazyload" data-src="'.$this->get_not_resized_url().'"'.$width_param.$height_param.' alt="'.$alt.'" src="'.$this->get_not_resized_url().'" />';
 			}else{
-				echo '<img class="lazyload" data-src="'.$this->get_not_resized_url().'"'.$width_param.$height_param.' alt="'.the_title_attribute (array('echo' => 0) ).'" src="'.$this->no_thumb().'" />';				
+				echo '<img class="lazyload" data-src="'.$this->get_not_resized_url().'"'.$width_param.$height_param.' alt="'.$alt.'" src="'.$this->no_thumb().'" />';				
 			}
 
 		}
@@ -1454,7 +1454,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '4.8',
+			'version' 				=> '4.9',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',

@@ -141,11 +141,12 @@ add_action( 'widgets_init', 'rehub_register_sidebars' );
 //////////////////////////////////////////////////////////////////
 
 if( !function_exists('rehub_most_popular_widget_block') ) {
-function rehub_most_popular_widget_block($basedby = 'comments') { ?>
+function rehub_most_popular_widget_block($basedby = 'hot', $number = 5) { ?>
 
 	<?php 
-	if ($basedby == 'views') {$popular_posts = new WP_Query('showposts=5&meta_key=rehub_views_mon&orderby=meta_value_num&order=DESC&ignore_sticky_posts=1');}
-	else {$popular_posts = new WP_Query('showposts=5&orderby=comment_count&order=DESC&ignore_sticky_posts=1');}	
+	if ($basedby == 'hot') {$popular_posts = new WP_Query('showposts='.$number.'&meta_key=post_hot_count&orderby=meta_value_num&order=DESC&ignore_sticky_posts=1');}
+	elseif ($basedby == 'views') {$popular_posts = new WP_Query('showposts='.$number.'&meta_key=rehub_views&orderby=meta_value_num&order=DESC&ignore_sticky_posts=1');}
+	else {$popular_posts = new WP_Query('showposts='.$number.'&orderby=comment_count&order=DESC&ignore_sticky_posts=1');}
 	if($popular_posts->have_posts()): ?>
 	
 	

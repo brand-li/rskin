@@ -115,6 +115,8 @@ nav.top_menu ul.menu:not(.off-canvas) > li.menu-item-has-children > a:before, .h
 .alignright, img.alignright { float: left; margin-right: 2em;}
 .rh_category_tab ul.cat_widget_custom li a:before{margin-left: .618em;margin-right: 0;}
 nav.top_menu>ul>li.vertical-menu>ul>li>.sub-menu{border-right: none; border-left: 2px solid transparent}
+#main_header .rh_woocartmenu_cell .widget_shopping_cart{left: 12px; right: auto;}
+.rh_woocartmenu_cell .widget_shopping_cart:after{left: 19px; right: auto;}
 
 /****************************************************************************
 
@@ -266,7 +268,7 @@ ul.postpagination li { float: right; margin-left: 0px; margin-right: 5px; }
 
 .top_table_block .top_rating_item td.desc_col{ text-align: right;}
 .top_table_block .top_rating_item .column_content { text-align: right !important; }
-.top_rating_item .rank_count { left: inherit; right: 0; margin: -20px -37px 0 0;}
+.rank_count { left: inherit; right: 0; margin: -20px -37px 0 0;}
 .top_rating_item figure { margin: 0 10px 0 0; }
 .top_chart_first { float: right; }
 .top_chart_wrap, .top_chart .swiper-container{float: right; }

@@ -1,6 +1,7 @@
 <?php 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
+wp_enqueue_script('rhcuttab');
 $store_user = dokan()->vendor->get( get_query_var( 'author' ) );
 $store_id = $store_user->get_id();
 $store_rating = $store_user->get_rating();
@@ -14,6 +15,11 @@ $store_info = $store_user->get_shop_info();
 $store_tabs = dokan_get_store_tabs( $store_id );
 $store_address = dokan_get_seller_address( $store_id, TRUE );
 $general_tnc_enable = dokan_get_option( 'seller_enable_terms_and_conditions', 'dokan_general', 'off' );
+
+$dokan_store_time_enabled = isset( $store_info['dokan_store_time_enabled'] ) ? $store_info['dokan_store_time_enabled'] : '';
+$store_open_notice        = isset( $store_info['dokan_store_open_notice'] ) && ! empty( $store_info['dokan_store_open_notice'] ) ? $store_info['dokan_store_open_notice'] : __( 'Store Open', 'rehub-theme' );
+$store_closed_notice      = isset( $store_info['dokan_store_close_notice'] ) && ! empty( $store_info['dokan_store_close_notice'] ) ? $store_info['dokan_store_close_notice'] : __( 'Store Closed', 'rehub-theme' );
+$show_store_open_close    = dokan_get_option( 'store_open_close', 'dokan_appearance', 'on' );
 
 if ( !empty( $store_address['state'] ) && !empty( $store_address['country'] ) ) {
     $short_address = $store_address['state'] . ', ' . $store_address['country'];
@@ -53,6 +59,17 @@ $store_address = apply_filters( 'dokan_store_header_adress', $short_address, $st
 							<span class="rehub_scroll" data-scrollto="#dokan-store-location"><?php esc_html_e( '(Show on map)', 'rehub-theme' ); ?></span>
                         <?php } ?>	
 					</div>
+                    <?php if ( $show_store_open_close == 'on' && $dokan_store_time_enabled == 'yes') : ?>
+                        <div class="dokan-store-open-close">
+                            <i class="fal fa-clock"></i>
+                            <?php if ( dokan_is_store_open( $store_id ) ) {
+                                echo esc_attr( $store_open_notice );
+                            } else {
+                                echo esc_attr( $store_closed_notice );
+                            } ?>
+                        </div>
+                    <?php endif ?>
+                    <?php do_action( 'dokan_store_header_info_fields',  $store_id ); ?>
 	    		</div>	        			        		
 	    		<div id="wcvendor_profile_act_btns" class="wcvendor_profile_cell">
 	    			<span class="wpsm-button medium red act-rehub-login-popup"><?php echo getShopLikeButton( $store_id );?></span>	    			

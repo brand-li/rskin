@@ -206,7 +206,7 @@ function rh_woo_code_zone($zone='button'){
 } 
 } 
 
-if(!function_exists('rh_woo_code_loop')){
+if(!function_exists('rh_wooattr_code_loop')){
 	function rh_wooattr_code_loop($attrelpanel=''){
 		if($attrelpanel){
 			$attrelpanel = (array) json_decode( urldecode( $attrelpanel ), true );
@@ -2091,6 +2091,18 @@ if( !function_exists('rehub_woo_quick_view_action') ){
 			var wc_add_to_cart_variation_params = {"wc_ajax_url":"\/?wc-ajax=%%endpoint%%"};
 			jQuery.getScript("<?php echo includes_url('js/wp-util.min.js'); ?>");
 			jQuery.getScript("<?php echo plugins_url( 'assets/js/frontend/add-to-cart-variation.min.js', WC_PLUGIN_FILE ); ?>");
+			if(jQuery(".rh-var-selector").length > 0){
+				jQuery("input.rh-var-input").click(function(){
+					if(jQuery(this).prop("checked")){
+						var newValue = jQuery(this).val();
+						var namevar = jQuery(this).attr("name");
+						jQuery("select[name="+namevar+"]").val(newValue).trigger("change");
+					}
+				});
+				jQuery(".rh-var-selector").each(function(){
+					jQuery(this).prev("select").hide();
+				});
+			}
 		</script>
 		<script type="text/template" id="tmpl-variation-template">
 			<div class="woocommerce-variation-description">{{{ data.variation.variation_description }}}</div>

@@ -74,7 +74,7 @@ if ( ! comments_open() || !function_exists('wc_review_ratings_enabled')) {
 					</div>
 					<?php 
 						$rating_percentage = 0;
-						if ( isset( $rate_counts[$rating] ) ) {
+						if ( isset( $rate_counts[$rating] ) && $review_count !=0 ) {
 							$rating_percentage = (round( $rate_counts[$rating] / $review_count, 2 ) * 100 );
 						}
 					?>

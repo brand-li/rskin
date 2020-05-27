@@ -10,9 +10,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 $store_user = dokan()->vendor->get( get_query_var( 'author' ) );
 $vendor_id = $store_user->get_id();
+$store_info   = $store_user->get_shop_info();
 $map_location = $store_user->get_location();
 $totaldeals = count_user_posts( $vendor_id, $post_type = 'product' );
-$store_info = dokan_get_store_info( $vendor_id );
 $store_url = dokan_get_store_url( $vendor_id );
 $social_fields = dokan_get_social_profile_fields();
 $store_description = '';
@@ -63,7 +63,7 @@ $widget_args = array( 'before_widget' => '<div class="rh-cartbox widget"><div>',
 <!-- CONTENT -->
 <div class="rh-container wcvcontent woocommerce"> 
     <div class="rh-content-wrap clearfix">
-    	<?php do_action( 'dokan_store_profile_frame_after', $store_user, $store_info ); ?>
+    	<?php do_action( 'dokan_store_profile_frame_after', $store_user->data, $store_info ); ?>
 	    <div class="rh-mini-sidebar-content-area floatright page clearfix tabletblockdisplay">
 	        <article class="post" id="page-<?php the_ID(); ?>">
 	        	<?php do_action( 'woocommerce_before_main_content' ); ?>
