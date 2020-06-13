@@ -376,23 +376,21 @@ function rh_show_gmw_form_before_wcvendor(){
 //////////////////////////////////////////////////////////////////
 add_filter('woocommerce_placeholder_img_src', 'rehub_woocommerce_placeholder_img_src');
 function rehub_woocommerce_placeholder_img_src( $src ) {
-	global $post;
-	if (is_object($post)) {
-		if (get_post_meta($post->ID, 'rehub_woo_coupon_code', true) !=''){
-			$src = get_template_directory_uri() . '/images/default/woocouponph.png';
-		}
-		elseif (get_post_meta($post->ID, '_sale_price', true) !=''){
-			$src = get_template_directory_uri() . '/images/default/woodealph.png';
-		}
-		else {
-			$src = get_template_directory_uri() . '/images/default/wooproductph.png';
-		} 
-	}
-	else {
-		$src = get_template_directory_uri() . '/images/default/wooproductph.png';
-	}	
+  	$placeholder_image = get_option( 'woocommerce_placeholder_image', 0 );
+  	$src = get_template_directory_uri() . '/images/default/wooproductph.png';
+  	if ( ! empty( $placeholder_image ) ) {
+    	if ( is_numeric( $placeholder_image ) ) {
+      		$image = wp_get_attachment_image_src( $placeholder_image, 'full' );
+      		if ( ! empty( $image[0] ) ) {
+        		$src = $image[0];
+      		}
+    	} else {
+      		$src = $placeholder_image;
+    	}
+  	}
 	return $src;
 }
+
 add_filter( 'woocommerce_gallery_image_size', 'rh_custom_image_gallery_size' );
 function rh_custom_image_gallery_size($size){
 	return 'full';

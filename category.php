@@ -14,7 +14,7 @@ else {
     $infinitescrollwrap = '';
 } 
 $show = get_option('posts_per_page');
-if($show == 10){$show = 12;}
+if($show == 10 && rehub_option('category_layout') != 'compactgridfull'){$show = 12;}
 $count_ads = rehub_option('rehub_grid_ad_count');
 if (!empty ($count_ads)) {
     foreach ($count_ads as $count_ad) {

@@ -31,7 +31,7 @@ use ContentEgg\application\helpers\CurrencyHelper;
             $currency_rate = CurrencyHelper::getCurrencyRate($syncitem['currencyCode'], $currency_code);
             if (!$currency_rate) $currency_rate = 1;
             $offer_price = $offer_price * $currency_rate;
-            if($offer_price_old){$offer_price_old = $offer_price_old * $currency_rate;}
+            if(!empty($offer_price_old)){$offer_price_old = $offer_price_old * $currency_rate;}
         }?>     
         <div class="price-alert-form-ce">
             <div class="alert-form-ce-wrap">

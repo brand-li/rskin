@@ -132,7 +132,7 @@
 
                 <div class="re_filter_instore">
                     <?php if (rehub_option('brand_taxonomy_layout') == 'regular_list'):?>
-                        <?php echo wpsm_woolist_shortcode($arg_array);?>
+                        <?php echo wpsm_woorows_shortcode($arg_array);?>
                     <?php elseif (rehub_option('brand_taxonomy_layout') == 'deal_grid'):?>
                         <?php 
                             if(rehub_option('width_layout') == 'extended'){
@@ -143,6 +143,8 @@
                             }
                         ?>                        
                         <?php echo wpsm_woogrid_shortcode($arg_array);?>
+                    <?php elseif (rehub_option('brand_taxonomy_layout') == 'compact_list'):?>
+                        <?php echo wpsm_woolist_shortcode($arg_array);?>
                     <?php elseif (rehub_option('brand_taxonomy_layout') == 'regular_grid'):?>
                         <?php 
                             if(rehub_option('width_layout') == 'extended'){

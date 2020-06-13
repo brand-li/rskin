@@ -34,6 +34,7 @@ else{
 <?php $offer_price = (!empty($item['price'])) ? $item['price'] : ''; ?>
 <?php $offer_price_old = (!empty($item['_price_movers']['price_old'])) ? $item['_price_movers']['price_old'] : ''; ?> 
 <?php $currency_code = (!empty($item['currencyCode'])) ? $item['currencyCode'] : ''; ?>
+<?php $modulecode = (!empty($item['module_id'])) ? $item['module_id'] : ''; ?>
 <?php $lowestused_price = (!empty($item['extra']['lowestUsedPrice'])) ? $item['extra']['lowestUsedPrice'] : ''; ?>  
 <?php if($offer_price && rehub_option('ce_custom_currency')) {
     $currency_code = rehub_option('ce_custom_currency');
@@ -82,7 +83,7 @@ else{
                     </div>
                 </div>     
        
-                <h3 class=""><a href="<?php echo esc_attr($afflink);?>" rel="nofollow sponsored" target="_blank" class="re_track_btn"><?php echo esc_attr($offer_title); ?></a></h3> 
+                <h3 class=""><a href="<?php echo esc_attr($afflink);?>" rel="nofollow sponsored" target="_blank" class="re_track_btn"  data-tracking-group="<?php echo esc_attr($modulecode);?>"><?php echo esc_attr($offer_title); ?></a></h3> 
             </div>
  
         </div>                                       

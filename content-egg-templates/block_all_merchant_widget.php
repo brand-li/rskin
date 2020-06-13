@@ -60,7 +60,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
                 <?php if(rehub_option('rehub_btn_text') !='') :?><?php $btn_txt = rehub_option('rehub_btn_text') ; ?><?php else :?><?php $btn_txt = esc_html__('See it', 'rehub-theme') ;?><?php endif ;?>  
                 <div class="table_merchant_list module_class_<?php echo esc_attr($modulecode);?> rh_stock_<?php echo esc_attr($stock_status_class);?>">               
                     <div class="merchant_thumb">   
-                        <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn">
+                        <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                             <img src="<?php echo esc_attr(TemplateHelper::getMerhantIconUrl($item, true)); ?>" alt="<?php echo esc_attr($modulecode);?>" />
                             <?php if (!empty($merchant)):?>
                                 <?php echo esc_html($merchant); ?>
@@ -72,7 +72,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
                     <div class="price_simple_col">
                         <?php if(!empty($item['price'])) : ?>
                             <div>
-                                <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn">
+                                <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                                     <span class="val_sim_price">
                                         <?php echo TemplateHelper::formatPriceCurrency($offer_price, $currency_code); ?>
                                     </span>
@@ -91,7 +91,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
                         <?php endif;?>                                              
                     </div>
                     <div class="buttons_col">
-                        <a class="re_track_btn" href="<?php echo esc_url($afflink) ?>" target="_blank" rel="nofollow sponsored">
+                        <a class="re_track_btn" href="<?php echo esc_url($afflink) ?>" target="_blank" rel="nofollow sponsored"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                             <?php echo esc_html($btn_txt) ; ?>
                         </a>                        			                        
                     </div>

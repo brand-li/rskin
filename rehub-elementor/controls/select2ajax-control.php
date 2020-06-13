@@ -40,7 +40,7 @@ class Select2Ajax_Control extends \Elementor\Base_Data_Control {
      * @access public
      */
     public function enqueue() {
-        $current_dir_url = dirname( $this->get_file_url() );
+        $current_dir_url = get_template_directory_uri().'/rehub-elementor/controls';
         wp_enqueue_script( 'select2-ajax', $current_dir_url . '/assets/select2-ajax.js', [ 'jquery' ], '1.0.0' );
     }
 

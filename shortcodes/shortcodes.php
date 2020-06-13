@@ -1865,7 +1865,7 @@ function wpsm_toprating_shortcode( $atts, $content = null ) {
 	                    </div>
 	                </div>
 	                <div class="listbuild_btn listitem_column text-center rh-flex-center-align pt15 pb15 pr20 pl20 rh-flex-justify-center">
-	                	<div>
+	                	<div class="width-100p">
 		            	<?php if(get_post_type($post->ID) == 'product'):?>
 			            	<?php global $product;?>
 							<?php if ( $product->add_to_cart_url() !='') : ?>
@@ -2330,7 +2330,8 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
 			'searchbtn' => 'yes',
             'posttype' => 'product', // comma separated post types
             'taxonomy' => 'product_cat',
-            'terms' => '', // comma separated term slugs			
+            'terms' => '', // comma separated term slugs
+            'disable' => ''			
 		), $atts));
 	ob_start();
 	$compareids = array();
@@ -2342,6 +2343,33 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
 	if($searchbtn){
 		wp_enqueue_style('rhcomparesearch');
 		echo '<div class="search-wrap"><button id="btn_search" class="btn-comp-search def_btn font90 pb10 pl15 pr15 pt10 cursorpointer"><i class="fal fa-search"></i> '.esc_html__('Add more items', 'rehub-theme').'</button><input type="hidden" id="compare_search_data" data-posttype="'. esc_attr($posttype) .'" data-terms="'. esc_attr($terms) .'" data-taxonomy="'. esc_attr($taxonomy) .'"></div>';
+	}
+	if($disable){
+		$disable = wp_parse_slug_list($disable);
+		if(is_array($disable)){
+			$addstyles = '';
+			wp_register_style( 'rhheader-inline-style', false );
+			wp_enqueue_style( 'rhheader-inline-style' );
+			
+			foreach( $disable as $item){
+				if($item == 'description'){
+					$addstyles .= '.row_chart_2{display: none}';
+				}
+				if($item == 'brand'){
+					$addstyles .= '.row_chart_5{display: none}';
+				}
+				if($item == 'stock'){
+					$addstyles .= '.row_chart_7{display: none}';
+				}
+				if($item == 'userrate'){
+					$addstyles .= '.row_chart_3{display: none}';
+				}
+				if($item == 'review'){
+					$addstyles .= '.row_chart_6{display: none}';
+				}
+			}
+			wp_add_inline_style('rhheader-inline-style', $addstyles);
+		}
 	}
 	if(!empty($compareids)):
 		if(count($compareids) > 1){
@@ -5345,7 +5373,8 @@ function wpsm_reviewbox( $atts, $content = null ) {
 				'compact' =>'',
 				'scrollid' => '',
 				'woobox' => '',
-				'regular' => ''															
+				'regular' => '',
+				'additional_class' => '',															
 			), $atts, 'wpsm_reviewbox');
         extract($atts);
 
@@ -5612,8 +5641,13 @@ function wpsm_reviewbox( $atts, $content = null ) {
 		$out .='</div>';
 	}    
 	else{
+		$style_classes = 'rate_bar_wrap';
+
+		if ( ! empty( $additional_class ) ) {
+			$style_classes .= ' ' . $additional_class;
+		}
 	    $scoretotal = 0; $total_counter = 0;
-		$out = '<div class="rate_bar_wrap"><div class="review-top"><div class="overall-score">';
+		$out = '<div class="'. $style_classes .'"><div class="review-top"><div class="overall-score">';
 			if (!empty($criterias))  {
 				$thecriteria = explode(';', $criterias);
 			    foreach ($thecriteria as $criteria) {

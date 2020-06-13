@@ -170,7 +170,7 @@
                                             <div class="flowhidden rh-float-panel" id="float-panel-woo-area">
                                                 <div class="rh-container rh-flex-center-align pt10 pb10">
                                                     <div class="float-panel-woo-image hideonsmobile">
-                                                        <?php WPSM_image_resizer::show_static_resized_image(array('lazy'=>false, 'thumb'=> true, 'width'=> 50, 'height'=> 50));?>
+                                                        <?php WPSM_image_resizer::show_static_resized_image(array('lazy'=>true, 'thumb'=> true, 'width'=> 50, 'height'=> 50));?>
                                                     </div>
                                                     <div class="wpsm_pretty_colored rh-line-left pl15 ml15 hideonsmobile">
                                                         <div class="hideontablet mb5 font110 fontbold">

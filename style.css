@@ -4,7 +4,7 @@
 	Description: Shop theme
 	Author: Brandli
 	Author URI: https://github.com/brand-li/
-	Version: 10.1
+	Version: 10.5
 	Tags: two-columns, fluid-layout, custom-background, threaded-comments, translation-ready, custom-menu
 	License: 
 	License URI:
@@ -249,7 +249,7 @@ nav.top_menu .vmegamenu-bg-ext  {right: -55px;bottom: -55px}
 #slide-menu-mobile ul ul.sub-menu li a { border-bottom: none; }
 #slide-menu-mobile ul ul.sub-menu.sub-menu-active { -webkit-transform: translateX(0); transform: translateX(0); z-index: 999; }
 #slide-menu-mobile ul li.back-mb span{ cursor:pointer; background-color: rgba(0, 0, 0, 0.02);padding: 13px 15px; font-size: 15px; text-decoration: none; display: block; }
-#slide-menu-mobile ul.off-canvas-active { opacity: 1; visibility: visible; -webkit-transform: translateX(0); transform: translateX(0); }
+#slide-menu-mobile ul.off-canvas-active { opacity: 1; visibility: visible; transform: translateX(0); }
 #slide-menu-mobile ul span.submenu-toggle { float:right; width: 42px; height: 42px; line-height: 42px; text-align: center; cursor: pointer;  color: #000; }
 #slide-menu-mobile ul span.submenu-toggle .fa, #slide-menu-mobile ul span.submenu-toggle .far, #slide-menu-mobile ul span.submenu-toggle .fab, #slide-menu-mobile ul span.submenu-toggle .fal { font-size: 14px; line-height: 42px; }
 #slide-menu-mobile ul .rehub-custom-menu-item, #slide-menu-mobile .countdown_dashboard .dash{display: none;}
@@ -2135,7 +2135,6 @@ span.stars-rate.blue-star span:before{color: #ff9800}
 .woo_offer_list .woolist_meta span:before{display: none;}
 .tax-store .mdf_sort_panel, .woocommerce.tax-store .woocommerce-result-count, .tax-store .tag_woo_meta{display: none;}
 .woo-tax-logo img {max-height: 120px; max-width: 160px; margin-bottom: 12px}.woo-tax-logo .user-rate{float: none; margin: 0 auto}
-.tax-product_tag h1{display: none;}
 .tag_woo_meta a{color: #888; text-decoration: none; font-style: italic}
 .wpsm-titlebox .rehub_feat_block, .wpsm-titlebox .rehub_bordered_block{box-shadow: none; border: none; margin: 0}
 
@@ -2851,7 +2850,7 @@ i.re-compare-close-in-chart{position:absolute;color: #e5e5e5; top:3px; right: 3p
 .wpsm-bar-percent { position: absolute; right: 10px; top: 0; font-size: 11px; height: 28px; line-height: 28px; color: rgba(0,0,0,0.4); }
 .wpsm-clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
 .wpsm-bar a{color: #fff; text-decoration: none;}
-.wpsm-bar-compare .wpsm-bar-title, .wpsm-bar-compare .wpsm-bar-title span{background-color: transparent; font-size: 15px; font-weight: normal;}
+.wpsm-bar-compare .wpsm-bar-title, .wpsm-bar-compare .wpsm-bar-title span{background-color: transparent; font-size: 15px; font-weight: normal; z-index: 1;}
 .wpsm-bar-compare .wpsm-bar-title span{padding: 0 12px}
 .wpsm-bar-compare .wpsm-bar-bar{background-color: #aaa}
 .wpsm-bar-compare .wpsm-bar-percent{color: #fff; font-size: 14px; font-weight: bold;}

@@ -62,6 +62,7 @@ class Widget_ThemeElements extends Widget_Base {
 					'search' => esc_html__('Search form', 'rehub-theme'),
 					'menu' => esc_html__('Desktop Menu', 'rehub-theme'),
 					'mobilemenu' => esc_html__('Mobile Menu', 'rehub-theme'),
+					'searchicon' => esc_html__('Search Icon', 'rehub-theme'),
 				]
 			]
 		);
@@ -169,6 +170,16 @@ class Widget_ThemeElements extends Widget_Base {
                 'themelement' => ['comparison'],
             ],
         ]);
+	    $this->add_control( 'searchiconcolor', [
+	        'label' => esc_html__( 'Set icon color', 'rehub-theme' ),
+	        'type' => \Elementor\Controls_Manager::COLOR,
+	        'selectors' => [
+	            '{{WRAPPER}} .icon-search-onclick' => 'color: {{VALUE}}',
+	        ],
+            'condition' => [
+                'themelement' => 'searchicon',
+            ],
+	    ]);
 
 		$this->end_controls_section();
 	}
@@ -266,6 +277,11 @@ class Widget_ThemeElements extends Widget_Base {
                 <?php wp_nav_menu( array( 'container_class' => 'top_menu', 'container' => 'nav', 'theme_location' => 'primary-menu', 'fallback_cb' => 'add_menu_for_blank', 'walker' => new \Rehub_Walker ) ); ?>
             </div>
 		<!-- /Main Navigation -->
+    <?php elseif( $settings['themelement'] == 'searchicon' ): ?>
+    	<div class="celldisplay rh-search-icon rh-header-icon text-center">
+    	<span class="icon-search-onclick" aria-label="Search"></span>
+		<div class="search-header-contents"><?php get_search_form() ?></div>
+		</div>
 	<?php elseif( $settings['themelement'] == 'mobilemenu' ): /* mobile menu */ ?>
         <div class="rh_mobile_menu">
             <div id="dl-menu" class="dl-menuwrapper rh-flex-center-align">

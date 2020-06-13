@@ -129,7 +129,8 @@ function rehub_login_register_modal() {
 							<?php if(class_exists('Woocommerce')) :?>
 								<a href="<?php echo wc_lostpassword_url(); ?>" class="alignright"><?php esc_html_e('Lost Password?', 'rehub-theme'); ?></a>
 							<?php else: ?>
-								<span class="act-rehub-login-popup color_link text-right-align" data-type="resetpass"><?php esc_html_e('Lost Password?', 'rehub-theme');  ?></span>
+								<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" class="alignright"><?php esc_html_e('Lost Password?', 'rehub-theme'); ?></a>
+								<span class="color_link text-right-align"><?php esc_html_e('Lost Password?', 'rehub-theme');  ?></span>
 							<?php endif;?>							
 						</div>
 						<div class="re-form-group mb20">

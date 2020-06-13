@@ -1,10 +1,12 @@
 <!-- Logo section -->
-<div class="logo_section_wrap<?php if (rehub_option('rehub_logo_inmenu') !='') {echo ' hideontablet';}?>">
+<div class="logo_section_wrap<?php if (rehub_option('rehub_logo_inmenu')) {echo ' hideontablet';}?>">
     <div class="rh-container">
         <div class="logo-section rh-flex-center-align tabletblockdisplay header_seven_style clearfix">
             <div class="logo">
           		<?php if(rehub_option('rehub_logo')) : ?>
-          			<a href="<?php echo home_url(); ?>" class="logo_image"><img src="<?php echo rehub_option('rehub_logo'); ?>" alt="<?php bloginfo( 'name' ); ?>" height="<?php echo rehub_option( 'rehub_logo_retina_height' ); ?>" width="<?php echo rehub_option( 'rehub_logo_retina_width' ); ?>" /></a>
+          			<a href="<?php echo home_url(); ?>" class="logo_image">
+                        <img src="<?php echo rehub_option('rehub_logo'); ?>" alt="<?php bloginfo( 'name' ); ?>" height="<?php echo rehub_option( 'rehub_logo_retina_height' ); ?>" width="<?php echo rehub_option( 'rehub_logo_retina_width' ); ?>" />
+                    </a>
           		<?php elseif (rehub_option('rehub_text_logo')) : ?>
                 <div class="textlogo fontbold rehub-main-color"><?php echo rehub_option('rehub_text_logo'); ?></div>
                 <div class="sloganlogo">
@@ -93,7 +95,7 @@
 </div>
 <!-- /Logo section -->  
 <!-- Main Navigation -->
-<div class="search-form-inheader header_icons_menu main-nav<?php if (rehub_option('rehub_logo_inmenu') !='') {echo ' mob-logo-enabled';}?><?php if (rehub_option('rehub_sticky_nav') ==true){echo ' rh-stickme';}?><?php echo ''.$header_menuline_style;?>">  
+<div class="search-form-inheader header_icons_menu main-nav<?php if (rehub_option('rehub_logo_inmenu')) {echo ' mob-logo-enabled';}?><?php if (rehub_option('rehub_sticky_nav') ==true){echo ' rh-stickme';}?><?php echo ''.$header_menuline_style;?>">  
     <div class="rh-container<?php if (rehub_option('rehub_sticky_nav') && rehub_option('rehub_logo_sticky_url') !=''){echo ' rh-flex-center-align logo_insticky_enabled';}?>"> 
 	    <?php 
 	        if (rehub_option('rehub_sticky_nav') && rehub_option('rehub_logo_sticky_url') !='') {

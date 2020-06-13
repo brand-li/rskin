@@ -35,6 +35,7 @@
                                 <?php
                                     do_action( 'woocommerce_before_single_product' );
                                 ?>
+                                <?php woocommerce_breadcrumb();?>
                                 <?php echo re_badge_create('labelsmall'); ?>
                                 <?php woocommerce_template_single_title();?>
                                 <?php do_action('rh_woo_single_product_title');?>

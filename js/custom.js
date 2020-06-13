@@ -83,6 +83,13 @@ var re_ajax_search = {
         jQuery(document).on( 'click', '.icon-search-onclick', function(e) {
             e.stopPropagation();
             jQuery( '.main-nav' ).toggleClass( 'top-search-onclick-open' );
+            if(jQuery(this).parent().parent().hasClass('elementor-widget-container')){
+                jQuery( this).closest('section').toggleClass( 'top-search-onclick-open' );
+                jQuery( this).closest('.elementor-widget').addClass( 'position-static' );
+                jQuery( this).closest('.elementor-widget-wrap').addClass( 'position-static' );
+                jQuery( this).closest('.elementor-column-wrap').addClass( 'position-static' );
+                jQuery( this).closest('.elementor-column').addClass( 'position-static' );
+            }
             if (re_ajax_search._is_search_open === true) {
                 re_ajax_search._is_search_open = false;
             }

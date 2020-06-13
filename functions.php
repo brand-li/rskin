@@ -6,14 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '10.1');
+	define('RH_MAIN_THEME_VERSION', '10.5');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
 }
 $rehub_options = [
 	'tf_username'      => 'babiato',
-	'tf_purchase_code' => 'nulled-by-babak',
+	'tf_purchase_code' => 'nulled-by-babiato',
 	'tf_support_date'  => '01.01.2030',
 ];
 update_option( 'Rehub_Key', $rehub_options );
@@ -452,12 +452,12 @@ if( ! function_exists( 'rh_custom_sliding_elements' ) ) {
 function rehub_add_elem_to_footer(){
 	?>
     <?php 
-        if (rehub_option('rehub_logo_inmenu') !='') {
+        if (rehub_option('rehub_logo_inmenu')) {
             $logoimageurl = '';
-            if(rehub_option('rehub_logo_inmenu_url') !=''){
+            if(rehub_option('rehub_logo_inmenu_url')){
                 $logoimageurl = rehub_option("rehub_logo_inmenu_url");
             } 
-            elseif (rehub_option('rehub_logo') !='') {
+            elseif (rehub_option('rehub_logo')) {
                 $logoimageurl = rehub_option('rehub_logo');
             }
             if ($logoimageurl) {
@@ -1454,7 +1454,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '4.9',
+			'version' 				=> '5.1',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',

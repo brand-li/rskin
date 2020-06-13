@@ -117,6 +117,11 @@ nav.top_menu ul.menu:not(.off-canvas) > li.menu-item-has-children > a:before, .h
 nav.top_menu>ul>li.vertical-menu>ul>li>.sub-menu{border-right: none; border-left: 2px solid transparent}
 #main_header .rh_woocartmenu_cell .widget_shopping_cart{left: 12px; right: auto;}
 .rh_woocartmenu_cell .widget_shopping_cart:after{left: 19px; right: auto;}
+.offsetnav-overlay{right: 270px; left:0;}
+#slide-menu-mobile ul.off-canvas{right: 0; left:auto;transform: translateX(100%);}
+#slide-menu-mobile ul.off-canvas-active{transform: translateX(0);}
+.woocommerce-product-gallery figure{float: left;}
+
 
 /****************************************************************************
 
@@ -646,8 +651,7 @@ div.summary{float: left;}
 /* PROS&CONS
 ================================================== */
 .wpsm_pros{padding-left: 0; padding-right: 15px}
-.wpsm_pros ul li:before{ padding-right: 0; padding-left: 8px;}
-.wpsm_cons ul li:before{ padding-right: 0; padding-left: 8px;}
+.wpsm_pros ul li:before, .wpsm_cons ul li:before{ padding-right: 8px; padding-left: 8px;}
 
 .re-line-badge.re-line-small-label{margin: 0 0 5px 5px;}
 a.rh-cat-label-title, .rh-cat-label-title a{margin: 0 0 5px 5px;}
@@ -667,6 +671,8 @@ a.rh-cat-label-title, .rh-cat-label-title a{margin: 0 0 5px 5px;}
 }
 
 @media (max-width: 767px) {
+.rtl #rh_woo_mbl_sidebar .sidebar{left:100%; right:auto}
+.rtl #rh_woo_mbl_sidebar.activeslide .sidebar{transform: translate3d(-100%,0,0);-webkit-transform: translate3d(-100%,0,0);}
 .rtl .mobile_compact_list .featured_newscom_left{float: right; margin: 0 0 8px 20px}
 .rtl .mobile_compact_list .newscom_detail{ float: right;}
 .mobile_block_btnclock.priced_block .rh_button_wrapper, .mobile_block_btnclock.priced_block .rh_price_wrapper{display: block; float: none;margin: 0 0 10px 0;}

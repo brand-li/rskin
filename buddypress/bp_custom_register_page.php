@@ -56,7 +56,7 @@ wp_add_inline_style('rhheader-inline-style', $addstyles);
 								<div class="re-form-group mb20">
 									<label for="rehub_user_pass"><?php esc_html_e('Password', 'rehub-theme')?></label>
 									<input class="re-form-input required" name="rehub_user_pass" id="rehub_user_pass" type="password"/>
-									<span class="alignright"><a href="<?php echo esc_url(bp_get_signup_page()); ?>?type=resetpass<?php echo ''.$membertypelink;?>" class="color_link bp_resset_link_login"><?php esc_html_e('Lost Password?', 'rehub-theme');  ?></a></span>							
+									<span class="alignright"><a href="<?php echo esc_url( wp_lostpassword_url() ); ?>" class="color_link bp_resset_link_login"><?php esc_html_e('Lost Password?', 'rehub-theme');  ?></a></span>							
 								</div>
 								<div class="re-form-group mb20">
 									<label for="rehub_remember"><input name="rehub_remember" id="rehub_remember" type="checkbox" value="forever" />

@@ -6,8 +6,8 @@
  */
 define ( 'BP_AVATAR_THUMB_WIDTH', 55 );
 define ( 'BP_AVATAR_THUMB_HEIGHT', 55 );
-define ( 'BP_AVATAR_FULL_WIDTH', 300 );
-define ( 'BP_AVATAR_FULL_HEIGHT', 300 );
+define ( 'BP_AVATAR_FULL_WIDTH', 150 );
+define ( 'BP_AVATAR_FULL_HEIGHT', 150 );
  
 /*
  * BP callback for the cover image feature.
@@ -47,7 +47,7 @@ if( ! function_exists( 'rh_cover_image_css' ) ) :
 	 
 		return $settings;
 	}
-	add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'rh_cover_image_css', 10, 1 );
+	add_filter( 'bp_before_members_cover_image_settings_parse_args', 'rh_cover_image_css', 10, 1 );
 	add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'rh_cover_image_css', 10, 1 );
 endif;
 

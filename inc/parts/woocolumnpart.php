@@ -81,7 +81,7 @@
         <?php endif; ?>
     <?php endif; ?>     
     <?php do_action('woocommerce_before_shop_loop_item');?>
-    <figure class="full_image_woo rh-hov-img-wrap">
+    <figure class="full_image_woo rh-hov-img-wrap mb0">
         <div class="button_action rh-shadow-sceu pt5 pb5">
             <div class="">
                 <?php $wishlistadded = esc_html__('Added to wishlist', 'rehub-theme');?>

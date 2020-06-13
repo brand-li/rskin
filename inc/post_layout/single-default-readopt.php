@@ -41,7 +41,7 @@
                     <?php endif;?>                                                         
                     <?php if(rehub_option('rehub_single_before_post') && vp_metabox('rehub_post_side.show_banner_ads') != '1') : ?><div class="mediad mediad_before_content"><?php echo do_shortcode(rehub_option('rehub_single_before_post')); ?></div><?php endif; ?>
                     <div class="post-inner clearbox">
-                        <div class="mobileblockdisplay rh-flex-columns">
+                        <div class="<?php if(rehub_option('rehub_disable_share_top') =='1' && rehub_option('exclude_author_meta') == '1' &&  rehub_option('exclude_date_meta') == '1'){echo '';}else{echo 'mobileblockdisplay rh-flex-columns';}?>">
                         <div class="post-meta-left hideonsmalltablet text-center">
                             <?php if(rehub_option('exclude_author_meta') != 1):?>                              
                                 <?php $author_id=$post->post_author; ?>

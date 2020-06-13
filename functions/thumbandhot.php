@@ -764,7 +764,9 @@ function RhGetUserFavorites($atts, $content = null ) {
                         <?php         
                             $image_id = get_post_thumbnail_id($post->ID);  
                             $image_url = wp_get_attachment_image_src($image_id,'full');
-                            $aff_thumb = $image_url[0];
+                            if(!empty($image_url)){
+                                $aff_thumb = $image_url[0];
+                            }else{$aff_thumb = '';}
                         ?>                    
                         <?php WPSM_image_resizer::show_static_resized_image(array('src'=> $aff_thumb, 'height'=> 100));?>
                         </a>
@@ -773,6 +775,18 @@ function RhGetUserFavorites($atts, $content = null ) {
                         <a href="<?php echo get_the_permalink($post->ID);?>" target="_blank">
                             <?php echo get_the_title($post->ID);?>
                         </a>
+                        <div class="mt5">
+                        <?php if(rehub_option('compare_page') || rehub_option('compare_multicats_textarea')) :?>           
+                            <?php 
+                                $cmp_btn_args = array(); 
+                                $cmp_btn_args['class']= 'rhwoosinglecompare';
+                                if(rehub_option('compare_woo_cats') != '') {
+                                    $cmp_btn_args['woocats'] = esc_html(rehub_option('compare_woo_cats'));
+                                }
+                            ?>                                                  
+                            <?php echo wpsm_comparison_button($cmp_btn_args); ?> 
+                        <?php endif;?> 
+                        </div>
                     </div>
                     <div class="celldisplay pt10 pr15 pb10 pl15 border-grey text-center" style="width: 200px">
                         <?php if (get_post_type($post->ID) == 'product'):?>

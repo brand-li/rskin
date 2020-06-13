@@ -21,7 +21,7 @@
                 <div class="head_search"><?php get_search_form(); ?></div>
               </div>
             <?php endif; ?>            
-            <div class="main-nav header_icons_menu rh-flex-right-align<?php if (rehub_option('rehub_logo_inmenu') !='') {echo ' mob-logo-enabled';}?><?php echo ''.$header_menuline_style;?>">      
+            <div class="main-nav header_icons_menu rh-flex-right-align<?php if (rehub_option('rehub_logo_inmenu')) {echo ' mob-logo-enabled';}?><?php echo ''.$header_menuline_style;?>">      
                 <?php wp_nav_menu( array( 'container_class' => 'top_menu', 'container' => 'nav', 'theme_location' => 'primary-menu', 'fallback_cb' => 'add_menu_for_blank', 'walker' => new Rehub_Walker ) ); ?>
                 <div class="responsive_nav_wrap rh_mobile_menu">
                     <div id="dl-menu" class="dl-menuwrapper rh-flex-center-align">

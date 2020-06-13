@@ -52,7 +52,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
         }?>        
         <?php $logo = TemplateHelper::getMerhantLogoUrl($item, true);?>    
         <div class="table_div_list module_class_<?php echo esc_attr($modulecode);?><?php if ($item['domain'] == 'amazon.com'):?> amazoncom<?php endif ;?> rh_stock_<?php echo esc_attr($stock_status_class);?>">
-            <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn">               
+            <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn" data-tracking-group="<?php echo esc_attr($modulecode);?>">               
                 <div class="offer_thumb<?php if(!$logo) {echo ' nologo_thumb';}?>">   
                     <?php if($logo) :?>
                         <?php if ($item['domain'] == 'amazon.com'):?>

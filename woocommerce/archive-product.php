@@ -67,7 +67,7 @@ get_header(); ?>
                 <?php do_action( 'woocommerce_archive_description' ); ?>
                 <?php if ( woocommerce_product_loop() ) : ?>
                     <?php if($mobile_sidebar):?>
-                        <div class="border-grey cursorpointer floatright font90 ml10 pl10 pr10 rehub-main-color  rhhidden" id="mobile-trigger-sidebar"><i class="fa-sliders-v fal"></i> <?php esc_html_e('Filter', 'rehub-theme');?></div>
+                        <div class="border-grey cursorpointer floatright font90 ml10 pl10 pr10 rehub-main-color rtlmr10 rhhidden" id="mobile-trigger-sidebar"><i class="fa-sliders-v fal"></i> <?php esc_html_e('Filter', 'rehub-theme');?></div>
                     <?php endif;?>
                     <?php $shop_global = rehub_option('rh_woo_shop_global');?>
                     <?php if ($shop_global):?>
