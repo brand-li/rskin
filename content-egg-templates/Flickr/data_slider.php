@@ -18,7 +18,7 @@
                 <?php if (!empty ($item['title'])) :?>
                     <div class="bigcaption">
                         <?php echo esc_attr($item['title']); ?><br />
-                        <p class="font80 mt10"><?php printf(__('Photo %s on Flickr', 'rehub-theme'), '<a href="' . $item['url'] . '" target="_blank" rel="nofollow sponsored">' . $item['extra']['author'] . '</a>'); ?></p>
+                        <p class="font80 mt10"><?php printf(__('Photo %s on Flickr', 'rehub-theme'), '<a href="' . $item['url'] . '" target="_blank" '.ce_printRel().'>' . $item['extra']['author'] . '</a>'); ?></p>
                     </div>
                 <?php endif;?>
                 <img src="<?php $params = array( 'width' => 788, 'height' => 478, 'crop' => true    );echo bfi_thumb($item['img'], $params); ?>" />

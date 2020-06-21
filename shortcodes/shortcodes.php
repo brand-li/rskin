@@ -2403,8 +2403,16 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
 	        <?php $common_attributes = $attributes_group = array(); $common_criterias = false; ?>
 	        <?php $common = new WP_Query($args); if ($common->have_posts()) : ?>
 	        <?php while ($common->have_posts()) : $common->the_post(); global $product; global $post; ?>
-	        	<?php $attributes_group = (function_exists('rh_get_attributes_group')) ? rh_get_attributes_group( $product ) : ''; ?>
-				<?php if(!empty($attributes_group)): ?>
+	        	<?php 
+	        		$attributes_group = (function_exists('rh_get_attributes_group')) ? rh_get_attributes_group( $product ) : '';
+					if(is_array($attributes_group)){
+						$countgroup = count($attributes_group);
+					}else{
+						$countgroup = 0;
+					}
+	        	?>
+
+				<?php if($countgroup > 1): ?>
 					<?php foreach( $attributes_group as $group_key => $attribute_group ): ?>
 						<?php 
 						if(!is_array($attribute_group['attributes'])) continue; 
@@ -2477,17 +2485,17 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
                         </li> 
                         <?php endif;?>                          
 						<?php if(!empty($common_attributes)): ?>
-							<?php if(!empty($attributes_group)): ?>
+							<?php if($countgroup > 1): ?>
 		                        <?php $i = 7; foreach($common_attributes as $common_attribute):?>
 		                            <?php $i++; ?>
-									<li class="row_chart_<?php echo (int)$i;?> heading_row_chart sub_heading_row_chart"><?php echo $common_attribute['name']; ?></li> 
+									<li class="row_chart_<?php echo (int)$i;?> heading_row_chart sub_heading_row_chart"><?php echo esc_attr($common_attribute['name']); ?></li> 
 									<?php foreach($common_attribute['attributes'] as $attribute_name => $attribute_value): ?>
 										<?php $i++; ?>
 										<li class="row_chart_<?php echo (int)$i;?> meta_value_row_chart"><?php echo wc_attribute_label( $attribute_name ); ?></li>
 									<?php endforeach;?>
 		                        <?php endforeach;?>
 							<?php else: ?>
-								<li class="row_chart_8 heading_row_chart"><?php esc_html_e('Attributes', 'rehub-theme');?></li>
+								<li class="row_chart_8 heading_row_chart"><?php esc_html_e('Specification', 'rehub-theme');?></li>
 		                        <?php $i = 8; foreach($common_attributes as $attribute_value):?>
 		                            <?php $i++;?>
 		                            <li class="row_chart_<?php echo (int)$i;?> meta_value_row_chart"><?php echo wc_attribute_label( $attribute_value['name'] ); ?></li>
@@ -2639,7 +2647,7 @@ function wpsm_woocharts_shortcode( $atts, $content = null ) {
 		                        <?php endif;?>                                
 	                            <?php if(!empty($common_attributes)): ?> 
 									<?php $attrnames = array(); ?>
-									<?php if(!empty($attributes_group)): ?>
+									<?php if($countgroup > 1): ?>
 										<?php $i = 7; foreach($common_attributes as $attr_group): ?>
 											<?php $i++;?>
 											<li class="row_chart_<?php echo (int)$i; ?> heading_row_chart sub_heading_row_chart"></li>

@@ -451,15 +451,6 @@ span.stars-rate span { float: right; }
 .dl-menuwrapper > .dl-submenu { left: auto; right: 0 }
 #mobile-menu-icons{padding-left: 7px}
 
-/*EASYDOWNLOAD STYLES*/
-
-.widget_edd_cart_widget .edd-cart-number-of-items:after { left: initial; right: 0 }
-.widget_edd_cart_widget .edd-cart .edd-cart-item-title { float: right; text-align: right; }
-.widget_edd_cart_widget .edd-cart-item { text-align: left; }
-.edd_downloads_list.edd_download_columns_1 .edd_download_inner > div.edd_download_text { text-align: right; }
-.edd_download_purchase_form .edd_price_options li { text-align:right;}
-.eddsw-search-field{ margin-right: 0px; margin-left: 5px }
-
 /*************************************************
 
 rating circle meters

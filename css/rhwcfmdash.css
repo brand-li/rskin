@@ -29,6 +29,7 @@ p.wcfm_title{font-size: 15px; margin-bottom: 16px !important}
     padding: 5px 10px;
     margin-bottom: 30px;
 }
+#banner_slider{float: none}
 #wcfm-main-contentainer .wcfm-collapse{border-radius: 0}.wcfm-site-name{display: none;}
 #wcfm_menu .wcfm_menu_item span.wcfmfa{width: auto;}
 @media only screen and (max-width: 768px){#wcfm_menu .wcfm_menu_item span {margin-top:0 !important;}}

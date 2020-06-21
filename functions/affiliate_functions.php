@@ -1240,7 +1240,7 @@ function coupon_get_code(){
         $response .= '<div class="cpn_info_bl padd20 flowhidden">';
         $response .= '<div class="cpn_post_title floatleft">';
             $response .= '<div class="cpn_title font120 greycolor mb10 fontitalic">'.$posttitle.$shop.'</div>';  
-            if($offer_desc){
+            if(isset($offer_desc)){
                 $response .= '<div class="cpn_desc greycolor mb10 fontitalic">'.esc_html($offer_desc).'</div>';
             }
             if($coupontext){
@@ -1267,6 +1267,16 @@ function coupon_get_code(){
     }
 
     echo  ''.$response ;
+}
+}
+
+if( !function_exists('ce_printRel') ) {
+function ce_printRel(){
+    if (method_exists('\ContentEgg\application\helpers\TemplateHelper', 'getRelValue'))
+        $rel = \ContentEgg\application\helpers\TemplateHelper::getRelValue();
+    else
+        $rel = 'nofollow sponsored';
+    return ' rel="' . esc_attr($rel) . '"';
 }
 }
 

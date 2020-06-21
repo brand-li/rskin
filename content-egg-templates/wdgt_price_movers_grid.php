@@ -50,7 +50,7 @@ else{
                 <span class="grid_onsale"><?php echo (int)$item['_price_movers']['discount_percent']; ?>%</span>
             <?php endif ; ?>
 
-            <a class="img-centered-flex rh-flex-center-align rh-flex-justify-center re_track_btn" href="<?php echo esc_attr($afflink);?>" rel="nofollow sponsored" target="_blank">
+            <a class="img-centered-flex rh-flex-center-align rh-flex-justify-center re_track_btn" href="<?php echo esc_attr($afflink);?>" <?php echo ce_printRel();?> target="_blank">
                 <?php WPSM_image_resizer::show_static_resized_image(array('src'=> $aff_thumb, 'crop'=> false, 'width'=> 250, 'height'=> 180, 'no_thumb_url' => get_template_directory_uri() . '/images/default/noimage_250_180.png'));?>                
             </a>
         </figure>
@@ -83,7 +83,7 @@ else{
                     </div>
                 </div>     
        
-                <h3 class=""><a href="<?php echo esc_attr($afflink);?>" rel="nofollow sponsored" target="_blank" class="re_track_btn"  data-tracking-group="<?php echo esc_attr($modulecode);?>"><?php echo esc_attr($offer_title); ?></a></h3> 
+                <h3 class=""><a href="<?php echo esc_attr($afflink);?>" <?php echo ce_printRel();?> target="_blank" class="re_track_btn"  data-tracking-group="<?php echo esc_attr($modulecode);?>"><?php echo esc_attr($offer_title); ?></a></h3> 
             </div>
  
         </div>                                       

@@ -58,7 +58,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
         <div class="flowhidden pb10 pt15 border-grey-bottom module_class_<?php echo esc_attr($modulecode);?> rh_stock_<?php echo esc_attr($stock_status_class);?>">               
             <div class="floatleft mobileblockdisplay mb15 offer_thumb<?php if(!$logo) {echo ' nologo_thumb';}?>">   
                 <?php if($logo) :?>
-                    <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
+                    <a <?php echo ce_printRel();?> target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                     <img src="<?php echo esc_attr($logo); ?>" alt="<?php echo esc_attr($offer_title); ?>" height="45" style="max-height: 45px" />
                     </a>
                     <?php if (!empty($item['extra']['estimatedDeliveryTime'])): ?>
@@ -76,7 +76,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
             </div>
             <div class="floatright buttons_col pl20 rtlpr20 wpsm-one-half-mobile wpsm-column-last">
                 <div class="priced_block clearfix mt0 floatright">
-                    <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" rel="nofollow sponsored"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
+                    <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" <?php echo ce_printRel();?>  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                         <?php echo esc_attr($btn_txt);?>
                     </a>                                                        
                 </div>                                  
@@ -84,7 +84,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
             <div class="floatright text-right-align disablemobilealign wpsm-one-half-mobile">
                 <?php if(!empty($item['price'])) : ?>
                     <span class="font120 rehub-main-font fontbold">
-                        <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn blackcolor blockstyle lineheight20"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
+                        <a <?php echo ce_printRel();?> target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn blackcolor blockstyle lineheight20"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                             <span><?php echo TemplateHelper::formatPriceCurrency($offer_price, $currency_code); ?></span>
                             <?php if($offer_price_old) : ?>
                             <strike class="blockstyle">

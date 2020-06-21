@@ -6,15 +6,22 @@ if($rehub_theme->parent_theme) {
     $rehub_theme = wp_get_theme($template_dir);
 }
 $rehub_version = $rehub_theme->get( 'Version' );
+$tf_support_date = '';
 $rehub_options = get_option( 'Rehub_Key' );
 $tf_username = isset( $rehub_options[ 'tf_username' ] ) ? $rehub_options[ 'tf_username' ] : '';
-$tf_support_date = isset( $rehub_options[ 'tf_support_date' ] ) ? $rehub_options[ 'tf_support_date' ] : '';
 $tf_purchase_code = isset( $rehub_options[ 'tf_purchase_code' ] ) ? $rehub_options[ 'tf_purchase_code' ] : '';
-if( $tf_username !== "" && $tf_purchase_code !== "" ) {
-    $registeredlicense = true;
-}
-else{
-    $registeredlicense = false;
+
+require_once ( 'lhelper.php');
+// Create a new LicenseBoxAPI helper class.
+$lbapi = new LicenseBoxAPI();
+
+// Performs background license check, pass TRUE as 1st parameter to perform periodic verifications only.
+$registeredlicense = false;
+if($tf_username && $tf_purchase_code){
+    $lb_verify_res = $lbapi->verify_license(false, sanitize_text_field($tf_purchase_code), sanitize_text_field($tf_username));
+    if(!empty($lb_verify_res['status'])){
+        $registeredlicense = true;
+    }
 }
 $theme_url = 'https://wpsoul.com/';
 ?>

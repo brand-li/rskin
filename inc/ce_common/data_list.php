@@ -40,18 +40,18 @@ usort($items, function($a, $b) {
         <div class="rh_listofferitem rh_list_mbl_im_left border-grey-bottom<?php if ($i == 1){echo' best_price_item';}?>">
             <div class="rh-flex-center-align rh-flex-justify-center pt15 pb15 mobileblockdisplay">
                 <div class="rh_listcolumn rh_listcolumn_image text-center">  
-                    <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
+                    <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
                         <?php WPSM_image_resizer::show_static_resized_image(array('src'=> $aff_thumb, 'width'=> 90, 'title' => $offer_title, 'no_thumb_url' => get_template_directory_uri().'/images/default/noimage_123_90.png'));?>                                    
                     </a> 
                     <?php if (!empty($item['extra']['itemLinks'][3])): ?>
                         <span class="add_wishlist_ce">
-                            <a href="<?php echo esc_url($item['extra']['itemLinks'][3]['URL']);?>" rel="nofollow sponsored" target="_blank" ><i class="far fa-heart"></i></a>
+                            <a href="<?php echo esc_url($item['extra']['itemLinks'][3]['URL']);?>" <?php echo ce_printRel();?> target="_blank" ><i class="far fa-heart"></i></a>
                         </span>
                     <?php endif; ?>                                              
                 </div>
                 <div class="rh_listcolumn rh-flex-grow1 rh_listcolumn_text">
                     <h4 class="offer_title">
-                        <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
+                        <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
                             <?php echo esc_attr($offer_title); ?>
                         </a>
                     </h4>
@@ -121,7 +121,7 @@ usort($items, function($a, $b) {
                             </div>
                         <?php endif ;?>
                         <div>
-                            <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" rel="nofollow sponsored">
+                            <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" <?php echo ce_printRel();?>>
                                 <?php echo esc_attr($btn_txt) ; ?>
                             </a>
                             <?php $logo = TemplateHelper::getMerhantIconUrl($item, false);?>

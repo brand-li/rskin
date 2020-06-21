@@ -286,7 +286,6 @@ nav.top_menu ul li ul.sub-menu { border-bottom: 2px solid <?php echo ''.$maincol
 .top_chart_pagination a.selected,
 .flex-control-paging li a.flex-active,
 .flex-control-paging li a:hover,
-.widget_edd_cart_widget .edd-cart-number-of-items .edd-cart-quantity,
 .btn_more:hover,
 .tabs-menu li:hover,
 .tabs-menu li.current,
@@ -709,7 +708,7 @@ input[type="submit"].dokan-btn-theme:active, a.dokan-btn-theme:active, .dokan-bt
 	footer, .top_theme, .content, .footer-bottom, header { position: relative; z-index: 1 }
 <?php endif; ?>	
 <?php if(rehub_option('rehub_bpheader_image') !='') : ?>
-	#bprh-full-header-image{background-image: url("<?php echo rehub_option('rehub_bpheader_image'); ?>");background-position:center top;background-repeat:no-repeat;background-size:cover;}
+	#bprh-full-header-image{background: url("<?php echo rehub_option('rehub_bpheader_image'); ?>") no-repeat center top !important;background-size:cover;}
 <?php endif; ?>
 <?php if(defined( 'WCFMmp_TOKEN' )){
 	$wcfm_store_color_settings = get_option( 'wcfm_store_color_settings', array() );

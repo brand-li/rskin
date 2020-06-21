@@ -55,14 +55,14 @@ $all_items = TemplateHelper::sortAllByPrice($data);
         <div class="rh_listofferitem rh_list_mbl_im_left border-grey-bottom module_class_<?php echo esc_attr($modulecode);?> rh_stock_<?php echo esc_attr($stock_status_class);?>"> 
             <div class="rh-flex-center-align rh-flex-justify-center pt15 pb15 mobileblockdisplay">              
                 <div class="rh_listcolumn rh_listcolumn_image text-center<?php if(!$logo) {echo ' nologo_thumb';}?>">   
-                    <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
+                    <a <?php echo ce_printRel();?> target="_blank" href="<?php echo esc_url($afflink) ?>" class="re_track_btn"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                         <?php if($logo) :?>
                             <img src="<?php echo esc_url($logo); ?>" alt="<?php echo esc_attr($offer_title); ?>" height="50" />
                         <?php endif ;?>                                                           
                     </a>
                 </div>
                 <div class="rh_listcolumn rh-flex-grow1 rh_listcolumn_text">
-                    <a rel="nofollow sponsored" target="_blank" class="re_track_btn font100 no-color-link blockstyle rehub-main-font lineheight20" href="<?php echo esc_url($afflink) ?>"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
+                    <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn font100 no-color-link blockstyle rehub-main-font lineheight20" href="<?php echo esc_url($afflink) ?>"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                         <?php echo esc_attr($offer_title); ?>
                     </a>  
                     <?php if (method_exists('TemplateHelper', 'getCashbackStr') && $cashback_str = TemplateHelper::getCashbackStr($item)): ?>
@@ -117,7 +117,7 @@ $all_items = TemplateHelper::sortAllByPrice($data);
                 </div>
                 <div class="text-right-align rh_listcolumn_btn">
                     <div class="priced_block clearfix">
-                        <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" rel="nofollow sponsored"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
+                        <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" <?php echo ce_printRel();?>  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                             <?php echo esc_html($btn_txt) ; ?>
                         </a>                                                        
                     </div>

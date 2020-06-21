@@ -258,7 +258,8 @@ var re_ajax_search = {
      * AJAX: process the response from the server
      */
     process_ajax_response: function (data, callelem) {
-        var current_query = callelem.val();
+        var current_query = callelem.val().trim();
+
 
         //the search is empty - drop results
         if (current_query == '') {

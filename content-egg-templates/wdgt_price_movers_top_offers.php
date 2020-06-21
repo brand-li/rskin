@@ -28,14 +28,14 @@ use ContentEgg\application\helpers\CurrencyHelper;
         }?>        
         <div class="deal_block_row">
             <div class="deal-pic-wrapper">
-                <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink); ?>"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
+                <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink); ?>"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                     <?php WPSM_image_resizer::show_static_resized_image(array('src'=> $aff_thumb, 'crop'=> false, 'width'=> 70, 'height'=> 70, 'no_thumb_url' => get_template_directory_uri() . '/images/default/noimage_70_70.png'));?>
                 </a>                
             </div>
             <div class="rh-deal-details">
                 <div>
                     <h5 class="fontnormal font90 mt0 mb15"> 
-                    <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
+                    <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>"  data-tracking-group="<?php echo esc_attr($modulecode);?>">
                         <?php echo esc_attr($offer_title); ?>
                     </a>  
                     </h5>                  

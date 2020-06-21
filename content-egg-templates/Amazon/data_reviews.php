@@ -31,7 +31,7 @@ if (!empty($item['extra']['customerReviews'])) {$import_comments = $item['extra'
             <?php endforeach; ?>
             <?php if (!empty($item['extra']['itemLinks'][5])): ?>
                 <span class="ce_customer_reviews">
-                    <a href="<?php echo esc_url($item['extra']['itemLinks'][5]['URL']);?>" rel="nofollow sponsored" target="_blank" > <?php echo esc_attr($item['extra']['itemLinks'][5]['Description']);?></a>
+                    <a href="<?php echo esc_url($item['extra']['itemLinks'][5]['URL']);?>" <?php echo ce_printRel();?> target="_blank" > <?php echo esc_attr($item['extra']['itemLinks'][5]['Description']);?></a>
                 </span>
             <?php endif; ?>            
         <?php endif; ?>

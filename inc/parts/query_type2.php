@@ -7,7 +7,7 @@
     </div>         
     <figure class="mb20 position-relative text-center">
         <?php rh_post_header_cat('post', false);?>
-        <a href="<?php the_permalink();?>"><?php WPSM_image_resizer::show_static_resized_image(array('thumb'=> true, 'crop'=> true, 'width'=> 800, 'height'=> 400, 'no_thumb_url' => get_template_directory_uri() . '/images/default/noimage_765_460.jpg'));?></a> 
+        <a href="<?php the_permalink();?>"><?php WPSM_image_resizer::show_static_resized_image(array('thumb'=> true, 'crop'=> true, 'width'=> 800, 'height'=> 400));?></a> 
         <div class="rev-in-blog-circle">
             <?php $rating_score_clean = get_post_meta($post->ID, 'rehub_review_overall_score', true); ?>
             <?php if ($rating_score_clean):?>

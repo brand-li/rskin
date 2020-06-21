@@ -319,20 +319,6 @@ function rehub_get_user_results( $size = 'small', $words = 'no' ){
 }
 }
 
-if( !function_exists('rehub_get_user_resultsedd') ) {
-function rehub_get_user_resultsedd( $size = 'small' ){
-	global $post ;
-	$rate = get_post_meta( $post->ID , 'rehub_user_rate', true );
-	$count = get_post_meta( $post->ID , 'rehub_users_num', true );
-	if( !empty($rate) && !empty($count)){
-		$total = (($rate/$count)/5)*100;
-		?>
-		<div class="star-<?php echo ''.$size ?>"><span class="stars-rate"><span style="width: <?php echo ''.$total ?>%;"></span></span></div>
-		<?php
-	}
-	else{}
-}
-}
 
 if( !function_exists('rehub_get_overall_score') ) {
 function rehub_get_overall_score($criterias='', $manual=''){

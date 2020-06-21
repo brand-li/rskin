@@ -11,7 +11,7 @@
 	<?php endif;?>  
 	<?php if(rehub_option('rehub_btn_text') !='') :?><?php $btn_txt = rehub_option('rehub_btn_text') ; ?><?php else :?><?php $btn_txt = esc_html__('Buy this item', 'rehub-theme') ;?><?php endif ;?>   	    
 	<div class="text-center mt20 mb20">
-	<a href="<?php echo esc_url($afflink) ?>" class="re_track_btn wpsm-button rehub_main_btn btn_offer_block" target="_blank" rel="nofollow sponsored">
+	<a href="<?php echo esc_url($afflink) ?>" class="re_track_btn wpsm-button rehub_main_btn btn_offer_block" target="_blank" <?php echo ce_printRel();?>>
 		<span><strong><?php echo esc_html($btn_txt) ?></strong></span>
 		<?php if($merchant):?>
 			<span class="aff_tag mtinside">@<?php echo esc_attr($merchant); ?></span>

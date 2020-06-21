@@ -40,12 +40,12 @@ usort($items, function($a, $b) {
                         ;?>
                     </span>
                 <?php endif ;?>                 
-                <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
+                <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
                     <?php WPSM_image_resizer::show_static_resized_image(array('src'=> $aff_thumb, 'width'=> 336, 'title' => $offer_title, 'no_thumb_url' => get_template_directory_uri().'/images/default/noimage_336_220.png'));?>                                    
                 </a>
             </figure>
             <div class="affegg_grid_title">
-                <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
+                <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
                     <?php echo esc_attr($offer_title); ?>
                 </a>
             </div>
@@ -68,7 +68,7 @@ usort($items, function($a, $b) {
                         </div>
                     <?php endif ;?>
                     <div>
-                        <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" rel="nofollow sponsored">
+                        <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" <?php echo ce_printRel();?>>
                             <?php echo esc_attr($btn_txt) ; ?>
                         </a> 
                         <div class="aff_tag mt10 small_size">

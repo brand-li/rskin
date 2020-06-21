@@ -14,10 +14,10 @@
                 <img style="max-width: 30px;" class="twi-avatar" src="<?php echo esc_url($item['profileImage']); ?>" alt="<?php echo esc_html($item['extra']['author']); ?>" />
             <?php endif;?>
             <?php if ($item['extra']['author']) :?>
-                <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($item['url']); ?>">@<?php echo esc_html($item['extra']['author']); ?></a>
+                <a <?php echo ce_printRel();?> target="_blank" href="<?php echo esc_url($item['url']); ?>">@<?php echo esc_html($item['extra']['author']); ?></a>
             <?php endif;?>
             <?php if ($item['extra']['followersCount']) :?>
-                <a rel="nofollow sponsored" target="_blank" href="<?php echo esc_url($item['url']); ?>" class="twi-follow-btn" title="<?php echo esc_html($item['extra']['followersCount']); ?>"><i class="fab fa-twitter"></i> <?php esc_html_e('Follow', 'rehub-theme') ;?></a>
+                <a <?php echo ce_printRel();?> target="_blank" href="<?php echo esc_url($item['url']); ?>" class="twi-follow-btn" title="<?php echo esc_html($item['extra']['followersCount']); ?>"><i class="fab fa-twitter"></i> <?php esc_html_e('Follow', 'rehub-theme') ;?></a>
             <?php endif;?>                        
         </div>
         <div class="media">

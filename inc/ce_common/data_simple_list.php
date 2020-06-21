@@ -32,13 +32,13 @@
         <div class="rh_listofferitem rh_list_mbl_im_left border-grey-bottom<?php if ($i == 1){echo' best_price_item';}?>"> 
             <div class="rh-flex-center-align rh-flex-justify-center pt15 pb15 mobileblockdisplay">
                 <div class="rh_listcolumn rh_listcolumn_image text-center">   
-                    <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
+                    <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
                         <?php WPSM_image_resizer::show_static_resized_image(array('src'=> $aff_thumb, 'height'=> 90, 'title' => $offer_title, 'no_thumb_url' => get_template_directory_uri().'/images/default/noimage_100_70.png'));?>                                    
                     </a>
                 </div>
                 <div class="rh_listcolumn rh-flex-grow1 rh_listcolumn_text">
                     <div class="simple_title mb15">
-                        <a rel="nofollow sponsored" target="_blank" class="re_track_btn font100 no-color-link blockstyle rehub-main-font lineheight20" href="<?php echo esc_url($afflink) ?>">
+                        <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn font100 no-color-link blockstyle rehub-main-font lineheight20" href="<?php echo esc_url($afflink) ?>">
                             <?php echo esc_attr($offer_title); ?>
                         </a>
                     </div>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="text-right-align rh_listcolumn_btn">
                     <div class="priced_block mb0 clearfix">
-                        <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" rel="nofollow sponsored">
+                        <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" <?php echo ce_printRel();?>>
                             <?php echo esc_attr($btn_txt) ; ?>
                         </a>                                                        
                     </div>

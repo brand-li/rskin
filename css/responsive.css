@@ -38,7 +38,9 @@ Common for under (1024)
 Ipad PRO
 ****************************************************************************/
 @media screen and (max-width: 1024px) and (min-width: 768px) {
-nav.top_menu, .header_top_wrap{ display: none; }
+#float-panel-woo-area .float-panel-woo-btn .price{color: #111}
+.float-panel-woo-btn{background: transparent;}
+nav.top_menu, .header_top_wrap, #float-panel-woo-area del{ display: none; }
 header .logo-section .search { width: 90%; float:none; margin: 0 auto 15px;}
 header .logo {  float: none; margin: 0 auto 10px; text-align:center }
 .header-top .top-nav li { margin-right: 7px; font-size: 11px; padding-left: 8px }
@@ -46,7 +48,7 @@ header .header_second_style .logo{float: none;text-align: center; margin: 0 auto
 header .header_second_style .mediad{float: none;text-align: center; margin: 15px auto 5px auto}
 .rh_news_wrap .item-small-news figure{width: 50px}
 .rh_news_wrap .item-small-news-image .item-small-news-details{width: calc(100% - 65px)}
-body:not(.noinnerpadding) .rh-post-wrapper figure.alignwide, body:not(.noinnerpadding) .rh-post-wrapper figure.alignfull, figure.alignwide{margin-left: -25px; margin-right: -25px}
+body:not(.noinnerpadding) .rh-post-wrapper .alignwide, body:not(.noinnerpadding) .rh-post-wrapper .alignfull, .alignwide{margin-left: -25px; margin-right: -25px}
 }
 /****************************************************************************
 (800 X 600) + (768 X 1024)
@@ -72,7 +74,7 @@ header .mediad img { max-width: 100%; }
 Common for under 767
 ****************************************************************************/
 @media screen and (max-width: 767px) {
-body:not(.noinnerpadding) .rh-post-wrapper figure.alignwide, body:not(.noinnerpadding) .rh-post-wrapper figure.alignfull, figure.alignwide{margin-left: -15px; margin-right: -15px}
+body:not(.noinnerpadding) .rh-post-wrapper .alignwide, body:not(.noinnerpadding) .rh-post-wrapper .alignfull, .alignwide{margin-left: -15px; margin-right: -15px}
 .smart-scroll-mobile > div{width: 28% !important;}
 #wcvendor_image_bg .woocommerce .star-rating{float: none; display: inline-block; margin-bottom: 5px}
 .table_view_charts .is-sticky h2{font-size: 14px}

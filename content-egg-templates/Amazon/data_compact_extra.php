@@ -31,18 +31,18 @@ use ContentEgg\application\helpers\TemplateHelper;
             <div class="rehub_woo_review_tabs rh_listitem">
                 <div class="rh-flex-center-align rh-flex-justify-center mobileblockdisplay">
                     <div class="listbuild_image listitem_column text-center">   
-                        <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
+                        <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
                             <?php WPSM_image_resizer::show_static_resized_image(array('src'=> $aff_thumb, 'width'=> 126, 'title' => $offer_title));?>                                   
                         </a>
                         <?php if (!empty($item['extra']['itemLinks'][3])): ?>
                             <span class="add_wishlist_ce">
-                                <a href="<?php echo esc_url($item['extra']['itemLinks'][3]['URL']);?>" rel="nofollow sponsored" target="_blank" ><i class="far fa-heart"></i></a>
+                                <a href="<?php echo esc_url($item['extra']['itemLinks'][3]['URL']);?>" <?php echo ce_printRel();?> target="_blank" ><i class="far fa-heart"></i></a>
                             </span>
                         <?php endif; ?>                    
                     </div>
                     <div class="rh-flex-grow1 listitem_title listitem_column">
                         <h4 class="offer_title">
-                            <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
+                            <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
                                 <?php echo esc_attr($offer_title); ?>
                             </a>
                         </h4>
@@ -85,7 +85,7 @@ use ContentEgg\application\helpers\TemplateHelper;
                                 </span>                         
                             <?php endif ;?>
                             <div>
-                                <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" rel="nofollow sponsored">
+                                <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" <?php echo ce_printRel();?>>
                                     <?php echo esc_attr($btn_txt) ; ?>
                                 </a>
                                 <?php $offer_coupon_mask = 1 ?>

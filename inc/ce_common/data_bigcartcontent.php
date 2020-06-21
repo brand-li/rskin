@@ -5,7 +5,7 @@
     <div class="product_egg single_product_egg">
 
         <div class="image col_item">
-            <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
+            <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
                 <?php WPSM_image_resizer::show_static_resized_image(array('src'=> $aff_thumb, 'width'=> 500, 'title' => $offer_title));?>
                 <?php if($percentageSaved) : ?>
                     <span class="sale_a_proc">
@@ -17,7 +17,7 @@
             </a>  
             <?php if (!empty($item['extra']['itemLinks'][3])): ?>
                 <span class="add_wishlist_ce">
-                    <a href="<?php echo esc_url($item['extra']['itemLinks'][3]['URL']);?>" rel="nofollow sponsored" target="_blank" ><i class="far fa-heart"></i> <?php echo esc_attr($item['extra']['itemLinks'][3]['Description']);?></a>
+                    <a href="<?php echo esc_url($item['extra']['itemLinks'][3]['URL']);?>" <?php echo ce_printRel();?> target="_blank" ><i class="far fa-heart"></i> <?php echo esc_attr($item['extra']['itemLinks'][3]['Description']);?></a>
                 </span>
             <?php endif; ?>                           
         </div>
@@ -26,7 +26,7 @@
         
             <?php if($showtitle == 1):?> 
                 <h2 class="product_title entry-title">
-                    <a rel="nofollow sponsored" target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
+                    <a <?php echo ce_printRel();?> target="_blank" class="re_track_btn" href="<?php echo esc_url($afflink) ?>">
                         <?php echo esc_attr($offer_title); ?> 
                     </a>
                 </h2>
@@ -121,7 +121,7 @@
             <div class="buttons_col">
                 <div class="priced_block clearfix">
                     <div>
-                        <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" rel="nofollow sponsored">
+                        <a class="re_track_btn btn_offer_block" href="<?php echo esc_url($afflink) ?>" target="_blank" <?php echo ce_printRel();?>>
                             <?php echo esc_attr($btn_txt) ; ?>
                         </a>                                                
                     </div>

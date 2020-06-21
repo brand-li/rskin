@@ -13,6 +13,7 @@ function rehub_ajax_search() {
     //the search string
     if (!empty($_POST['re_string'])) {
         $re_string = sanitize_text_field($_POST['re_string']);
+        $re_string = trim($re_string);
     } else {
         $re_string = '';
     }
@@ -24,6 +25,8 @@ function rehub_ajax_search() {
     } else {
         $posttypes = array('post');
     }
+
+    $count_stores = 0;
 
     //get the Dealstores data
     if(in_array('post', $posttypes) && rehub_option('enable_brand_taxonomy')){
@@ -178,7 +181,7 @@ function rehub_ajax_search() {
         }
     }
 
-    if (count($search_query->posts) == 0) {
+    if (count($search_query->posts) == 0 && !$count_stores) {
         //no results
         $buffer = '<div class="re-aj-search-result-msg no-result">' . esc_html__('No results', 'rehub-theme') . '</div>';
     } else {

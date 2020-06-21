@@ -26,8 +26,8 @@
                                     }
                                     if (!empty($ebay_search_words)) {
                                         $rehub_ebay_btn = (rehub_option('rehub_ebay_btn') !='') ? rehub_option('rehub_ebay_btn') : esc_html__('Search on Ebay', 'rehub-theme');
-                                        $rehub_ebay_surl = (rehub_option('rehub_ebay_surl') !='') ? rehub_option('rehub_ebay_surl') : 'http://rover.ebay.com/rover/1/711-53200-19255-0/1?icep_ff3=9&pub=5575130199&toolid=10001&campid=5337712872&customid=&icep_sellerId=&icep_ex_kw=&icep_sortBy=12&icep_catId=&icep_minPrice=&icep_maxPrice=&ipn=psmain&icep_vectorid=229466&kwid=902099&mtid=824&kw=lg';
-                                        $ebay_link = '<a href="'.$rehub_ebay_surl.'&icep_uq='.esc_html($ebay_search_words).'" target="_blank" rel="nofollow sponsored">'.$rehub_ebay_btn.'</a>';
+                                        $rehub_ebay_surl = (rehub_option('rehub_ebay_surl') !='') ? rehub_option('rehub_ebay_surl') : 'http://rover.ebay.com/rover/1/711-53200-19255-0/1?ff3=4&pub=5575130199&toolid=10001&campid=5338028763&customid=&mpre=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dm570.l1313%26_nkw%3D';
+                                        $ebay_link = '<a href="'.$rehub_ebay_surl.''.esc_html($ebay_search_words).'" target="_blank" rel="nofollow sponsored">'.$rehub_ebay_btn.'</a>';
                                     }   
                                     else {
                                         $ebay_link ='';

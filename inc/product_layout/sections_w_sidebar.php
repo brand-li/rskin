@@ -125,7 +125,7 @@
                                 <div class="darkbg float-panel-woo-btn rh-flex-center-align mb0 rh-336-sidebar rh-flex-right-align">
                                     <div class="whitecolor float-panel-woo-price font120 margincenter"><?php woocommerce_template_single_price();?>
                                     </div> 
-                                    <div class="float-panel-woo-button rhhidden rh-flex-right-align mobilevisible">
+                                    <div class="float-panel-woo-button rhhidden rh-flex-right-align tabletblockdisplay mb0">
                                         <?php if(!rehub_option('woo_btn_inner_disable')) :?>
                                             <?php if ( $product->add_to_cart_url() !='') : ?>
                                                 <?php if($product->get_type() == 'variable' || $product->get_type() == 'booking') {

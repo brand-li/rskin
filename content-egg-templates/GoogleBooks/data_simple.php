@@ -26,7 +26,7 @@
                     <?php if ($item['extra']['publisher']): ?>
                         <?php echo date('Y', $item['extra']['date']); ?>
                     <?php endif; ?>
-                    <a target="_blank" rel="nofollow sponsored" href="<?php echo esc_url($item['url']); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/gbs_preview.gif" /></a>
+                    <a target="_blank" <?php echo ce_printRel();?> href="<?php echo esc_url($item['url']); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/gbs_preview.gif" /></a>
 
                 </small>
                 <p><?php echo esc_attr($item['description']); ?></p>

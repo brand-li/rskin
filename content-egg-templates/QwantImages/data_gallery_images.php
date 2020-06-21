@@ -12,7 +12,7 @@ use ContentEgg\application\helpers\TemplateHelper;
         <?php $offer_title = (!empty($item['title'])) ? $item['title'] : ''; ?> 
         <?php $gallery_image = (!empty ($item['img'])) ? $item['img'] : ''?>
         <?php if (!empty ($gallery_image)) :?>
-            <a data-rel="rhgal_<?php echo (int)$random_key;?>" href="<?php echo esc_url($gallery_image) ;?>" class="mb10" target="_blank" rel="nofollow sponsored" data-thumb="<?php echo esc_url($gallery_image) ;?>" data-title="<?php echo esc_attr($offer_title);?>"> 
+            <a data-rel="rhgal_<?php echo (int)$random_key;?>" href="<?php echo esc_url($gallery_image) ;?>" class="mb10" target="_blank" <?php echo ce_printRel();?> data-thumb="<?php echo esc_url($gallery_image) ;?>" data-title="<?php echo esc_attr($offer_title);?>"> 
             <img src="<?php echo esc_url($gallery_image) ;?>" alt="<?php echo esc_attr($offer_title); ?>" height="160" />  
             </a>                   
         <?php endif ;?>      

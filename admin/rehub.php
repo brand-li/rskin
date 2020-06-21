@@ -55,7 +55,6 @@ if(!defined('PLUGIN_REPO')){
 }
 
 //Set default colors
-
 define( 'REHUB_MAIN_COLOR', '#8035be');
 define( 'REHUB_SECONDARY_COLOR', '#000000');
 define( 'REHUB_BUTTON_COLOR', '#de1414');
@@ -67,6 +66,10 @@ define( 'REHUB_BUTTON_COLOR_TEXT', '#ffffff');
 // Demo import
 //////////////////////////////////////////////////////////////////
 require_once( 'demo/import-demo.php' );
+
+//////////////////////////////////////////////////////////////////
+// Verify
+//////////////////////////////////////////////////////////////////
 
 
 //////////////////////////////////////////////////////////////////
@@ -83,7 +86,6 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 			add_action( 'admin_head', array( $this, 'rehub_admin_scripts' ) );
 			add_action( 'admin_menu', array( $this, 'edit_admin_menus' ) );
 			add_action( 'after_switch_theme', array( $this, 'rehub_activation_redirect' ) );
-			add_action( 'wp_ajax_rehub_update_registration', array( $this, 'rehub_update_registration' ) );
 			add_action( 'admin_notices', array( $this, 'rehub_framework_required' ) );			
 		}
 
@@ -279,63 +281,7 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 			} 
 		}
 		
-		function rehub_plugins_sub(){
-			
-		}
-
-		function rehub_update_registration() {
-			check_ajax_referer( 'ajax-tfreg-nonce', 'register-security' );
-			global $wp_version;
-
-			$rehub_options    = get_option( 'Rehub_Key' );
-			$data             = $_POST;
-			$tf_username      = isset( $data['tf_username'] ) ? sanitize_text_field($data['tf_username']) : '';
-			$tf_purchase_code = isset( $data['tf_purchase_code'] ) ? sanitize_text_field($data['tf_purchase_code']) : '';
-
-			if ( '' !== $tf_username && '' !== $tf_purchase_code ) {
-
-				$rehub_options['tf_username'] = $tf_username;
-				$tf_purchase_code = strtolower(preg_replace('#([a-z0-9]{8})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{4})-?([a-z0-9]{12})#','$1-$2-$3-$4-$5',$tf_purchase_code));
-				$rehub_options['tf_purchase_code'] = $tf_purchase_code;
-
-				$prepare_request = array(
-					'user-agent' => 'WordPress/'. $wp_version .'; '. home_url(),
-					'sslverify'    => false,
-					'timeout'     => 10,
-					'headers' => array(
-						'Authorization' => 'Bearer saqMlpb8QSyFGYNjNxgmWzdwqkTUMbFl',
-					)
-				);
-
-				$raw_response = wp_remote_get( 'https://api.envato.com/v3/market/author/sale?code=' . $tf_purchase_code, $prepare_request );
-
-				if ( ! is_wp_error( $raw_response ) ) {
-					$response = wp_remote_retrieve_body( $raw_response );
-					$response = json_decode( $response, true );
-				}
-
-				if ( ! empty( $response ) ) {
-					if ( ( isset( $response['error'] ) ) || ( isset( $response['buyer'] ) && empty( $response['buyer'] ) ) ) {
-						echo 'Error';
-					} elseif ( isset( $response['buyer'] ) && ! empty( $response['buyer'] ) ) {
-						if ($response['buyer'] == $tf_username) {
-							if (!empty ($response['supported_until'])) {
-								$rehub_options['tf_support_date'] = $response['supported_until'];
-							}
-							$result = update_option( 'Rehub_Key', $rehub_options );
-							echo 'Updated';							
-						}
-						else {
-							echo 'Errorbuyer';
-						}
-					}
-				} else {
-					echo 'Error';
-				}
-			} else {
-				echo 'Empty';
-			}
-			wp_die();
+		function rehub_plugins_sub(){			
 		}
 
 		function rehub_admin_scripts() {
@@ -444,7 +390,6 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 
 		function welcome_screen_scripts(){
 			wp_enqueue_style( 'rehub_admin_css', REHUB_ADMIN_DIR . 'screens/css/rehub-admin.css' );
-			wp_enqueue_script( 'rehub_welcome_screen', REHUB_ADMIN_DIR . 'screens/js/rehub-welcome-screen.js' );
 		}
 
 		function support_screen_scripts(){

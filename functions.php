@@ -6,14 +6,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '10.5');
+	define('RH_MAIN_THEME_VERSION', '10.6');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
 }
 $rehub_options = [
 	'tf_username'      => 'babiato',
-	'tf_purchase_code' => 'nulled-by-babiato',
+	'tf_purchase_code' => 'nulled-by-babak',
 	'tf_support_date'  => '01.01.2030',
 ];
 update_option( 'Rehub_Key', $rehub_options );
@@ -31,7 +31,6 @@ function rehub_framework_register_scripts() {
 	wp_register_style('tabletoggle', get_template_directory_uri() . '/css/tabletoggle.css', array(), '5.0.9');
 	wp_register_style('eggrehub', get_template_directory_uri() . '/css/eggrehub.css', array(), RH_MAIN_THEME_VERSION);
 	wp_register_style('video-pl', get_template_directory_uri() . '/css/video-playlist.css');
-	wp_register_style('eddrehub', get_template_directory_uri() . '/css/edd.css');
 	wp_register_style('rhwcvendor', get_template_directory_uri() . '/css/wcvendor.css', array(), RH_MAIN_THEME_VERSION);
 	wp_register_style('rhwcfmdash', get_template_directory_uri() . '/css/rhwcfmdash.css', array(), RH_MAIN_THEME_VERSION);
 	wp_register_style('rhwcfmstore', get_template_directory_uri() . '/css/rhwcfmstore.css', array(), RH_MAIN_THEME_VERSION);
@@ -135,7 +134,6 @@ function rehub_enqueue_scripts() {
 		wp_localize_script( 'rehubwoo', 'rhwoovar', $var_array );
 	}
 	if (defined('wcv_plugin_dir') OR class_exists('WeDevs_Dokan') OR class_exists('WCMp')) {wp_enqueue_style('rhwcvendor');}
-	if (class_exists('Easy_Digital_Downloads')) {wp_enqueue_style( 'eddrehub');}
     if (class_exists('bbPress' )) {wp_enqueue_style('bbpress_css');}	
 	if (rehub_option('rehub_sticky_nav')) {wp_enqueue_script( 'sticky' );}
 
@@ -1220,11 +1218,6 @@ if (class_exists('Woocommerce')) {
 include (get_template_directory() . '/functions/woo_functions.php');
 }
 
-//add EDD functions
-if (class_exists('Easy_Digital_Downloads')) {
-	include (get_template_directory() . '/functions/edd_functions.php');
-}
-
 //add ajax functions
 include (get_template_directory() . '/functions/ajax_helper_functions.php');
 
@@ -1454,7 +1447,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '5.1',
+			'version' 				=> '5.3',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',

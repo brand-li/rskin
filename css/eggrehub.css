@@ -133,7 +133,7 @@ body ul.featured_list{margin:15px 0; }
 .widget_merchant_list .merchant_thumb img{vertical-align: middle;}
 .widget_merchant_list .price_simple_col{line-height: 14px;text-align: center;background-color: #f5f9f0;border-bottom: 1px solid #eee; font-size: 14px; font-weight: bold;}
 .widget_merchant_list .buttons_col{border-bottom: 1px solid #fff; text-align: center;}
-.widget_merchant_list .buttons_col a{font-weight: bold;font-family: Roboto; padding: 8px 10px; white-space: nowrap;}
+.widget_merchant_list .buttons_col a{font-weight: bold; padding: 8px 10px; white-space: nowrap;}
 .widget_merchant_list .table_merchant_list:hover > div {background-color: #fff; border-bottom-color: #eee}
 .widget_merchant_list.expandme .table_merchant_list:nth-child(n+7){display: none;}
 .widget_merchant_list.expandme .table_merchant_list:nth-child(1) .merchant_thumb{font-weight: bold; font-size: 14px}

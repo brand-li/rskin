@@ -342,7 +342,7 @@ body.groups.single-item .main-side > .title{display: none;}
 #rh-header-bp-content-wrap div#item-meta p{margin: 15px 0; max-height: 124px;overflow: hidden;}
 #rh-header-cover-image{transform-style: preserve-3d;min-height: 280px;background-color:#ffffff;background-position:center center;background-repeat:no-repeat;background-size:cover;border:0;display:block;margin:0;position:relative;width:100%;z-index:1; }
 .header-cover-image-mask{width: 100%;height: 100%;position: absolute;top: 0;left: 0;right: 0;bottom: 0;background: -moz-linear-gradient(top,rgba(0,0,0,0.32) 35%,rgba(0,0,0,0.65) 100%);background: -webkit-gradient(linear,left top,left bottom,color-stop(35%,rgba(0,0,0,0.32)),color-stop(100%,rgba(0,0,0,0.65)));background: -webkit-linear-gradient(top,rgba(0,0,0,0.32) 35%,rgba(0,0,0,0.65) 100%);background: -o-linear-gradient(top,rgba(0,0,0,0.32) 35%,rgba(0,0,0,0.65) 100%);background: -ms-linear-gradient(top,rgba(0,0,0,0.32) 35%,rgba(0,0,0,0.65) 100%);background: linear-gradient(to bottom,rgba(0,0,0,0.32) 35%,rgba(0,0,0,0.65) 100%)}
-#bprh-full-header-image{min-height: 260px;background:url("../../images/swirl_pattern.png") repeat scroll left top #fff; position:relative;width:100%;z-index:1; }
+#bprh-full-header-image{min-height: 260px; position:relative;width:100%;z-index:1;     background: #3a6186;background: -webkit-linear-gradient(to right, #89253e, #3a6186);background: linear-gradient(to right, #89253e, #3a6186);}
 #rh-item-admins{text-align: right;position: absolute;top: 0;right: 5px;z-index: 5}
 #rh-item-admins .admin-groups{float: left;font-size: 70%;margin: 0 4px;}
 #buddypress div#item-header div#message.info{line-height:80%}
