@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) {
    'use strict';	
     //GSAP 
+    var scrolledfind = false;
     if($('.rh-gsap-wrap').length > 0){
         $('.rh-gsap-wrap').each(function(){
 
@@ -286,44 +287,53 @@ jQuery(document).ready(function($) {
                     }
                 }
             }
-
-            if(triggertype == 'custom'){
+            if(triggertype == 'load'){
+                animation.play();
+            }else{
+                scrolledfind = true;
                 if(current.data('customtrigger')){
                     var customtrigger = '#'+current.data('customtrigger');               
                 }else{
                     var customtrigger = $(this).closest('.elementor-widget');
                 }
-                scrollargs.triggerElement = customtrigger;
+                scrollargs.trigger = customtrigger;
 
-                if(current.data('triggerheight')){
-                    var $hookpos = parseInt(current.data('triggerheight'))/100;
-                    scrollargs.triggerHook = $hookpos;
+                if(current.data('triggerstart')){
+                    scrollargs.start = current.data('triggerstart');
                 }else{
-                    scrollargs.triggerHook = 0.85;
+                    scrollargs.start = "top 92%";
+                }
+                if(current.data('triggerend')){
+                    scrollargs.end = current.data('triggerend');
                 }
 
-                if(current.data('scrollduration')){
-                    var $hookdur = current.data('scrollduration');
-                    scrollargs.duration = $hookdur;
-                }   
-
-                var scene = new ScrollMagic.Scene(scrollargs).setTween(animation).addTo(rhscroller);
-                if(current.data('pin') && current.data('scrollduration')){
-                    var pin = '#'+current.data('pin'); 
-                    scene.setPin(pin);             
+                if(current.data('triggerscrub')){
+                    scrollargs.scrub = parseFloat(current.data('triggerscrub'));
+                } 
+                if(current.data('triggersnap')){
+                    scrollargs.snap = parseFloat(current.data('triggersnap'));
                 }
-                if(current.data('rev')){
-                    scene.reverse(false);
+                if(current.data('pinned')){
+                    scrollargs.pin = true;             
                 }
-            }else if(triggertype == 'waypoint'){
-                animation.pause();
-                current.elementorWaypoint(function(direction) {
-                    animation.play();
-                }, { offset: 'bottom-in-view' }); 
-            }else if(triggertype == 'load'){
-                animation.play();
+                if(current.data('pinspace')){
+                    scrollargs.pinSpacing = false;             
+                }
+                if(current.data('triggeraction')){
+                    scrollargs.toggleActions = current.data('triggeraction');
+                }else{
+                    scrollargs.toggleActions = 'play pause resume reverse';
+                }
+                scrollargs.animation = animation;
+                ScrollTrigger.create(scrollargs);
             } 
+
         });
+        if(scrolledfind){
+            document.addEventListener('lazyloaded', function(e){
+                ScrollTrigger.refresh();
+            });
+        }
     }
 
     //reveal

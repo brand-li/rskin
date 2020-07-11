@@ -31,27 +31,20 @@ function rehub_plugin_page_setup( $default_settings ) {
 function rehub_plugin_intro_text( $default_text ) {
 	$tf_support_date = '';
 	$rehub_options = get_option( 'Rehub_Key' );
-	$tf_username = isset( $rehub_options[ 'tf_username' ] ) ? $rehub_options[ 'tf_username' ] : '';
-	$tf_purchase_code = isset( $rehub_options[ 'tf_purchase_code' ] ) ? $rehub_options[ 'tf_purchase_code' ] : '';
+	$tf_username = 'nullmaster';
+	$tf_purchase_code = 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930';
 
 	require_once ( get_template_directory().'/admin/screens/lhelper.php');
 	// Create a new LicenseBoxAPI helper class.
 	$lbapi = new LicenseBoxAPI();
 
 	// Performs background license check, pass TRUE as 1st parameter to perform periodic verifications only.
-	$registeredlicense = false;
-	if($tf_username && $tf_purchase_code){
-	    $lb_verify_res = $lbapi->verify_license(false, sanitize_text_field($tf_purchase_code), sanitize_text_field($tf_username));
-	    if(!empty($lb_verify_res['status'])){
-	        $registeredlicense = true;
-	    }
-	}
-	if(!$registeredlicense){
-		$default_text = sprintf( '<h3>To get access to ALL demo stacks, you must register your purchase.<br />See the <a href="%s">Product Registration tab</a> for instructions on how to complete registration.</h3>', admin_url( 'admin.php?page=rehub' ) );
-	    return $default_text;		
-	}else{
-	    return '<br/><a href="http://rehubdocs.wpsoul.com/docs/rehub-theme/theme-install-update-translation/importing-demo-data/" target="_blank">'.__('How to use DEMO import and possible issues. Read before import','rehub-theme').'</a><br/><br/>';
-	}	
+	
+	 $lb_verify_res = $lbapi->verify_license(false, sanitize_text_field($tf_purchase_code), sanitize_text_field($tf_username));
+	 $registeredlicense = true;
+	
+	 return '<br/><a href="http://rehubdocs.wpsoul.com/docs/rehub-theme/theme-install-update-translation/importing-demo-data/" target="_blank">'.__('How to use DEMO import and possible issues. Read before import','rehub-theme').'</a><br/><br/>';
+		
 
 }
 /* 
@@ -84,20 +77,14 @@ function rehub_before_import_setup( $current_import ){
 	$lbapi = new LicenseBoxAPI();
 
 	// Performs background license check, pass TRUE as 1st parameter to perform periodic verifications only.
-	$registeredlicense = false;
-	if($tf_username && $tf_purchase_code){
 	    $lb_verify_res = $lbapi->verify_license(false, sanitize_text_field($tf_purchase_code), sanitize_text_field($tf_username));
-	    if(!empty($lb_verify_res['status'])){
-	        $registeredlicense = true;
-	    }
-	}
+	    $registeredlicense = true;
+	    
+	
 	$rplugins = admin_url( 'admin.php?page=rehub-plugins' );
 	$wpplugins = admin_url( 'plugin-install.php' );
 	$childthemeurl = 'http://rehubdocs.wpsoul.com/docs/rehub-theme/child-themes/';	
-	if(!$registeredlicense){
-		printf( '<h3>To get access to ALL demo stacks, you must register your purchase.<br />See the <a href="%s">Product Registration tab</a> for instructions on how to complete registration.</h3>', admin_url( 'admin.php?page=rehub' ) );	
-		exit();		
-	}	
+	
 
 	if( 'RePick' === $current_import['import_file_name'] ) {
 

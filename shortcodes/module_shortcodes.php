@@ -3800,7 +3800,12 @@ ob_start();
 	  		else {
 	  			$image_url = wp_get_attachment_image_src($image_id,'news_big');
 	  		}	
-			$image_url = $image_url[0];
+	  		if(is_array($image_url)){
+	  			$image_url = $image_url[0];
+	  		}else{
+	  			$image_url = '';
+	  		}
+			
 			if (function_exists('_nelioefi_url')){
 				$image_nelio_url = get_post_meta( $post->ID, _nelioefi_url(), true );
 				if (!empty($image_nelio_url)){

@@ -19,9 +19,9 @@ $aff_link = (rehub_option('disable_inner_links') == 1) ? 1 : 0;
             endif;?>
 
             <?php /* If this is a category archive */ if (is_category()) { ?>
-            <div class="wpsm-title middle-size-title wpsm-cat-title"><h5><span><?php esc_html_e('Category:', 'rehub-theme'); ?></span> <?php single_cat_title(); ?></h5></div>
+            <div class="wpsm-title middle-size-title wpsm-cat-title"><h5><?php single_cat_title(); ?></h5></div>
             <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
-            <div class="wpsm-title middle-size-title wpsm-cat-title"><h5><span><?php esc_html_e('Tag:', 'rehub-theme'); ?></span> <?php single_tag_title(); ?></h5></div>
+            <div class="wpsm-title middle-size-title wpsm-cat-title"><h5><?php single_tag_title(); ?></h5></div>
             <article class='top_rating_text'><?php echo tag_description(); ?></article>             
             <?php /* If this is a daily archive */ } elseif (is_day()) { ?>
             <div class="wpsm-title middle-size-title wpsm-cat-title"><h5><span><?php esc_html_e('Archive:', 'rehub-theme'); ?></span> <?php the_time('F jS, Y'); ?></h5></div>

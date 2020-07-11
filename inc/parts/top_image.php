@@ -94,7 +94,7 @@
                         <?php else : ?>
 	 						<li data-thumb="<?php $params = array( 'width' => 116, 'height' => 116, 'crop' => true  ); echo bfi_thumb($gallery_img['gallery_post_image'], $params); ?>">
 								<?php if (!empty ($gallery_img['gallery_post_image_caption'])) :?><div class="bigcaption"><?php echo esc_attr($gallery_img['gallery_post_image_caption']); ?></div><?php endif;?>
-								<img src="<?php if ($resizer =='1') {$params = array( 'width' => 1150);} else {$params = array( 'width' => 1150, 'height' => 604,  'crop' => true );}; echo bfi_thumb($gallery_img['gallery_post_image'], $params); ?>" />
+								<img src="<?php if ($resizer =='1') {$params = array( 'width' => 1150);} else {$params = array( 'width' => 1150, 'height' => 604,  'crop' => true );}; echo bfi_thumb($gallery_img['gallery_post_image'], $params); ?>" alt="<?php if (!empty ($gallery_img['gallery_post_image_caption'])) :?><?php echo esc_attr($gallery_img['gallery_post_image_caption']); ?><?php endif;?>" />
 							</li>                                           
                         <?php endif; ?>						                                               
 					<?php else : ?>
@@ -105,7 +105,7 @@
                         <?php else : ?>
 							<li data-thumb="<?php $params = array( 'width' => 80, 'height' => 80, 'crop' => true ); echo bfi_thumb($gallery_img['gallery_post_image'], $params); ?>">
 								<?php if (!empty ($gallery_img['gallery_post_image_caption'])) :?><div class="bigcaption"><?php echo esc_attr($gallery_img['gallery_post_image_caption']); ?></div><?php endif;?>
-								<img src="<?php if ($resizer =='1') {$params = array( 'width' => 840);} else {$params = array( 'width' => 840, 'height' => 478, 'crop' => true   );}; echo bfi_thumb($gallery_img['gallery_post_image'], $params); ?>" />
+								<img src="<?php if ($resizer =='1') {$params = array( 'width' => 840);} else {$params = array( 'width' => 840, 'height' => 478, 'crop' => true   );}; echo bfi_thumb($gallery_img['gallery_post_image'], $params); ?>" alt="<?php if (!empty ($gallery_img['gallery_post_image_caption'])) :?><?php echo esc_attr($gallery_img['gallery_post_image_caption']); ?><?php endif;?>" />
 							</li>                                            
                         <?php endif; ?> 						                                                
 					<?php endif; ?>

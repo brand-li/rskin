@@ -111,7 +111,7 @@
                                             <div class="fontbold font130 rehub-main-font mb10">
                                                 <?php echo esc_html($offer_price) ?>
                                                 <?php if($offer_price_old !='') :?>
-                                                <span class="retail-old">
+                                                <span class="retail-old font120 rh_opacity_3">
                                                     <strike><span class="value"><?php echo esc_html($offer_price_old) ; ?></span></strike>
                                                 </span>
                                                 <?php endif;?>                                                                    

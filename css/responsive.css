@@ -192,6 +192,7 @@ blockquote.wpsm-quote{ width:100% !important}
 .col_wrap_two .small_post, .col_wrap_three .small_post, .col_wrap_fourth .small_post, .col_wrap_fifth .small_post {width: 100%; margin: 0 0 20px;}
 }
 @media only screen and (max-width: 479px) {
+.alphabet-filter a.single-letter-link{width:30%;}
 .rate_bar_wrap{padding: 18px}
 .review-small-square{float: none;width: calc(100% - 70px); border-radius: 5px;}
 .wp-caption.alignright, .wp-caption.alignleft{display:block; margin: 0 auto; float: none;}

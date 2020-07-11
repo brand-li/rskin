@@ -295,10 +295,42 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 				else {
 					$maincolor = REHUB_MAIN_COLOR;			
 				}
-			?>			
+			?>	
+			<?php 
+				if (rehub_option('rehub_sec_color')) {
+					$secondarycolor = rehub_option('rehub_sec_color');
+				} 
+				else {
+					$secondarycolor = REHUB_SECONDARY_COLOR;
+				}
+			?>
+			<?php 
+				$boxshadow = $boxshadowhover = '';
+				if (rehub_option('rehub_btnoffer_color')) {
+					$btncolor = rehub_option('rehub_btnoffer_color');
+				} 	
+				else {
+					$btncolor = REHUB_BUTTON_COLOR;
+				}
+				if (rehub_option('rehub_btnoffer_color_hover')) {
+					$btncolorhover = rehub_option('rehub_btnoffer_color_hover');
+				}else{
+					$btncolorhover = $btncolor;
+				}
+				if (rehub_option('rehub_btnoffer_color_text')) {
+					$btncolortext = rehub_option('rehub_btnoffer_color_text');
+				}else{
+					$btncolortext = REHUB_BUTTON_COLOR_TEXT;
+				}
+				if (rehub_option('rehub_btnofferhover_color_text')) {
+					$btncolorhovertext = rehub_option('rehub_btnofferhover_color_text');
+				}else{
+					$btncolorhovertext = $btncolortext;
+				}			
+			?>		
 			<style type="text/css">
 			<?php if(rehub_option('rehub_headings_font')) : ?>
-				.editor-post-title__block .editor-post-title__input, .wp-block-heading h1, .wp-block-heading h2, .wp-block-heading h3, .wp-block-heading h4, .wp-block-heading h5, .wp-block-heading h6, .wp-block-quote.is-style-large, .wp-block-button .wp-block-button__link{
+				.editor-post-title__block .editor-post-title__input, .editor-styles-wrapper h1, .editor-styles-wrapper h2, .editor-styles-wrapper h3, .editor-styles-wrapper h4, .editor-styles-wrapper h5, .editor-styles-wrapper h6, .wp-block-quote.is-style-large, .wp-block-button .wp-block-button__link{
 					font-family:"<?php echo rehub_option('rehub_headings_font'); ?>", trebuchet ms !important;
 					font-weight:<?php echo rehub_option('rehub_headings_font_weight'); ?> !important;
 					font-style:<?php echo rehub_option('rehub_headings_font_style'); ?> !important;
@@ -306,15 +338,57 @@ if ( ! class_exists( 'Rehub_Admin' ) ) {
 				}				
 			<?php endif;?>
 			<?php if(rehub_option('rehub_body_font')) : ?>
-				.editor-styles-wrapper {
+				.editor-styles-wrapper .wp-block {
 					font-family:"<?php echo rehub_option('rehub_body_font'); ?>", arial !important;
 					font-weight:<?php echo rehub_option('rehub_body_font_weight'); ?>!important;
 					font-style:<?php echo rehub_option('rehub_body_font_style'); ?> !important;			
 				}
 			<?php else:?>
-				.editor-styles-wrapper{font-family: 'Arial', trebuchet ms !important}
-			<?php endif; ?>				
+				.editor-styles-wrapper .wp-block{font-family: Roboto,"Helvetica Neue",-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Oxygen-Sans,sans-serif !important}
+			<?php endif; ?>	
+			<?php if (rehub_option('enable_smooth_btn') == 1):?>
+				<?php $boxshadow = hex2rgba($btncolor, 0.25);?>
+				<?php $boxshadowhover = hex2rgba($btncolorhover, 0.35);?>
+				.def_btn, .wpsm-button{border-radius: 5px}
+				.review-top .overall-score, .rate_bar_wrap, .rh_offer_list, .rehub-sec-smooth{border-radius: 8px}
+				.review-top .overall-score span.overall-text{border-radius: 0 0 8px 8px}
+				.coupon_btn:before{display: none;}
+			<?php elseif (rehub_option('enable_smooth_btn') == 2):?>
+				<?php $boxshadow = hex2rgba($btncolor, 0.2);?>
+				<?php $boxshadowhover = hex2rgba($btncolorhover, 0.4);?>
+				.rehub_offer_coupon, .def_btn, .rehub-main-smooth{border-radius: 4px}
+				.rehub-sec-smooth, .rate-bar-bar, .rate-bar{border-radius: 5px}
+			<?php endif;?>
+			.wpsm-button.rehub_main_btn,
+			.woocommerce button.button,
+			.rehub-main-btn-bg,
+			.wp-block .c-offer-box .c-offer-box__button,
+			.wp-block .c-offer-listing-btn .c-offer-listing-btn__text,
+			.c-ws-box-cta__btn 
+			{ background: none <?php echo ''.$btncolor ?> !important; 
+				color: <?php echo ''.$btncolortext ?> !important; 
+				fill: <?php echo ''.$btncolortext ?> !important;
+				border:none !important;
+				text-decoration: none !important; 
+				outline: 0; 
+				<?php if($boxshadow) :?>
+					box-shadow: -1px 6px 19px <?php echo ''.$boxshadow;?> !important;		
+				<?php else:?>
+					box-shadow: 0 2px 2px #E7E7E7 !important;
+				<?php endif; ?>
+				<?php if(rehub_option('enable_smooth_btn') == 1) :?>
+					border-radius: 100px !important;
+				<?php elseif (rehub_option('enable_smooth_btn') == 2):?>
+					border-radius: 4px !important;		
+				<?php else:?>
+					border-radius: 0 !important;
+				<?php endif; ?>
+			}
+			.rehub-main-color, .wp-block .c-offer-listing .c-offer-listing__title, .wp-block .c-offer-listing .c-offer-listing__read-more{color: <?php echo ''.$maincolor; ?>;}			
 			.wp-block-quote:not(.is-large):not(.is-style-large), .wp-block-pullquote{border-color: <?php echo ''.$maincolor; ?>;}
+			.rehub-sec-color-bg,
+			.rh-slider-arrow{ background: <?php echo ''.$secondarycolor ?> !important; color: #fff !important; outline: 0}
+			.rh-slider-thumbs-item--active{border-color: <?php echo ''.$secondarycolor ?>}
 			.wp-block-pullquote cite, .wp-block-pullquote footer, .wp-block-pullquote__citation{color: #111 !important}	
 			.wp-block-freeform.block-library-rich-text__tinymce a, .wp-block-quote.is-style-large p, article a, .wp-block-pullquote{color: <?php echo ''.$maincolor; ?> !important; text-decoration: none !important;}
 			.rh-admin-note{background: lightblue; padding: 15px;margin: 15px 0;border-radius: 5px;border: 1px solid #65b2c7; font-size: 15px}

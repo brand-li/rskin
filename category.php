@@ -248,7 +248,7 @@ $cat_filter_panel = rehub_option('category_filter_panel');
                     <div class="pagination"><?php rehub_pagination();?></div>
                 <?php endif ;?>                 
             <?php else : ?>     
-                <h5><?php esc_html_e('Sorry. No posts in this category yet', 'rehub-theme'); ?></h5>            
+                <div class="wpsm-title middle-size-title wpsm-cat-title"><h5><?php esc_html_e('Sorry. No posts in this category yet', 'rehub-theme'); ?></h5> </div>           
             <?php endif; wp_reset_query(); ?>           
             <div class="clearfix"></div>
             <?php  $cat_data = get_option("category_$catID");?> 

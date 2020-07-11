@@ -969,65 +969,6 @@ if (!function_exists('rh_best_syncpost_deal')) {
 } 
 
 
-//Get social buttons
-if( !function_exists('rehub_social_inimage') ) {
-function rehub_social_inimage($small = '', $favorite = '', $rh_favorite = '', $type = '', $wishlistids='')
-{   
-    global $post;
-    if ($small == 'minimal') {
-        $small_class = ' social_icon_inimage small_social_inimage';
-        $text_fb = $text_tw = '';
-    }
-    elseif ($small =='row') {
-        $small_class = ' row_social_inpost';
-        $text_fb = 'Facebook';
-        $text_tw = '';
-    }
-    elseif ($small == 'flat') {
-        $text_fb = $text_tw = $small_class = '';
-    }    
-    else {
-        $small_class = ' social_icon_inimage';
-    }
-    $output ='';
-    $output .='<div class="social_icon '.$small_class.'">';
-    if ($favorite == '1') {
-        $wishlistadd = esc_html__('Save', 'rehub-theme');
-        $wishlistadded = esc_html__('Saved', 'rehub-theme');
-        $wishlistremoved = esc_html__('Removed', 'rehub-theme');      
-        $output .='<div class="favour_in_row favour_btn_red">'.RH_get_wishlist($post->ID, $wishlistadd, $wishlistadded, $wishlistremoved).'</div>';
-    }
-    if ($rh_favorite == '1') {
-        $output .= RH_get_wishlist($post->ID);
-    }    
-    if($type=='user' && function_exists('bp_core_get_user_domain')){
-      $link = bp_core_get_user_domain(bp_displayed_user_id());
-      $image = bp_get_displayed_user_avatar('type=full&html=false');
-      $title = get_the_title().' - '.get_bloginfo('name' );
-    }
-    else{
-      $link = get_permalink();
-      $image = WPSM_image_resizer::get_post_thumb_static();
-      $title = get_the_title();
-    }
-    if($wishlistids){
-      $link = $link.'?wishlistids='.$wishlistids;
-    }
-    $output .= do_action('rh_social_inimage_before');
-    $output .= '<span data-href="https://www.facebook.com/sharer/sharer.php?u='.urlencode($link).'" class="fb share-link-image" data-service="facebook"><i class="fab fa-facebook"></i></span>';
-    $output .='<span data-href="https://twitter.com/share?url='.urlencode($link).'&text='.urlencode(html_entity_decode($title, ENT_COMPAT, 'UTF-8')).'" class="tw share-link-image" data-service="twitter"><i class="fab fa-twitter"></i></span>';
-    $output .='<span data-href="https://pinterest.com/pin/create/button/?url='.urlencode($link).'&amp;media='.$image.'&amp;description='.urlencode($title).'" class="pn share-link-image" data-service="pinterest"><i class="fab fa-pinterest-p"></i></span>';
-    //$output .='<span data-href="whatsapp://send?&text='.urlencode(html_entity_decode($title, ENT_COMPAT, 'UTF-8')).' - '.urlencode($link).'" data-action="share/whatsapp/share" class="wa share-link-image" data-service="whatsapp"><i class="fab fa-whatsapp"></i></span>';    
-    if ($small =='row' || $small =='flat' ) {
-        $output .='<span data-href="mailto:?subject='.urlencode(html_entity_decode($title, ENT_COMPAT, 'UTF-8')).'&body='.__('Check out:', 'rehub-theme').' '.urlencode($link).' - '.urlencode(html_entity_decode(get_bloginfo("name"), ENT_COMPAT, 'UTF-8')).'" class="in share-link-image" data-service="email"><i class="far fa-envelope"></i></span>';    
-        //$output .='<span data-href="https://www.linkedin.com/shareArticle?mini=true&url='.urlencode($link).'&title='.urlencode(html_entity_decode($title, ENT_COMPAT, 'UTF-8')).'&source='.urlencode(html_entity_decode(get_bloginfo("name"), ENT_COMPAT, 'UTF-8')).'" class="in share-link-image" data-service="linkedin"><i class="fab fa-linkedin"></i></span>';
-    }
-    $output .= do_action('rh_social_inimage_after');
-    $output .='</div>';         
-    return $output; 
-}
-}
-
 if(!function_exists('rehub_get_ip')) {
     #get the user's ip address
     function rehub_get_ip() {

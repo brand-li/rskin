@@ -13,7 +13,7 @@
  * @see 	    https://docs.woocommerce.com/document/template-structure/
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
- * @version     3.6.0
+ * @version     4.3.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -36,7 +36,7 @@ if ( ! comments_open() || !function_exists('wc_review_ratings_enabled')) {
 		if ($count && wc_review_ratings_enabled())
 			printf( _n( '%s review for %s%s%s', '%s reviews for %s%s%s', $count, 'rehub-theme' ), $count, '<span class="rh-woo-section-sub">', get_the_title(), '</span>' );
 		else
-			_e( 'User Reviews', 'rehub-theme' );
+			esc_html_e( 'User Reviews', 'rehub-theme' );
 	?>
 	</h2>
 	<div class="mb20 rh-line"></div>	

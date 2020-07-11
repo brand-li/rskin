@@ -3,6 +3,8 @@
 (function($) {
     "use strict";
 
+    var scrolledfind = false;
+
     function multiParallax() {
         if($('.rh-parallaxel-true').length > 0){
             var $winHeight  = $( window ).height();
@@ -213,18 +215,17 @@
                     }
                 }
             }   
-
         };
 
-        $('.main_slider').each(function() {
-         var slider = $(this);
-         slider.flexslider({
-            animation: "slide",
-            start: function(slider) {
-               slider.removeClass('loading');
-            }
-         });
-        });
+        if($scope.find('.main_slider').length > 0){
+            var slider = $scope.find('.main_slider');
+            slider.flexslider({
+                animation: "slide",
+                start: function(slider) {
+                   slider.removeClass('loading');
+                }
+            });
+        }
 
         $('.wpsm-bar').each(function(){
             $(this).find('.wpsm-bar-bar').animate({ width: $(this).attr('data-percent') }, 1500 );
@@ -233,17 +234,6 @@
         $('.rate-bar').each(function(){
             $(this).find('.rate-bar-bar').css("width", $(this).attr('data-percent'));
         });                
-
-        $('.rtl .main_slider').each(function() {
-           var slider = $(this);
-           slider.flexslider({
-              animation: "slide",
-              rtl: true,
-              start: function(slider) {
-                 slider.removeClass('loading');
-              }
-           });
-        }); 
 
         $(".countdown_dashboard").each(function(){
             $(this).show();
@@ -612,42 +602,51 @@
                 }
             
             }
-            if(triggertype == 'custom'){
+            if(triggertype == 'load'){
+                animation.play();
+            }else{
+                scrolledfind = true;
                 if(current.data('customtrigger')){
                     var customtrigger = '#'+current.data('customtrigger');               
                 }else{
                     var customtrigger = $scope;
                 }
-                scrollargs.triggerElement = customtrigger;
+                scrollargs.trigger = customtrigger;
 
-                if(current.data('triggerheight')){
-                    var $hookpos = parseInt(current.data('triggerheight'))/100;
-                    scrollargs.triggerHook = $hookpos;
+                if(current.data('triggerstart')){
+                    scrollargs.start = current.data('triggerstart');
                 }else{
-                    scrollargs.triggerHook = 0.85;
+                    scrollargs.start = "top 85%";
+                }
+                if(current.data('triggerend')){
+                    scrollargs.end = current.data('triggerend');
                 }
 
-                if(current.data('scrollduration')){
-                    var $hookdur = current.data('scrollduration');
-                    scrollargs.duration = $hookdur;
-                }   
-
-                var scene = new ScrollMagic.Scene(scrollargs).setTween(animation).addTo(rhscroller);
-                if(current.data('pin') && current.data('scrollduration')){
-                    var pin = '#'+current.data('pin'); 
-                    scene.setPin(pin);             
+                if(current.data('triggerscrub')){
+                    scrollargs.scrub = parseFloat(current.data('triggerscrub'));
+                } 
+                if(current.data('triggersnap')){
+                    scrollargs.snap = parseFloat(current.data('triggersnap'));
                 }
-                if(current.data('rev')){
-                    scene.reverse(false);
+                if(current.data('pinned')){
+                    scrollargs.pin = true;             
+                }else{
+                    if($scope.parent().hasClass('pin-spacer')){
+                        $scope.unwrap();
+                        $scope.removeAttr("style");
+                    }
                 }
-            }
-            else if(triggertype == 'waypoint'){
-                current.elementorWaypoint(function(direction) {
-                    animation.play();
-                }, { offset: 'bottom-in-view' }); 
-            }else if(triggertype == 'load'){
-                animation.play();
-            }
+                if(current.data('pinspace')){
+                    scrollargs.pinSpacing = false;             
+                }
+                if(current.data('triggeraction')){
+                    scrollargs.toggleActions = current.data('triggeraction');
+                }else{
+                    scrollargs.toggleActions = 'play pause resume reverse';
+                }
+                scrollargs.animation = animation;
+                ScrollTrigger.create(scrollargs);
+            } 
         }
 
         //reveal
@@ -729,8 +728,7 @@
                 });
             }
   
-        }
-        
+        }        
     }
 
     var RehubElCanvas = function($scope, $) {
@@ -943,9 +941,7 @@
                 return min + (max - min) * Math.random();
             }
         }
-
     }
-
 
     $(window).on('elementor/frontend/init', function () {
         elementorFrontend.hooks.addAction('frontend/element_ready/widget', RehubWidgetsScripts);
@@ -989,6 +985,10 @@
 
     $(window).on('resize scroll', function() {
         multiParallax();
-    });     
+    });   
+
+    document.addEventListener('lazyloaded', function(e){
+        ScrollTrigger.refresh();
+    });  
 
 })(jQuery); 

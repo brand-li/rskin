@@ -223,9 +223,6 @@ function wpsm_shortcode_box( $atts, $content = null ) {
 	// Remove all instances of "<p>&nbsp;</p><br>" to avoid extra lines.
 	$content = do_shortcode($content);
 	$content = preg_replace( '%<p>&nbsp;\s*</p>%', '', $content ); 
-	$Old     = array( '<br />', '<br>' );
-	$New     = array( '','' );
-	$content = str_replace( $Old, $New, $content );
 
 	$out = '<div class="mb30 wpsm_box '.$atts['type'].'_type '.$atts['float'].'float_box" style="text-align:'.$atts['textalign'].'; width:'.$atts['width'].'"><i></i><div>
 			' .do_shortcode($content). '
@@ -248,25 +245,31 @@ function wpsm_promobox_shortcode( $atts, $content = null ) {
 			'highligh_color' => '',
 			'highlight_position' => '',
 			'title' => '',
-			'description' => ''
+			'description' => '',
+			'text_color' => '',
+			'button_link' => '',
+			'button_text' => '',
 		), $atts));	
 	wp_enqueue_style('rhpromobox');
 	$out = '<div class="wpsm_promobox" style="background-color:'.$background.' !important;';
-	if((isset($atts['border_size']) && $atts['border_size']) && (isset($atts['border_color']) && $atts['border_color'])):
+	if($border_size && $border_color):
 		$out .= ' border-width:'.$border_size.';border-color:'.$border_color.'!important; border-style:solid;';
 	endif;
-	if((isset($atts['highligh_color']) && $atts['highligh_color']) && (isset($atts['highlight_position']) && $atts['highlight_position'])):
+	if($text_color):
+		$out .= ' color:'.$text_color.';';
+	endif;
+	if($highligh_color && $highlight_position):
 		$out .= ' border-'.$highlight_position.'-width:3px !important;border-'.$highlight_position.'-color:'.$highligh_color.'!important;border-'.$highlight_position.'-style:solid';
 	endif;
 	$out .= '">';
-	if((isset($atts['button_link']) && $atts['button_link']) && (isset($atts['button_text']) && $atts['button_text'])):
-		$out .= '<a href="'.$atts['button_link'].'" class="wpsm-button rehub_main_btn" target="_blank" rel="nofollow"><span>'.$atts['button_text'].'</span></a>';
+	if($button_link && $button_text):
+		$out .= '<a href="'.$button_link.'" class="wpsm-button rehub_main_btn" target="_blank" rel="nofollow"><span>'.$button_text.'</span></a>';
 	endif;
-	if(isset($atts['title']) && $atts['title']):
+	if($title):
 		$out .= '<div class="title_promobox">'.$atts['title'].'</div>';
 	endif;
-	if(isset($atts['description']) && $atts['description']):
-		$out.= '<p>'.$atts['description'].'</p>';
+	if($description):
+		$out.= '<p>'.$description.'</p>';
 	endif;
 	$out .= '</div>';
     return $out;
@@ -381,7 +384,7 @@ if( !function_exists('wpsm_accordion_main_shortcode') ) {
 		$content = str_replace( $Old, $New, $content );
 		
 		// Display the accordion	
-		return '<div class="wpsm-accordion" data-accordion="yes" itemscope="" itemtype="https://schema.org/FAQPage">' . do_shortcode($content) . '</div>';
+		return '<div class="wpsm-accordion mb25" data-accordion="yes" itemscope="" itemtype="https://schema.org/FAQPage">' . do_shortcode($content) . '</div>';
 	}
 }
 
@@ -419,7 +422,7 @@ if( !function_exists('wpsm_toggle_shortcode') ) {
 			$opens = ' close';
 		}
 
-		return '<div class="wpsm-accordion" data-accordion="no"><div class="wpsm-accordion-item'.$opens.'"><h3 class="wpsm-accordion-trigger">'. $title .'</h3><div class="accordion-content">' . do_shortcode($content) . '</div></div></div>';
+		return '<div class="wpsm-accordion mb25" data-accordion="no"><div class="wpsm-accordion-item'.$opens.'"><h3 class="wpsm-accordion-trigger">'. $title .'</h3><div class="accordion-content">' . do_shortcode($content) . '</div></div></div>';
 	}
 }
 
@@ -669,7 +672,7 @@ if (!function_exists('wpsm_tabgroup_shortcode')) {
 		if( isset($matches[1]) ){ $tab_titles = $matches[1]; }
 		$output = '';
 		if( count($tab_titles) ){
-		    $output .= '<div id="wpsm-tab-'. rand(1, 100) .'" class="wpsm-tabs tabs">';
+		    $output .= '<div id="wpsm-tab-'. rand(1, 100) .'" class="wpsm-tabs mb25 tabs">';
 			$output .= '<ul class="tabs-menu rh-tab-shortcode scroll-on-mobile">';
 			foreach( $tab_titles as $index=>$tab){
 				$output .= '<li><span class="cursorpointer">' . $tab[0] . '</span></li>';
@@ -1811,7 +1814,7 @@ function wpsm_toprating_shortcode( $atts, $content = null ) {
 			    do_action('rh_after_module_args_query', $wp_query);
 	        ?>
             <?php $i=0; if ($wp_query->have_posts()) :?>
-            <div class="rh_list_builder rh-shadow4 disablemobileshadow">
+            <div class="rh_list_builder rh-shadow4 disablemobileshadow mb25">
             <?php while ($wp_query->have_posts()) : $wp_query->the_post(); global $post; $i ++?>
             	<?php $disclaimer = get_post_meta($post->ID, 'rehub_offer_disclaimer', true);?>     
                 <div class="top_table_list_item border-lightgrey whitebg"> 
@@ -4060,7 +4063,7 @@ function wpsm_tax_archive_shortcode( $atts, $content = null ) {
 					}
 				}
 				if ($thumbnail){
-					$term_titles .= '<a class="'.$classitem.' col_item mb10 rh_centered_image text-center rh-cartbox pt10 pb10 pl10 pr10 logo-tax-link" href="' . esc_url( get_term_link( $term ) ) . '" title="' . esc_attr( sprintf( esc_html__( 'View all post filed under %s', 'rehub-theme' ), $term->name ) ) . '">'. $thumbnail . '</a>';					
+					$term_titles .= '<a class="'.$classitem.' col_item mb10 two_column_mobile rh_centered_image text-center rh-cartbox pt10 pb10 pl10 pr10 logo-tax-link" href="' . esc_url( get_term_link( $term ) ) . '" title="' . esc_attr( sprintf( esc_html__( 'View all post filed under %s', 'rehub-theme' ), $term->name ) ) . '">'. $thumbnail . '</a>';					
 				}
 			}
 			return '<div class="'.$classcol.' rh-flex-eq-height">'.$term_titles.'</div>';	
@@ -4152,7 +4155,7 @@ function wpsm_tax_archive_shortcode( $atts, $content = null ) {
 			$terms = array_slice($terms, 0, ($columns*$rows));
 			foreach( $terms as $term ) {
 				$thumbnail = $thumbnail_url = '';
-				$term_titles .= '<div class="'. $classitem .' col_item text-center rh-cartbox mb10 pt10 pb10 pl10 pr10 rh-hover-tax rh-cash-tax">';
+				$term_titles .= '<div class="'. $classitem .' col_item two_column_mobile text-center rh-cartbox mb10 pt10 pb10 pl10 pr10 rh-hover-tax rh-cash-tax">';
 				if( $show_images == 1 ) {
 						if ($taxonomy == 'product_cat'){
 							$brandimageid = get_term_meta( $term->term_id, 'thumbnail_id', true ); 

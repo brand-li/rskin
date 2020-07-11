@@ -86,7 +86,7 @@ a.about_paypal{display: block;}
 .woo-desc-w-review table{width: 100%}
 .entry-summary .product_meta > span{display: block;}
 
-.woocommerce-product-gallery .flex-control-nav{margin: 15px 0 0 0}
+.woocommerce-product-gallery .flex-control-nav{margin: 15px 0 0 0; overflow: hidden}
 .woocommerce-product-gallery .flex-control-thumbs li {list-style: none;float: left;cursor: pointer;}
 .woocommerce-product-gallery .flex-control-thumbs img {opacity: .5;border: 1px solid #eee;padding: 5px;}
 .woocommerce-product-gallery .flex-control-thumbs img.flex-active,

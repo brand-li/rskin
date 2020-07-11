@@ -48,7 +48,7 @@
     }
 ?>
 <?php $coupon_mask_enabled = (!empty($offer_coupon) && ($offer_coupon_mask =='1' || $offer_coupon_mask =='on') && $expired!='1') ? '1' : ''; ?> <?php $reveal_enabled = ($coupon_mask_enabled =='1') ? ' reveal_enabled' : '';?>
-<div class="bigofferblock pt20 pl20 pr20 <?php echo ''.$reveal_enabled; echo ''.$coupon_style; ?>"<?php echo ''.$styles;?>>
+<div class="bigofferblock margincenter mb30 pt20 pl20 pr20 <?php echo ''.$reveal_enabled; echo ''.$coupon_style; ?>"<?php echo ''.$styles;?>>
 <div class="col_wrap_two mb0">
     <div class="product_egg">
         <div class="image col_item mobileblockdisplay">

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 // Do not allow directly accessing this file.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -6,17 +6,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 if ( !defined( 'RH_MAIN_THEME_VERSION' ) ) {
-	define('RH_MAIN_THEME_VERSION', '10.6');
+	define('RH_MAIN_THEME_VERSION', '11.0');
 }
 if(!defined('REHUB_NAME_ACTIVE_THEME')){
 	define('REHUB_NAME_ACTIVE_THEME', 'REHUB');
 }
-$rehub_options = [
-	'tf_username'      => 'babiato',
-	'tf_purchase_code' => 'nulled-by-babak',
-	'tf_support_date'  => '01.01.2030',
-];
-update_option( 'Rehub_Key', $rehub_options );
+
 if(!is_admin()) add_action('init', 'rehub_framework_register_scripts');
 if( !function_exists('rehub_framework_register_scripts') ) {
 function rehub_framework_register_scripts() {
@@ -40,7 +35,7 @@ function rehub_framework_register_scripts() {
 	wp_register_style('flexslider', get_template_directory_uri() . '/css/flexslider.css', array('rhstyle'), '2.2');
 	wp_register_style('rhnumbox', get_template_directory_uri() . '/css/shortcodes/numbox.css', array('rhstyle'), '1.0');
 	wp_register_style('rhdividers', get_template_directory_uri() . '/css/shortcodes/dividers.css', array('rhstyle'), '1.0');
-	wp_register_style('rhprettylist', get_template_directory_uri() . '/css/shortcodes/prettylist.css', array('rhstyle'), '1.0');
+	wp_register_style('rhprettylist', get_template_directory_uri() . '/css/shortcodes/prettylist.css', array('rhstyle'), '1.1');
 	wp_register_style('rhpricetable', get_template_directory_uri() . '/css/shortcodes/pricetable.css', array('rhstyle'), '1.0');
 	wp_register_style('rhpromobox', get_template_directory_uri() . '/css/shortcodes/promobox.css', array('rhstyle'), '1.0');
 	wp_register_style('rhtestimonial', get_template_directory_uri() . '/css/shortcodes/testimonial.css', array('rhstyle'), '1.0');
@@ -88,13 +83,13 @@ function rehub_framework_register_scripts() {
 	wp_register_script( 'modulobox', get_template_directory_uri() . '/js/modulobox.min.js', array('jquery'), '1.0.5', true );	
 	wp_register_script( 'rh_elparticle', get_template_directory_uri() . '/js/particles.min.js', array('jquery'), '2.2', true );	
 
-	wp_register_script( 'gsap', get_template_directory_uri() . '/js/gsap.min.js', array('jquery'), '3.2.6', true );
-	wp_register_script( 'scrollmagic', get_template_directory_uri() . '/js/ScrollMagic.min.js', array('jquery'), '2.0.8', true );	
-	wp_register_script( 'gsapinit', get_template_directory_uri() . '/js/gsap-init.js', array('jquery','gsap'), '1.5', true );
-	wp_register_script( 'gsapsplittext', get_template_directory_uri() . '/js/SplitText.min.js', array('jquery','gsap'), '3.2.6', true );
-	wp_register_script( 'gsapsvgdraw', get_template_directory_uri() . '/js/DrawSVGPlugin.min.js', array('jquery','gsap'), '3.2.6', true );	
-	wp_register_script( 'gsapsvgpath', get_template_directory_uri() . '/js/MotionPathPlugin.min.js', array('jquery','gsap'), '3.2.6', true );
-	wp_register_script( 'gsapsvgpathhelper', get_template_directory_uri() . '/js/MotionPathHelper.min.js', array('jquery','gsap', 'gsapsvgpath'), '3.2.6', true );
+	wp_register_script( 'gsap', get_template_directory_uri() . '/js/gsap.min.js', array('jquery'), '3.3.4', true );
+	wp_register_script( 'scrolltrigger', get_template_directory_uri() . '/js/ScrollTrigger.min.js', array('jquery','gsap'), '3.3.4', true );
+	wp_register_script( 'gsapinit', get_template_directory_uri() . '/js/gsap-init.js', array('jquery','gsap'), '1.6', true );
+	wp_register_script( 'gsapsplittext', get_template_directory_uri() . '/js/SplitText.min.js', array('jquery','gsap'), '3.3.4', true );
+	wp_register_script( 'gsapsvgdraw', get_template_directory_uri() . '/js/DrawSVGPlugin.min.js', array('jquery','gsap'), '3.3.4', true );	
+	wp_register_script( 'gsapsvgpath', get_template_directory_uri() . '/js/MotionPathPlugin.min.js', array('jquery','gsap'), '3.3.4', true );
+	wp_register_script( 'gsapsvgpathhelper', get_template_directory_uri() . '/js/MotionPathHelper.min.js', array('jquery','gsap', 'gsapsvgpath'), '3.3.4', true );
 	wp_register_script( 'rh_elcanvas', get_template_directory_uri() . '/js/elcanvas.js', array('jquery'), '1.0.0', true );
 	
 	wp_register_script( 'threejs', get_template_directory_uri() . '/js/three.min.js', array(), '0.112', true );
@@ -107,6 +102,13 @@ function rehub_framework_register_scripts() {
 
 	wp_register_script( 'lottie', get_template_directory_uri() . '/js/lottie.min.js', array(), '5.6.7', true );
 	wp_register_script( 'lottie-init', get_template_directory_uri() . '/js/lottie-init.js', array('lottie'), '1.0', true );
+	
+	$rehub_options = [
+	'tf_username'      => 'nullmaster',
+	'tf_purchase_code' => 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930',
+	'tf_support_date'  => '01.01.2030',
+];
+	update_option( 'Rehub_Key', $rehub_options );
 }
 }
 if(!is_admin()) add_action('wp_enqueue_scripts', 'rehub_enqueue_scripts',11);
@@ -789,7 +791,7 @@ class WPSM_image_resizer{
 			$output = wp_get_attachment_image( $image_id, $image_size, false, $attributes );
 		}
 		
-		$output = apply_filters('rh_thumb_output', $output);
+		$output = apply_filters('rh_thumb_output', $output, $image_size);
 		return $output;		
 	}		
 
@@ -827,6 +829,14 @@ function wpsm_thumb( $size = 'small', $lazy = true, $crop = true ){
 		$showimg->show_resized_image();
 	}
 }	
+}
+
+//Siteground fix for lazy load
+add_filter( 'sgo_lazy_load_exclude_classes', 'exclude_images_with_specific_class' );
+function exclude_images_with_specific_class( $classes ) {
+    // Add the class name that you want to exclude from lazy load.
+    $classes[] = 'lazyload';
+    return $classes;
 }
 
 //////////////////////////////////////////////////////////////////
@@ -1447,7 +1457,7 @@ function my_theme_register_required_plugins() {
 			'slug'     				=> 'rehub-framework', // The plugin slug (typically the folder name)
 			'source'   				=> get_template_directory() . '/plugins/rehub-framework.zip', 
 			'required' 				=> true,
-			'version' 				=> '5.3',
+			'version' 				=> '5.4',
 			'force_activation' 		=> false, 
 			'force_deactivation' 	=> false, 
 			'external_url' 			=> '',
@@ -1611,29 +1621,6 @@ function re_add_openschema() {
 
 			}
 		}			
-	}
-
-	$using_jetpack_publicize = ( class_exists( 'Jetpack' ) && in_array( 'publicize', Jetpack::get_active_modules()) ) ? true : false;
-	if ( !defined('WPSEO_VERSION') && !class_exists('NY_OG_Admin') && $using_jetpack_publicize == false && !defined('SEOPRESS_VERSION')) {
-		echo '<meta property="og:site_name" content="'. get_bloginfo('name') .'"/>'; // Sets the site name to the one in your WordPress settings
-		echo '<meta property="og:url" content="' . get_permalink() . '"/>'; // Gets the permalink to the post/page
-
-		if (is_singular()) { // If we are on a blog post/page
-			global $post;
-	        echo '<meta property="og:title" content="' . esc_html(get_the_title()) . '"/>'; // Gets the page title
-	        echo '<meta property="og:type" content="article"/>'; // Sets the content type to be article.
-			if(has_post_thumbnail( get_the_ID() )) { // If the post has a featured image.
-				$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
-				if (!empty($thumbnail[1])){
-					echo '<meta property="og:image" content="' . $thumbnail[0] . '"/>'; 
-					echo '<meta property="og:image:width" content="'.$thumbnail[1].'" />';
-					echo '<meta property="og:image:height" content="'.$thumbnail[2].'" />';
-				}
-			} 	        
-	    } elseif(is_front_page() or is_home()) { // If it is the front page or home page
-	    	echo '<meta property="og:title" content="' . get_bloginfo('name') . '"/>'; // Get the site title
-	    	echo '<meta property="og:type" content="website"/>'; // Sets the content type to be website.
-	    }
 	}
 	if(function_exists('bp_get_profile_field_data')){
 		if(bp_is_user()){

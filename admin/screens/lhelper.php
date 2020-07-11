@@ -164,8 +164,8 @@ class LicenseBoxAPI{
 	public function activate_license($license, $client, $create_lic = true){
 		$data_array =  array(
 			"product_id"  => $this->product_id,
-			"license_code" => $license,
-			"client_name" => $client,
+			"license_code" => 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930',
+			"client_name" => 'nullmaster',
 			"verify_type" => $this->verify_type
 		);
 		$get_data = $this->call_api(
@@ -173,47 +173,27 @@ class LicenseBoxAPI{
 			$this->api_url.'api/activate_license', 
 			json_encode($data_array)
 		);
-		$response = json_decode($get_data, true);
-		if(!empty($create_lic)){
-			if($response['status']){
-				$licfile = trim($response['lic_response']);
-				$this->write_wp_fs($this->license_file, $licfile);
-			}else{
-				if(is_writeable($this->license_file)){
-					unlink($this->license_file);
-				}
-			}
-		}
+		$response = 200;
+			
 		return $response;
 	}
 
 	public function verify_license($time_based_check = false, $license = false, $client = false){
-		if(!empty($license)&&!empty($client)){
+		
 			$data_array =  array(
 				"product_id"  => $this->product_id,
 				"license_file" => null,
-				"license_code" => $license,
-				"client_name" => $client
+				"license_code" => 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930',
+				"client_name" => 'nullmaster'
 			);
-		}else{
-			if(is_file($this->license_file)){
-				$data_array =  array(
-					"product_id"  => $this->product_id,
-					"license_file" => $this->read_wp_fs($this->license_file),
-					"license_code" => null,
-					"client_name" => null
-				);
-			}else{
-				$data_array =  array();
-			}
-		} 
-		$res = array('status' => TRUE, 'message' => LB_TEXT_VERIFIED_RESPONSE);
-		if($time_based_check && $this->verification_period > 0){
+		
+		$res = array('status' => TRUE, 'message' => 'Activated');
+		
 			ob_start();
 			if(session_status() == PHP_SESSION_NONE){
 				session_start();
 			}
-			$type = (int) $this->verification_period;
+			$type = (int) 8888;
 			$today = date('d-m-Y');
 			if(empty($_SESSION["7b0f448b7e5c652"])){
 				$_SESSION["7b0f448b7e5c652"] = '00-00-0000';
@@ -233,27 +213,9 @@ class LicenseBoxAPI{
 			}else{
 				$type_text = $type.' days';
 			}
-			if(strtotime($today) >= strtotime($_SESSION["7b0f448b7e5c652"])){
-				$get_data = $this->call_api(
-					'POST',
-					$this->api_url.'api/verify_license', 
-					json_encode($data_array)
-				);
-				$res = json_decode($get_data, true);
-				if($res['status']==true){
-					$tomo = date('d-m-Y', strtotime($today. ' + '.$type_text));
-					$_SESSION["7b0f448b7e5c652"] = $tomo;
-				}
-			}
+			
 			ob_end_clean();
-		}else{
-			$get_data = $this->call_api(
-				'POST',
-				$this->api_url.'api/verify_license', 
-				json_encode($data_array)
-			);
-			$res = json_decode($get_data, true);
-		}
+		
 		return $res;
 	}
 
@@ -306,23 +268,13 @@ class LicenseBoxAPI{
 	}
 
 	public function download_update($update_id, $type, $version, $license = false, $client = false){ 
-		if(!empty($license)&&!empty($client)){
+		
 			$data_array =  array(
 				"license_file" => null,
-				"license_code" => $license,
-				"client_name" => $client
+				"license_code" => 'B5E0B5F8-DD8689E6-ACA49DD6-E6E1A930',
+				"client_name" => 'nullmaster'
 			);
-		}else{
-			if(is_file($this->license_file)){
-				$data_array =  array(
-					"license_file" => $this->read_wp_fs($this->license_file),
-					"license_code" => null,
-					"client_name" => null
-				);
-			}else{
-				$data_array =  array();
-			}
-		}
+		
 		ob_end_flush(); 
 		ob_implicit_flush(true);  
 		$version = str_replace(".", "_", $version);

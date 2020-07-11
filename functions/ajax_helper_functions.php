@@ -97,6 +97,18 @@ function rehub_ajax_search() {
                 )
             );
         } 
+    } 
+
+    if( rehub_option('rehub_post_exclude_expired') == '1' && in_array( 'post', $posttypes ) ){
+        $args['tax_query'][] = array(
+            'relation' => 'AND',
+            array(
+                'taxonomy' => 'offerexpiration',
+                'field'    => 'name',
+                'terms'    => 'yes',
+                'operator' => 'NOT IN',
+            )
+        );
     }  
 
     $search_query = new WP_Query($args);

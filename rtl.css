@@ -118,9 +118,10 @@ nav.top_menu>ul>li.vertical-menu>ul>li>.sub-menu{border-right: none; border-left
 #main_header .rh_woocartmenu_cell .widget_shopping_cart{left: 12px; right: auto;}
 .rh_woocartmenu_cell .widget_shopping_cart:after{left: 19px; right: auto;}
 .offsetnav-overlay{right: 270px; left:0;}
-#slide-menu-mobile ul.off-canvas{right: 0; left:auto;transform: translateX(100%);}
-#slide-menu-mobile ul.off-canvas-active{transform: translateX(0);}
+#slide-menu-mobile ul.off-canvas, #slide-menu-mobile ul ul.sub-menu{right: 0; left:auto;transform: translateX(100%);}
+#slide-menu-mobile ul.off-canvas-active, #slide-menu-mobile ul ul.sub-menu.sub-menu-active{transform: translateX(0);}
 .woocommerce-product-gallery figure{float: left;}
+.post-meta-big span.postview_meta {float: right;}
 
 
 /****************************************************************************
@@ -140,7 +141,6 @@ a.expand { margin-right: 0px; margin-left: 5px }
 .priced_block .btn_offer_block:after { display: none; }
 .cats_def a { margin-right: 0px; margin-left: 4px; }
 .post-meta span {display: inline-block; margin-right: 0; margin-left: 0;}
-span.date_meta:before, span.cat_link_meta:before, span.comm_count_meta:before, span.postview_meta:before, span.admin_meta:before{ padding-right: 0; padding-left: 3px;}
 .sticky h2 i, .news .detail h4 i { margin-right: 0px; margin-left: 6px }
 .grid_onsale{left: 3px; right: auto}
 
@@ -586,10 +586,10 @@ article.post .rate_bar_wrap_two_reviews a.link_to_review{ right: inherit; left: 
 .rh_bp_notice_profile{left: auto;right: -5px}
 .user-dropdown-intop-menu .menu-item.bp-profile-menu-item a:before{margin: 0 0 0 4px}
 span.date_meta:before, span.cat_link_meta:before, span.comm_count_meta:before, span.postview_meta:before, span.admin_meta:before{display: none;}
-span.date_meta:after, span.cat_link_meta:after, span.comm_count_meta:after, span.postview_meta:after, span.admin_meta:after{ font-size: 3px;line-height: 12px;vertical-align: middle; padding-left: 5px; padding-right: 5px; content: "\f111"; font-family: Font Awesome\ 5 Pro}
+span.date_meta:after, span.cat_link_meta:after, span.comm_count_meta:after, span.postview_meta:after, span.admin_meta:after{ font-size: 3px;line-height: auto; float: right;vertical-align: middle; padding-left: 5px; padding-right: 5px; content: "\f111"; font-family: Font Awesome\ 5 Pro}
 .admin_meta .admin img{vertical-align: middle; margin-left: 5px; border-radius: 50%}
 span.postview_meta:after{content: "\f06e"; font-size: 12px; font-style: normal;}
-.title_single_area span.comm_count_meta:after{content: "\f4ad"; font-size: 12px;font-style: normal;}
+span.comm_count_meta:after{content: "\f4ad"; font-size: 12px;font-style: normal;}
 .post-meta span:first-child:after{display: none;}
 .post-meta span{margin: 0 0 0 5px;}
 .title_single_area .post-meta span {margin: 0 0 0 12px;}

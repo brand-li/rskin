@@ -1,0 +1,54 @@
+/**
+
+Theme Name: weDocs - Rehub Custom
+
+Theme URI: http://wedevs.com/theme/wedocs/
+
+Description: A documentation theme for WordPress
+
+Version: 0.1
+
+Template: wedocs-develop
+
+*/
+
+
+
+.hentry .entry-content ol li,
+
+.hentry .entry-content ul li {
+
+    padding: 0px 0px 6px 14px !important;
+
+}
+
+.hentry .entry-content ul.nav-tabs li {
+
+    padding: inherit !important;
+
+}
+
+.w3-codespan {
+
+    color: crimson;
+
+    background-color: #f1f1f1;
+
+    padding-left: 4px;
+
+    padding-right: 4px;
+
+    font-size: 110%;
+
+}
+
+.top-search-form{background-size: cover !important; background-color: #555 !important}
+body{font-size: 15px !important; line-height: 28px !important}
+aside.doc-nav-widget ul.doc-nav-list li{line-height: 20px}
+
+@media screen and (max-width: 768px){
+.wedocs-single-wrap .wedocs-single-content {
+    padding-left: 25px !important;
+    border-left: 0;
+}
+}

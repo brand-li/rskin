@@ -19,7 +19,7 @@ else {
 ?>  
 <article class="rething_item small_post col_item inf_scr_item<?php if (rehub_option('disable_resizer_grid') == 1){echo ' no_crop_grid';};?>">
         <figure><?php echo re_badge_create('tablelabel'); ?>
-            <?php if(rehub_option('repick_social_disable') !='1') :?> <?php echo rehub_social_inimage(''); ?> <?php endif;?>
+            <?php if(rehub_option('repick_social_disable') !='1' && function_exists('rehub_social_share')) :?><?php echo rehub_social_share(''); ?> <?php endif;?>
             <div class="thing-post-like"> 
                 <?php $wishlistadd = __('Save', 'rehub-theme');?>           
                 <?php $wishlistadded = __('Saved', 'rehub-theme');?>
